@@ -46,13 +46,22 @@ export default function EarlyAccess() {
         <motion.button
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          whileHover={{ scale: 1.05 }}
+          transition={{ 
+            duration: 0.8, 
+            delay: 0.4,
+            type: "spring",
+            stiffness: 200,
+            damping: 20
+          }}
+          whileHover={{ 
+            scale: 1.05,
+            background: "linear-gradient(to right, rgb(185, 28, 28), rgb(194, 65, 12))"
+          }}
           whileTap={{ scale: 0.95 }}
           onClick={() => setShowPopup(true)}
           className="px-8 py-4 text-lg font-medium rounded-full 
-                   bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 
-                   text-white border-0 transition-all duration-200"
+                   bg-gradient-to-r from-red-600 to-orange-600
+                   text-white border-0"
         >
           Request Early Access
         </motion.button>
