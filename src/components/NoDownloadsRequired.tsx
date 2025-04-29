@@ -29,9 +29,28 @@ export default function NoDownloadsRequired() {
           >
             <div className="flex flex-col md:flex-row items-center md:items-start gap-6 mb-8">
               <div className="relative">
-                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-red-500/20 to-orange-500/20 flex items-center justify-center">
-                  <Globe className="w-10 h-10 text-red-400" />
+                {/* No Download Icon */}
+                <div className="absolute -top-4 -left-4">
+                  <div className="relative inline-flex items-center">
+                    <Download className="w-6 h-6 text-red-400" />
+                    <div className="h-0.5 w-full absolute bg-red-500/50" style={{ transform: 'rotate(-5deg)' }} />
+                  </div>
                 </div>
+
+                {/* Main Circle with Text */}
+                <div className="w-32 h-32 rounded-full bg-gradient-to-br from-red-500/20 to-orange-500/20 flex items-center justify-center">
+                  <div className="text-center">
+                    <span className="text-lg font-bold">It's All</span>
+                    <span className="block bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-orange-400 font-bold">Online</span>
+                  </div>
+                </div>
+
+                {/* Globe Icon */}
+                <div className="absolute -bottom-2 -right-2">
+                  <Globe className="w-8 h-8 text-red-400" />
+                </div>
+
+                {/* Spinning Effect */}
                 <motion.div
                   animate={{
                     scale: [1, 1.2, 1],
@@ -44,18 +63,6 @@ export default function NoDownloadsRequired() {
                   }}
                   className="absolute -inset-2 rounded-full bg-red-500/10 -z-10"
                 />
-              </div>
-              <div>
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  It's All
-                  <span className="inline-block ml-3 bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-orange-400">
-                    Online
-                  </span>
-                </h2>
-                <div className="relative inline-flex items-center">
-                  <Download className="w-6 h-6 text-red-400 mr-2" />
-                  <div className="h-0.5 w-full absolute bg-red-500/50" style={{ transform: 'rotate(-5deg)' }} />
-                </div>
               </div>
             </div>
           </motion.div>

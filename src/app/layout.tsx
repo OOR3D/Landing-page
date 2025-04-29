@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "/OOR-LOGO.svg",
+        url: "/favicon.svg",
         type: "image/svg+xml",
       }
     ]

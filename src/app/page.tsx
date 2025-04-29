@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Montserrat } from "next/font/google"
@@ -23,6 +23,15 @@ const montserrat = Montserrat({
 
 export default function HomePage() {
   const [showContent, setShowContent] = useState(true) // Default to true to avoid flash
+  const [isVideoMuted, setIsVideoMuted] = useState(true)
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  const toggleAudio = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted
+      setIsVideoMuted(!isVideoMuted)
+    }
+  }
 
   useEffect(() => {
     // Check if this is the first visit
@@ -393,28 +402,54 @@ export default function HomePage() {
                       viewport={{ once: true }}
                       className="relative"
                     >
-                      <div className="relative w-64 h-64 flex items-center justify-center">
-                        <div className="absolute -left-8 -top-8 w-64 h-64 border-2 border-dashed border-red-500/30 rounded-full animate-[spin_20s_linear_infinite]" />
-                        <div className="text-red-400 flex items-center gap-4 relative z-10">
-                          {/* No Download Icon */}
-                          <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                            <polyline points="7 10 12 15 17 10" />
-                            <line x1="12" y1="15" x2="12" y2="3" />
-                            <line x1="4" y1="4" x2="20" y2="20" />
-                          </svg>
-                          {/* Globe/Internet Icon */}
-                          <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <circle cx="12" cy="12" r="10" />
-                            <line x1="2" y1="12" x2="22" y2="12" />
-                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                          </svg>
+                      {/* Main container for all elements */}
+                      <div className="relative w-64 h-64">
+                        {/* Spinning dashed circle only */}
+                        <div className="absolute inset-0 border-2 border-dashed border-red-500/30 rounded-full animate-[spin_20s_linear_infinite]" />
+                        
+                        {/* Static content container */}
+                        <div className="absolute inset-0">
+                          {/* No Download Icon - Top Left */}
+                          <div className="absolute -top-6 -left-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-red-400">
+                              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                              <polyline points="7 10 12 15 17 10" />
+                              <line x1="12" y1="15" x2="12" y2="3" />
+                              <line x1="4" y1="4" x2="20" y2="20" />
+                            </svg>
+                          </div>
+
+                          {/* Globe Icon - Bottom Right */}
+                          <div className="absolute -bottom-6 -right-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-red-400">
+                              <circle cx="12" cy="12" r="10" />
+                              <line x1="2" y1="12" x2="22" y2="12" />
+                              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                            </svg>
+                          </div>
+
+                          {/* Static centered text */}
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="text-center whitespace-nowrap">
+                              <span className="text-xl font-bold text-white">It's All </span>
+                              <span className="text-xl bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-orange-400 font-bold">Online</span>
+                            </div>
+                          </div>
                         </div>
+
+                        {/* Glow effect */}
+                        <div className="absolute inset-0 rounded-full bg-red-500/10 blur-sm" />
                       </div>
                     </motion.div>
 
                     {/* Right side with text */}
-                    <div className="flex-1 pl-8">
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.8 }}
+                      viewport={{ once: true }}
+                      className="flex-1"
+                    >
                       <motion.h3
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -422,20 +457,10 @@ export default function HomePage() {
                         viewport={{ once: true }}
                         className="text-3xl md:text-5xl font-bold mb-6"
                       >
-                        <span className="text-white/80">Oh- and </span>
                         <span className={`bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className}`}>
                           OOR3D™ requires no downloads of any softwares.
                         </span>
                       </motion.h3>
-                      <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        viewport={{ once: true }}
-                        className="text-2xl md:text-3xl text-gray-300 mb-8"
-                      >
-                        It's all <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400">online</span>.
-                      </motion.p>
                       <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -452,8 +477,83 @@ export default function HomePage() {
                           </Link>
                         </GradientButton>
                       </motion.div>
-                    </div>
+                    </motion.div>
                   </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Video Section */}
+        <section className="relative bg-[#0A0C13] py-24">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              className="max-w-4xl mx-auto"
+            >
+              {/* Title */}
+              <motion.h2
+                initial={{ opacity: 0, y: -20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className={`text-4xl md:text-6xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className}`}
+              >
+                A New Era
+              </motion.h2>
+
+              {/* Video Container */}
+              <div className="max-w-sm mx-auto relative rounded-3xl bg-[#0A0C13] border border-red-500/20 overflow-hidden">
+                {/* Background Effects */}
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,120,50,0.1),transparent_70%)]" />
+                <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-[#0A0C13] to-orange-900/20" />
+                
+                {/* Video */}
+                <div className="relative w-full" style={{ aspectRatio: '9/16' }}>
+                  <video 
+                    ref={videoRef}
+                    className="w-full h-full object-cover"
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline
+                  >
+                    <source src="https://publicmediaok.s3.us-east-1.amazonaws.com/OOR3D+PRELAUNCH+TEASER+(1).mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+
+                  {/* Audio Toggle Button */}
+                  <button
+                    onClick={toggleAudio}
+                    className="absolute bottom-4 right-4 p-2 rounded-full bg-black/50 hover:bg-black/70 transition-all duration-300 border border-red-500/20 text-white group hover:scale-125 z-10"
+                    aria-label={isVideoMuted ? "Unmute video" : "Mute video"}
+                  >
+                    {/* Tooltip */}
+                    <div className="absolute bottom-full right-0 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-1000 z-20 translate-x-[-50%]">
+                      <div className="relative">
+                        <div className="bg-black/90 text-white text-sm px-2 py-1 rounded whitespace-nowrap backdrop-blur-sm">
+                          {isVideoMuted ? "Unmute" : "Mute"}
+                        </div>
+                        {/* Tooltip Arrow */}
+                        <div className="absolute -bottom-1 right-4 border-4 border-transparent border-t-black/90" />
+                      </div>
+                    </div>
+
+                    {isVideoMuted ? (
+                      <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+                      </svg>
+                    ) : (
+                      <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                      </svg>
+                    )}
+                  </button>
                 </div>
               </div>
             </motion.div>
