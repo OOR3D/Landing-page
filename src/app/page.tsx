@@ -149,21 +149,22 @@ export default function HomePage() {
                     <motion.div 
                       className="flex items-center gap-16 px-16"
                       animate={{
-                        x: [0, -1640]
+                        x: [0, -3280]
                       }}
                       transition={{
                         x: {
-                          duration: 20,
+                          duration: 40,
                           ease: "linear",
                           repeat: Infinity,
-                          repeatType: "loop"
+                          repeatType: "loop",
+                          repeatDelay: 0
                         }
                       }}
                       style={{
                         width: "fit-content"
                       }}
                     >
-                      {[1, 2, 3, 4].map((set) => (
+                      {[1, 2, 3, 4, 5, 6, 7, 8].map((set) => (
                         <div key={set} className="flex items-center justify-center gap-16">
                           {[
                             { src: "/Trusted By/stripe.svg", alt: "Stripe" },
@@ -176,6 +177,7 @@ export default function HomePage() {
                             { src: "/Trusted By/amd.svg", alt: "AMD" },
                             { src: "/Trusted By/msi.svg", alt: "MSI" },
                             { src: "/Trusted By/autodeskmaya.svg", alt: "Autodesk Maya" },
+                            { src: "/Trusted By/logitech.svg", alt: "Logitech" },
                             { src: "/Trusted By/steam.svg", alt: "Steam" }
                           ].map((logo, index) => (
                             <div 
