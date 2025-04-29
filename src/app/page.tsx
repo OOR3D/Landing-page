@@ -319,7 +319,7 @@ export default function HomePage() {
                   className="text-xl py-6 px-12"
                 >
                   <Link href="/early-access">
-                    Create Now!
+                    Create Now
                   </Link>
                 </GradientButton>
               </motion.div>
@@ -355,13 +355,13 @@ export default function HomePage() {
                   <div className="relative w-full h-full flex items-center justify-center">
                     <div className="flex justify-center overflow-hidden h-full w-full [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent_100%)]">
                       <motion.div 
-                        className="flex flex-col items-center gap-16"
+                        className="flex flex-col items-center gap-16 pt-32"
                         animate={{
-                          y: [0, -820]
+                          y: [0, -2340]
                         }}
                         transition={{
                           y: {
-                            duration: 20,
+                            duration: 30,
                             ease: "linear",
                             repeat: Infinity,
                             repeatType: "loop",
@@ -369,12 +369,15 @@ export default function HomePage() {
                           }
                         }}
                       >
-                        {[1, 2, 3].map((set) => (
+                        {[1, 2, 3, 4, 5, 6].map((set) => (
                           <div key={set} className="flex flex-col items-center justify-center gap-16">
                             {[
                               "Beginners",
+                              "Dreamers",
+                              "First-Timers",
                               "Professionals",
                               "Creators",
+                              "Amateurs",
                               "Businesses",
                               "Designers",
                               "Artists",
@@ -407,7 +410,7 @@ export default function HomePage() {
                     className="text-xl py-6 px-12"
                   >
                     <Link href="/early-access">
-                      Take Me There
+                      Start Now
                     </Link>
                   </GradientButton>
                 </motion.div>
@@ -571,7 +574,7 @@ export default function HomePage() {
                           className="text-xl py-6 px-12"
                         >
                           <Link href="/early-access">
-                            Take me there!
+                            Take me there
                           </Link>
                         </GradientButton>
                       </motion.div>
