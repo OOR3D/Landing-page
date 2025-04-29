@@ -6,8 +6,16 @@ import Particles from "@/components/Particles"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "OOR3D™",
+  title: "OUTOFREACH3D",
   description: "Create, Customize, and Launch Virtual Products — Effortlessly.",
+  icons: {
+    icon: [
+      {
+        url: "/OOR-LOGO.svg",
+        type: "image/svg+xml",
+      }
+    ]
+  }
 }
 
 export default function RootLayout({

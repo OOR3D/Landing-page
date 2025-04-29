@@ -168,25 +168,25 @@ export default function Header() {
               <nav className="flex items-center gap-8">
                 <Link 
                   href="/"
-                  className="text-gray-400 hover:text-white hover:scale-110 transition-all duration-200"
+                  className="text-white/70 hover:text-white hover:scale-110 transition-all duration-200"
                 >
                   Home
                 </Link>
                 <Link 
                   href="/events/contest"
-                  className="text-gray-400 hover:text-white hover:scale-110 transition-all duration-200"
+                  className="text-white/70 hover:text-white hover:scale-110 transition-all duration-200"
                 >
                   Creator Contest
                 </Link>
                 <Link 
                   href="/experience"
-                  className="text-gray-400 hover:text-white hover:scale-110 transition-all duration-200"
+                  className="text-white/70 hover:text-white hover:scale-110 transition-all duration-200"
                 >
                   Experience
                 </Link>
                 <Link 
                   href="/contact"
-                  className="text-gray-400 hover:text-white hover:scale-110 transition-all duration-200"
+                  className="text-white/70 hover:text-white hover:scale-110 transition-all duration-200"
                 >
                   Contact
                 </Link>

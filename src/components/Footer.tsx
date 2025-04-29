@@ -30,15 +30,17 @@ function TikTokIcon() {
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-gray-800/50 bg-[#0a0c13] overflow-hidden">
+    <footer className="border-t border-gray-800/50 bg-[#0a0c13] w-full">
       {/* Background Glow Effects */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Top-left glow */}
-        <div className="absolute -top-[50%] left-[10%] w-[40rem] h-[40rem] bg-red-500/10 rounded-full blur-[8rem] animate-pulse" />
+      <div className="fixed inset-0 pointer-events-none">
+        {/* Top-right glow */}
+        <div className="absolute -top-[30%] right-[10%] w-[45rem] h-[45rem] bg-red-500/10 rounded-full blur-[12rem] animate-pulse" />
+        {/* Left-center glow */}
+        <div className="absolute top-[30%] -left-[20%] w-[35rem] h-[35rem] bg-orange-500/10 rounded-full blur-[12rem] animate-pulse" style={{ animationDelay: '1s' }} />
         {/* Bottom-right glow */}
-        <div className="absolute bottom-[10%] right-[20%] w-[35rem] h-[35rem] bg-orange-500/10 rounded-full blur-[8rem] animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute bottom-[10%] right-[20%] w-[40rem] h-[40rem] bg-red-500/10 rounded-full blur-[12rem] animate-pulse" style={{ animationDelay: '2s' }} />
         {/* Center glow */}
-        <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[50rem] h-[50rem] bg-red-500/5 rounded-full blur-[10rem] animate-pulse" style={{ animationDelay: '1.5s' }} />
+        <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[50rem] h-[50rem] bg-orange-500/5 rounded-full blur-[14rem] animate-pulse" style={{ animationDelay: '1.5s' }} />
       </div>
 
       {/* Content */}

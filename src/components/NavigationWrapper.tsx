@@ -12,10 +12,10 @@ export default function NavigationWrapper({
 }) {
   return (
     <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-      <div className="[&_*]:cursor-none">
+      <div className="[&_*]:cursor-none min-h-screen flex flex-col">
         <CustomCursor />
         <Header />
-        <main className="min-h-screen">
+        <main className="flex-1">
           {children}
         </main>
         <Footer />

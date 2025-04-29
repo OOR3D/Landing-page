@@ -60,7 +60,7 @@ export default function HomePage() {
         </div>
 
         {/* Hero Section */}
-        <section className="relative min-h-screen flex flex-col items-center justify-center">
+        <section className="relative min-h-screen flex flex-col items-center justify-center pt-32">
           <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-[#0A0C13] to-orange-900/20 z-0" />
           <motion.div
             initial={{ opacity: 0 }}
@@ -143,20 +143,24 @@ export default function HomePage() {
               {/* Infinite scroll container */}
               <div className="relative flex justify-center overflow-hidden">
                 <div className="max-w-4xl relative mx-auto w-full">
-                  {/* Gradient masks for scroll effect */}
-                  <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#0A0C13] to-transparent z-10" />
-                  <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#0A0C13] to-transparent z-10" />
-                  
                   <div className="flex justify-center overflow-hidden whitespace-nowrap py-4">
                     <motion.div 
-                      className="flex items-center gap-20 px-20"
+                      className="flex items-center gap-20 px-20 opacity-0"
                       animate={{
                         x: [0, -1640],
+                        opacity: [0, 1, 1, 0],
                       }}
                       transition={{
-                        duration: 30,
-                        ease: "linear",
-                        repeat: Infinity,
+                        x: {
+                          duration: 30,
+                          ease: "linear",
+                          repeat: Infinity,
+                        },
+                        opacity: {
+                          duration: 30,
+                          times: [0, 0.1, 0.9, 1],
+                          repeat: Infinity,
+                        }
                       }}
                     >
                       {[0, 1, 2].map((set) => (
@@ -223,9 +227,6 @@ export default function HomePage() {
               </div>
             </motion.div>
           </div>
-
-          {/* Enhanced bottom gradient */}
-          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent via-[#0A0C13]/80 to-[#0A0C13]" />
         </section>
 
         {/* Create Without Complexity Section */}
@@ -245,7 +246,9 @@ export default function HomePage() {
               className="text-center mb-24"
             >
               <h2 className={`text-6xl md:text-8xl font-extrabold mb-8 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className} pb-2`}>
-                CREATE WITHOUT COMPLEXITY
+                Skip the complexity.
+                <br />
+                Start bringing your ideas to life.
               </h2>
             </motion.div>
 
