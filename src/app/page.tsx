@@ -120,7 +120,7 @@ export default function HomePage() {
                 asChild
               >
                 <Link href="/early-access">
-                  Get Early Access
+                  Get Started
                 </Link>
               </GradientButton>
               
@@ -154,25 +154,23 @@ export default function HomePage() {
                 <div className="max-w-4xl relative mx-auto w-full">
                   <div className="flex justify-center overflow-hidden whitespace-nowrap py-4 [mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent_100%)]">
                     <motion.div 
-                      className="flex items-center gap-20 px-20 opacity-0"
+                      className="flex items-center gap-20 px-20"
                       animate={{
-                        x: [0, -1640],
-                        opacity: [0, 1, 1, 0],
+                        x: [0, -1640]
                       }}
                       transition={{
                         x: {
-                          duration: 30,
+                          duration: 20,
                           ease: "linear",
                           repeat: Infinity,
-                        },
-                        opacity: {
-                          duration: 30,
-                          times: [0, 0.1, 0.9, 1],
-                          repeat: Infinity,
+                          repeatType: "loop"
                         }
                       }}
+                      style={{
+                        width: "fit-content"
+                      }}
                     >
-                      {[0, 1, 2].map((set) => (
+                      {[1, 2, 3, 4].map((set) => (
                         <div key={set} className="flex items-center gap-20">
                           <div className="flex items-center justify-center w-40 h-20 opacity-70 hover:opacity-100 transition-opacity">
                             <Image

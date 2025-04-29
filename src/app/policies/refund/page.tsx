@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { Montserrat } from "next/font/google"
 import NavigationWrapper from "@/components/NavigationWrapper"
-import { RotateCcw, ArrowLeft, Shield } from 'lucide-react'
+import { RotateCcw, ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 
 const montserrat = Montserrat({
@@ -30,12 +30,12 @@ export default function RefundPolicyPage() {
                 className="inline-flex items-center text-gray-400 hover:text-white transition-colors"
               >
                 <ArrowLeft className="w-5 h-5 mr-2" />
-                Back to Policies
+                Back to Policy Hub
               </Link>
             </motion.div>
 
             <div className="flex items-center justify-start gap-4 mb-16">
-              <Shield className="w-12 h-12 text-red-400" />
+              <RotateCcw className="w-12 h-12 text-amber-400" />
               <motion.h1
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -56,7 +56,7 @@ export default function RefundPolicyPage() {
               <p className="text-gray-400">Last Updated: March 25, 2025</p>
               
               <p>
-                At OOR3D, we aim to deliver a quality experience. Due to the nature of digital products, all purchases are final and non-refundable.
+                At OUTOFREACH3D™, we aim to deliver a quality experience. Due to the nature of digital products, all purchases are final and non-refundable.
               </p>
 
               <p>
@@ -69,10 +69,10 @@ export default function RefundPolicyPage() {
               <h2>1. No Refunds on Digital Products</h2>
               <p>All sales of:</p>
               <ul>
-                <li>Subscription fees</li>
-                <li>Ocoin purchases</li>
-                <li>Mesh exports, remixes, and digital assets</li>
-                <li>One-time feature usages</li>
+                <li>- Subscription fees</li>
+                <li>- Ocoin purchases</li>
+                <li>- Mesh exports, remixes, and digital assets</li>
+                <li>- One-time feature usages</li>
               </ul>
               <p>are final and non-refundable.</p>
 
@@ -83,21 +83,21 @@ export default function RefundPolicyPage() {
               <h2>3. Unauthorized Transactions</h2>
               <p>If you suspect unauthorized charges:</p>
               <ul>
-                <li>Contact us within 7 days of the transaction at support@outofreach3d.com</li>
-                <li>Provide relevant account and billing details</li>
+                <li>- Contact us within 7 days of the transaction at support@outofreach3d.com</li>
+                <li>- Provide relevant account and billing details</li>
               </ul>
               <p>We will investigate and determine eligibility for a refund at our discretion.</p>
 
               <h2>4. Service Disruptions & Exceptions</h2>
               <p>Refunds may be considered if:</p>
               <ul>
-                <li>A major technical failure prevents feature usage</li>
-                <li>Duplicate charges occur due to billing errors</li>
+                <li>- A major technical failure prevents feature usage</li>
+                <li>- Duplicate charges occur due to billing errors</li>
               </ul>
               <p>All refund requests must be submitted within 7 days of the issue.</p>
 
               <h2>5. Chargebacks & Account Suspension</h2>
-              <p>Filing a chargeback without contacting support may result in account suspension or permanent banning from OOR3D.</p>
+              <p>Filing a chargeback without contacting support may result in account suspension or permanent banning from OOR3D™.</p>
 
               <h2>6. Policy Updates</h2>
               <p>We may revise this Refund Policy at any time.</p>

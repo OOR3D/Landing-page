@@ -54,7 +54,7 @@ export default function PoliciesPage() {
                 transition={{ duration: 0.8 }}
                 className={`text-4xl md:text-5xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className} leading-[1.4] md:leading-[1.4] py-2`}
               >
-                Legal & Policies
+                Policy Hub
               </motion.h1>
 
               <motion.p
