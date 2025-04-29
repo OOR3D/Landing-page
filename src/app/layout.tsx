@@ -1,30 +1,26 @@
-import type { Metadata } from "next"
+"use client"
+
 import { Inter } from "next/font/google"
 import "./globals.css"
 import Particles from "@/components/Particles"
 import Script from 'next/script'
 import CookieConsent from "@/components/CookieConsent"
+import { useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 
 const inter = Inter({ subsets: ["latin"] })
-
-export const metadata: Metadata = {
-  title: "OUTOFREACH3D",
-  description: "Create, Customize, and Launch Virtual Products — Effortlessly.",
-  icons: {
-    icon: [
-      {
-        url: "/favicon.svg",
-        type: "image/svg+xml",
-      }
-    ]
-  }
-}
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const pathname = usePathname()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>

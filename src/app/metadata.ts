@@ -1,7 +1,14 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "OOR3D Creator Contest",
-  description: "Show your creativity. Win real prizes.",
-  generator: 'v0.dev'
+  title: "OUTOFREACH3D",
+  description: "Create, Customize, and Launch Virtual Products — Effortlessly.",
+  icons: {
+    icon: [
+      {
+        url: "/favicon.svg",
+        type: "image/svg+xml",
+      }
+    ]
+  }
 } 
