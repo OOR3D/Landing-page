@@ -34,7 +34,7 @@ export default function FAQPage() {
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8 }}
-                  className={`text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className}`}
+                  className={`text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className} leading-relaxed py-2`}
                 >
                   Frequently Asked Questions
                 </motion.h1>

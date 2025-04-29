@@ -195,13 +195,14 @@ export default function ContestPage() {
           }
         `}</style>
 
-        <section className="relative min-h-screen py-32 flex items-center justify-center overflow-hidden">
+        <section className="relative min-h-screen flex flex-col items-center justify-center">
           {/* Background gradients */}
           <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-[#0A0C13] to-orange-900/20 z-0" />
           <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 2 }}
+            whileInView={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1 }}
             className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,120,50,0.1),transparent_70%)] z-0"
           />
 
@@ -211,8 +212,9 @@ export default function ContestPage() {
               {isActive && (
                 <motion.div
                   initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.6 }}
                   className="mb-8"
                 >
                   <span className="active-tag inline-flex items-center px-4 py-2 rounded-full bg-green-500/10 text-green-400 text-sm font-medium border border-green-400/30">
@@ -224,38 +226,40 @@ export default function ContestPage() {
 
               <motion.h1
                 initial={{ opacity: 0, y: -50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, ease: "easeOut" }}
+                whileInView={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -50 }}
+                transition={{ duration: 0.8 }}
                 className={`text-5xl md:text-7xl font-extrabold mb-8 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className}`}
               >
                 OOR3D™ Creator Contest V.1
               </motion.h1>
 
               {/* Countdown Timer */}
-              {isActive && (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                  className="text-xl text-gray-300 mb-12"
-                >
-                  {daysRemaining} days until it's over
-                </motion.div>
-              )}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                transition={{ duration: 0.8 }}
+                className="text-xl text-gray-300 mb-12"
+              >
+                {daysRemaining} days until it's over
+              </motion.div>
 
               <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1, delay: 0.2 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                transition={{ duration: 0.8 }}
                 className="text-lg md:text-xl text-orange-300 max-w-2xl mx-auto mb-4"
               >
                 Create for IMVU and win real prizes.
               </motion.p>
 
               <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.6 }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.6 }}
               >
                 <GradientButton
                   size="lg"

@@ -73,16 +73,18 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-[#0A0C13] to-orange-900/20 z-0" />
           <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 2 }}
+            whileInView={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1 }}
             className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,120,50,0.1),transparent_70%)] z-0"
           />
 
           <div className="container mx-auto px-4 z-10 text-center py-12">
             <motion.div
               initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.6 }}
               className="mb-4"
             >
               <span className="inline-block px-4 py-1.5 bg-gradient-to-r from-red-500/10 to-orange-500/10 rounded-full text-sm font-semibold text-orange-400 border border-orange-500/20 backdrop-blur-xl">
@@ -92,27 +94,29 @@ export default function HomePage() {
             
             <motion.h1
               initial={{ opacity: 0, y: -50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: "easeOut" }}
+              whileInView={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -50 }}
+              transition={{ duration: 0.8 }}
               className={`text-5xl md:text-7xl font-extrabold mb-8 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className} pb-2`}
             >
               Create 3D Products for the Virtual World
             </motion.h1>
             
             <motion.h2
-              variants={fadeIn}
-              custom={1}
-              initial="hidden"
-              animate="visible"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              transition={{ duration: 0.8 }}
               className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed"
             >
               OOR3D™ makes it easy to design and customize virtual products for IMVU, Second Life, Sims 4, and more — no complicated software, no technical experience needed.
             </motion.h2>
 
             <motion.div
-              variants={scaleUp}
-              initial="hidden"
-              animate="visible"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.6 }}
               className="flex flex-col items-center gap-4 mb-16"
             >
               <GradientButton
@@ -127,20 +131,26 @@ export default function HomePage() {
 
             {/* Trust Bar Section - Moved inside hero */}
             <motion.div
-              variants={fadeIn}
-              custom={3}
-              initial="hidden"
-              animate="visible"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 30 }}
+              transition={{ duration: 0.8 }}
               className="w-full"
             >
-              <div className="text-center mb-8">
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-center mb-8"
+              >
                 <h2 className="text-xl font-medium tracking-wide text-white/90 mb-2">
                   Trusted by Industry Leaders
                 </h2>
                 <p className="text-sm text-gray-400 tracking-wide max-w-2xl mx-auto">
                   Innovating a new standard for creation in virtual spaces, powered by global pioneers of technology.
                 </p>
-              </div>
+              </motion.div>
 
               {/* Infinite scroll container */}
               <div className="relative flex justify-center overflow-hidden">
@@ -218,10 +228,10 @@ export default function HomePage() {
 
           <div className="container mx-auto px-4">
             <motion.div
-              initial={{ opacity: 0, y: -20 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
               className="text-center mb-24"
             >
               <h2 className={`text-4xl md:text-6xl font-extrabold mb-8 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className} pb-2`}>
@@ -317,25 +327,120 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* Who is it for Section */}
+        <section className="relative bg-[#0A0C13] py-32 w-full">
+          <div className="container mx-auto px-4 flex items-center justify-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="w-full flex flex-col items-center justify-center"
+            >
+              <h2 className={`text-4xl md:text-6xl font-bold mb-16 bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className} text-center`}>
+                No Experience, No Problem
+              </h2>
+
+              <motion.p 
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+                className="text-2xl md:text-3xl text-gray-300 mb-12 text-center"
+              >
+                OUTOFREACH3D™ is made for
+              </motion.p>
+
+              <div className="relative min-h-[600px] w-full flex flex-col items-center justify-center mb-16">
+                <div className="relative h-[400px] w-full max-w-5xl mx-auto overflow-hidden">
+                  <div className="relative w-full h-full flex items-center justify-center">
+                    <div className="flex justify-center overflow-hidden h-full w-full [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent_100%)]">
+                      <motion.div 
+                        className="flex flex-col items-center gap-16"
+                        animate={{
+                          y: [0, -820]
+                        }}
+                        transition={{
+                          y: {
+                            duration: 20,
+                            ease: "linear",
+                            repeat: Infinity,
+                            repeatType: "loop",
+                            repeatDelay: 0
+                          }
+                        }}
+                      >
+                        {[1, 2, 3].map((set) => (
+                          <div key={set} className="flex flex-col items-center justify-center gap-16">
+                            {[
+                              "Beginners",
+                              "Professionals",
+                              "Creators",
+                              "Businesses",
+                              "Designers",
+                              "Artists",
+                              "You"
+                            ].map((item, index) => (
+                              <div 
+                                key={`${set}-${index}`}
+                                className={`text-7xl md:text-9xl font-bold text-white ${montserrat.className}`}
+                              >
+                                {item}
+                              </div>
+                            ))}
+                          </div>
+                        ))}
+                      </motion.div>
+                    </div>
+                  </div>
+                </div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                  viewport={{ once: true }}
+                  className="mt-24 flex justify-center w-full"
+                >
+                  <GradientButton
+                    size="lg"
+                    asChild
+                    className="text-xl py-6 px-12"
+                  >
+                    <Link href="/early-access">
+                      Take Me There
+                    </Link>
+                  </GradientButton>
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
         {/* Platforms Section */}
-        <section className="relative bg-[#0A0C13] py-24">
+        <section className="relative bg-[#0A0C13] py-32">
           {/* Section-specific glow */}
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute top-[30%] right-[20%] w-[40rem] h-[40rem] bg-red-500/10 rounded-full blur-[8rem] animate-pulse" />
           </div>
 
           <div className="container mx-auto px-4">
-            <div className="max-w-5xl mx-auto text-center space-y-12">
+            <div className="max-w-5xl mx-auto text-center space-y-12 pt-16">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                viewport={{ once: true, margin: "-100px" }}
               >
                 <h2 className={`text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className}`}>
                   Platform Compatibility
                 </h2>
-                <div className="space-y-8">
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="space-y-8"
+                >
                   <div>
                     <p className="text-xl text-gray-300">
                       At launch, OOR3D™ supports exports for IMVU creators.
@@ -345,8 +450,8 @@ export default function HomePage() {
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    viewport={{ once: true, margin: "-100px" }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
                     className="space-y-4"
                   >
                     <p className="text-xl text-gray-300">
@@ -355,23 +460,14 @@ export default function HomePage() {
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.8, delay: 0.4 }}
-                      viewport={{ once: true, margin: "-100px" }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8, delay: 0.6 }}
                       className="text-2xl md:text-3xl text-white font-semibold"
                     >
                       Second Life • Sims 4 • Roblox • Inzoi • GTA 6
                     </motion.div>
-                    <motion.p
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.8, delay: 0.6 }}
-                      viewport={{ once: true, margin: "-100px" }}
-                      className="text-xl text-gray-300"
-                    >
-                      We're building toward a future where your creations move freely between worlds.
-                    </motion.p>
                   </motion.div>
-                </div>
+                </motion.div>
               </motion.div>
             </div>
           </div>
@@ -691,40 +787,50 @@ export default function HomePage() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
                 className="bg-gradient-to-br from-red-500/10 to-orange-500/10 rounded-xl p-12 border border-red-500/20 text-center relative overflow-hidden backdrop-blur-xl"
               >
-                {/* Background Effect */}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,120,50,0.1),transparent_70%)]" />
-                
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
                   viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
                   className="relative z-10"
                 >
                   <h3 className={`text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className}`}>
                     Join Our Discord Community
                   </h3>
-                  <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                    This server is your home base if you want to shape the platform, influence what gets built, and lead the next era of creating.
-                  </p>
-                  <GradientButton
-                    size="lg"
-                    asChild
-                    className="text-xl py-6 px-12"
+                  <motion.p 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
+                    className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto"
                   >
-                    <Link href="https://discord.gg/oor3d" target="_blank" rel="noopener noreferrer">
-                      <div className="flex items-center gap-2">
-                        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"/>
-                        </svg>
-                        Join Discord
-                      </div>
-                    </Link>
-                  </GradientButton>
+                    This server is your home base if you want to shape the platform, influence what gets built, and lead the next era of creating.
+                  </motion.p>
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.6 }}
+                  >
+                    <GradientButton
+                      size="lg"
+                      asChild
+                      className="text-xl py-6 px-12"
+                    >
+                      <Link href="https://discord.gg/oor3d" target="_blank" rel="noopener noreferrer">
+                        <div className="flex items-center gap-2">
+                          <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"/>
+                          </svg>
+                          Join Discord
+                        </div>
+                      </Link>
+                    </GradientButton>
+                  </motion.div>
                 </motion.div>
               </motion.div>
             </div>
