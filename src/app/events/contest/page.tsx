@@ -229,7 +229,7 @@ export default function ContestPage() {
                 transition={{ duration: 1, ease: "easeOut" }}
                 className={`text-5xl md:text-7xl font-extrabold mb-8 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className}`}
               >
-                OOR3D™ Creator Contest
+                OOR3D™ Creator Contest V.1
               </motion.h1>
 
               {/* Countdown Timer */}

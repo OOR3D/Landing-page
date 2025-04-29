@@ -45,7 +45,7 @@ export default function EarlyAccess() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl text-gray-300 mb-6 max-w-3xl mx-auto leading-relaxed"
           >
-            OOR3D™ is designed to make 3D creation faster, easier, and more accessible across platforms like IMVU, Second Life, and Sims 4 — and you're getting in at the ground floor.
+            OOR3D™ is designed to make 3D creation faster, easier, and more accessible across platforms like IMVU, Second Life, Sims 4, and more — and you're getting in at the ground floor.
           </motion.p>
 
           <motion.p
@@ -54,7 +54,7 @@ export default function EarlyAccess() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="text-lg text-orange-400 mb-12 font-medium"
           >
-            Spots are limited.
+            Spots are limited
           </motion.p>
 
           <motion.div
