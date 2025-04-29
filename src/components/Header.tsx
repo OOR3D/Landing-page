@@ -11,8 +11,17 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const { scrollY } = useScroll()
 
-  // Single scroll threshold for all animations
-  const scrollThreshold = [0, 100]
+  // Tighter scroll threshold for more immediate response
+  const scrollThreshold = [0, 50]
+
+  // Unified transition config for smoother animation
+  const transitionConfig = {
+    duration: 0.5,
+    ease: [0.4, 0, 0.2, 1],
+    stiffness: 100,
+    damping: 30
+  }
+
   const scrollValues = {
     initial: {
       width: "100%",
@@ -37,7 +46,10 @@ export default function Header() {
   }
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    setIsScrolled(latest > scrollThreshold[0])
+    const shouldBeScrolled = latest > scrollThreshold[0]
+    if (isScrolled !== shouldBeScrolled) {
+      setIsScrolled(shouldBeScrolled)
+    }
   })
   
   const headerWidth = useTransform(
@@ -105,7 +117,7 @@ export default function Header() {
           background: headerBackground,
           backdropFilter: headerBackdropBlur,
           border: headerBorder,
-          transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)' // Smoother easing
+          transition: `all ${transitionConfig.duration}s cubic-bezier(${transitionConfig.ease.join(',')})`
         }}
       >
         {/* Checkered background */}
@@ -118,7 +130,7 @@ export default function Header() {
               linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px)
             `,
             backgroundSize: '20px 20px',
-            transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)' // Match header transition
+            transition: `all ${transitionConfig.duration}s cubic-bezier(${transitionConfig.ease.join(',')})`
           }}
         />
 
@@ -128,7 +140,7 @@ export default function Header() {
             <motion.div 
               style={{ 
                 x: logoTranslateX,
-                transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
+                transition: `all ${transitionConfig.duration}s cubic-bezier(${transitionConfig.ease.join(',')})`
               }}
               className="relative flex items-center"
             >
@@ -177,7 +189,7 @@ export default function Header() {
               <motion.div 
                 style={{ 
                   x: earlyAccessTranslateX,
-                  transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)' // Match header transition
+                  transition: `all ${transitionConfig.duration}s cubic-bezier(${transitionConfig.ease.join(',')})`
                 }}
               >
                 <Link 
