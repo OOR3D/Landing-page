@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
+import CustomCursor from './CustomCursor'
 
 export default function LoadingScreen() {
   const [loadingProgress, setLoadingProgress] = useState(0)
@@ -23,7 +24,8 @@ export default function LoadingScreen() {
   }, []);
 
   return (
-    <div className="fixed inset-0 bg-[#0A0C13] flex items-center justify-center">
+    <div className="fixed inset-0 bg-[#0A0C13] flex items-center justify-center cursor-none [&_*]:cursor-none">
+      <CustomCursor />
       <motion.div 
         className="text-white text-4xl font-bold"
         initial={{ opacity: 0 }}

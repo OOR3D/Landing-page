@@ -6,7 +6,6 @@ import { motion } from 'framer-motion'
 import { Montserrat } from "next/font/google"
 import { Button } from "@/components/ui/button"
 import LoadingScreen from '@/components/LoadingScreen'
-import CustomCursor from '@/components/CustomCursor'
 import { fadeIn, scaleUp } from '@/lib/animations'
 import NavigationWrapper from "@/components/NavigationWrapper"
 import Image from 'next/image'
@@ -47,7 +46,6 @@ export default function HomePage() {
   return (
     <NavigationWrapper>
       <main className="min-h-screen bg-[#0A0C13] text-white [&_*]:cursor-none">
-        <CustomCursor />
         {/* Hero Section */}
         <section className="relative min-h-screen flex items-center justify-center">
           <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-[#0A0C13] to-orange-900/20 z-0" />
