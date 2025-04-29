@@ -208,7 +208,7 @@ export default function Header() {
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden text-gray-400 hover:text-white hover:scale-110 transition-all duration-200"
+              className="lg:hidden text-gray-400 hover:text-white hover:scale-110 transition-all duration-200"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -217,12 +217,18 @@ export default function Header() {
 
           {/* Mobile Navigation */}
           <motion.nav
-            initial={false}
-            animate={isMobileMenuOpen ? { height: 'auto', opacity: 1 } : { height: 0, opacity: 0 }}
-            className={`md:hidden overflow-hidden ${isMobileMenuOpen ? 'mb-4' : ''}`}
+            initial={{ x: '100%' }}
+            animate={isMobileMenuOpen ? { x: '0%' } : { x: '100%' }}
+            transition={{ type: 'tween', duration: 0.3 }}
+            className={`fixed top-0 right-0 h-full w-3/4 bg-black/70 backdrop-blur-md z-50 flex flex-col items-center justify-center lg:hidden`}
           >
+            <button
+              className="absolute top-4 right-4 text-white"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <X size={24} />
+            </button>
             <div className="flex flex-col gap-4 py-4">
-              {/* Mobile Menu Early Access Button */}
               <GradientButton asChild className="w-full">
                 <Link href="/early-access">
                   Get Early Access
@@ -230,14 +236,14 @@ export default function Header() {
               </GradientButton>
               <Link 
                 href="/"
-                className="text-gray-400 hover:text-white text-center py-2 transition-all duration-200 hover:scale-110"
+                className="text-white text-center py-2 transition-all duration-200 hover:scale-110"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Home
               </Link>
               <Link 
                 href="/events/contest"
-                className="text-gray-400 hover:text-white text-center py-2 transition-all duration-200 hover:scale-110"
+                className="text-white text-center py-2 transition-all duration-200 hover:scale-110"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Creator Contest
@@ -246,14 +252,14 @@ export default function Header() {
                 href="https://experience.outofreach3d.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white text-center py-2 transition-all duration-200 hover:scale-110"
+                className="text-white text-center py-2 transition-all duration-200 hover:scale-110"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Experience
               </Link>
               <Link 
                 href="/contact"
-                className="text-gray-400 hover:text-white text-center py-2 transition-all duration-200 hover:scale-110"
+                className="text-white text-center py-2 transition-all duration-200 hover:scale-110"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Contact
