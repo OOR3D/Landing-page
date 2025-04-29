@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion'
 import { Globe, Download } from 'lucide-react'
 import Link from 'next/link'
-import { Button } from './ui/button'
+import { Button } from '@/components/ui/button'
+import { GradientButton } from "@/components/ui/gradient-button"
+import { scaleUp } from '@/lib/animations'
 
 export default function NoDownloadsRequired() {
   return (
@@ -59,26 +61,26 @@ export default function NoDownloadsRequired() {
           </motion.div>
 
           {/* Right side with text and button */}
-          <motion.div 
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="flex-1"
-          >
-            <h3 className="text-2xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-white to-white">
-              OOR3D™ REQUIRES ZERO DOWNLOADS OF ANY SOFTWARE.
-            </h3>
-            <Button
+          <div className="flex-1">
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-2xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-white to-white">
+                OOR3D™ REQUIRES ZERO DOWNLOADS OF ANY SOFTWARE.
+              </h3>
+            </motion.div>
+            <GradientButton
               size="lg"
-              className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white border-0 rounded-full"
               asChild
             >
               <Link href="/early-access">
                 Get Early Access
               </Link>
-            </Button>
-          </motion.div>
+            </GradientButton>
+          </div>
         </div>
       </div>
     </section>

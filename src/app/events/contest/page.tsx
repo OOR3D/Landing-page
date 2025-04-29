@@ -1,6 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
+import { GradientButton } from "@/components/ui/gradient-button"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { ExternalLink, Users, Palette, Send } from "lucide-react"
 import Link from "next/link"
@@ -256,19 +257,16 @@ export default function ContestPage() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.6 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
               >
-                <Button
+                <GradientButton
                   size="lg"
-                  className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white border-0 rounded-full"
                   asChild
                   disabled={!isActive}
                 >
                   <Link href="https://discord.gg/oor3d" target="_blank">
                     {isActive ? "Start the Challenge" : "Contest Ended"}
                   </Link>
-                </Button>
+                </GradientButton>
               </motion.div>
             </div>
           </div>
@@ -468,16 +466,15 @@ export default function ContestPage() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button
+                <GradientButton
                   size="lg"
-                  className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white border-0 rounded-full"
                   asChild
                   disabled={!isActive}
                 >
                   <Link href="https://discord.gg/oor3d" target="_blank">
                     {isActive ? "Join the Contest" : "Contest Ended"}
                   </Link>
-                </Button>
+                </GradientButton>
               </motion.div>
             </motion.div>
           </div>
@@ -532,15 +529,14 @@ export default function ContestPage() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button
+                <GradientButton
                   size="lg"
-                  className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white border-0 rounded-full"
                   asChild
                 >
                   <Link href="/experience">
                     See what we're building
                   </Link>
-                </Button>
+                </GradientButton>
               </motion.div>
             </motion.div>
           </div>

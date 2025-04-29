@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Montserrat } from "next/font/google";
+import { Button } from "@/components/ui/button"
+import { GradientButton } from "@/components/ui/gradient-button"
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -26,14 +28,14 @@ const DiscordCTA = () => {
       <p className="text-base md:text-lg text-gray-300 max-w-2xl mx-auto mb-6">
         This server is where early creators help shape the platform, decide what gets built, and lead the future of creating inside of virtual worlds.
       </p>
-      <Link 
-        href="https://discord.gg/oor3d"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-block bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white font-bold py-3 px-10 rounded-full text-base transition-all duration-300 hover:scale-105"
+      <GradientButton
+        size="lg"
+        asChild
       >
-        Join Now!
-      </Link>
+        <Link href="https://discord.gg/oor3d" target="_blank">
+          Join Discord Community
+        </Link>
+      </GradientButton>
     </div>
   );
 };

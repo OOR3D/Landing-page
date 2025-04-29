@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import Link from 'next/link'
 import NavigationWrapper from "@/components/NavigationWrapper"
 import { Mail, MessageSquare } from 'lucide-react'
+import { GradientButton } from "@/components/ui/gradient-button"
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -80,15 +81,15 @@ export default function ContactPage() {
                   <p className="text-gray-400 mb-4">
                     Join our Discord community today.
                   </p>
-                  <Button
+                  <GradientButton
                     size="lg"
-                    className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white border-0 rounded-full w-full"
+                    className="w-full"
                     asChild
                   >
                     <Link href="https://discord.gg/oor3d" target="_blank">
                       💬 Join Discord Community
                     </Link>
-                  </Button>
+                  </GradientButton>
                 </motion.div>
               </div>
             </div>

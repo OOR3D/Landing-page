@@ -6,6 +6,7 @@ import { Montserrat } from 'next/font/google'
 import NavigationWrapper from "@/components/NavigationWrapper"
 import Link from 'next/link'
 import EarlyAccessPopup from '@/components/EarlyAccessPopup'
+import { GradientButton } from "@/components/ui/gradient-button"
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -56,28 +57,18 @@ export default function EarlyAccess() {
             Spots are limited.
           </motion.p>
 
-          <motion.button
+          <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ 
-              duration: 0.8, 
-              delay: 0.4,
-              type: "spring",
-              stiffness: 200,
-              damping: 20
-            }}
-            whileHover={{ 
-              scale: 1.05,
-              background: "linear-gradient(to right, rgb(185, 28, 28), rgb(194, 65, 12))"
-            }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setShowPopup(true)}
-            className="px-8 py-4 text-lg font-medium rounded-full 
-                     bg-gradient-to-r from-red-600 to-orange-600
-                     text-white border-0"
+            transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Request Early Access
-          </motion.button>
+            <GradientButton
+              size="lg"
+              onClick={() => setShowPopup(true)}
+            >
+              Request Early Access
+            </GradientButton>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0 }}

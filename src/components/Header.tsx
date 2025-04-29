@@ -5,6 +5,8 @@ import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
+import { Button } from "@/components/ui/button"
+import { GradientButton } from "@/components/ui/gradient-button"
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -191,20 +193,12 @@ export default function Header() {
               </nav>
               <div className="flex-1" /> {/* Spacer */}
               
-              {/* Early Access Button with animation */}
-              <motion.div 
-                style={{ 
-                  x: earlyAccessTranslateX,
-                  transition: `all ${transitionConfig.duration}s cubic-bezier(${transitionConfig.ease.join(',')})`
-                }}
-              >
-                <Link 
-                  href="/early-access"
-                  className="px-4 py-2 bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white rounded-full transition-all duration-200 hover:scale-110 ml-8"
-                >
-                  Early Access
+              {/* Early Access Button */}
+              <GradientButton asChild>
+                <Link href="/early-access">
+                  Get Early Access
                 </Link>
-              </motion.div>
+              </GradientButton>
             </div>
 
             {/* Mobile Menu Button */}
@@ -223,13 +217,12 @@ export default function Header() {
             className={`md:hidden overflow-hidden ${isMobileMenuOpen ? 'mb-4' : ''}`}
           >
             <div className="flex flex-col gap-4 py-4">
-              <Link 
-                href="/early-access"
-                className="px-4 py-2 bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white rounded-full text-center transition-all duration-200 hover:scale-110"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Early Access
-              </Link>
+              {/* Mobile Menu Early Access Button */}
+              <GradientButton asChild className="w-full">
+                <Link href="/early-access">
+                  Get Early Access
+                </Link>
+              </GradientButton>
               <Link 
                 href="/"
                 className="text-gray-400 hover:text-white text-center py-2 transition-all duration-200 hover:scale-110"

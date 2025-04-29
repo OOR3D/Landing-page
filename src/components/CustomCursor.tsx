@@ -7,7 +7,7 @@ export default function CustomCursor() {
   const cursorX = useMotionValue(-100)
   const cursorY = useMotionValue(-100)
   
-  const springConfig = { damping: 50, stiffness: 2500 }
+  const springConfig = { damping: 25, stiffness: 400, mass: 0.5 }
   const cursorXSpring = useSpring(cursorX, springConfig)
   const cursorYSpring = useSpring(cursorY, springConfig)
 
@@ -61,7 +61,7 @@ export default function CustomCursor() {
           scale: isHovered ? 2.5 : 1,
           opacity: isHovered ? 0.8 : 0.6,
         }}
-        transition={{ duration: 0.15 }}
+        transition={{ duration: 0.2, ease: "easeOut" }}
       />
       <motion.div
         className="fixed top-0 left-0 w-8 h-8 border-2 border-red-500 rounded-full mix-blend-difference pointer-events-none z-50"
@@ -75,7 +75,7 @@ export default function CustomCursor() {
           scale: isHovered ? 1.5 : 1,
           opacity: isHovered ? 0.5 : 0.3,
         }}
-        transition={{ duration: 0.15 }}
+        transition={{ duration: 0.2, ease: "easeOut" }}
       />
     </>
   )

@@ -3,6 +3,8 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { GradientButton } from "@/components/ui/gradient-button"
+import CustomCursor from "./CustomCursor"
 
 interface EarlyAccessPopupProps {
   onClose: () => void
@@ -14,9 +16,10 @@ export default function EarlyAccessPopup({ onClose }: EarlyAccessPopupProps) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 flex items-center justify-center bg-black/50 z-50 px-4"
+      className="fixed inset-0 flex items-center justify-center bg-black/50 z-50 px-4 cursor-none [&_*]:cursor-none"
       onClick={onClose}
     >
+      <CustomCursor />
       <motion.div 
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
@@ -29,14 +32,15 @@ export default function EarlyAccessPopup({ onClose }: EarlyAccessPopupProps) {
           Early access registration will be available soon. Join our Discord community to stay updated and be the first to know when it launches!
         </p>
         <div className="space-y-4">
-          <Button
-            className="w-full bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white border-0 rounded-full"
+          <GradientButton
+            size="lg"
+            className="w-full"
             asChild
           >
             <Link href="https://discord.gg/oor3d" target="_blank">
               Join Discord Community
             </Link>
-          </Button>
+          </GradientButton>
           <Button
             variant="ghost"
             className="w-full text-gray-400 hover:text-white hover:bg-white/[0.05] rounded-full"

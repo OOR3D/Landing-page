@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Montserrat } from "next/font/google"
 import { Button } from "@/components/ui/button"
+import { GradientButton } from "@/components/ui/gradient-button"
 import LoadingScreen from '@/components/LoadingScreen'
 import { fadeIn, scaleUp } from '@/lib/animations'
 import NavigationWrapper from "@/components/NavigationWrapper"
@@ -93,15 +94,14 @@ export default function HomePage() {
               animate="visible"
               className="flex flex-col items-center gap-4"
             >
-              <Button
+              <GradientButton
                 size="lg"
-                className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white border-0 rounded-full"
                 asChild
               >
                 <Link href="/early-access">
                   Get Early Access
                 </Link>
-              </Button>
+              </GradientButton>
               
               <motion.p
                 variants={fadeIn}

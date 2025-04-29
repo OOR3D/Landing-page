@@ -3,6 +3,8 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import NavigationWrapper from "@/components/NavigationWrapper"
+import { Button } from "@/components/ui/button"
+import { GradientButton } from "@/components/ui/gradient-button"
 
 export default function NotFound() {
   return (
@@ -54,14 +56,14 @@ export default function NotFound() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Link 
-              href="/" 
-              className="inline-flex items-center px-6 py-3 text-lg font-medium rounded-full 
-                       bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 
-                       text-white border-0 transition-all duration-200"
+            <GradientButton
+              size="lg"
+              asChild
             >
-              Return Home
-            </Link>
+              <Link href="/">
+                Take me home
+              </Link>
+            </GradientButton>
           </motion.div>
         </div>
       </div>
