@@ -1,12 +1,10 @@
 "use client"
 
-import { Inter } from "next/font/google"
-import "./globals.css"
-import Particles from "@/components/Particles"
+import { Inter } from 'next/font/google'
+import './globals.css'
+import Particles from '@/components/Particles'
+import CookieConsent from '@/components/CookieConsent'
 import Script from 'next/script'
-import CookieConsent from "@/components/CookieConsent"
-import { useEffect } from 'react'
-import { usePathname } from 'next/navigation'
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -15,30 +13,20 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const pathname = usePathname()
-
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [pathname])
-
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <Script
-          strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=G-Y47H7VPS2N`}
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
         />
-        <Script
-          id="google-analytics"
-          strategy="afterInteractive"
+        <script
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-Y47H7VPS2N', {
-                page_path: window.location.pathname,
-              });
+              gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}');
             `,
           }}
         />
@@ -47,6 +35,10 @@ export default function RootLayout({
         <Particles />
         {children}
         <CookieConsent />
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   )
