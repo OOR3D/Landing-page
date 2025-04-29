@@ -36,13 +36,13 @@ export default function Header() {
       pattern: 0
     },
     final: {
-      width: "65%",
+      width: "40%",
       margin: "16px",
       radius: "40px",
-      background: "rgba(10, 12, 19, 0.4)",
+      background: "rgba(7, 9, 14, 0.6)",
       blur: "blur(10px)",
       border: "1px solid rgba(255, 255, 255, 0.1)",
-      translate: "40px",
+      translate: "-30px",
       pattern: 0.5
     }
   }
@@ -199,7 +199,7 @@ export default function Header() {
               {/* Early Access Button */}
               <GradientButton asChild>
                 <Link href="/early-access">
-                  Get Early Access
+                  Early Access
                 </Link>
               </GradientButton>
             </div>

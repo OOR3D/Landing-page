@@ -152,7 +152,7 @@ export default function HomePage() {
               {/* Infinite scroll container */}
               <div className="relative flex justify-center overflow-hidden">
                 <div className="max-w-4xl relative mx-auto w-full">
-                  <div className="flex justify-center overflow-hidden whitespace-nowrap py-4">
+                  <div className="flex justify-center overflow-hidden whitespace-nowrap py-4 [mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent_100%)]">
                     <motion.div 
                       className="flex items-center gap-20 px-20 opacity-0"
                       animate={{
@@ -267,7 +267,7 @@ export default function HomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true, margin: "-100px" }}
-              className="relative max-w-[90rem] mx-auto aspect-[16/9] mb-24 group"
+              className="relative max-w-[120rem] mx-auto aspect-[16/9] mb-24 group"
             >
               <div className="relative aspect-[16/9] rounded-2xl overflow-hidden z-10">
                 <Image

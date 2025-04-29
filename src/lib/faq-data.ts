@@ -13,7 +13,7 @@ export const faqs = [
   },
   {
     question: "Do you do custom meshes?",
-    answer: "Not at the moment — but we run contests where custom meshes are part of the prize pool. Stay tuned!"
+    answer: "Not at the moment — but we run challenges where custom meshes are part of the prize pool. Stay tuned!"
   },
   {
     question: "Can I make requests for meshes?",
