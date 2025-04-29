@@ -542,7 +542,7 @@ export default function Home() {
                   } else if (mesh.imageUrl === "/5.png") {
                     objectPositionClass = "object-[50%_55%]"; // Position Sport Shorts image higher
                   } else if (mesh.imageUrl === "/6.png") {
-                    objectPositionClass = "object-[50%_40%]"; // Move sport jacket up slightly
+                    objectPositionClass = "object-[50%_52%]"; // Move sport jacket up more
                   }
 
                   return (
