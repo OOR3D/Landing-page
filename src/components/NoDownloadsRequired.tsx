@@ -68,7 +68,7 @@ export default function NoDownloadsRequired() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-2xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-white to-white">
+              <h3 className="text-2xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-orange-400 to-amber-400">
                 OOR3D™ REQUIRES ZERO DOWNLOADS OF ANY SOFTWARE.
               </h3>
             </motion.div>

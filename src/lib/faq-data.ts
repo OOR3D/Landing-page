@@ -1,7 +1,7 @@
 export const faqs = [
   {
     question: "What is OOR3D?",
-    answer: "OOR3D™ started as a 3D Studio. Now, we're evolving into a creation platform — giving people the power to make their own products and meshes without relying on complicated, technical software."
+    answer: "OOR3D™ started as a 3D studio creating assets for virtual worlds. Today, we've evolved into an independent research and technology lab, focused on making 3D creation faster, easier, and more accessible. Our mission is to give creators the tools to build, customize, and connect their virtual identities across platforms like IMVU, Second Life, Sims 4, and more — and eventually, bring the entire virtual world closer together."
   },
   {
     question: "When does this platform release?",

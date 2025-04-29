@@ -1,5 +1,6 @@
 'use client'
 
+import { motion } from "framer-motion"
 import Link from "next/link"
 import { Globe, Youtube, Instagram } from "lucide-react"
 
@@ -29,10 +30,33 @@ function TikTokIcon() {
 
 export function Footer() {
   return (
-    <footer className="border-t border-gray-800/50 bg-[#0a0c13]">
-      <div className="container mx-auto px-4 py-8">
+    <footer className="relative border-t border-gray-800/50 bg-[#0a0c13] overflow-hidden">
+      {/* Background Glow Effects */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Top-left glow */}
+        <div className="absolute -top-[50%] left-[10%] w-[40rem] h-[40rem] bg-red-500/10 rounded-full blur-[8rem] animate-pulse" />
+        {/* Bottom-right glow */}
+        <div className="absolute bottom-[10%] right-[20%] w-[35rem] h-[35rem] bg-orange-500/10 rounded-full blur-[8rem] animate-pulse" style={{ animationDelay: '1s' }} />
+        {/* Center glow */}
+        <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[50rem] h-[50rem] bg-red-500/5 rounded-full blur-[10rem] animate-pulse" style={{ animationDelay: '1.5s' }} />
+      </div>
+
+      {/* Content */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="container mx-auto px-4 py-12 relative z-10"
+      >
         {/* Main Links */}
-        <div className="flex flex-wrap justify-center gap-6 mb-8 text-sm">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="flex flex-wrap justify-center gap-6 mb-12 text-sm"
+        >
           <Link 
             href="/" 
             className="text-gray-400 hover:text-white hover:scale-110 transition-all duration-200"
@@ -57,10 +81,16 @@ export function Footer() {
           >
             Contact
           </Link>
-        </div>
+        </motion.div>
 
         {/* Social Links */}
-        <div className="flex justify-center gap-6 mb-8">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="flex justify-center gap-6 mb-12"
+        >
           <Link
             href="/"
             className="text-gray-400 hover:text-white hover:scale-110 transition-all duration-200"
@@ -113,13 +143,19 @@ export function Footer() {
           >
             <TikTokIcon />
           </a>
-        </div>
+        </motion.div>
 
         {/* Copyright */}
-        <div className="text-center text-sm text-gray-500">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          viewport={{ once: true }}
+          className="text-center text-sm text-gray-500"
+        >
           © {new Date().getFullYear()} OUTOFREACH, Inc. All rights reserved.
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </footer>
   )
 } 
