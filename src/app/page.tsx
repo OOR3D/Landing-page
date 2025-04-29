@@ -13,6 +13,7 @@ import Image from 'next/image'
 import PrelaunchMission from '@/components/PrelaunchMission'
 import FAQSection from '@/components/FAQSection'
 import { HelpCircle } from 'lucide-react'
+import NoDownloadsRequired from '@/components/NoDownloadsRequired'
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -48,7 +49,7 @@ export default function HomePage() {
       <main className="min-h-screen bg-[#0A0C13] text-white [&_*]:cursor-none">
         <CustomCursor />
         {/* Hero Section */}
-        <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
+        <section className="relative h-screen flex items-center justify-center overflow-hidden pb-48">
           <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-[#0A0C13] to-orange-900/20 z-0" />
           <motion.div
             initial={{ opacity: 0 }}
@@ -121,94 +122,99 @@ export default function HomePage() {
         </section>
 
         {/* Trust Bar Section */}
-        <section className="relative overflow-hidden bg-[#0A0C13]">
-          {/* Gradient masks for scroll effect */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#0A0C13] to-transparent z-10" />
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#0A0C13] to-transparent z-10" />
-          
-          <div className="container mx-auto text-center">
-            <h2 className="text-2xl font-semibold text-white mb-8">
+        <section className="relative overflow-hidden bg-[#0A0C13] -mt-48 py-12">
+          <div className="container mx-auto text-center mb-8">
+            <h2 className="text-2xl font-semibold text-white">
               Trusted by Industry Innovators
             </h2>
           </div>
 
           {/* Infinite scroll container */}
-          <div className="flex justify-center overflow-hidden whitespace-nowrap">
-            <motion.div
-              className="flex gap-20 items-center"
-              animate={{
-                x: [0, -1920],
-              }}
-              transition={{
-                x: {
-                  repeat: Infinity,
-                  repeatType: "loop",
-                  duration: 30,
-                  ease: "linear",
-                }
-              }}
-            >
-              {[1, 2].map((set) => (
-                <>
-                  <div className="flex items-center justify-center w-40 h-20 opacity-70 hover:opacity-100 transition-opacity">
-                    <Image
-                      src="/logos/nvidia.svg"
-                      alt="NVIDIA"
-                      width={120}
-                      height={60}
-                      className="object-contain invert brightness-0"
-                    />
-                  </div>
-                  <div className="flex items-center justify-center w-40 h-20 opacity-70 hover:opacity-100 transition-opacity">
-                    <Image
-                      src="/logos/unity.svg"
-                      alt="Unity"
-                      width={120}
-                      height={60}
-                      className="object-contain invert brightness-0"
-                    />
-                  </div>
-                  <div className="flex items-center justify-center w-40 h-20 opacity-70 hover:opacity-100 transition-opacity">
-                    <Image
-                      src="/logos/epic.svg"
-                      alt="Epic Games"
-                      width={120}
-                      height={60}
-                      className="object-contain invert brightness-0"
-                    />
-                  </div>
-                  <div className="flex items-center justify-center w-40 h-20 opacity-70 hover:opacity-100 transition-opacity">
-                    <Image
-                      src="/logos/aws.svg"
-                      alt="AWS"
-                      width={120}
-                      height={60}
-                      className="object-contain invert brightness-0"
-                    />
-                  </div>
-                  <div className="flex items-center justify-center w-40 h-20 opacity-70 hover:opacity-100 transition-opacity">
-                    <Image
-                      src="/logos/meta.svg"
-                      alt="Meta"
-                      width={120}
-                      height={60}
-                      className="object-contain invert brightness-0"
-                    />
-                  </div>
-                  <div className="flex items-center justify-center w-40 h-20 opacity-70 hover:opacity-100 transition-opacity">
-                    <Image
-                      src="/logos/adobe.svg"
-                      alt="Adobe"
-                      width={120}
-                      height={60}
-                      className="object-contain invert brightness-0"
-                    />
-                  </div>
-                </>
-              ))}
-            </motion.div>
+          <div className="relative flex justify-center overflow-hidden">
+            <div className="max-w-4xl relative mx-auto w-full">
+              {/* Gradient masks for scroll effect */}
+              <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#0A0C13] to-transparent z-10" />
+              <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#0A0C13] to-transparent z-10" />
+              
+              <div className="flex justify-center overflow-hidden whitespace-nowrap py-4">
+                <motion.div 
+                  className="flex items-center gap-20 px-20"
+                  animate={{
+                    x: [0, -1640], // Width of all logos + gaps
+                  }}
+                  transition={{
+                    duration: 30,
+                    ease: "linear",
+                    repeat: Infinity,
+                  }}
+                >
+                  {/* Logos repeated 3 times for smooth transition */}
+                  {[0, 1, 2].map((set) => (
+                    <div key={set} className="flex items-center gap-20">
+                      <div className="flex items-center justify-center w-40 h-20 opacity-70 hover:opacity-100 transition-opacity">
+                        <Image
+                          src="/logos/nvidia.svg"
+                          alt="NVIDIA"
+                          width={120}
+                          height={60}
+                          className="object-contain invert brightness-0"
+                        />
+                      </div>
+                      <div className="flex items-center justify-center w-40 h-20 opacity-70 hover:opacity-100 transition-opacity">
+                        <Image
+                          src="/logos/unity.svg"
+                          alt="Unity"
+                          width={120}
+                          height={60}
+                          className="object-contain invert brightness-0"
+                        />
+                      </div>
+                      <div className="flex items-center justify-center w-40 h-20 opacity-70 hover:opacity-100 transition-opacity">
+                        <Image
+                          src="/logos/epic.svg"
+                          alt="Epic Games"
+                          width={120}
+                          height={60}
+                          className="object-contain invert brightness-0"
+                        />
+                      </div>
+                      <div className="flex items-center justify-center w-40 h-20 opacity-70 hover:opacity-100 transition-opacity">
+                        <Image
+                          src="/logos/aws.svg"
+                          alt="AWS"
+                          width={120}
+                          height={60}
+                          className="object-contain invert brightness-0"
+                        />
+                      </div>
+                      <div className="flex items-center justify-center w-40 h-20 opacity-70 hover:opacity-100 transition-opacity">
+                        <Image
+                          src="/logos/meta.svg"
+                          alt="Meta"
+                          width={120}
+                          height={60}
+                          className="object-contain invert brightness-0"
+                        />
+                      </div>
+                      <div className="flex items-center justify-center w-40 h-20 opacity-70 hover:opacity-100 transition-opacity">
+                        <Image
+                          src="/logos/adobe.svg"
+                          alt="Adobe"
+                          width={120}
+                          height={60}
+                          className="object-contain invert brightness-0"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </motion.div>
+              </div>
+            </div>
           </div>
         </section>
+
+        {/* No Downloads Required Section */}
+        <NoDownloadsRequired />
 
         {/* Prelaunch Mission Section */}
         <PrelaunchMission />
