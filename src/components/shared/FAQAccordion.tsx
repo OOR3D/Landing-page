@@ -54,23 +54,28 @@ export default function FAQAccordion({ showAll = false }: FAQAccordionProps) {
     <Accordion.Root
       type="single"
       collapsible
-      className="space-y-4 relative z-10"
+      className="space-y-3 relative z-10"
     >
       {displayFaqs.map((faq, index) => (
         <Accordion.Item
           key={index}
           value={`item-${index}`}
-          className="bg-[#0A0C13] rounded-3xl border border-gray-800/50 overflow-hidden group hover:border-red-500/20 transition-colors duration-300"
+          className="relative rounded-[2rem] border border-gray-800/30 overflow-hidden group hover:border-red-500/30 transition-all duration-500 ease-in-out"
         >
-          <Accordion.Trigger className="flex items-center justify-between w-full p-8 text-left">
-            <h3 className="text-xl font-semibold">{faq.question}</h3>
-            <ChevronDown className="w-5 h-5 text-gray-400 transform transition-transform duration-300 ease-[cubic-bezier(0.87,_0,_0.13,_1)] group-data-[state=open]:rotate-180" />
-          </Accordion.Trigger>
-          <Accordion.Content className="overflow-hidden data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
-            <div className="p-8 pt-0 text-gray-300">
-              {renderAnswer(faq.answer, index)}
-            </div>
-          </Accordion.Content>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0A0C13] via-[#0f1218] to-[#0A0C13] transition-opacity duration-500 ease-in-out" />
+          <div className="absolute inset-0 bg-gradient-to-r from-red-950/10 via-[#0f1218] to-orange-950/10 opacity-0 group-data-[state=open]:opacity-100 transition-opacity duration-500 ease-in-out" />
+          
+          <div className="relative">
+            <Accordion.Trigger className="flex items-center justify-between w-full py-6 px-8 text-left group/trigger">
+              <h3 className="text-lg font-semibold text-gray-200 group-hover:text-white transition-colors duration-300">{faq.question}</h3>
+              <ChevronDown className="w-5 h-5 text-gray-400 transform transition-all duration-300 ease-[cubic-bezier(0.87,_0,_0.13,_1)] group-data-[state=open]:rotate-180 group-hover:text-red-400" />
+            </Accordion.Trigger>
+            <Accordion.Content className="overflow-hidden data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
+              <div className="px-8 pb-6 text-gray-400 leading-relaxed">
+                {renderAnswer(faq.answer, index)}
+              </div>
+            </Accordion.Content>
+          </div>
         </Accordion.Item>
       ))}
     </Accordion.Root>

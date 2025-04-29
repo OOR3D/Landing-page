@@ -248,7 +248,35 @@ export default function ContestPage() {
       <div className="min-h-screen bg-[#0A0C13] text-white [&_*]:cursor-none">
         <CustomCursor />
         {/* Hero Section */}
+        <style jsx global>{`
+          @keyframes breathe {
+            0%, 100% {
+              background-color: rgba(34, 197, 94, 0.1);
+              border-color: rgba(34, 197, 94, 0.3);
+            }
+            50% {
+              background-color: rgba(34, 197, 94, 0.15);
+              border-color: rgba(34, 197, 94, 0.4);
+            }
+          }
+          
+          @keyframes glow {
+            0%, 100% {
+              box-shadow: 0 0 5px rgba(34, 197, 94, 0.2);
+            }
+            50% {
+              box-shadow: 0 0 10px rgba(34, 197, 94, 0.3);
+            }
+          }
+
+          .active-tag {
+            animation: breathe 3s ease-in-out infinite,
+                      glow 3s ease-in-out infinite;
+          }
+        `}</style>
+
         <section className="relative min-h-screen py-32 flex items-center justify-center overflow-hidden">
+          {/* Background gradients */}
           <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-[#0A0C13] to-orange-900/20 z-0" />
           <motion.div
             initial={{ opacity: 0 }}
@@ -267,7 +295,7 @@ export default function ContestPage() {
                   transition={{ duration: 0.8 }}
                   className="mb-8"
                 >
-                  <span className="inline-flex items-center px-4 py-2 rounded-full bg-green-500/10 text-green-400 text-sm font-medium">
+                  <span className="active-tag inline-flex items-center px-4 py-2 rounded-full bg-green-500/10 text-green-400 text-sm font-medium border border-green-400/30">
                     <span className="w-2 h-2 rounded-full bg-green-400 mr-2" />
                     Active
                   </span>

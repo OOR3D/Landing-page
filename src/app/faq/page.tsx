@@ -28,7 +28,7 @@ export default function FAQPage() {
 
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-4xl mx-auto">
-              <div className="flex items-center justify-center gap-4 mb-16">
+              <div className="flex items-center justify-center gap-4 mb-8">
                 <HelpCircle className="w-12 h-12 text-red-400" />
                 <motion.h1
                   initial={{ opacity: 0, y: -20 }}
@@ -39,6 +39,15 @@ export default function FAQPage() {
                   Frequently Asked Questions
                 </motion.h1>
               </div>
+
+              <motion.p
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.1 }}
+                className="text-gray-400 text-center mb-16 max-w-2xl mx-auto text-lg"
+              >
+                Answers to the most common questions about early access, tools, and getting started.
+              </motion.p>
 
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
