@@ -34,7 +34,7 @@ export default function EarlyAccess() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className={`text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 leading-relaxed ${montserrat.className}`}
+            className={`text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 leading-[1.4] md:leading-[1.4] py-2 ${montserrat.className}`}
           >
             Get Early Access to OOR3D™
           </motion.h1>

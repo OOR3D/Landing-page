@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { Montserrat } from "next/font/google"
 import NavigationWrapper from "@/components/NavigationWrapper"
-import { RotateCcw, ArrowLeft } from 'lucide-react'
+import { RotateCcw, ArrowLeft, Shield } from 'lucide-react'
 import Link from 'next/link'
 
 const montserrat = Montserrat({
@@ -35,12 +35,12 @@ export default function RefundPolicyPage() {
             </motion.div>
 
             <div className="flex items-center justify-start gap-4 mb-16">
-              <RotateCcw className="w-12 h-12 text-amber-400" />
+              <Shield className="w-12 h-12 text-red-400" />
               <motion.h1
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className={`text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className} leading-relaxed`}
+                className={`text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className} leading-[1.4] md:leading-[1.4] py-2`}
               >
                 Refund Policy
               </motion.h1>
