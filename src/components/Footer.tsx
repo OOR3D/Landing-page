@@ -40,16 +40,10 @@ export function Footer() {
             Home
           </Link>
           <Link 
-            href="/privacy-policy" 
+            href="/policies" 
             className="text-gray-400 hover:text-white hover:scale-110 transition-all duration-200"
           >
-            Privacy Policy
-          </Link>
-          <Link 
-            href="/terms-of-service" 
-            className="text-gray-400 hover:text-white hover:scale-110 transition-all duration-200"
-          >
-            Terms of Service
+            Policy Hub
           </Link>
           <a 
             href="mailto:support@oor3d.com"

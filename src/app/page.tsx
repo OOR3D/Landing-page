@@ -11,6 +11,8 @@ import { fadeIn, scaleUp } from '@/lib/animations'
 import NavigationWrapper from "@/components/NavigationWrapper"
 import Image from 'next/image'
 import PrelaunchMission from '@/components/PrelaunchMission'
+import FAQSection from '@/components/FAQSection'
+import { HelpCircle } from 'lucide-react'
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -210,6 +212,9 @@ export default function HomePage() {
 
         {/* Prelaunch Mission Section */}
         <PrelaunchMission />
+
+        {/* FAQ Section */}
+        <FAQSection />
 
         {/* Rest of the content */}
       </main>

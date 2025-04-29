@@ -44,7 +44,7 @@ export default function ContactPage() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="text-xl text-gray-300 mb-12"
               >
-                Have questions? We're here to help you create amazing virtual products.
+                Have questions? We're here to help however we can.
               </motion.p>
 
               <div className="grid gap-8 md:grid-cols-2 max-w-2xl mx-auto">
@@ -58,7 +58,7 @@ export default function ContactPage() {
                   <Mail className="w-8 h-8 text-red-400 mb-4 mx-auto" />
                   <h2 className="text-xl font-semibold mb-4">Email Us</h2>
                   <p className="text-gray-400 mb-4">
-                    Send us your questions or feedback anytime.
+                    Email us, we'll get back to you in 48 hours.
                   </p>
                   <Link
                     href="mailto:support@outofreach3d.com"
@@ -78,7 +78,7 @@ export default function ContactPage() {
                   <MessageSquare className="w-8 h-8 text-orange-400 mb-4 mx-auto" />
                   <h2 className="text-xl font-semibold mb-4">Join Our Discord</h2>
                   <p className="text-gray-400 mb-4">
-                    Connect with our community and get real-time support.
+                    Join Discord for real-time support.
                   </p>
                   <Button
                     size="lg"

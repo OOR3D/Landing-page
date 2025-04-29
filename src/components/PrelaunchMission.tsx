@@ -2,10 +2,10 @@ import DiscordCTA from './DiscordCTA';
 
 const PrelaunchMission = () => {
   return (
-    <section className="w-full bg-[#0A0A0A] py-24">
+    <section className="w-full bg-[#0A0C13] py-24">
       <div className="max-w-6xl mx-auto px-4">
         <div className="mb-24">
-          <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400">
             Prelaunch Mission
           </h2>
           <div className="max-w-4xl mx-auto space-y-6 text-lg md:text-xl text-gray-300">
