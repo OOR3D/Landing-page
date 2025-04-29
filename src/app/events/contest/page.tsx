@@ -649,10 +649,67 @@ interface PrizeCardProps {
 // Component for each prize card
 function PrizeCard({ place, emoji, prize, bgClass, index }: PrizeCardProps) {
   const scale = 1 - (index * 0.03); // Gradual scale reduction
-  const opacity = 1 - (index * 0.1); // Gradual opacity reduction
-  const blur = index * 0.5; // Gradual blur increase for background
-  const bgOpacity = 0.4 - (index * 0.05); // Background opacity reduction for lower places
+  const opacity = index === 0 ? 1 : 1 - (index * 0.1); // Full opacity for first place
+  const blur = index === 0 ? 0 : index * 0.5; // No blur for first place
+  const bgOpacity = index === 0 ? 0.4 : 0.4 - (index * 0.05); // Full background opacity for first place
   
+  if (index === 0) {
+    return (
+      <motion.div
+        variants={{
+          hidden: { 
+            x: -20, 
+            scale: 0.8,
+            y: 50
+          },
+          visible: { 
+            x: 0, 
+            scale: 1,
+            y: 0,
+            transition: {
+              type: "spring",
+              stiffness: 400,
+              damping: 30,
+            }
+          },
+        }}
+        whileHover={{
+          scale: 1.02,
+          transition: { duration: 0.2 },
+        }}
+        className={`p-6 rounded-lg bg-gradient-to-r border relative overflow-hidden mx-auto w-full max-w-2xl`}
+        style={{
+          transformOrigin: "center",
+          background: `linear-gradient(to right, rgba(239, 68, 68, 0.4), rgba(249, 115, 22, 0.4))`,
+          borderColor: `rgba(239, 68, 68, 0.5)`
+        }}
+      >
+        <div 
+          className="absolute inset-0 bg-gradient-to-r from-red-500/10 to-orange-500/10"
+        />
+        <div className="relative flex items-center gap-4">
+          <motion.div
+            initial={{ rotate: -10 }}
+            whileHover={{ rotate: 10, scale: 1.2 }}
+            transition={{ duration: 0.3, type: "spring" }}
+            className="text-4xl mr-3"
+          >
+            {emoji}
+          </motion.div>
+          <div className="flex-1">
+            <h3 className="font-bold text-xl mb-1 text-red-300">
+              {place}
+            </h3>
+            <p className="text-orange-200 text-lg">
+              {prize}
+            </p>
+          </div>
+        </div>
+      </motion.div>
+    );
+  }
+
+  // For other prize cards
   return (
     <motion.div
       variants={{
@@ -663,7 +720,7 @@ function PrizeCard({ place, emoji, prize, bgClass, index }: PrizeCardProps) {
           y: 50
         },
         visible: { 
-          opacity: 1, 
+          opacity: opacity, 
           x: 0, 
           scale: scale,
           y: 0,
@@ -671,7 +728,8 @@ function PrizeCard({ place, emoji, prize, bgClass, index }: PrizeCardProps) {
             type: "spring",
             stiffness: 400 - (index * 50),
             damping: 30,
-            delay: index * 0.1
+            delay: index * 0.1,
+            opacity: { duration: 0.5, ease: "easeInOut" }
           }
         },
       }}
@@ -686,11 +744,12 @@ function PrizeCard({ place, emoji, prize, bgClass, index }: PrizeCardProps) {
         borderColor: `rgba(239, 68, 68, ${bgOpacity + 0.1})`
       }}
     >
-      <div className="absolute inset-0 bg-gradient-to-r from-red-500/10 to-orange-500/10"
-           style={{ 
-             backdropFilter: `blur(${blur}px)`,
-             opacity: opacity 
-           }} 
+      <motion.div 
+        className="absolute inset-0 bg-gradient-to-r from-red-500/10 to-orange-500/10"
+        initial={{ opacity: 0 }}
+        animate={{ opacity }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+        style={{ backdropFilter: `blur(${blur}px)` }}
       />
       <div className="relative flex items-center gap-4">
         <motion.div
@@ -702,8 +761,22 @@ function PrizeCard({ place, emoji, prize, bgClass, index }: PrizeCardProps) {
           {emoji}
         </motion.div>
         <div className="flex-1">
-          <h3 className={`font-bold text-xl mb-1 ${index === 0 ? 'text-red-300' : 'text-gray-200'}`}>{place}</h3>
-          <p className={`${index === 0 ? 'text-orange-200' : 'text-gray-300'} text-lg`}>{prize}</p>
+          <motion.h3 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            className="font-bold text-xl mb-1 text-gray-200"
+          >
+            {place}
+          </motion.h3>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: index * 0.1 + 0.1 }}
+            className="text-gray-300 text-lg"
+          >
+            {prize}
+          </motion.p>
         </div>
       </div>
     </motion.div>

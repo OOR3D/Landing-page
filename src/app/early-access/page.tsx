@@ -18,7 +18,7 @@ export default function EarlyAccess() {
 
   return (
     <NavigationWrapper>
-      <main className="min-h-screen bg-[#0a0c13] flex flex-col items-center justify-center relative">
+      <main className="min-h-screen bg-[#0a0c13] flex flex-col items-center justify-center relative py-40">
         {/* Background gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-[#0A0C13] to-orange-900/20" />
         <motion.div
@@ -33,7 +33,7 @@ export default function EarlyAccess() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className={`text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className}`}
+            className={`text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 leading-relaxed ${montserrat.className}`}
           >
             Get Early Access to OOR3D™
           </motion.h1>
@@ -42,9 +42,18 @@ export default function EarlyAccess() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl text-gray-300 mb-12"
+            className="text-xl text-gray-300 mb-6 max-w-3xl mx-auto leading-relaxed"
           >
-            We're preparing something special for creators. Be the first to enter.
+            OOR3D™ is designed to make 3D creation faster, easier, and more accessible across platforms like IMVU, Second Life, and Sims 4 — and you're getting in at the ground floor.
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="text-lg text-orange-400 mb-12 font-medium"
+          >
+            Spots are limited.
           </motion.p>
 
           <motion.button

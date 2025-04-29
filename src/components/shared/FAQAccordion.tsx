@@ -58,7 +58,7 @@ export default function FAQAccordion({ showAll = false }: FAQAccordionProps) {
         <Accordion.Item
           key={index}
           value={`item-${index}`}
-          className="bg-[#0A0C13]/40 rounded-2xl border border-gray-800/50 overflow-hidden group hover:bg-white/[0.02] transition-colors duration-300"
+          className="bg-[#0A0C13]/40 rounded-3xl border border-gray-800/50 overflow-hidden group hover:bg-white/[0.02] transition-colors duration-300"
         >
           <Accordion.Trigger className="flex items-center justify-between w-full p-8 text-left">
             <h3 className="text-xl font-semibold">{faq.question}</h3>

@@ -21,7 +21,7 @@ export default function EarlyAccessPopup({ onClose }: EarlyAccessPopupProps) {
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
-        className="bg-[#0a0c13] p-8 rounded-2xl border border-gray-800 max-w-sm mx-4"
+        className="bg-[#0a0c13] p-8 rounded-3xl border border-gray-800 max-w-sm mx-4"
         onClick={e => e.stopPropagation()}
       >
         <h2 className="text-2xl font-bold mb-4 text-white">Coming Soon!</h2>
@@ -30,7 +30,7 @@ export default function EarlyAccessPopup({ onClose }: EarlyAccessPopupProps) {
         </p>
         <div className="space-y-4">
           <Button
-            className="w-full bg-gradient-to-r from-[#5865F2] to-[#4752C4] hover:from-[#4752C4] hover:to-[#3C45A5] text-white border-0 rounded-full"
+            className="w-full bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white border-0 rounded-full"
             asChild
           >
             <Link href="https://discord.gg/oor3d" target="_blank">
@@ -39,7 +39,7 @@ export default function EarlyAccessPopup({ onClose }: EarlyAccessPopupProps) {
           </Button>
           <Button
             variant="ghost"
-            className="w-full text-gray-400 hover:text-white"
+            className="w-full text-gray-400 hover:text-white hover:bg-white/[0.05] rounded-full"
             onClick={onClose}
           >
             Close

@@ -3,7 +3,9 @@
 import { motion } from 'framer-motion'
 import { Montserrat } from "next/font/google"
 import NavigationWrapper from "@/components/NavigationWrapper"
-import { FileText } from 'lucide-react'
+import { FileText, ArrowLeft } from 'lucide-react'
+import Link from 'next/link'
+import { Button } from "@/components/ui/button"
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -14,16 +16,31 @@ const montserrat = Montserrat({
 export default function TermsPage() {
   return (
     <NavigationWrapper>
-      <main className="min-h-screen bg-[#0A0C13] text-white py-32">
+      <main className="min-h-screen bg-[#0A0C13] text-white py-40">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="flex items-center justify-center gap-4 mb-8">
-              <FileText className="w-10 h-10 text-orange-400" />
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="mb-12"
+            >
+              <Link 
+                href="/policies"
+                className="inline-flex items-center text-gray-400 hover:text-white transition-colors"
+              >
+                <ArrowLeft className="w-5 h-5 mr-2" />
+                Back to Policies
+              </Link>
+            </motion.div>
+
+            <div className="flex items-center justify-start gap-4 mb-16">
+              <FileText className="w-12 h-12 text-orange-400" />
               <motion.h1
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className={`text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className}`}
+                className={`text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className} leading-relaxed`}
               >
                 Terms of Service
               </motion.h1>
