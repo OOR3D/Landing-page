@@ -11,44 +11,87 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const { scrollY } = useScroll()
 
+  // Single scroll threshold for all animations
+  const scrollThreshold = [0, 100]
+  const scrollValues = {
+    initial: {
+      width: "100%",
+      margin: "0px",
+      radius: "0px",
+      background: "rgba(10, 12, 19, 0)",
+      blur: "blur(0px)",
+      border: "1px solid transparent",
+      translate: "0px",
+      pattern: 0
+    },
+    final: {
+      width: "65%",
+      margin: "16px",
+      radius: "40px",
+      background: "rgba(10, 12, 19, 0.8)",
+      blur: "blur(10px)",
+      border: "1px solid rgba(255, 255, 255, 0.1)",
+      translate: "40px",
+      pattern: 0.05
+    }
+  }
+
   useMotionValueEvent(scrollY, "change", (latest) => {
-    setIsScrolled(latest > 50)
+    setIsScrolled(latest > scrollThreshold[0])
   })
   
   const headerWidth = useTransform(
     scrollY,
-    [0, 50, 100],
-    ["100%", "100%", "80%"]
+    scrollThreshold,
+    [scrollValues.initial.width, scrollValues.final.width]
   )
 
   const headerMargin = useTransform(
     scrollY,
-    [0, 50, 100],
-    ["0px", "0px", "16px"]
+    scrollThreshold,
+    [scrollValues.initial.margin, scrollValues.final.margin]
   )
 
   const headerRadius = useTransform(
     scrollY,
-    [0, 50, 100],
-    ["0px", "0px", "40px"]
+    scrollThreshold,
+    [scrollValues.initial.radius, scrollValues.final.radius]
   )
 
   const headerBackground = useTransform(
     scrollY,
-    [0, 50],
-    ["rgba(10, 12, 19, 0)", "rgba(10, 12, 19, 0.8)"]
+    scrollThreshold,
+    [scrollValues.initial.background, scrollValues.final.background]
   )
 
   const headerBackdropBlur = useTransform(
     scrollY,
-    [0, 50],
-    ["blur(0px)", "blur(10px)"]
+    scrollThreshold,
+    [scrollValues.initial.blur, scrollValues.final.blur]
   )
 
   const headerBorder = useTransform(
     scrollY,
-    [0, 50],
-    ["1px solid transparent", "1px solid rgba(255, 255, 255, 0.1)"]
+    scrollThreshold,
+    [scrollValues.initial.border, scrollValues.final.border]
+  )
+
+  const logoTranslateX = useTransform(
+    scrollY,
+    scrollThreshold,
+    [scrollValues.initial.translate, scrollValues.final.translate]
+  )
+
+  const earlyAccessTranslateX = useTransform(
+    scrollY,
+    scrollThreshold,
+    [scrollValues.initial.translate, `-${scrollValues.final.translate}`]
+  )
+
+  const patternOpacity = useTransform(
+    scrollY,
+    scrollThreshold,
+    [scrollValues.initial.pattern, scrollValues.final.pattern]
   )
 
   return (
@@ -62,37 +105,47 @@ export default function Header() {
           background: headerBackground,
           backdropFilter: headerBackdropBlur,
           border: headerBorder,
-          transition: 'all 0.3s ease-in-out'
+          transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)' // Smoother easing
         }}
       >
         {/* Checkered background */}
         <motion.div 
           className="absolute inset-0 rounded-[inherit]"
           style={{
-            opacity: useTransform(scrollY, [0, 50], [0, 0.05]),
+            opacity: patternOpacity,
             backgroundImage: `
               linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
               linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px)
             `,
             backgroundSize: '20px 20px',
+            transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)' // Match header transition
           }}
         />
 
         <div className="relative container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
-            {/* Logo */}
-            <Link 
-              href="/" 
-              className="relative w-24 h-8 hover:scale-110 transition-transform duration-200"
+            {/* Logo with animation */}
+            <motion.div 
+              style={{ 
+                x: logoTranslateX,
+                transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
+              }}
+              className="relative flex items-center"
             >
-              <Image
-                src="/oor logo white.svg"
-                alt="OOR3D Logo"
-                fill
-                className="object-contain"
-                priority
-              />
-            </Link>
+              <Link 
+                href="/" 
+                className="relative w-[100px] h-[30px] hover:scale-110 transition-transform duration-200"
+              >
+                <Image
+                  src="/OOR-LOGO.svg"
+                  alt="OOR3D Logo"
+                  fill
+                  className="object-contain"
+                  priority
+                  sizes="100px"
+                />
+              </Link>
+            </motion.div>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center justify-between flex-1 pl-20">
@@ -120,13 +173,20 @@ export default function Header() {
               </nav>
               <div className="flex-1" /> {/* Spacer */}
               
-              {/* Early Access Button */}
-              <Link 
-                href="/early-access"
-                className="px-4 py-2 bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white rounded-full transition-all duration-200 hover:scale-110 ml-8"
+              {/* Early Access Button with animation */}
+              <motion.div 
+                style={{ 
+                  x: earlyAccessTranslateX,
+                  transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)' // Match header transition
+                }}
               >
-                Early Access
-              </Link>
+                <Link 
+                  href="/early-access"
+                  className="px-4 py-2 bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white rounded-full transition-all duration-200 hover:scale-110 ml-8"
+                >
+                  Early Access
+                </Link>
+              </motion.div>
             </div>
 
             {/* Mobile Menu Button */}

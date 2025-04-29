@@ -8,6 +8,7 @@ import Image from "next/image"
 import { motion, useMotionValue, useSpring, AnimatePresence } from "framer-motion"
 import { useEffect, useState, useRef } from "react"
 import { Montserrat } from "next/font/google"
+import NavigationWrapper from "@/components/NavigationWrapper"
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -94,7 +95,7 @@ function CustomCursor() {
   )
 }
 
-export default function Home() {
+export default function ContestPage() {
   // Contest end date: May 14, 2025
   const endDate = new Date("2025-05-14T23:59:59")
   const [daysRemaining, setDaysRemaining] = useState<number>(0)
@@ -243,400 +244,402 @@ export default function Home() {
   ]
 
   return (
-    <main className="min-h-screen bg-[#0A0C13] text-white [&_*]:cursor-none">
-      <CustomCursor />
-      {/* Hero Section */}
-      <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-[#0A0C13] to-orange-900/20 z-0" />
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 2 }}
-          className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,120,50,0.1),transparent_70%)] z-0"
-        />
-
-        <div className="container mx-auto px-4 z-10 text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className={`text-5xl md:text-7xl font-extrabold mb-2 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className}`}
-          >
-            OOR3D<span className="text-sm align-super">™</span> Creator Contest
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="text-lg md:text-xl text-orange-300 max-w-2xl mx-auto mb-4"
-          >
-            Create for IMVU and win real prizes.
-          </motion.p>
-
+    <NavigationWrapper>
+      <div className="min-h-screen bg-[#0A0C13] text-white [&_*]:cursor-none">
+        <CustomCursor />
+        {/* Hero Section */}
+        <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-[#0A0C13] to-orange-900/20 z-0" />
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.4 }}
-            className="flex flex-col md:flex-row items-center justify-center gap-3 mb-8"
-          >
+            transition={{ duration: 2 }}
+            className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,120,50,0.1),transparent_70%)] z-0"
+          />
+
+          <div className="container mx-auto px-4 z-10 text-center">
+            <motion.h1
+              initial={{ opacity: 0, y: -50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className={`text-5xl md:text-7xl font-extrabold mb-2 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className}`}
+            >
+              OOR3D<span className="text-sm align-super">™</span> Creator Contest
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.2 }}
+              className="text-lg md:text-xl text-orange-300 max-w-2xl mx-auto mb-4"
+            >
+              Create for IMVU and win real prizes.
+            </motion.p>
+
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className={`flex items-center bg-[#0A0C13]/40 rounded-full px-3 py-1.5 border ${isActive ? "border-green-500/20" : "border-red-500/20"}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.4 }}
+              className="flex flex-col md:flex-row items-center justify-center gap-3 mb-8"
             >
               <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                className={`w-2.5 h-2.5 rounded-full ${isActive ? "bg-green-500 animate-pulse" : "bg-red-500"} mr-2`}
-              />
-              <motion.span 
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                className={`${isActive ? "text-green-400" : "text-red-400"} text-sm font-medium`}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className={`flex items-center bg-[#0A0C13]/40 rounded-full px-3 py-1.5 border ${isActive ? "border-green-500/20" : "border-red-500/20"}`}
               >
-                {isActive ? "Active" : "Inactive"}
-              </motion.span>
-            </motion.div>
-            <motion.div 
-              className="text-gray-400 text-sm flex items-center"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              {isActive ? (
                 <motion.div
-                  layout
-                  className="font-medium flex items-center"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  className={`w-2.5 h-2.5 rounded-full ${isActive ? "bg-green-500 animate-pulse" : "bg-red-500"} mr-2`}
+                />
+                <motion.span 
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  className={`${isActive ? "text-green-400" : "text-red-400"} text-sm font-medium`}
                 >
+                  {isActive ? "Active" : "Inactive"}
+                </motion.span>
+              </motion.div>
+              <motion.div 
+                className="text-gray-400 text-sm flex items-center"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                {isActive ? (
+                  <motion.div
+                    layout
+                    className="font-medium flex items-center"
+                  >
+                    <motion.span
+                      key={daysRemaining}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="inline-block"
+                    >
+                      {daysRemaining}
+                    </motion.span>
+                    <motion.span
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.2 }}
+                    >
+                      &nbsp;days until it's over
+                    </motion.span>
+                  </motion.div>
+                ) : (
                   <motion.span
-                    key={daysRemaining}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    className="inline-block"
                   >
-                    {daysRemaining}
+                    Contest has ended
                   </motion.span>
-                  <motion.span
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.2 }}
-                  >
-                    &nbsp;days until it's over
-                  </motion.span>
-                </motion.div>
-              ) : (
-                <motion.span
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                >
-                  Contest has ended
-                </motion.span>
-              )}
+                )}
+              </motion.div>
             </motion.div>
-          </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white border-0 rounded-full"
-              asChild
-              disabled={!isActive}
-            >
-              <Link href="https://discord.gg/oor3d" target="_blank">
-                {isActive ? "Start the Challenge" : "Contest Ended"}
-              </Link>
-            </Button>
-          </motion.div>
-        </div>
-
-        {/* Enhanced bottom gradient */}
-        <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-b from-transparent via-[#0A0C13]/80 to-[#0A0C13]" />
-      </section>
-
-      {/* How to Enter Section */}
-      <section className="relative py-20 bg-[#0A0C13]">
-        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#0A0C13] via-[#0A0C13] to-transparent" />
-        <div className="container mx-auto px-4 relative">
-          <motion.h2
-            custom={0}
-            variants={fadeIn}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            className={`text-3xl md:text-4xl font-bold mb-12 text-center ${montserrat.className}`}
-          >
-            How to Enter
-          </motion.h2>
-
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
-          >
-            <StepCard
-              number={1}
-              title="Invite Friends"
-              description="Invite at least 3 friends to the OOR3D Discord server."
-              icon={<Users className="w-16 h-16 text-red-400" />}
-            />
-            <StepCard
-              number={2}
-              title="Create Your Design"
-              description="Derive a design from the provided IMVU products."
-              icon={<Palette className="w-16 h-16 text-orange-400" />}
-            />
-            <StepCard
-              number={3}
-              title="Submit Your Work"
-              description="Submit your final work inside the Discord."
-              icon={<Send className="w-16 h-16 text-amber-400" />}
-            />
-          </motion.div>
-        </div>
-        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent via-[#0A0C13] to-[#0A0C13]" />
-      </section>
-
-      {/* Prizes Section */}
-      <section className="py-20 bg-[#0A0C13]">
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeIn}
-            custom={0}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            className={`text-3xl md:text-4xl font-bold mb-4 text-center ${montserrat.className}`}
-          >
-            Prizes
-          </motion.h2>
-          <motion.p
-            variants={fadeIn}
-            custom={1}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            className="text-xl text-center mb-4 text-orange-300"
-          >
-            Win real cash and IMVU prizes!
-          </motion.p>
-
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            className="max-w-3xl mx-auto space-y-6 px-4 py-8"
-          >
-            <PrizeCard
-              place="1st Place"
-              emoji="🥇"
-              prize="💰 $100 USD (Via Paypal)"
-              bgClass="from-red-500/20 to-orange-500/20 border-red-500/30"
-              index={0}
-            />
-            <PrizeCard
-              place="2nd Place"
-              emoji="🥈"
-              prize="💳 $50 IMVU Gift Card (6 months Platinum VIP or 44K credits)"
-              bgClass="from-red-500/20 to-orange-500/20 border-red-500/30"
-              index={1}
-            />
-            <PrizeCard
-              place="3rd Place"
-              emoji="🥉"
-              prize="💳 $20 IMVU Gift Card (3 months Platinum VIP or 20K credits)"
-              bgClass="from-red-500/20 to-orange-500/20 border-red-500/30"
-              index={2}
-            />
-            <PrizeCard
-              place="4th Place"
-              emoji="🏅"
-              prize="💳 $20 IMVU Gift Card (3 months Platinum VIP or 20K credits)"
-              bgClass="from-red-500/20 to-orange-500/20 border-red-500/30"
-              index={3}
-            />
-            <PrizeCard
-              place="5th Place"
-              emoji="🏅"
-              prize="💳 $20 IMVU Gift Card (3 months Platinum VIP or 20K credits)"
-              bgClass="from-red-500/20 to-orange-500/20 border-red-500/30"
-              index={4}
-            />
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Products Section */}
-      <section className="relative py-20 bg-[#0A0C13]">
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeIn}
-            custom={0}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            className={`text-3xl md:text-4xl font-bold mb-12 text-center ${montserrat.className}`}
-          >
-            IMVU Products to Derive From
-          </motion.h2>
-
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-          >
-            {meshColumns.map((column, colIndex) => (
-              <div key={`column-${colIndex}`} className="flex flex-col gap-6">
-                {column.map((mesh, meshIndex) => {
-                  let objectPositionClass = "object-[50%_10%]"; // Default
-                  if (mesh.imageUrl === "/1.png") {
-                    objectPositionClass = "object-[50%_45%]";
-                  } else if (mesh.imageUrl === "/3.png") {
-                    objectPositionClass = "object-[50%_20%]";
-                  } else if (mesh.imageUrl === "/5.png") {
-                    objectPositionClass = "object-[50%_55%]"; // Position Sport Shorts image higher
-                  } else if (mesh.imageUrl === "/6.png") {
-                    objectPositionClass = "object-[50%_52%]"; // Move sport jacket up more
-                  }
-
-                  return (
-                    <MeshCard
-                      key={`mesh-${colIndex}-${meshIndex}`}
-                      title={mesh.title}
-                      imageUrl={mesh.imageUrl}
-                      url={mesh.url}
-                      objectPositionClass={objectPositionClass}
-                    />
-                  )
-                })}
-              </div>
-            ))}
-          </motion.div>
-        </div>
-        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent via-[#0A0C13] to-[#0A0C13]" />
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-red-900/30 via-[#0A0C13] to-orange-900/30">
-        <div className="container mx-auto px-4 text-center">
-          <motion.h2
-            variants={fadeIn}
-            custom={0}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            className={`text-3xl md:text-4xl font-bold mb-6 text-center ${montserrat.className}`}
-          >
-            Ready to showcase your creativity on IMVU?
-          </motion.h2>
-          <motion.p
-            variants={fadeIn}
-            custom={1}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            className="text-xl text-gray-300 max-w-2xl mx-auto mb-8"
-          >
-            Join our Discord and enter the OOR3D Creator Contest today!
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white border-0 rounded-full"
-              asChild
-              disabled={!isActive}
-            >
-              <Link href="https://discord.gg/oor3d" target="_blank">
-                {isActive ? "Join the Contest" : "Contest Ended"}
-              </Link>
-            </Button>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* New See What We're Building Section */}
-      <section className="py-12 bg-[#0A0C13] border-t border-gray-800/50">
-        <div className="container mx-auto px-4 text-center">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto"
-          >
-            Get a first look at the future we're creating for virtual world creators.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="relative max-w-4xl mx-auto mb-8 group"
-          >
             <motion.div
-              className="absolute -inset-1 bg-gradient-to-r from-red-500/20 to-orange-500/20 rounded-3xl blur-lg group-hover:opacity-75 transition duration-1000"
-              animate={{
-                backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-              }}
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: 'linear'
-              }}
-            />
-            <motion.div
-              className="relative rounded-2xl overflow-hidden bg-[#0A0C13] p-1"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <Image
-                src="/WHAT ARE WE BUILDING.jpg"
-                alt="What we are building"
-                width={1200}
-                height={675}
-                className="rounded-xl w-full h-auto"
-                priority
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white border-0 rounded-full"
+                asChild
+                disabled={!isActive}
+              >
+                <Link href="https://discord.gg/oor3d" target="_blank">
+                  {isActive ? "Start the Challenge" : "Contest Ended"}
+                </Link>
+              </Button>
+            </motion.div>
+          </div>
+
+          {/* Enhanced bottom gradient */}
+          <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-b from-transparent via-[#0A0C13]/80 to-[#0A0C13]" />
+        </section>
+
+        {/* How to Enter Section */}
+        <section className="relative py-20 bg-[#0A0C13]">
+          <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#0A0C13] via-[#0A0C13] to-transparent" />
+          <div className="container mx-auto px-4 relative">
+            <motion.h2
+              custom={0}
+              variants={fadeIn}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              className={`text-3xl md:text-4xl font-bold mb-12 text-center ${montserrat.className}`}
+            >
+              How to Enter
+            </motion.h2>
+
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.1 }}
+              className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            >
+              <StepCard
+                number={1}
+                title="Invite Friends"
+                description="Invite at least 3 friends to the OOR3D Discord server."
+                icon={<Users className="w-16 h-16 text-red-400" />}
+              />
+              <StepCard
+                number={2}
+                title="Create Your Design"
+                description="Derive a design from the provided IMVU products."
+                icon={<Palette className="w-16 h-16 text-orange-400" />}
+              />
+              <StepCard
+                number={3}
+                title="Submit Your Work"
+                description="Submit your final work inside the Discord."
+                icon={<Send className="w-16 h-16 text-amber-400" />}
               />
             </motion.div>
-          </motion.div>
+          </div>
+          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent via-[#0A0C13] to-[#0A0C13]" />
+        </section>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white border-0 rounded-full"
-              asChild
+        {/* Prizes Section */}
+        <section className="py-20 bg-[#0A0C13]">
+          <div className="container mx-auto px-4">
+            <motion.h2
+              variants={fadeIn}
+              custom={0}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              className={`text-3xl md:text-4xl font-bold mb-4 text-center ${montserrat.className}`}
             >
-              <Link href="https://www.outofreach3d.com" target="_blank">
-                See what we're building
-              </Link>
-            </Button>
-          </motion.div>
-        </div>
-      </section>
-    </main>
+              Prizes
+            </motion.h2>
+            <motion.p
+              variants={fadeIn}
+              custom={1}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              className="text-xl text-center mb-4 text-orange-300"
+            >
+              Win real cash and IMVU prizes!
+            </motion.p>
+
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              className="max-w-3xl mx-auto space-y-6 px-4 py-8"
+            >
+              <PrizeCard
+                place="1st Place"
+                emoji="🥇"
+                prize="💰 $100 USD (Via Paypal)"
+                bgClass="from-red-500/20 to-orange-500/20 border-red-500/30"
+                index={0}
+              />
+              <PrizeCard
+                place="2nd Place"
+                emoji="🥈"
+                prize="💳 $50 IMVU Gift Card (6 months Platinum VIP or 44K credits)"
+                bgClass="from-red-500/20 to-orange-500/20 border-red-500/30"
+                index={1}
+              />
+              <PrizeCard
+                place="3rd Place"
+                emoji="🥉"
+                prize="💳 $20 IMVU Gift Card (3 months Platinum VIP or 20K credits)"
+                bgClass="from-red-500/20 to-orange-500/20 border-red-500/30"
+                index={2}
+              />
+              <PrizeCard
+                place="4th Place"
+                emoji="🏅"
+                prize="💳 $20 IMVU Gift Card (3 months Platinum VIP or 20K credits)"
+                bgClass="from-red-500/20 to-orange-500/20 border-red-500/30"
+                index={3}
+              />
+              <PrizeCard
+                place="5th Place"
+                emoji="🏅"
+                prize="💳 $20 IMVU Gift Card (3 months Platinum VIP or 20K credits)"
+                bgClass="from-red-500/20 to-orange-500/20 border-red-500/30"
+                index={4}
+              />
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Products Section */}
+        <section className="relative py-20 bg-[#0A0C13]">
+          <div className="container mx-auto px-4">
+            <motion.h2
+              variants={fadeIn}
+              custom={0}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.1 }}
+              className={`text-3xl md:text-4xl font-bold mb-12 text-center ${montserrat.className}`}
+            >
+              IMVU Products to Derive From
+            </motion.h2>
+
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.1 }}
+              className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+            >
+              {meshColumns.map((column, colIndex) => (
+                <div key={`column-${colIndex}`} className="flex flex-col gap-6">
+                  {column.map((mesh, meshIndex) => {
+                    let objectPositionClass = "object-[50%_10%]"; // Default
+                    if (mesh.imageUrl === "/1.png") {
+                      objectPositionClass = "object-[50%_45%]";
+                    } else if (mesh.imageUrl === "/3.png") {
+                      objectPositionClass = "object-[50%_20%]";
+                    } else if (mesh.imageUrl === "/5.png") {
+                      objectPositionClass = "object-[50%_55%]"; // Position Sport Shorts image higher
+                    } else if (mesh.imageUrl === "/6.png") {
+                      objectPositionClass = "object-[50%_52%]"; // Move sport jacket up more
+                    }
+
+                    return (
+                      <MeshCard
+                        key={`mesh-${colIndex}-${meshIndex}`}
+                        title={mesh.title}
+                        imageUrl={mesh.imageUrl}
+                        url={mesh.url}
+                        objectPositionClass={objectPositionClass}
+                      />
+                    )
+                  })}
+                </div>
+              ))}
+            </motion.div>
+          </div>
+          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent via-[#0A0C13] to-[#0A0C13]" />
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-20 bg-gradient-to-br from-red-900/30 via-[#0A0C13] to-orange-900/30">
+          <div className="container mx-auto px-4 text-center">
+            <motion.h2
+              variants={fadeIn}
+              custom={0}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              className={`text-3xl md:text-4xl font-bold mb-6 text-center ${montserrat.className}`}
+            >
+              Ready to showcase your creativity on IMVU?
+            </motion.h2>
+            <motion.p
+              variants={fadeIn}
+              custom={1}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              className="text-xl text-gray-300 max-w-2xl mx-auto mb-8"
+            >
+              Join our Discord and enter the OOR3D Creator Contest today!
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white border-0 rounded-full"
+                asChild
+                disabled={!isActive}
+              >
+                <Link href="https://discord.gg/oor3d" target="_blank">
+                  {isActive ? "Join the Contest" : "Contest Ended"}
+                </Link>
+              </Button>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* New See What We're Building Section */}
+        <section className="py-12 bg-[#0A0C13] border-t border-gray-800/50">
+          <div className="container mx-auto px-4 text-center">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto"
+            >
+              Get a first look at the future we're creating for virtual world creators.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="relative max-w-4xl mx-auto mb-8 group"
+            >
+              <motion.div
+                className="absolute -inset-1 bg-gradient-to-r from-red-500/20 to-orange-500/20 rounded-3xl blur-lg group-hover:opacity-75 transition duration-1000"
+                animate={{
+                  backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: 'linear'
+                }}
+              />
+              <motion.div
+                className="relative rounded-2xl overflow-hidden bg-[#0A0C13] p-1"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Image
+                  src="/WHAT ARE WE BUILDING.jpg"
+                  alt="What we are building"
+                  width={1200}
+                  height={675}
+                  className="rounded-xl w-full h-auto"
+                  priority
+                />
+              </motion.div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white border-0 rounded-full"
+                asChild
+              >
+                <Link href="https://www.outofreach3d.com" target="_blank">
+                  See what we're building
+                </Link>
+              </Button>
+            </motion.div>
+          </div>
+        </section>
+      </div>
+    </NavigationWrapper>
   )
 }
 

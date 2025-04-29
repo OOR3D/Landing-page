@@ -17,15 +17,22 @@ const montserrat = Montserrat({
 })
 
 export default function HomePage() {
-  const [showContent, setShowContent] = useState(false)
+  const [showContent, setShowContent] = useState(true) // Default to true to avoid flash
 
   useEffect(() => {
-    // Show loading screen for 2 seconds before displaying content
-    const timer = setTimeout(() => {
-      setShowContent(true)
-    }, 2000)
+    // Check if this is the first visit
+    const hasVisited = localStorage.getItem('hasVisitedBefore')
+    
+    if (!hasVisited) {
+      // If first visit, show loading screen and set flag
+      setShowContent(false)
+      const timer = setTimeout(() => {
+        setShowContent(true)
+        localStorage.setItem('hasVisitedBefore', 'true')
+      }, 2000)
 
-    return () => clearTimeout(timer)
+      return () => clearTimeout(timer)
+    }
   }, [])
 
   if (!showContent) {
