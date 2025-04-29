@@ -181,8 +181,10 @@ export default function Header() {
                 >
                   Creator Contest
                 </Link>
-                <Link 
-                  href="/experience"
+                <Link
+                  href="https://experience.outofreach3d.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-white/70 hover:text-white hover:scale-110 transition-all duration-200"
                 >
                   Experience
@@ -240,8 +242,10 @@ export default function Header() {
               >
                 Creator Contest
               </Link>
-              <Link 
-                href="/experience"
+              <Link
+                href="https://experience.outofreach3d.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-400 hover:text-white text-center py-2 transition-all duration-200 hover:scale-110"
                 onClick={() => setIsMobileMenuOpen(false)}
               >

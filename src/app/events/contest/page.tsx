@@ -300,7 +300,7 @@ export default function ContestPage() {
                 <StepCard
                   number={1}
                   title="Invite Friends"
-                  description="Invite at least 3 friends to the OOR3D Discord server."
+                  description="Invite at least 3 friends to the OOR3D™ Discord server."
                   icon={<Users className="w-16 h-16 text-red-400" />}
                 />
                 <StepCard
@@ -458,7 +458,7 @@ export default function ContestPage() {
               <motion.p
                 className="text-xl text-gray-300 max-w-2xl mx-auto mb-8"
               >
-                Join our Discord and enter the OOR3D Creator Contest today!
+                Join our Discord and enter the OOR3D™ Creator Contest today!
               </motion.p>
               <motion.div
                 whileHover={{ scale: 1.05 }}

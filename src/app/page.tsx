@@ -237,23 +237,41 @@ export default function HomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true, margin: "-100px" }}
-              className="relative max-w-[120rem] mx-auto aspect-[16/9] mb-24 group"
+              className="relative max-w-[120rem] mx-auto mb-24"
             >
-              <div className="relative aspect-[16/9] rounded-2xl overflow-hidden z-10">
-                <Image
-                  src="/dashboard.png"
-                  alt="OOR3D Dashboard"
-                  fill
-                  className="object-cover [image-rendering:crisp-edges] [image-rendering:-webkit-optimize-contrast]"
-                  priority
-                  quality={100}
-                  sizes="(max-width: 1024px) 100vw, 1920px"
-                  loading="eager"
-                  unoptimized={true}
-                />
+              {/* Star-like glow effects */}
+              <div className="absolute -inset-4 rounded-[2rem] opacity-75">
+                <div className="absolute top-0 left-1/4 w-2 h-2 bg-white/30 rounded-full blur-[2px] animate-pulse" />
+                <div className="absolute top-0 right-1/4 w-2 h-2 bg-white/30 rounded-full blur-[2px] animate-pulse" style={{ animationDelay: '0.5s' }} />
+                <div className="absolute bottom-0 left-1/3 w-2 h-2 bg-white/30 rounded-full blur-[2px] animate-pulse" style={{ animationDelay: '1s' }} />
+                <div className="absolute bottom-0 right-1/3 w-2 h-2 bg-white/30 rounded-full blur-[2px] animate-pulse" style={{ animationDelay: '1.5s' }} />
               </div>
-              {/* External Border */}
-              <div className="absolute -inset-4 border-2 border-white/20 rounded-[2rem] z-20" />
+
+              {/* Border container */}
+              <div className="relative">
+                {/* Outer glowing border */}
+                <div className="absolute -inset-4 rounded-[2rem] border-2 border-white/10 blur-[1px]" />
+                <div className="absolute -inset-4 rounded-[2rem] border border-white/5" />
+                
+                {/* Image container */}
+                <div className="relative rounded-2xl overflow-hidden">
+                  <div className="relative aspect-[16/9]">
+                    <Image
+                      src="/dashboard.png"
+                      alt="OOR3D Dashboard"
+                      fill
+                      className="object-cover"
+                      priority
+                      quality={100}
+                      sizes="(max-width: 1024px) 100vw, 1920px"
+                      style={{
+                        objectFit: 'cover',
+                        imageRendering: '-webkit-optimize-contrast'
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
             </motion.div>
 
             {/* Text Content */}
@@ -307,43 +325,54 @@ export default function HomePage() {
           </div>
 
           <div className="container mx-auto px-4">
-            <div className="max-w-5xl mx-auto text-center space-y-8">
-              <motion.p
+            <div className="max-w-5xl mx-auto text-center space-y-12">
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true, margin: "-100px" }}
-                className="text-3xl md:text-4xl text-white font-semibold"
               >
-                Compatible with IMVU
-              </motion.p>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                viewport={{ once: true, margin: "-100px" }}
-                className="text-2xl md:text-3xl text-gray-300"
-              >
-                with plans to extend compatibility to
-              </motion.p>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-                viewport={{ once: true, margin: "-100px" }}
-                className="text-3xl md:text-4xl text-white font-semibold"
-              >
-                Second Life, Sims 4, Roblox, Inzoi, GTA 6
-              </motion.p>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.9 }}
-                viewport={{ once: true, margin: "-100px" }}
-                className="text-2xl md:text-3xl text-gray-300"
-              >
-                and more virtual worlds to come
-              </motion.p>
+                <h2 className={`text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className}`}>
+                  Platform Compatibility
+                </h2>
+                <div className="space-y-8">
+                  <div>
+                    <p className="text-xl text-gray-300">
+                      At launch, OOR3D™ supports exports for IMVU creators.
+                    </p>
+                  </div>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    className="space-y-4"
+                  >
+                    <p className="text-xl text-gray-300">
+                      We plan to expand compatibility to other virtual platforms including:
+                    </p>
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.8, delay: 0.4 }}
+                      viewport={{ once: true, margin: "-100px" }}
+                      className="text-2xl md:text-3xl text-white font-semibold"
+                    >
+                      Second Life • Sims 4 • Roblox • Inzoi • GTA 6
+                    </motion.div>
+                    <motion.p
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.8, delay: 0.6 }}
+                      viewport={{ once: true, margin: "-100px" }}
+                      className="text-xl text-gray-300"
+                    >
+                      We're building toward a future where your creations move freely between worlds.
+                    </motion.p>
+                  </motion.div>
+                </div>
+              </motion.div>
             </div>
           </div>
         </section>

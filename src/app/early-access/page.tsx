@@ -77,8 +77,10 @@ export default function EarlyAccess() {
             className="mt-8"
           >
             <Link
-              href="/experience"
-              className="text-gray-400 hover:text-gray-300 transition-colors"
+              href="https://experience.outofreach3d.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
             >
               See what we're building →
             </Link>
