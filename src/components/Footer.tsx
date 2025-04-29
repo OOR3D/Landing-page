@@ -51,25 +51,23 @@ export function Footer() {
           >
             FAQ
           </Link>
-          <a 
-            href="mailto:support@oor3d.com"
+          <Link 
+            href="/contact"
             className="text-gray-400 hover:text-white hover:scale-110 transition-all duration-200"
           >
             Contact
-          </a>
+          </Link>
         </div>
 
         {/* Social Links */}
         <div className="flex justify-center gap-6 mb-8">
-          <a
-            href="https://www.outofreach3d.com"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/"
             className="text-gray-400 hover:text-white hover:scale-110 transition-all duration-200"
-            aria-label="Website"
+            aria-label="Home"
           >
             <Globe className="w-5 h-5" />
-          </a>
+          </Link>
           <a
             href="https://twitter.com/outofreach3d"
             target="_blank"
