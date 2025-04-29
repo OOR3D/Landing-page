@@ -4,6 +4,8 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Montserrat } from 'next/font/google'
 import NavigationWrapper from "@/components/NavigationWrapper"
+import Image from 'next/image'
+import Link from 'next/link'
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -16,7 +18,7 @@ export default function EarlyAccess() {
 
   return (
     <NavigationWrapper>
-      <main className="min-h-screen bg-[#0a0c13] flex items-center justify-center relative">
+      <main className="min-h-screen bg-[#0a0c13] flex flex-col items-center justify-center relative">
         {/* Background gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-[#0A0C13] to-orange-900/20" />
         <motion.div
@@ -67,6 +69,20 @@ export default function EarlyAccess() {
           >
             Request Early Access
           </motion.button>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="mt-8"
+          >
+            <Link
+              href="/experience"
+              className="text-gray-400 hover:text-gray-300 transition-colors"
+            >
+              See what we're building →
+            </Link>
+          </motion.div>
 
           {/* Coming Soon Popup */}
           {showPopup && (

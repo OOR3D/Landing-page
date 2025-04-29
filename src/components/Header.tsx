@@ -165,6 +165,12 @@ export default function Header() {
               <div className="flex-1" /> {/* Spacer */}
               <nav className="flex items-center gap-8">
                 <Link 
+                  href="/"
+                  className="text-gray-400 hover:text-white hover:scale-110 transition-all duration-200"
+                >
+                  Home
+                </Link>
+                <Link 
                   href="/events/contest"
                   className="text-gray-400 hover:text-white hover:scale-110 transition-all duration-200"
                 >
@@ -223,6 +229,13 @@ export default function Header() {
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Early Access
+              </Link>
+              <Link 
+                href="/"
+                className="text-gray-400 hover:text-white text-center py-2 transition-all duration-200 hover:scale-110"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Home
               </Link>
               <Link 
                 href="/events/contest"

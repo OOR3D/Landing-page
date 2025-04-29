@@ -258,14 +258,16 @@ export default function ContestPage() {
           />
 
           <div className="container mx-auto px-4 z-10 text-center">
-            <motion.h1
-              initial={{ opacity: 0, y: -50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: "easeOut" }}
-              className={`text-5xl md:text-7xl font-extrabold mb-2 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className}`}
-            >
-              OOR3D<span className="text-sm align-super">™</span> Creator Contest
-            </motion.h1>
+            <div className="flex items-center justify-center gap-4 mb-4">
+              <motion.h1
+                initial={{ opacity: 0, y: -50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, ease: "easeOut" }}
+                className={`text-5xl md:text-7xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className}`}
+              >
+                OOR3D<span className="text-sm align-super">™</span> Creator Contest
+              </motion.h1>
+            </div>
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -590,10 +592,10 @@ export default function ContestPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="relative max-w-4xl mx-auto mb-8 group"
+              className="relative max-w-5xl mx-auto mb-12 group"
             >
               <motion.div
-                className="absolute -inset-1 bg-gradient-to-r from-red-500/20 to-orange-500/20 rounded-3xl blur-lg group-hover:opacity-75 transition duration-1000"
+                className="absolute -inset-4 bg-gradient-to-r from-red-500/30 to-orange-500/30 rounded-[2rem] blur-2xl group-hover:opacity-75 transition duration-1000"
                 animate={{
                   backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
                 }}
@@ -604,16 +606,16 @@ export default function ContestPage() {
                 }}
               />
               <motion.div
-                className="relative rounded-2xl overflow-hidden bg-[#0A0C13] p-1"
+                className="relative rounded-3xl overflow-hidden bg-[#0A0C13] p-1.5"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
                 <Image
                   src="/WHAT ARE WE BUILDING.jpg"
                   alt="What we are building"
-                  width={1200}
-                  height={675}
-                  className="rounded-xl w-full h-auto"
+                  width={1920}
+                  height={1080}
+                  className="rounded-2xl w-full h-auto"
                   priority
                 />
               </motion.div>
@@ -631,7 +633,7 @@ export default function ContestPage() {
                 className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white border-0 rounded-full"
                 asChild
               >
-                <Link href="https://www.outofreach3d.com" target="_blank">
+                <Link href="/experience">
                   See what we're building
                 </Link>
               </Button>

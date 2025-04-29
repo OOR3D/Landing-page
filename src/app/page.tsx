@@ -9,6 +9,8 @@ import LoadingScreen from '@/components/LoadingScreen'
 import CustomCursor from '@/components/CustomCursor'
 import { fadeIn, scaleUp } from '@/lib/animations'
 import NavigationWrapper from "@/components/NavigationWrapper"
+import Image from 'next/image'
+import PrelaunchMission from '@/components/PrelaunchMission'
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -54,11 +56,22 @@ export default function HomePage() {
           />
 
           <div className="container mx-auto px-4 z-10 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mb-4"
+            >
+              <span className="inline-block px-4 py-1.5 bg-gradient-to-r from-red-500/10 to-orange-500/10 rounded-full text-sm font-semibold text-orange-400 border border-orange-500/20">
+                PRELAUNCH
+              </span>
+            </motion.div>
+            
             <motion.h1
               initial={{ opacity: 0, y: -50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
-              className={`text-5xl md:text-7xl font-extrabold mb-2 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className}`}
+              className={`text-5xl md:text-7xl font-extrabold mb-8 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className} pb-2`}
             >
               Create, Customize, and Launch Virtual Products — Effortlessly.
             </motion.h1>
@@ -104,6 +117,101 @@ export default function HomePage() {
           {/* Enhanced bottom gradient */}
           <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-b from-transparent via-[#0A0C13]/80 to-[#0A0C13]" />
         </section>
+
+        {/* Trust Bar Section */}
+        <section className="relative overflow-hidden bg-[#0A0C13]">
+          {/* Gradient masks for scroll effect */}
+          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#0A0C13] to-transparent z-10" />
+          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#0A0C13] to-transparent z-10" />
+          
+          <div className="container mx-auto text-center">
+            <h2 className="text-2xl font-semibold text-white mb-8">
+              Trusted by Industry Innovators
+            </h2>
+          </div>
+
+          {/* Infinite scroll container */}
+          <div className="flex justify-center overflow-hidden whitespace-nowrap">
+            <motion.div
+              className="flex gap-20 items-center"
+              animate={{
+                x: [0, -1920],
+              }}
+              transition={{
+                x: {
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  duration: 30,
+                  ease: "linear",
+                }
+              }}
+            >
+              {[1, 2].map((set) => (
+                <>
+                  <div className="flex items-center justify-center w-40 h-20 opacity-70 hover:opacity-100 transition-opacity">
+                    <Image
+                      src="/logos/nvidia.svg"
+                      alt="NVIDIA"
+                      width={120}
+                      height={60}
+                      className="object-contain invert brightness-0"
+                    />
+                  </div>
+                  <div className="flex items-center justify-center w-40 h-20 opacity-70 hover:opacity-100 transition-opacity">
+                    <Image
+                      src="/logos/unity.svg"
+                      alt="Unity"
+                      width={120}
+                      height={60}
+                      className="object-contain invert brightness-0"
+                    />
+                  </div>
+                  <div className="flex items-center justify-center w-40 h-20 opacity-70 hover:opacity-100 transition-opacity">
+                    <Image
+                      src="/logos/epic.svg"
+                      alt="Epic Games"
+                      width={120}
+                      height={60}
+                      className="object-contain invert brightness-0"
+                    />
+                  </div>
+                  <div className="flex items-center justify-center w-40 h-20 opacity-70 hover:opacity-100 transition-opacity">
+                    <Image
+                      src="/logos/aws.svg"
+                      alt="AWS"
+                      width={120}
+                      height={60}
+                      className="object-contain invert brightness-0"
+                    />
+                  </div>
+                  <div className="flex items-center justify-center w-40 h-20 opacity-70 hover:opacity-100 transition-opacity">
+                    <Image
+                      src="/logos/meta.svg"
+                      alt="Meta"
+                      width={120}
+                      height={60}
+                      className="object-contain invert brightness-0"
+                    />
+                  </div>
+                  <div className="flex items-center justify-center w-40 h-20 opacity-70 hover:opacity-100 transition-opacity">
+                    <Image
+                      src="/logos/adobe.svg"
+                      alt="Adobe"
+                      width={120}
+                      height={60}
+                      className="object-contain invert brightness-0"
+                    />
+                  </div>
+                </>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Prelaunch Mission Section */}
+        <PrelaunchMission />
+
+        {/* Rest of the content */}
       </main>
     </NavigationWrapper>
   );
