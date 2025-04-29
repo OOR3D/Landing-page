@@ -39,11 +39,11 @@ export default function Header() {
       width: "65%",
       margin: "16px",
       radius: "40px",
-      background: "rgba(10, 12, 19, 0.8)",
+      background: "rgba(10, 12, 19, 0.4)",
       blur: "blur(10px)",
       border: "1px solid rgba(255, 255, 255, 0.1)",
       translate: "40px",
-      pattern: 0.05
+      pattern: 0.5
     }
   }
 
@@ -111,7 +111,7 @@ export default function Header() {
   return (
     <div className="fixed top-0 left-0 right-0 z-40 flex justify-center pointer-events-none">
       <motion.header 
-        className="w-full pointer-events-auto"
+        className="w-full pointer-events-auto relative"
         style={{
           width: headerWidth,
           marginTop: headerMargin,
@@ -122,16 +122,19 @@ export default function Header() {
           transition: `all ${transitionConfig.duration}s cubic-bezier(${transitionConfig.ease.join(',')})`
         }}
       >
-        {/* Checkered background */}
+        {/* Checkerboard pattern */}
         <motion.div 
-          className="absolute inset-0 rounded-[inherit]"
+          className="absolute inset-0 rounded-[inherit] mix-blend-soft-light"
           style={{
             opacity: patternOpacity,
             backgroundImage: `
-              linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px)
+              linear-gradient(45deg, rgba(255, 240, 230, 0.05) 25%, transparent 25%),
+              linear-gradient(-45deg, rgba(255, 240, 230, 0.05) 25%, transparent 25%),
+              linear-gradient(45deg, transparent 75%, rgba(255, 240, 230, 0.05) 75%),
+              linear-gradient(-45deg, transparent 75%, rgba(255, 240, 230, 0.05) 75%)
             `,
-            backgroundSize: '20px 20px',
+            backgroundSize: '8px 8px',
+            backgroundPosition: '0 0, 0 4px, 4px -4px, -4px 0px',
             transition: `all ${transitionConfig.duration}s cubic-bezier(${transitionConfig.ease.join(',')})`
           }}
         />

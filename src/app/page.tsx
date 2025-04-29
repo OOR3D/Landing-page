@@ -254,7 +254,7 @@ export default function HomePage() {
               viewport={{ once: true }}
               className="text-center mb-24"
             >
-              <h2 className={`text-6xl md:text-8xl font-extrabold mb-8 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className} pb-2`}>
+              <h2 className={`text-4xl md:text-6xl font-extrabold mb-8 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className} pb-2`}>
                 Skip the complexity.
                 <br />
                 Start bringing your ideas to life.
@@ -267,7 +267,7 @@ export default function HomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true, margin: "-100px" }}
-              className="relative max-w-6xl mx-auto aspect-[16/9] mb-24 group"
+              className="relative max-w-[90rem] mx-auto aspect-[16/9] mb-24 group"
             >
               <div className="relative aspect-[16/9] rounded-2xl overflow-hidden z-10">
                 <Image
@@ -276,6 +276,7 @@ export default function HomePage() {
                   fill
                   className="object-cover"
                   priority
+                  quality={100}
                   sizes="(max-width: 1024px) 100vw, 1024px"
                 />
               </div>
@@ -506,6 +507,17 @@ export default function HomePage() {
                 A New Era
               </motion.h2>
 
+              {/* Subtitle */}
+              <motion.p
+                initial={{ opacity: 0, y: -20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="text-2xl md:text-3xl text-gray-300 text-center mb-12"
+              >
+                The Way You Create Is About To Change Forever.
+              </motion.p>
+
               {/* Video Container */}
               <div className="max-w-sm mx-auto relative rounded-3xl bg-[#0A0C13] border border-red-500/20 overflow-hidden">
                 {/* Background Effects */}
@@ -522,7 +534,7 @@ export default function HomePage() {
                     muted 
                     playsInline
                   >
-                    <source src="https://publicmediaok.s3.us-east-1.amazonaws.com/OOR3D+PRELAUNCH+TEASER+(1).mp4" type="video/mp4" />
+                    <source src="https://publicmediaok.s3.amazonaws.com/OOR3D+PRELAUNCH+TEASER+(1).mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
 
@@ -586,8 +598,7 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 className="max-w-3xl mx-auto text-center space-y-6 text-xl text-gray-300"
               >
-                <p>We're in the building phase of OOR3D.</p>
-                <p>A platform designed to make creating effortless, and to give creators powerful new systems to push their ideas further.</p>
+                <p>We're in the building phase of OOR3D™.</p>
                 <p>We're building in public so creators like you can get involved early.</p>
                 <p>Whether you're just starting out or you're a seasoned pro, you're in the right place.</p>
               </motion.div>

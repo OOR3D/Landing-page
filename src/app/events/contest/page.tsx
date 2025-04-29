@@ -477,68 +477,6 @@ export default function ContestPage() {
             </motion.div>
           </div>
         </section>
-
-        {/* New See What We're Building Section */}
-        <section className="py-24 bg-[#0A0C13] border-t border-gray-800/50">
-          <div className="container mx-auto px-4 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8 }}
-            >
-              <motion.p
-                className="text-xl text-gray-300 mb-16 max-w-2xl mx-auto"
-              >
-                Get a first look at the future we're creating for virtual world creators.
-              </motion.p>
-
-              <motion.div
-                className="relative max-w-5xl mx-auto mb-12 group"
-              >
-                <motion.div
-                  className="absolute -inset-4 bg-gradient-to-r from-red-500/30 to-orange-500/30 rounded-[2rem] blur-2xl group-hover:opacity-75 transition duration-1000"
-                  animate={{
-                    backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-                  }}
-                  transition={{
-                    duration: 5,
-                    repeat: Infinity,
-                    ease: 'linear'
-                  }}
-                />
-                <motion.div
-                  className="relative rounded-3xl overflow-hidden bg-[#0A0C13] p-1.5"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <Image
-                    src="/WHAT ARE WE BUILDING.jpg"
-                    alt="What we are building"
-                    width={1920}
-                    height={1080}
-                    className="rounded-2xl w-full h-auto"
-                    priority
-                  />
-                </motion.div>
-              </motion.div>
-
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <GradientButton
-                  size="lg"
-                  asChild
-                >
-                  <Link href="/experience">
-                    See what we're building
-                  </Link>
-                </GradientButton>
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
       </div>
     </NavigationWrapper>
   )
