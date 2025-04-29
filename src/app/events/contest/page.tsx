@@ -99,27 +99,7 @@ export default function Home() {
   const endDate = new Date("2025-05-14T23:59:59")
   const [daysRemaining, setDaysRemaining] = useState<number>(0)
   const [isActive, setIsActive] = useState<boolean>(true)
-  const [showContent, setShowContent] = useState(false)
-  const [loadingProgress, setLoadingProgress] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
-
-  useEffect(() => {
-    // Loading animation with random increments
-    let startCount = 0;
-    const interval = setInterval(() => {
-      if (startCount < 100) {
-        // Random increment between 1 and 3
-        const increment = Math.floor(Math.random() * 3) + 1;
-        startCount = Math.min(100, startCount + increment);
-        setLoadingProgress(startCount);
-      } else {
-        clearInterval(interval);
-        setTimeout(() => setShowContent(true), 300); // Small pause at 100%
-      }
-    }, 40); // Slightly slower interval for more visible random effect
-
-    return () => clearInterval(interval);
-  }, []);
 
   useEffect(() => {
     const calculateTimeRemaining = () => {
@@ -161,21 +141,6 @@ export default function Home() {
     const timer = setInterval(calculateTimeRemaining, 86400000)
     return () => clearInterval(timer)
   }, [])
-
-  if (!showContent) {
-    return (
-      <div className="min-h-screen bg-[#0A0C13] flex items-center justify-center">
-        <motion.div 
-          className="text-white text-4xl font-bold"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-        >
-          {loadingProgress}%
-        </motion.div>
-      </div>
-    );
-  }
 
   // Animation variants
   const fadeIn = {
