@@ -267,7 +267,7 @@ export default function HomePage() {
                 <div className="relative rounded-2xl overflow-hidden">
                   <div className="relative aspect-[16/9]">
                     <Image
-                      src="/dashboard.jpg"
+                      src="/dashboard-hero.jpg"
                       alt="OOR3D Dashboard"
                       fill
                       className="object-cover"
