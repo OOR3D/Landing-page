@@ -123,16 +123,6 @@ export default function HomePage() {
                   Get Started
                 </Link>
               </GradientButton>
-              
-              <motion.p
-                variants={fadeIn}
-                custom={2}
-                initial="hidden"
-                animate="visible"
-                className="text-sm text-gray-400"
-              >
-                Join the creators shaping the future of the virtual economy.
-              </motion.p>
             </motion.div>
 
             {/* Trust Bar Section - Moved inside hero */}
@@ -144,9 +134,12 @@ export default function HomePage() {
               className="w-full"
             >
               <div className="text-center mb-8">
-                <h2 className="text-2xl font-semibold text-white">
-                  Trusted by Industry Innovators
+                <h2 className="text-xl font-medium tracking-wide text-white/90 mb-2">
+                  Trusted by Industry Leaders
                 </h2>
+                <p className="text-sm text-gray-400 tracking-wide max-w-2xl mx-auto">
+                  Innovating a new standard for creation in virtual spaces, powered by global pioneers of technology.
+                </p>
               </div>
 
               {/* Infinite scroll container */}
@@ -154,7 +147,7 @@ export default function HomePage() {
                 <div className="max-w-4xl relative mx-auto w-full">
                   <div className="flex justify-center overflow-hidden whitespace-nowrap py-4 [mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent_100%)]">
                     <motion.div 
-                      className="flex items-center gap-20 px-20"
+                      className="flex items-center gap-16 px-16"
                       animate={{
                         x: [0, -1640]
                       }}
@@ -171,61 +164,38 @@ export default function HomePage() {
                       }}
                     >
                       {[1, 2, 3, 4].map((set) => (
-                        <div key={set} className="flex items-center gap-20">
-                          <div className="flex items-center justify-center w-40 h-20 opacity-70 hover:opacity-100 transition-opacity">
-                            <Image
-                              src="/logos/nvidia.svg"
-                              alt="NVIDIA"
-                              width={120}
-                              height={60}
-                              className="object-contain invert brightness-0"
-                            />
-                          </div>
-                          <div className="flex items-center justify-center w-40 h-20 opacity-70 hover:opacity-100 transition-opacity">
-                            <Image
-                              src="/logos/unity.svg"
-                              alt="Unity"
-                              width={120}
-                              height={60}
-                              className="object-contain invert brightness-0"
-                            />
-                          </div>
-                          <div className="flex items-center justify-center w-40 h-20 opacity-70 hover:opacity-100 transition-opacity">
-                            <Image
-                              src="/logos/epic.svg"
-                              alt="Epic Games"
-                              width={120}
-                              height={60}
-                              className="object-contain invert brightness-0"
-                            />
-                          </div>
-                          <div className="flex items-center justify-center w-40 h-20 opacity-70 hover:opacity-100 transition-opacity">
-                            <Image
-                              src="/logos/aws.svg"
-                              alt="AWS"
-                              width={120}
-                              height={60}
-                              className="object-contain invert brightness-0"
-                            />
-                          </div>
-                          <div className="flex items-center justify-center w-40 h-20 opacity-70 hover:opacity-100 transition-opacity">
-                            <Image
-                              src="/logos/meta.svg"
-                              alt="Meta"
-                              width={120}
-                              height={60}
-                              className="object-contain invert brightness-0"
-                            />
-                          </div>
-                          <div className="flex items-center justify-center w-40 h-20 opacity-70 hover:opacity-100 transition-opacity">
-                            <Image
-                              src="/logos/adobe.svg"
-                              alt="Adobe"
-                              width={120}
-                              height={60}
-                              className="object-contain invert brightness-0"
-                            />
-                          </div>
+                        <div key={set} className="flex items-center justify-center gap-16">
+                          {[
+                            { src: "/Trusted By/stripe.svg", alt: "Stripe" },
+                            { src: "/Trusted By/nvidia.svg", alt: "NVIDIA" },
+                            { src: "/Trusted By/meta.svg", alt: "Meta" },
+                            { src: "/Trusted By/unity.svg", alt: "Unity" },
+                            { src: "/Trusted By/epicgames.svg", alt: "Epic Games" },
+                            { src: "/Trusted By/blender.svg", alt: "Blender" },
+                            { src: "/Trusted By/sega.svg", alt: "SEGA" },
+                            { src: "/Trusted By/amd.svg", alt: "AMD" },
+                            { src: "/Trusted By/msi.svg", alt: "MSI" },
+                            { src: "/Trusted By/autodeskmaya.svg", alt: "Autodesk Maya" },
+                            { src: "/Trusted By/steam.svg", alt: "Steam" }
+                          ].map((logo, index) => (
+                            <div 
+                              key={index} 
+                              className="flex items-center justify-center mx-4 opacity-90 hover:opacity-100 transition-opacity"
+                            >
+                              <Image
+                                src={logo.src}
+                                alt={logo.alt}
+                                className="h-10 w-auto text-white"
+                                width={100}
+                                height={40}
+                                style={{
+                                  filter: 'brightness(0) invert(1)',
+                                  objectFit: 'contain',
+                                  maxWidth: 'none'
+                                }}
+                              />
+                            </div>
+                          ))}
                         </div>
                       ))}
                     </motion.div>
@@ -272,10 +242,12 @@ export default function HomePage() {
                   src="/dashboard.png"
                   alt="OOR3D Dashboard"
                   fill
-                  className="object-cover"
+                  className="object-cover [image-rendering:crisp-edges] [image-rendering:-webkit-optimize-contrast]"
                   priority
                   quality={100}
-                  sizes="(max-width: 1024px) 100vw, 1024px"
+                  sizes="(max-width: 1024px) 100vw, 1920px"
+                  loading="eager"
+                  unoptimized={true}
                 />
               </div>
               {/* External Border */}
