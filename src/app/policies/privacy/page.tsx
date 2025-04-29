@@ -84,8 +84,8 @@ export default function PrivacyPolicyPage() {
 
               <h3>1.3 Information from Third Parties</h3>
               <ul>
-                <li>- <strong>Payment Processors</strong>: Stripe handles payment information on our behalf.</li>
-                <li>- <strong>Analytics Providers</strong>: We may use tools like Google Analytics to monitor traffic and performance.</li>
+                <li>- <strong>Payment Processors</strong>: We use Stripe to securely handle payment information. We don't store or process card details directly.</li>
+                <li>- <strong>Analytics Providers</strong>: We use tools like Google Analytics to understand how people use the site and improve performance. These tools may use cookies or similar technologies to collect non-personal data like page views, device info, and time spent on the site.</li>
               </ul>
 
               <h2>2. How We Use Your Information</h2>
