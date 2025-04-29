@@ -20,12 +20,12 @@ export default function FAQSection() {
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center justify-center gap-4 mb-12">
-            <HelpCircle className="w-10 h-10 text-blue-400" />
+            <HelpCircle className="w-10 h-10 text-red-400" />
             <motion.h2
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className={`text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-white to-purple-400 ${montserrat.className}`}
+              className={`text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className}`}
             >
               Frequently Asked Questions
             </motion.h2>
@@ -46,7 +46,7 @@ export default function FAQSection() {
               <Button
                 variant="outline"
                 size="lg"
-                className="bg-transparent border border-blue-500/50 text-blue-400 hover:bg-blue-500/10 hover:text-blue-300 rounded-full"
+                className="bg-transparent border border-red-500/50 text-red-400 hover:bg-red-500/10 hover:text-red-300 rounded-full"
               >
                 View All FAQs
               </Button>

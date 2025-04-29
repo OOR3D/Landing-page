@@ -22,26 +22,28 @@ export default function FAQAccordion({ showAll = false }: FAQAccordionProps) {
             href="https://discord.gg/oor3d"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-400 hover:text-blue-300 transition-colors"
+            className="text-red-400 hover:text-red-300 transition-colors"
           >
-            discord server
+            Discord server
           </a>
           . We review community input regularly, though we can't guarantee every request will be made.
         </>
       );
     }
     if (index === 1) { // For the platform release question
+      const text = answer.split('Discord');
       return (
         <>
-          {answer}
+          {text[0]}
           <a 
             href="https://discord.gg/oor3d"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-400 hover:text-blue-300 transition-colors"
+            className="text-red-400 hover:text-red-300 transition-colors"
           >
-            https://discord.gg/oor3d
+            Discord
           </a>
+          {text[1]}
         </>
       );
     }
@@ -52,13 +54,13 @@ export default function FAQAccordion({ showAll = false }: FAQAccordionProps) {
     <Accordion.Root
       type="single"
       collapsible
-      className="space-y-4"
+      className="space-y-4 relative z-10"
     >
       {displayFaqs.map((faq, index) => (
         <Accordion.Item
           key={index}
           value={`item-${index}`}
-          className="bg-[#0A0C13]/40 rounded-3xl border border-gray-800/50 overflow-hidden group hover:bg-white/[0.02] transition-colors duration-300"
+          className="bg-[#0A0C13] rounded-3xl border border-gray-800/50 overflow-hidden group hover:border-red-500/20 transition-colors duration-300"
         >
           <Accordion.Trigger className="flex items-center justify-between w-full p-8 text-left">
             <h3 className="text-xl font-semibold">{faq.question}</h3>

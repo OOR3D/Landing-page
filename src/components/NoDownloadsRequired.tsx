@@ -69,20 +69,15 @@ export default function NoDownloadsRequired() {
             <h3 className="text-2xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-white to-white">
               OOR3D™ REQUIRES ZERO DOWNLOADS OF ANY SOFTWARE.
             </h3>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+            <Button
+              size="lg"
+              className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white border-0 rounded-full"
+              asChild
             >
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white border-0 rounded-full"
-                asChild
-              >
-                <Link href="/experience">
-                  Take me there!
-                </Link>
-              </Button>
-            </motion.div>
+              <Link href="/early-access">
+                Get Early Access
+              </Link>
+            </Button>
           </motion.div>
         </div>
       </div>
