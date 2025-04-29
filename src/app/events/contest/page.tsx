@@ -248,7 +248,7 @@ export default function ContestPage() {
       <div className="min-h-screen bg-[#0A0C13] text-white [&_*]:cursor-none">
         <CustomCursor />
         {/* Hero Section */}
-        <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
+        <section className="relative min-h-screen py-32 flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-[#0A0C13] to-orange-900/20 z-0" />
           <motion.div
             initial={{ opacity: 0 }}
@@ -257,104 +257,72 @@ export default function ContestPage() {
             className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,120,50,0.1),transparent_70%)] z-0"
           />
 
-          <div className="container mx-auto px-4 z-10 text-center">
-            <div className="flex items-center justify-center gap-4 mb-4">
+          <div className="container mx-auto px-4 z-10">
+            <div className="max-w-4xl mx-auto text-center">
+              {/* Active Status */}
+              {isActive && (
+                <motion.div
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                  className="mb-8"
+                >
+                  <span className="inline-flex items-center px-4 py-2 rounded-full bg-green-500/10 text-green-400 text-sm font-medium">
+                    <span className="w-2 h-2 rounded-full bg-green-400 mr-2" />
+                    Active
+                  </span>
+                </motion.div>
+              )}
+
               <motion.h1
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, ease: "easeOut" }}
-                className={`text-5xl md:text-7xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className}`}
+                className={`text-5xl md:text-7xl font-extrabold mb-8 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className}`}
               >
-                OOR3D<span className="text-sm align-super">™</span> Creator Contest
+                OOR3D™ Creator Contest
               </motion.h1>
-            </div>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.2 }}
-              className="text-lg md:text-xl text-orange-300 max-w-2xl mx-auto mb-4"
-            >
-              Create for IMVU and win real prizes.
-            </motion.p>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.4 }}
-              className="flex flex-col md:flex-row items-center justify-center gap-3 mb-8"
-            >
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className={`flex items-center bg-[#0A0C13]/40 rounded-full px-3 py-1.5 border ${isActive ? "border-green-500/20" : "border-red-500/20"}`}
-              >
+              {/* Countdown Timer */}
+              {isActive && (
                 <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  className={`w-2.5 h-2.5 rounded-full ${isActive ? "bg-green-500 animate-pulse" : "bg-red-500"} mr-2`}
-                />
-                <motion.span 
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  className={`${isActive ? "text-green-400" : "text-red-400"} text-sm font-medium`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="text-xl text-gray-300 mb-12"
                 >
-                  {isActive ? "Active" : "Inactive"}
-                </motion.span>
-              </motion.div>
-              <motion.div 
-                className="text-gray-400 text-sm flex items-center"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                {isActive ? (
-                  <motion.div
-                    layout
-                    className="font-medium flex items-center"
-                  >
-                    <AnimatePresence mode="wait">
-                      <motion.span
-                        key={daysRemaining}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        transition={{ duration: 0.3 }}
-                        className="inline-block mr-1"
-                      >
-                        {daysRemaining}
-                      </motion.span>
-                    </AnimatePresence>
-                    days until it's over
-                  </motion.div>
-                ) : (
-                  <motion.span
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                  >
-                    Contest has ended
-                  </motion.span>
-                )}
-              </motion.div>
-            </motion.div>
+                  {daysRemaining} days until it's over
+                </motion.div>
+              )}
 
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white border-0 rounded-full"
-                asChild
-                disabled={!isActive}
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.2 }}
+                className="text-lg md:text-xl text-orange-300 max-w-2xl mx-auto mb-4"
               >
-                <Link href="https://discord.gg/oor3d" target="_blank">
-                  {isActive ? "Start the Challenge" : "Contest Ended"}
-                </Link>
-              </Button>
-            </motion.div>
+                Create for IMVU and win real prizes.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white border-0 rounded-full"
+                  asChild
+                  disabled={!isActive}
+                >
+                  <Link href="https://discord.gg/oor3d" target="_blank">
+                    {isActive ? "Start the Challenge" : "Contest Ended"}
+                  </Link>
+                </Button>
+              </motion.div>
+            </div>
           </div>
 
           {/* Enhanced bottom gradient */}

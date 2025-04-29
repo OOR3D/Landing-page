@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { Montserrat } from "next/font/google"
 import Link from 'next/link'
 import NavigationWrapper from "@/components/NavigationWrapper"
-import { Shield, FileText, RotateCcw } from 'lucide-react'
+import { Shield, FileText, RotateCcw, ArrowLeft } from 'lucide-react'
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -37,7 +37,7 @@ export default function PoliciesPage() {
   return (
     <NavigationWrapper>
       <main className="min-h-screen bg-[#0A0C13] text-white">
-        <section className="relative min-h-screen py-32 flex items-center justify-center overflow-hidden">
+        <section className="relative min-h-screen py-40 flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-[#0A0C13] to-orange-900/20 z-0" />
           <motion.div
             initial={{ opacity: 0 }}
@@ -48,11 +48,27 @@ export default function PoliciesPage() {
 
           <div className="container mx-auto px-4 z-10">
             <div className="max-w-4xl mx-auto">
+              {/* Back Button */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                className="mb-8"
+              >
+                <Link 
+                  href="/"
+                  className="inline-flex items-center text-gray-400 hover:text-white transition-colors"
+                >
+                  <ArrowLeft className="w-5 h-5 mr-2" />
+                  Back to Home
+                </Link>
+              </motion.div>
+
               <motion.h1
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, ease: "easeOut" }}
-                className={`text-5xl md:text-7xl font-extrabold mb-8 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className} text-center`}
+                className={`text-5xl md:text-7xl font-extrabold mb-12 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className} text-center leading-relaxed`}
               >
                 Policy Hub
               </motion.h1>
@@ -61,7 +77,7 @@ export default function PoliciesPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-xl text-gray-300 mb-12 text-center"
+                className="text-xl text-gray-300 mb-16 text-center"
               >
                 Everything you need to know about our policies and terms.
               </motion.p>

@@ -56,15 +56,15 @@ export default function ContactPage() {
                   className="bg-[#0A0C13]/40 p-8 rounded-2xl border border-gray-800/50 hover:border-red-500/50 transition-all duration-300"
                 >
                   <Mail className="w-8 h-8 text-red-400 mb-4 mx-auto" />
-                  <h2 className="text-xl font-semibold mb-4">Email Us</h2>
+                  <h2 className="text-xl font-semibold mb-4">Need help?</h2>
                   <p className="text-gray-400 mb-4">
-                    Email us, we'll get back to you in 48 hours.
+                    Email us and we'll get back to you within 48 hours.
                   </p>
                   <Link
                     href="mailto:support@outofreach3d.com"
                     className="text-red-400 hover:text-red-300 transition-colors"
                   >
-                    support@outofreach3d.com
+                    📧 support@outofreach3d.com
                   </Link>
                 </motion.div>
 
@@ -76,9 +76,9 @@ export default function ContactPage() {
                   className="bg-[#0A0C13]/40 p-8 rounded-2xl border border-gray-800/50 hover:border-red-500/50 transition-all duration-300"
                 >
                   <MessageSquare className="w-8 h-8 text-orange-400 mb-4 mx-auto" />
-                  <h2 className="text-xl font-semibold mb-4">Join Our Discord</h2>
+                  <h2 className="text-xl font-semibold mb-4">Get real-time support</h2>
                   <p className="text-gray-400 mb-4">
-                    Join Discord for real-time support.
+                    Join our Discord community today.
                   </p>
                   <Button
                     size="lg"
@@ -86,7 +86,7 @@ export default function ContactPage() {
                     asChild
                   >
                     <Link href="https://discord.gg/oor3d" target="_blank">
-                      Join Discord Community
+                      💬 Join Discord Community
                     </Link>
                   </Button>
                 </motion.div>

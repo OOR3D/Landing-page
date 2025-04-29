@@ -45,6 +45,12 @@ export function Footer() {
           >
             Policy Hub
           </Link>
+          <Link 
+            href="/faq" 
+            className="text-gray-400 hover:text-white hover:scale-110 transition-all duration-200"
+          >
+            FAQ
+          </Link>
           <a 
             href="mailto:support@oor3d.com"
             className="text-gray-400 hover:text-white hover:scale-110 transition-all duration-200"

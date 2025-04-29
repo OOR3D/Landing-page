@@ -1,11 +1,11 @@
 'use client'
 
 import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Montserrat } from 'next/font/google'
 import NavigationWrapper from "@/components/NavigationWrapper"
-import Image from 'next/image'
 import Link from 'next/link'
+import EarlyAccessPopup from '@/components/EarlyAccessPopup'
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -28,14 +28,14 @@ export default function EarlyAccess() {
           className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,120,50,0.1),transparent_70%)]"
         />
 
-        <div className="relative z-10 text-center px-4 max-w-2xl mx-auto">
+        <div className="container mx-auto px-4 z-10 text-center">
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className={`text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className}`}
           >
-            Get Early Access to OUTOFREACH3D.
+            Get Early Access to OOR3D™
           </motion.h1>
           
           <motion.p
@@ -83,32 +83,14 @@ export default function EarlyAccess() {
               See what we're building →
             </Link>
           </motion.div>
-
-          {/* Coming Soon Popup */}
-          {showPopup && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              className="fixed inset-0 flex items-center justify-center bg-black/50 z-50"
-              onClick={() => setShowPopup(false)}
-            >
-              <motion.div 
-                className="bg-[#0a0c13] p-8 rounded-2xl border border-gray-800 max-w-sm mx-4"
-                onClick={e => e.stopPropagation()}
-              >
-                <h2 className="text-2xl font-bold mb-4 text-white">Coming Soon!</h2>
-                <p className="text-gray-300 mb-6">Early access registration will be available soon. Stay tuned!</p>
-                <button
-                  onClick={() => setShowPopup(false)}
-                  className="w-full px-4 py-2 rounded-full bg-gray-800 text-white hover:bg-gray-700 transition-colors"
-                >
-                  Close
-                </button>
-              </motion.div>
-            </motion.div>
-          )}
         </div>
+
+        {/* Early Access Popup */}
+        <AnimatePresence>
+          {showPopup && (
+            <EarlyAccessPopup onClose={() => setShowPopup(false)} />
+          )}
+        </AnimatePresence>
       </main>
     </NavigationWrapper>
   )
