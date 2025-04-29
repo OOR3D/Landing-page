@@ -23,7 +23,7 @@ export default function LoadingScreen() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0A0C13] flex items-center justify-center">
+    <div className="fixed inset-0 bg-[#0A0C13] flex items-center justify-center">
       <motion.div 
         className="text-white text-4xl font-bold"
         initial={{ opacity: 0 }}
