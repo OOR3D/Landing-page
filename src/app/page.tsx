@@ -156,27 +156,27 @@ export default function HomePage() {
               {/* Infinite scroll container */}
               <div className="relative flex justify-center overflow-hidden">
                 <div className="max-w-4xl relative mx-auto w-full">
-                  <div className="flex justify-center overflow-hidden whitespace-nowrap py-4 [mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent_100%)]">
+                  <div className="flex justify-center overflow-hidden whitespace-nowrap py-8 bg-[#0A0C13] [mask-image:linear-gradient(to_right,#0A0C13,transparent_10%,white_20%,white_80%,transparent_90%,#0A0C13)] before:absolute before:inset-0 before:bg-[#0A0C13] before:-z-10">
                     <motion.div 
-                      className="flex items-center gap-8 md:gap-16 px-8 md:px-16"
+                      className="flex items-center gap-16 md:gap-24"
                       animate={{
-                        x: [0, -3280]
+                        x: [0, -2400]
                       }}
                       transition={{
                         x: {
-                          duration: 40,
+                          duration: 20,
                           ease: "linear",
                           repeat: Infinity,
                           repeatType: "loop",
                           repeatDelay: 0
                         }
                       }}
-                      style={{
-                        width: "fit-content"
-                      }}
                     >
-                      {[1, 2, 3, 4, 5, 6, 7, 8].map((set) => (
-                        <div key={set} className="flex items-center justify-center gap-8 md:gap-16">
+                      {[...Array(3)].map((_, setIndex) => (
+                        <div 
+                          key={`logo-set-${setIndex}`} 
+                          className="flex items-center gap-16 md:gap-24"
+                        >
                           {[
                             { src: "/Trusted By/stripe.svg", alt: "Stripe" },
                             { src: "/Trusted By/nvidia.svg", alt: "NVIDIA" },
@@ -191,23 +191,24 @@ export default function HomePage() {
                             { src: "/Trusted By/logitech.svg", alt: "Logitech" },
                             { src: "/Trusted By/steam.svg", alt: "Steam" }
                           ].map((logo, index) => (
-                            <div 
-                              key={index} 
-                              className="flex items-center justify-center mx-2 md:mx-4 opacity-90 hover:opacity-100 transition-opacity"
+                            <motion.div 
+                              key={`logo-${setIndex}-${index}`}
+                              className="flex items-center justify-center opacity-80 hover:opacity-100 transition-all duration-300"
+                              whileHover={{ scale: 1.1 }}
                             >
                               <Image
                                 src={logo.src}
                                 alt={logo.alt}
-                                className="h-6 md:h-10 w-auto text-white"
-                                width={100}
-                                height={40}
+                                className="h-8 md:h-12 w-auto"
+                                width={120}
+                                height={48}
                                 style={{
                                   filter: 'brightness(0) invert(1)',
                                   objectFit: 'contain',
                                   maxWidth: 'none'
                                 }}
                               />
-                            </div>
+                            </motion.div>
                           ))}
                         </div>
                       ))}
