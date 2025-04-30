@@ -111,7 +111,7 @@ export default function Header() {
   return (
     <div className="fixed top-0 left-0 right-0 z-40 flex justify-center">
       <motion.header 
-        className="w-full relative"
+        className="w-full relative overflow-hidden"
         style={{
           width: headerWidth,
           marginTop: headerMargin,
@@ -258,9 +258,9 @@ export default function Header() {
             </div>
           </motion.nav>
 
-          {/* Re-add the particles effect or related code */}
+          {/* Checkerboard pattern */}
           <motion.div 
-            className="absolute inset-0 rounded-[inherit] mix-blend-soft-light"
+            className="absolute inset-0 mix-blend-soft-light"
             style={{
               opacity: patternOpacity,
               backgroundImage: `
