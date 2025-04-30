@@ -346,17 +346,17 @@ export default function HomePage() {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
-                className="text-2xl md:text-3xl text-gray-300 mb-12 text-center"
+                className="text-xl md:text-3xl text-gray-300 mb-8 md:mb-12 text-center"
               >
                 OUTOFREACH3D™ is made for
               </motion.p>
 
-              <div className="relative min-h-[600px] w-full flex flex-col items-center justify-center mb-16">
-                <div className="relative h-[400px] w-full max-w-5xl mx-auto overflow-hidden">
+              <div className="relative min-h-[400px] md:min-h-[600px] w-full flex flex-col items-center justify-center mb-8 md:mb-16">
+                <div className="relative h-[300px] md:h-[400px] w-full max-w-5xl mx-auto overflow-hidden">
                   <div className="relative w-full h-full flex items-center justify-center">
                     <div className="flex justify-center overflow-hidden h-full w-full [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent_100%)]">
                       <motion.div 
-                        className="flex flex-col items-center gap-16 pt-32"
+                        className="flex flex-col items-center gap-8 md:gap-16 pt-16 md:pt-32"
                         animate={{
                           y: [0, -2340]
                         }}
@@ -371,7 +371,7 @@ export default function HomePage() {
                         }}
                       >
                         {[1, 2, 3, 4, 5, 6].map((set) => (
-                          <div key={set} className="flex flex-col items-center justify-center gap-16">
+                          <div key={set} className="flex flex-col items-center justify-center gap-8 md:gap-16">
                             {[
                               "Beginners",
                               "Dreamers",
@@ -386,7 +386,7 @@ export default function HomePage() {
                             ].map((item, index) => (
                               <div 
                                 key={`${set}-${index}`}
-                                className={`text-7xl md:text-9xl font-bold text-white ${montserrat.className}`}
+                                className={`text-4xl sm:text-6xl md:text-7xl lg:text-9xl font-bold text-white ${montserrat.className}`}
                               >
                                 {item}
                               </div>
@@ -403,12 +403,12 @@ export default function HomePage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8 }}
                   viewport={{ once: true }}
-                  className="mt-24 flex justify-center w-full"
+                  className="mt-12 md:mt-24 flex justify-center w-full"
                 >
                   <GradientButton
                     size="lg"
                     asChild
-                    className="text-xl py-6 px-12"
+                    className="text-base md:text-xl py-4 md:py-6 px-8 md:px-12"
                   >
                     <Link href="/early-access">
                       Start Now

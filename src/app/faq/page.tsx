@@ -16,7 +16,7 @@ export default function FAQPage() {
   return (
     <NavigationWrapper>
       <main className="min-h-screen bg-[#0A0C13] text-white">
-        <section className="relative py-32">
+        <section className="relative py-16 sm:py-32">
           {/* Background gradients */}
           <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-[#0A0C13] to-orange-900/20 z-0" />
           <motion.div
@@ -28,13 +28,13 @@ export default function FAQPage() {
 
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-4xl mx-auto">
-              <div className="flex items-center justify-center gap-4 mb-8">
-                <HelpCircle className="w-12 h-12 text-red-400" />
+              <div className="flex items-center justify-center gap-2 sm:gap-4 mb-6 sm:mb-8">
+                <HelpCircle className="w-8 h-8 sm:w-12 sm:h-12 text-red-400" />
                 <motion.h1
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8 }}
-                  className={`text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className} leading-relaxed py-2`}
+                  className={`text-3xl sm:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className} leading-relaxed py-1 sm:py-2`}
                 >
                   Frequently Asked Questions
                 </motion.h1>
@@ -44,7 +44,7 @@ export default function FAQPage() {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.1 }}
-                className="text-gray-400 text-center mb-16 max-w-2xl mx-auto text-lg"
+                className="text-gray-400 text-center mb-8 sm:mb-16 max-w-2xl mx-auto text-base sm:text-lg"
               >
                 Answers to the most common questions about early access, tools, and getting started.
               </motion.p>
