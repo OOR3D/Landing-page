@@ -42,7 +42,7 @@ export default function Header() {
       background: "rgba(7, 9, 14, 0.6)",
       blur: "blur(10px)",
       border: "1px solid rgba(255, 255, 255, 0.1)",
-      translate: "-30px",
+      translate: "0px",
       pattern: 0.5
     }
   }
@@ -109,9 +109,9 @@ export default function Header() {
   )
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-40 flex justify-center pointer-events-none">
+    <div className="fixed top-0 left-0 right-0 z-40 flex justify-center">
       <motion.header 
-        className="w-full pointer-events-auto relative"
+        className="w-full relative"
         style={{
           width: headerWidth,
           marginTop: headerMargin,
@@ -122,36 +122,19 @@ export default function Header() {
           transition: `all ${transitionConfig.duration}s cubic-bezier(${transitionConfig.ease.join(',')})`
         }}
       >
-        {/* Checkerboard pattern */}
-        <motion.div 
-          className="absolute inset-0 rounded-[inherit] mix-blend-soft-light"
-          style={{
-            opacity: patternOpacity,
-            backgroundImage: `
-              linear-gradient(45deg, rgba(255, 240, 230, 0.05) 25%, transparent 25%),
-              linear-gradient(-45deg, rgba(255, 240, 230, 0.05) 25%, transparent 25%),
-              linear-gradient(45deg, transparent 75%, rgba(255, 240, 230, 0.05) 75%),
-              linear-gradient(-45deg, transparent 75%, rgba(255, 240, 230, 0.05) 75%)
-            `,
-            backgroundSize: '8px 8px',
-            backgroundPosition: '0 0, 0 4px, 4px -4px, -4px 0px',
-            transition: `all ${transitionConfig.duration}s cubic-bezier(${transitionConfig.ease.join(',')})`
-          }}
-        />
-
-        <div className="relative container mx-auto px-4">
+        <div className="relative container mx-auto px-4 z-40">
           <div className="flex items-center justify-between h-16">
-            {/* Logo with animation */}
+            {/* Single Logo with animation */}
             <motion.div 
               style={{ 
                 x: logoTranslateX,
                 transition: `all ${transitionConfig.duration}s cubic-bezier(${transitionConfig.ease.join(',')})`
               }}
-              className="relative flex items-center"
+              className="w-[140px] flex items-center relative z-40"
             >
               <Link 
                 href="/" 
-                className="relative w-[100px] h-[30px] hover:scale-110 transition-transform duration-200"
+                className="relative w-[100px] h-[30px] hover:scale-110 transition-transform duration-200 cursor-pointer"
               >
                 <Image
                   src="/OOR-LOGO.svg"
@@ -165,50 +148,58 @@ export default function Header() {
             </motion.div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center justify-between flex-1 pl-20">
+            <div className="hidden md:flex items-center justify-between flex-1">
               {/* Centered Nav Items */}
-              <div className="flex-1" /> {/* Spacer */}
-              <nav className="flex items-center gap-8">
-                <Link 
-                  href="/"
-                  className="text-white/70 hover:text-white hover:scale-110 transition-all duration-200"
-                >
-                  Home
-                </Link>
-                <Link 
-                  href="/events/contest"
-                  className="text-white/70 hover:text-white hover:scale-110 transition-all duration-200"
-                >
-                  Creator Contest
-                </Link>
-                <Link
-                  href="https://experience.outofreach3d.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white/70 hover:text-white hover:scale-110 transition-all duration-200"
-                >
-                  Experience
-                </Link>
-                <Link 
-                  href="/contact"
-                  className="text-white/70 hover:text-white hover:scale-110 transition-all duration-200"
-                >
-                  Contact
-                </Link>
-              </nav>
-              <div className="flex-1" /> {/* Spacer */}
-              
+              <div className="flex-1 flex justify-center">
+                <nav className="flex items-center gap-8 flex-wrap justify-center -ml-[70px] relative z-40">
+                  <Link 
+                    href="/"
+                    className="text-white/70 hover:text-white hover:scale-110 transition-all duration-200"
+                  >
+                    Home
+                  </Link>
+                  <Link 
+                    href="/events/contest"
+                    className="text-white/70 hover:text-white hover:scale-110 transition-all duration-200"
+                  >
+                    Creator Contest
+                  </Link>
+                  <Link
+                    href="https://experience.outofreach3d.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/70 hover:text-white hover:scale-110 transition-all duration-200"
+                  >
+                    Experience
+                  </Link>
+                  <Link 
+                    href="/contact"
+                    className="text-white/70 hover:text-white hover:scale-110 transition-all duration-200"
+                  >
+                    Contact
+                  </Link>
+                </nav>
+              </div>
+
               {/* Early Access Button */}
-              <GradientButton asChild>
-                <Link href="/early-access">
-                  Early Access
-                </Link>
-              </GradientButton>
+              <motion.div
+                style={{ 
+                  x: earlyAccessTranslateX,
+                  transition: `all ${transitionConfig.duration}s cubic-bezier(${transitionConfig.ease.join(',')})`
+                }}
+                className="w-[140px] flex justify-end relative z-40"
+              >
+                <GradientButton asChild>
+                  <Link href="/early-access">
+                    Early Access
+                  </Link>
+                </GradientButton>
+              </motion.div>
             </div>
 
             {/* Mobile Menu Button */}
             <button
-              className="lg:hidden text-gray-400 hover:text-white hover:scale-110 transition-all duration-200"
+              className="md:hidden text-gray-400 hover:text-white hover:scale-110 transition-all duration-200"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -266,6 +257,23 @@ export default function Header() {
               </Link>
             </div>
           </motion.nav>
+
+          {/* Re-add the particles effect or related code */}
+          <motion.div 
+            className="absolute inset-0 rounded-[inherit] mix-blend-soft-light"
+            style={{
+              opacity: patternOpacity,
+              backgroundImage: `
+                linear-gradient(45deg, rgba(255, 240, 230, 0.05) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(255, 240, 230, 0.05) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(255, 240, 230, 0.05) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(255, 240, 230, 0.05) 75%)
+              `,
+              backgroundSize: '8px 8px',
+              backgroundPosition: '0 0, 0 4px, 4px -4px, -4px 0px',
+              transition: `all ${transitionConfig.duration}s cubic-bezier(${transitionConfig.ease.join(',')})`
+            }}
+          />
         </div>
       </motion.header>
     </div>

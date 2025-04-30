@@ -24,7 +24,7 @@ export default function LoadingScreen() {
   }, []);
 
   return (
-    <div className="fixed inset-0 bg-[#0A0C13] flex items-center justify-center cursor-none [&_*]:cursor-none">
+    <div className="fixed inset-0 bg-[#0A0C13] flex items-center justify-center cursor-none [&_*]:cursor-none" style={{ zIndex: 2 }}>
       <CustomCursor />
       <motion.div 
         className="text-white text-4xl font-bold"
