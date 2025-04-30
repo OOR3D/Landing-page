@@ -271,6 +271,40 @@ export default function ContestPage() {
                   </Link>
                 </GradientButton>
               </motion.div>
+
+              {/* Animated Down Arrow */}
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ 
+                  opacity: 1,
+                  y: [0, 10, 0],
+                }}
+                transition={{
+                  y: {
+                    duration: 1.5,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  },
+                  opacity: {
+                    duration: 0.5
+                  }
+                }}
+                className="mt-8 text-white/60 flex justify-center items-center w-full"
+              >
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="32" 
+                  height="32" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="2" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                >
+                  <path d="M12 5v14M19 12l-7 7-7-7"/>
+                </svg>
+              </motion.div>
             </div>
           </div>
 
