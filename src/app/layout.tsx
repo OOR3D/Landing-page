@@ -36,16 +36,16 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'OUTOFREACH3D™ - Create Virtual Products',
+    title: 'OUTOFREACH3D™ - Create 3D items for the Virtual World',
     description: 'OOR3D™ gives creators the power to design, customize, and launch digital wearables for IMVU, Second Life, Sims 4, and more — without complicated 3D software.',
     url: 'https://outofreach3d.com',
     siteName: 'OUTOFREACH3D',
     images: [
       {
-        url: 'https://outofreach3d.com/og-image.jpg',
+        url: 'https://outofreach3d.com/preview-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'OUTOFREACH3D™ - Create 3D Products for the virtual world',
+        alt: 'OUTOFREACH3D™ - Create 3D items for the Virtual World',
       },
     ],
     locale: 'en_US',
@@ -53,9 +53,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'OUTOFREACH3D™ - Create Virtual Products',
+    title: 'OUTOFREACH3D™ - Create 3D items for the Virtual World',
     description: 'Create virtual products for IMVU, Second Life, Sims 4, Roblox, Inzoi, GTA 6 and more. Design once, sell everywhere.',
-    images: ['https://outofreach3d.com/og-image.jpg'],
+    images: ['https://outofreach3d.com/preview-image.jpg'],
   },
 }
 
