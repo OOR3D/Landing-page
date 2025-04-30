@@ -130,7 +130,7 @@ export default function Header() {
                 x: logoTranslateX,
                 transition: `all ${transitionConfig.duration}s cubic-bezier(${transitionConfig.ease.join(',')})`
               }}
-              className="w-[140px] flex items-center relative z-40 -ml-5"
+              className="w-[140px] flex items-center relative z-40 -ml-1"
             >
               <Link 
                 href="/" 
@@ -148,10 +148,10 @@ export default function Header() {
             </motion.div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center justify-between flex-1">
+            <div className="hidden lg:flex items-center justify-between flex-1">
               {/* Centered Nav Items */}
               <div className="flex-1 flex justify-center">
-                <nav className="flex items-center gap-8 flex-wrap justify-center -ml-[70px] relative z-40">
+                <nav className="flex items-center gap-6 relative z-40">
                   <Link 
                     href="/"
                     className="text-white/70 hover:text-white hover:scale-110 transition-all duration-200"
@@ -162,7 +162,7 @@ export default function Header() {
                     href="/events/contest"
                     className="text-white/70 hover:text-white hover:scale-110 transition-all duration-200"
                   >
-                    Creator Contest
+                    Events
                   </Link>
                   <Link
                     href="https://experience.outofreach3d.com"
@@ -237,7 +237,7 @@ export default function Header() {
                 className="text-white text-center py-2 transition-all duration-200 hover:scale-110"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Creator Contest
+                Events
               </Link>
               <Link
                 href="https://experience.outofreach3d.com"
