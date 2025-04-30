@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
-import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion'
+import { motion, useScroll, useTransform, useMotionValueEvent, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { GradientButton } from "@/components/ui/gradient-button"
@@ -12,6 +12,18 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const { scrollY } = useScroll()
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isMobileMenuOpen])
 
   // Tighter scroll threshold for more immediate response
   const scrollThreshold = [0, 50]
@@ -206,57 +218,90 @@ export default function Header() {
             </button>
           </div>
 
-          {/* Mobile Navigation */}
-          <motion.nav
-            initial={{ x: '100%' }}
-            animate={isMobileMenuOpen ? { x: '0%' } : { x: '100%' }}
-            transition={{ type: 'tween', duration: 0.3 }}
-            className="fixed top-0 right-0 h-full w-3/4 bg-black/70 backdrop-blur-md z-50 flex flex-col items-center justify-center min-[1155px]:hidden"
-          >
-            <button
-              className="absolute top-4 right-4 text-white"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              <X size={24} />
-            </button>
-            <div className="flex flex-col gap-4 py-4">
-              <GradientButton asChild className="w-full">
-                <Link href="/early-access">
-                  Get Early Access
-                </Link>
-              </GradientButton>
-              <Link 
-                href="/"
-                className="text-white text-center py-2 transition-all duration-200 hover:scale-110"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Home
-              </Link>
-              <Link 
-                href="/events/contest"
-                className="text-white text-center py-2 transition-all duration-200 hover:scale-110"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Events
-              </Link>
-              <Link
-                href="https://experience.outofreach3d.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white text-center py-2 transition-all duration-200 hover:scale-110"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Experience
-              </Link>
-              <Link 
-                href="/contact"
-                className="text-white text-center py-2 transition-all duration-200 hover:scale-110"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Contact
-              </Link>
-            </div>
-          </motion.nav>
+          {/* Mobile Navigation and Backdrop */}
+          <AnimatePresence>
+            {isMobileMenuOpen && (
+              <>
+                {/* Backdrop */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[45]"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  style={{ touchAction: 'none' }}
+                />
+                
+                {/* Mobile Menu */}
+                <motion.nav
+                  initial={{ x: '100%' }}
+                  animate={{ x: '0%' }}
+                  exit={{ x: '100%' }}
+                  transition={{ type: 'tween', duration: 0.3 }}
+                  className="fixed top-0 right-0 h-[100dvh] w-[300px] bg-black/50 backdrop-blur-xl z-[46] flex flex-col overflow-y-auto"
+                  style={{ touchAction: 'none' }}
+                >
+                  {/* Close button */}
+                  <button
+                    className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <X size={24} />
+                  </button>
+
+                  {/* Menu Items Container */}
+                  <div className="flex flex-col h-full pt-20 pb-8 px-8">
+                    {/* Navigation Links */}
+                    <div className="flex-1 flex flex-col gap-6">
+                      <Link 
+                        href="/"
+                        className="text-white/70 hover:text-white text-lg transition-colors"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        Home
+                      </Link>
+                      <Link 
+                        href="/events/contest"
+                        className="text-white/70 hover:text-white text-lg transition-colors"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        Events
+                      </Link>
+                      <Link
+                        href="https://experience.outofreach3d.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white/70 hover:text-white text-lg transition-colors"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        Experience
+                      </Link>
+                      <Link 
+                        href="/contact"
+                        className="text-white/70 hover:text-white text-lg transition-colors"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        Contact
+                      </Link>
+                    </div>
+
+                    {/* Early Access Button at Bottom */}
+                    <div className="mt-auto">
+                      <GradientButton asChild className="w-full">
+                        <Link 
+                          href="/early-access"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          Early Access
+                        </Link>
+                      </GradientButton>
+                    </div>
+                  </div>
+                </motion.nav>
+              </>
+            )}
+          </AnimatePresence>
 
           {/* Checkerboard pattern */}
           <motion.div 

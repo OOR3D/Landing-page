@@ -158,7 +158,7 @@ export default function HomePage() {
                 <div className="max-w-4xl relative mx-auto w-full">
                   <div className="flex justify-center overflow-hidden whitespace-nowrap py-4 [mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent_100%)]">
                     <motion.div 
-                      className="flex items-center gap-16 px-16"
+                      className="flex items-center gap-8 md:gap-16 px-8 md:px-16"
                       animate={{
                         x: [0, -3280]
                       }}
@@ -176,7 +176,7 @@ export default function HomePage() {
                       }}
                     >
                       {[1, 2, 3, 4, 5, 6, 7, 8].map((set) => (
-                        <div key={set} className="flex items-center justify-center gap-16">
+                        <div key={set} className="flex items-center justify-center gap-8 md:gap-16">
                           {[
                             { src: "/Trusted By/stripe.svg", alt: "Stripe" },
                             { src: "/Trusted By/nvidia.svg", alt: "NVIDIA" },
@@ -193,12 +193,12 @@ export default function HomePage() {
                           ].map((logo, index) => (
                             <div 
                               key={index} 
-                              className="flex items-center justify-center mx-4 opacity-90 hover:opacity-100 transition-opacity"
+                              className="flex items-center justify-center mx-2 md:mx-4 opacity-90 hover:opacity-100 transition-opacity"
                             >
                               <Image
                                 src={logo.src}
                                 alt={logo.alt}
-                                className="h-10 w-auto text-white"
+                                className="h-6 md:h-10 w-auto text-white"
                                 width={100}
                                 height={40}
                                 style={{
