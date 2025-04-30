@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'OUTOFREACH3D™ – Create, Customize, and Sell for IMVU, Second Life & More',
-  description: 'Create virtual products for IMVU, Second Life, Sims 4, Roblox, Inzoi, GTA 6 and more. Design once, sell everywhere.',
+  title: 'OUTOFREACH3D™ – Create, Customize, and Sell products on IMVU, Second Life, Sims 4, Roblox, Inzoi, GTA 6 and more',
+  description: 'Create 3D items for IMVU, Second Life, Sims 4, Roblox, Inzoi, GTA 6 and more. Create once, wear & sell everywhere.',
   keywords: [
     'virtual product creation',
     '3D design for games',
@@ -45,13 +45,13 @@ export const metadata: Metadata = {
     'digital assets'
   ],
   openGraph: {
-    title: 'OUTOFREACH3D™ - Create Virtual Products',
-    description: 'OOR3D™ gives creators the power to design, customize, and launch digital wearables for IMVU, Second Life, Sims 4, and more — without complicated 3D software.',
+    title: 'OUTOFREACH3D™ - Create 3D Products for the Virtual World',
+    description: 'OOR3D™ gives creators the power to design, customize and sell digital wearables for IMVU, Second Life, Sims 4, and more — without complicated 3D software.',
     url: 'https://outofreach3d.com',
     siteName: 'OUTOFREACH3D',
     images: [
       {
-        url: 'https://outofreach3d.com/og-image.jpg',
+        url: 'https://outofreach3d.com/preview-image.jpg',
         width: 1200,
         height: 630,
         alt: 'OUTOFREACH3D™ - Create 3D Products for the virtual world'
@@ -62,9 +62,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'OUTOFREACH3D™ - Create Virtual Products',
+    title: 'OUTOFREACH3D™ - Create 3D Products for the Virtual World',
     description: 'Create virtual products for IMVU, Second Life, Sims 4, Roblox, Inzoi, GTA 6 and more. Design once, sell everywhere.',
-    images: ['https://outofreach3d.com/og-image.jpg'],
+    images: ['https://outofreach3d.com/preview-image.jpg'],
   },
   icons: {
     icon: '/favicon.ico',
