@@ -237,3 +237,16 @@ main, div, section {
 .animate-accordion-up {
   animation: accordion-up 0.2s ease-out;
 }
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 20s linear infinite;
+}

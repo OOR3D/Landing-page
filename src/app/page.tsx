@@ -158,13 +158,13 @@ export default function HomePage() {
                 <div className="max-w-4xl relative mx-auto w-full">
                   <div className="flex justify-center overflow-hidden whitespace-nowrap py-8 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent_100%)]">
                     <motion.div 
-                      className="flex items-center gap-16 md:gap-24"
+                      className="flex items-center gap-16"
                       animate={{
                         x: [0, -2400]
                       }}
                       transition={{
                         x: {
-                          duration: 20,
+                          duration: 30,
                           ease: "linear",
                           repeat: Infinity,
                           repeatType: "loop",
@@ -172,46 +172,67 @@ export default function HomePage() {
                         }
                       }}
                     >
-                      {[...Array(3)].map((_, setIndex) => (
-                        <div 
-                          key={`logo-set-${setIndex}`} 
-                          className="flex items-center gap-16 md:gap-24"
-                        >
-                          {[
-                            { src: "/Trusted By/stripe.svg", alt: "Stripe" },
-                            { src: "/Trusted By/nvidia.svg", alt: "NVIDIA" },
-                            { src: "/Trusted By/meta.svg", alt: "Meta" },
-                            { src: "/Trusted By/unity.svg", alt: "Unity" },
-                            { src: "/Trusted By/epicgames.svg", alt: "Epic Games" },
-                            { src: "/Trusted By/blender.svg", alt: "Blender" },
-                            { src: "/Trusted By/sega.svg", alt: "SEGA" },
-                            { src: "/Trusted By/amd.svg", alt: "AMD" },
-                            { src: "/Trusted By/msi.svg", alt: "MSI" },
-                            { src: "/Trusted By/autodeskmaya.svg", alt: "Autodesk Maya" },
-                            { src: "/Trusted By/logitech.svg", alt: "Logitech" },
-                            { src: "/Trusted By/steam.svg", alt: "Steam" }
-                          ].map((logo, index) => (
-                            <motion.div 
-                              key={`logo-${setIndex}-${index}`}
-                              className="flex items-center justify-center opacity-80 hover:opacity-100 transition-all duration-300"
-                              whileHover={{ scale: 1.1 }}
-                            >
-                              <Image
-                                src={logo.src}
-                                alt={logo.alt}
-                                className="h-8 md:h-12 w-auto"
-                                width={120}
-                                height={48}
-                                style={{
-                                  filter: 'brightness(0) invert(1)',
-                                  objectFit: 'contain',
-                                  maxWidth: 'none'
-                                }}
-                              />
-                            </motion.div>
-                          ))}
-                        </div>
-                      ))}
+                      <div className="flex items-center gap-16">
+                        {[
+                          { src: "/Trusted By/stripe.svg", alt: "Stripe" },
+                          { src: "/Trusted By/nvidia.svg", alt: "NVIDIA" },
+                          { src: "/Trusted By/meta.svg", alt: "Meta" },
+                          { src: "/Trusted By/unity.svg", alt: "Unity" },
+                          { src: "/Trusted By/epicgames.svg", alt: "Epic Games" },
+                          { src: "/Trusted By/blender.svg", alt: "Blender" },
+                          { src: "/Trusted By/sega.svg", alt: "SEGA" },
+                          { src: "/Trusted By/amd.svg", alt: "AMD" },
+                          { src: "/Trusted By/msi.svg", alt: "MSI" },
+                          { src: "/Trusted By/autodeskmaya.svg", alt: "Autodesk Maya" },
+                          { src: "/Trusted By/logitech.svg", alt: "Logitech" },
+                          { src: "/Trusted By/steam.svg", alt: "Steam" },
+                          // Second complete set
+                          { src: "/Trusted By/stripe.svg", alt: "Stripe" },
+                          { src: "/Trusted By/nvidia.svg", alt: "NVIDIA" },
+                          { src: "/Trusted By/meta.svg", alt: "Meta" },
+                          { src: "/Trusted By/unity.svg", alt: "Unity" },
+                          { src: "/Trusted By/epicgames.svg", alt: "Epic Games" },
+                          { src: "/Trusted By/blender.svg", alt: "Blender" },
+                          { src: "/Trusted By/sega.svg", alt: "SEGA" },
+                          { src: "/Trusted By/amd.svg", alt: "AMD" },
+                          { src: "/Trusted By/msi.svg", alt: "MSI" },
+                          { src: "/Trusted By/autodeskmaya.svg", alt: "Autodesk Maya" },
+                          { src: "/Trusted By/logitech.svg", alt: "Logitech" },
+                          { src: "/Trusted By/steam.svg", alt: "Steam" },
+                          // Third complete set
+                          { src: "/Trusted By/stripe.svg", alt: "Stripe" },
+                          { src: "/Trusted By/nvidia.svg", alt: "NVIDIA" },
+                          { src: "/Trusted By/meta.svg", alt: "Meta" },
+                          { src: "/Trusted By/unity.svg", alt: "Unity" },
+                          { src: "/Trusted By/epicgames.svg", alt: "Epic Games" },
+                          { src: "/Trusted By/blender.svg", alt: "Blender" },
+                          { src: "/Trusted By/sega.svg", alt: "SEGA" },
+                          { src: "/Trusted By/amd.svg", alt: "AMD" },
+                          { src: "/Trusted By/msi.svg", alt: "MSI" },
+                          { src: "/Trusted By/autodeskmaya.svg", alt: "Autodesk Maya" },
+                          { src: "/Trusted By/logitech.svg", alt: "Logitech" },
+                          { src: "/Trusted By/steam.svg", alt: "Steam" }
+                        ].map((logo, index) => (
+                          <motion.div 
+                            key={`logo-${index}`}
+                            className="flex items-center justify-center opacity-80 hover:opacity-100 transition-all duration-300"
+                            whileHover={{ scale: 1.1 }}
+                          >
+                            <Image
+                              src={logo.src}
+                              alt={logo.alt}
+                              className="h-12 w-auto"
+                              width={120}
+                              height={48}
+                              style={{
+                                filter: 'brightness(0) invert(1)',
+                                objectFit: 'contain',
+                                maxWidth: 'none'
+                              }}
+                            />
+                          </motion.div>
+                        ))}
+                      </div>
                     </motion.div>
                   </div>
                 </div>
