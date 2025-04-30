@@ -16,7 +16,7 @@ export default function FAQPage() {
   return (
     <NavigationWrapper>
       <main className="min-h-screen bg-[#0A0C13] text-white">
-        <section className="relative py-16 sm:py-32">
+        <section className="relative py-16 sm:py-32 pt-32 sm:pt-48">
           {/* Background gradients */}
           <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-[#0A0C13] to-orange-900/20 z-0" />
           <motion.div
@@ -34,7 +34,7 @@ export default function FAQPage() {
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8 }}
-                  className={`text-3xl sm:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className} leading-relaxed py-1 sm:py-2`}
+                  className={`text-2xl sm:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className} leading-tight sm:leading-relaxed py-1 sm:py-2`}
                 >
                   Frequently Asked Questions
                 </motion.h1>
