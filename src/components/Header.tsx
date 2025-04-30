@@ -130,7 +130,7 @@ export default function Header() {
                 x: logoTranslateX,
                 transition: `all ${transitionConfig.duration}s cubic-bezier(${transitionConfig.ease.join(',')})`
               }}
-              className="w-[140px] flex items-center relative z-40"
+              className="w-[140px] flex items-center relative z-40 -ml-5"
             >
               <Link 
                 href="/" 

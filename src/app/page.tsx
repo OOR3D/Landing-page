@@ -109,7 +109,8 @@ export default function HomePage() {
               transition={{ duration: 0.8 }}
               className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed"
             >
-              OOR3D™ makes it easy to design and customize virtual products for IMVU, Second Life, Sims 4, and more — no complicated software, no technical experience needed.
+              Design and customize virtual items for IMVU, Second Life, Sims 4, and more.<br />
+              No complicated software, no prior experience needed. All powered by OOR3D™.
             </motion.h2>
 
             <motion.div
