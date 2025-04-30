@@ -36,7 +36,7 @@ export default function Header() {
       pattern: 0
     },
     final: {
-      width: "40%",
+      width: "50%",
       margin: "16px",
       radius: "40px",
       background: "rgba(7, 9, 14, 0.6)",
