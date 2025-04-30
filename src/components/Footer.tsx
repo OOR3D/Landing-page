@@ -153,9 +153,9 @@ export function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
-          className="text-center text-sm text-gray-500"
+          className="text-center text-sm text-gray-500 px-4 pb-4"
         >
-          © {new Date().getFullYear()} OUTOFREACH, Inc. All rights reserved.
+          © {new Date().getFullYear()} OUTOFREACH™, Inc. All rights reserved.
         </motion.div>
       </motion.div>
     </footer>
