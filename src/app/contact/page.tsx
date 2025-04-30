@@ -17,36 +17,22 @@ const montserrat = Montserrat({
 export default function ContactPage() {
   return (
     <NavigationWrapper>
-      <main className="min-h-screen bg-[#0A0C13] text-white">
-        {/* Hero Section */}
-        <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-[#0A0C13] to-orange-900/20 z-0" />
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 2 }}
-            className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,120,50,0.1),transparent_70%)] z-0"
-          />
-
-          <div className="container mx-auto px-4 z-10">
-            <div className="max-w-3xl mx-auto text-center">
-              <motion.h1
-                initial={{ opacity: 0, y: -50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, ease: "easeOut" }}
-                className={`text-5xl md:text-7xl font-extrabold mb-8 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className}`}
-              >
+      <main className="min-h-screen bg-[#0A0C13] text-white [&_*]:cursor-none">
+        <div className="relative min-h-screen flex flex-col items-center justify-center py-24 md:py-32">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="max-w-3xl mx-auto text-center"
+            >
+              <h1 className={`text-4xl md:text-6xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className}`}>
                 Get in Touch
-              </motion.h1>
+              </h1>
 
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-xl text-gray-300 mb-12"
-              >
+              <p className="text-xl text-gray-300 mb-12 text-center">
                 Have questions? We're here to help however we can.
-              </motion.p>
+              </p>
 
               <div className="grid gap-8 md:grid-cols-2 max-w-2xl mx-auto">
                 {/* Email Contact */}
@@ -92,12 +78,12 @@ export default function ContactPage() {
                   </GradientButton>
                 </motion.div>
               </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* Enhanced bottom gradient */}
           <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-b from-transparent via-[#0A0C13]/80 to-[#0A0C13]" />
-        </section>
+        </div>
       </main>
     </NavigationWrapper>
   )

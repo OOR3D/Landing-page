@@ -134,7 +134,7 @@ export default function Header() {
           transition: `all ${transitionConfig.duration}s cubic-bezier(${transitionConfig.ease.join(',')})`
         }}
       >
-        <div className="relative container mx-auto px-4 z-40">
+        <div className="relative container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             {/* Single Logo with animation */}
             <motion.div 
@@ -211,8 +211,9 @@ export default function Header() {
 
             {/* Mobile Menu Button */}
             <button
-              className="min-[1155px]:hidden text-gray-400 hover:text-white hover:scale-110 transition-all duration-200"
+              className="min-[1155px]:hidden text-gray-400 hover:text-white hover:scale-110 transition-all duration-200 relative z-[60] p-2"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -230,22 +231,21 @@ export default function Header() {
                   transition={{ duration: 0.2 }}
                   className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[45]"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  style={{ touchAction: 'none' }}
                 />
                 
                 {/* Mobile Menu */}
-                <motion.nav
+                <motion.div
                   initial={{ x: '100%' }}
                   animate={{ x: '0%' }}
                   exit={{ x: '100%' }}
                   transition={{ type: 'tween', duration: 0.3 }}
-                  className="fixed top-0 right-0 h-[100dvh] w-[300px] bg-black/50 backdrop-blur-xl z-[46] flex flex-col overflow-y-auto"
-                  style={{ touchAction: 'none' }}
+                  className="fixed top-0 right-0 h-[100dvh] w-[300px] bg-black/50 backdrop-blur-xl z-[50] flex flex-col"
                 >
                   {/* Close button */}
                   <button
                     className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors"
                     onClick={() => setIsMobileMenuOpen(false)}
+                    aria-label="Close menu"
                   >
                     <X size={24} />
                   </button>
@@ -298,7 +298,7 @@ export default function Header() {
                       </GradientButton>
                     </div>
                   </div>
-                </motion.nav>
+                </motion.div>
               </>
             )}
           </AnimatePresence>
