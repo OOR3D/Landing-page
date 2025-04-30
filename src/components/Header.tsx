@@ -265,7 +265,7 @@ export default function Header() {
               {/* Menu Items Container */}
               <div className="flex flex-col h-full pt-24 pb-8 px-8">
                 {/* Navigation Links */}
-                <div className="flex-1 flex flex-col gap-6">
+                <div className="flex flex-col gap-6">
                   <Link 
                     href="/"
                     className="text-white/70 hover:text-white text-lg font-medium transition-colors"
@@ -296,18 +296,16 @@ export default function Header() {
                   >
                     Contact
                   </Link>
-                </div>
-
-                {/* Early Access Button at Bottom */}
-                <div className="mt-auto">
-                  <GradientButton asChild className="w-full">
-                    <Link 
-                      href="/early-access"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      Early Access
-                    </Link>
-                  </GradientButton>
+                  <div className="pt-2">
+                    <GradientButton asChild className="w-full">
+                      <Link 
+                        href="/early-access"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        Early Access
+                      </Link>
+                    </GradientButton>
+                  </div>
                 </div>
               </div>
             </motion.div>
