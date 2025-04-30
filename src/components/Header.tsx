@@ -148,7 +148,7 @@ export default function Header() {
             </motion.div>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center justify-between flex-1">
+            <div className="hidden min-[1155px]:flex items-center justify-between flex-1">
               {/* Centered Nav Items */}
               <div className="flex-1 flex justify-center">
                 <nav className="flex items-center gap-6 relative z-40">
@@ -199,7 +199,7 @@ export default function Header() {
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden text-gray-400 hover:text-white hover:scale-110 transition-all duration-200"
+              className="min-[1155px]:hidden text-gray-400 hover:text-white hover:scale-110 transition-all duration-200"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -211,7 +211,7 @@ export default function Header() {
             initial={{ x: '100%' }}
             animate={isMobileMenuOpen ? { x: '0%' } : { x: '100%' }}
             transition={{ type: 'tween', duration: 0.3 }}
-            className={`fixed top-0 right-0 h-full w-3/4 bg-black/70 backdrop-blur-md z-50 flex flex-col items-center justify-center lg:hidden`}
+            className="fixed top-0 right-0 h-full w-3/4 bg-black/70 backdrop-blur-md z-50 flex flex-col items-center justify-center min-[1155px]:hidden"
           >
             <button
               className="absolute top-4 right-4 text-white"
