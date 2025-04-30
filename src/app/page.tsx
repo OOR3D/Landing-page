@@ -156,7 +156,7 @@ export default function HomePage() {
               {/* Infinite scroll container */}
               <div className="relative flex justify-center overflow-hidden">
                 <div className="max-w-4xl relative mx-auto w-full">
-                  <div className="flex justify-center overflow-hidden whitespace-nowrap py-8 bg-[#0A0C13] [mask-image:linear-gradient(to_right,#0A0C13,transparent_10%,white_20%,white_80%,transparent_90%,#0A0C13)] before:absolute before:inset-0 before:bg-[#0A0C13] before:-z-10">
+                  <div className="flex justify-center overflow-hidden whitespace-nowrap py-8 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent_100%)]">
                     <motion.div 
                       className="flex items-center gap-16 md:gap-24"
                       animate={{
