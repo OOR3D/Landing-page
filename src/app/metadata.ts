@@ -1,4 +1,11 @@
-import { Metadata } from 'next'
+import { Metadata, Viewport } from 'next'
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  themeColor: '#000000',
+}
 
 export const metadata: Metadata = {
   title: 'OUTOFREACH3D™ – Create, Customize, and Sell products on IMVU, Second Life, Sims 4, Roblox, Inzoi, GTA 6 and more',
@@ -83,10 +90,4 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-  },
-  themeColor: '#000000',
 }

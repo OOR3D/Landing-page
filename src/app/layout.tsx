@@ -3,11 +3,18 @@ import './globals.css'
 import Particles from '@/components/Particles'
 import CookieConsent from '@/components/CookieConsent'
 import Script from 'next/script'
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import CustomCursor from '@/components/CustomCursor'
 import MobileWarning from '@/components/MobileWarning'
 
 const inter = Inter({ subsets: ["latin"] })
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  themeColor: '#000000',
+}
 
 export const metadata: Metadata = {
   title: 'OUTOFREACH3D™ – Create, Customize, and Sell for IMVU, Second Life & More',
@@ -18,12 +25,6 @@ export const metadata: Metadata = {
     apple: '/apple-touch-icon.png',
   },
   manifest: '/site.webmanifest',
-  themeColor: '#000000',
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-  },
   robots: {
     index: true,
     follow: true,
