@@ -1,7 +1,7 @@
 export const faqs = [
   {
     question: "What is OOR3D™?",
-    answer: "OOR3D™ started as a 3D studio creating assets for virtual worlds. Today, we've evolved into an independent research and technology lab, focused on making 3D creation faster, easier, and more accessible. Our mission is to give creators the tools to build, customize, and connect their virtual identities across platforms like IMVU, Second Life, Sims 4, and more — and eventually, bring the entire virtual world closer together."
+    answer: "OOR3D™ started as a 3D studio creating assets for virtual worlds. Today, we've evolved into an independent research and technology lab, focused on making 3D creation faster, easier, and more accessible. Our mission is to give creators the tools to build, customize, and connect their virtual identities across platforms like IMVU, Second Life, Sims 4, and more. We also aim to eventually bring the entire virtual world closer together."
   },
   {
     question: "When does this platform release?",
@@ -9,11 +9,11 @@ export const faqs = [
   },
   {
     question: "Do I need to be a pro to join/participate/create?",
-    answer: "Not at all. 🎨 All skill levels are welcome. Whether you're just starting or a pro creator, this is your space to learn, collaborate, and grow — with early access to what we're building."
+    answer: "Not at all. 🎨 All skill levels are welcome. Whether you're just starting or a pro creator, this is your space to learn, collaborate, and grow. You'll also get early access to what we're building."
   },
   {
     question: "Do you do custom meshes?",
-    answer: "Not at the moment — but we run challenges where custom meshes are part of the prize pool. Stay tuned!"
+    answer: "Not at the moment, but we run challenges where custom meshes are part of the prize pool. Stay tuned!"
   },
   {
     question: "Can I make requests for meshes?",

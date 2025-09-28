@@ -6,7 +6,6 @@ import { useState, useEffect } from 'react'
 import { motion, useScroll, useTransform, useMotionValueEvent, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { Button } from "@/components/ui/button"
-import { GradientButton } from "@/components/ui/gradient-button"
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -188,22 +187,24 @@ export default function Header() {
                   }}
                   className="w-[140px] flex justify-end relative z-40"
                 >
-                  <GradientButton asChild>
+                  <Button asChild>
                     <Link href="/early-access">
                       Early Access
                     </Link>
-                  </GradientButton>
+                  </Button>
                 </motion.div>
               </div>
 
               {/* Mobile Menu Button */}
-              <button
-                className="min-[1155px]:hidden text-gray-400 hover:text-white hover:scale-110 transition-all duration-200 relative z-[60] p-2"
+              <Button
+                size="icon"
+                variant="outline"
+                className="min-[1155px]:hidden text-gray-400 hover:text-white hover:scale-110 transition-all duration-200 relative z-[60] p-2 bg-transparent border-transparent"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
               >
                 {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
+              </Button>
             </div>
 
             {/* Checkerboard pattern */}
@@ -267,14 +268,14 @@ export default function Header() {
                     Contact
                   </Link>
                   <div className="pt-2">
-                    <GradientButton asChild className="w-full">
-                      <Link 
+                    <Button asChild className="w-full">
+                      <Link
                         href="/early-access"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         Early Access
                       </Link>
-                    </GradientButton>
+                    </Button>
                   </div>
                 </div>
               </div>

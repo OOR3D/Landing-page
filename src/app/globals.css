@@ -4,10 +4,15 @@
 
 :root {
   --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 15, 15, 20;
-  --background-end-rgb: 10, 10, 15;
+  --background-start-rgb: 12, 12, 20;
+  --background-end-rgb: 8, 10, 18;
   --background: 0 0% 0%;
   --foreground: 0 0% 100%;
+  
+  /* Button theme colors to match OUTOFREACH */
+  --primary: 0 100% 50%;
+  --primary-foreground: 0 0% 98%;
+  --input: 0 0% 14.9%;
 }
 
 html {
@@ -74,6 +79,7 @@ html, body {
 
 main {
   flex: 1 0 auto;
+  background: transparent;
 }
 
 footer {

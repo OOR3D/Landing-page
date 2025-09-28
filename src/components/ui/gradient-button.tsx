@@ -23,13 +23,7 @@ const GradientButton = React.forwardRef<HTMLButtonElement, GradientButtonProps>(
       >
         <Button
           ref={ref}
-          className={cn(
-            "bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700",
-            "text-white font-medium",
-            "border-0 rounded-full",
-            "transition-all duration-300",
-            className
-          )}
+          className={cn(className)}
           {...props}
         >
           {children}

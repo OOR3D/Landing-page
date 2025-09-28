@@ -23,33 +23,12 @@ const montserrat = Montserrat({
 export default function HomePage() {
   const [showContent, setShowContent] = useState(true) // Default to true to avoid flash
   const [isVideoMuted, setIsVideoMuted] = useState(true)
-  const [isDashboardVideoMuted, setIsDashboardVideoMuted] = useState(true)
-  const [isDashboardVideoPlaying, setIsDashboardVideoPlaying] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
-  const dashboardVideoRef = useRef<HTMLVideoElement>(null)
 
   const toggleAudio = () => {
     if (videoRef.current) {
       videoRef.current.muted = !videoRef.current.muted
       setIsVideoMuted(!isVideoMuted)
-    }
-  }
-
-  const toggleDashboardAudio = () => {
-    if (dashboardVideoRef.current) {
-      dashboardVideoRef.current.muted = !dashboardVideoRef.current.muted
-      setIsDashboardVideoMuted(!isDashboardVideoMuted)
-    }
-  }
-
-  const playDashboardVideo = async () => {
-    if (dashboardVideoRef.current) {
-      try {
-        await dashboardVideoRef.current.play()
-        setIsDashboardVideoPlaying(true)
-      } catch (error) {
-        console.log('Video play failed:', error)
-      }
     }
   }
 
@@ -76,28 +55,9 @@ export default function HomePage() {
   return (
     <NavigationWrapper>
       <main className="min-h-screen bg-[#0A0C13] text-white">
-        {/* Background Glow Effects */}
-        <div className="fixed inset-0 pointer-events-none">
-          {/* Top-right glow */}
-          <div className="absolute -top-[30%] right-[10%] w-[50rem] h-[50rem] bg-red-500/20 rounded-full blur-[10rem] animate-pulse" />
-          {/* Left-center glow */}
-          <div className="absolute top-[30%] -left-[20%] w-[40rem] h-[40rem] bg-orange-500/20 rounded-full blur-[10rem] animate-pulse" style={{ animationDelay: '1s' }} />
-          {/* Bottom-right glow */}
-          <div className="absolute bottom-[10%] right-[20%] w-[45rem] h-[45rem] bg-red-500/20 rounded-full blur-[10rem] animate-pulse" style={{ animationDelay: '2s' }} />
-          {/* Center glow */}
-          <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[60rem] h-[60rem] bg-orange-500/10 rounded-full blur-[10rem] animate-pulse" style={{ animationDelay: '1.5s' }} />
-        </div>
 
         {/* Hero Section */}
         <section className="relative min-h-screen flex flex-col items-center justify-center pt-32">
-          <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-[#0A0C13] to-orange-900/20 z-0" />
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1 }}
-            className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,120,50,0.1),transparent_70%)] z-0"
-          />
 
           <div className="container mx-auto px-4 z-10 text-center py-12">
             <motion.div
@@ -263,11 +223,6 @@ export default function HomePage() {
 
         {/* Create Without Complexity Section */}
         <section className="relative bg-[#0A0C13] py-32">
-          {/* Section-specific glow */}
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-[20%] left-[30%] w-[30rem] h-[30rem] bg-red-500/10 rounded-full blur-[8rem] animate-pulse" />
-            <div className="absolute bottom-[10%] right-[20%] w-[35rem] h-[35rem] bg-orange-500/10 rounded-full blur-[8rem] animate-pulse" style={{ animationDelay: '1s' }} />
-          </div>
 
           <div className="container mx-auto px-4">
             <motion.div
@@ -309,75 +264,14 @@ export default function HomePage() {
                 {/* Video container */}
                 <div className="relative rounded-2xl overflow-hidden">
                   <div className="relative aspect-[16/9]">
-                    <video
-                      ref={dashboardVideoRef}
-                      className="w-full h-full object-cover"
-                      loop
-                      muted
-                      playsInline
-                      onPlay={() => setIsDashboardVideoPlaying(true)}
-                      onPause={() => setIsDashboardVideoPlaying(false)}
-                      style={{
-                        objectFit: 'cover',
-                        imageRendering: '-webkit-optimize-contrast'
-                      }}
-                    >
-                      <source src="https://publicmediaok.s3.us-east-1.amazonaws.com/OUTOFREACH3D+Final.mp4" type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
-
-                    {/* Play Button Overlay */}
-                    {!isDashboardVideoPlaying && (
-                      <div className="absolute inset-0 flex items-center justify-center bg-black/20 backdrop-blur-sm z-20">
-                        <button
-                          onClick={playDashboardVideo}
-                          className="group relative flex items-center justify-center w-20 h-20 rounded-full bg-red-500/90 hover:bg-red-500 transition-all duration-300 shadow-2xl hover:scale-110"
-                          aria-label="Play video"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="w-8 h-8 text-white ml-1"
-                            fill="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path d="M8 5v14l11-7z"/>
-                          </svg>
-                          {/* Pulse effect */}
-                          <div className="absolute inset-0 rounded-full border-2 border-red-400/50 animate-ping group-hover:animate-none" />
-                        </button>
-                      </div>
-                    )}
-
-                    {/* Audio Toggle Button - Only show when video is playing */}
-                    {isDashboardVideoPlaying && (
-                      <button
-                        onClick={toggleDashboardAudio}
-                        className="absolute bottom-4 right-4 p-2 rounded-full bg-black/50 hover:bg-black/70 transition-all duration-300 border border-red-500/20 text-white group hover:scale-125 z-10"
-                        aria-label={isDashboardVideoMuted ? "Unmute video" : "Mute video"}
-                      >
-                      {/* Tooltip */}
-                      <div className="absolute bottom-full right-0 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-1000 z-20 translate-x-[-50%]">
-                        <div className="relative">
-                          <div className="bg-black/90 text-white text-sm px-2 py-1 rounded whitespace-nowrap backdrop-blur-sm">
-                            {isDashboardVideoMuted ? "Unmute" : "Mute"}
-                          </div>
-                          {/* Tooltip Arrow */}
-                          <div className="absolute -bottom-1 right-4 border-4 border-transparent border-t-black/90" />
-                        </div>
-                      </div>
-
-                      {isDashboardVideoMuted ? (
-                        <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
-                        </svg>
-                      ) : (
-                        <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-                        </svg>
-                      )}
-                      </button>
-                    )}
+                    <iframe
+                      src="https://www.youtube.com/embed/WTSFG9HavAU?autoplay=1&mute=1&loop=1&playlist=WTSFG9HavAU&modestbranding=1&rel=0&showinfo=0&controls=1"
+                      className="w-full h-full"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      title="OOR3D Demo Video"
+                    ></iframe>
                   </div>
                 </div>
               </div>
@@ -520,10 +414,6 @@ export default function HomePage() {
 
         {/* Platforms Section */}
         <section className="relative bg-[#0A0C13] py-32">
-          {/* Section-specific glow */}
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-[30%] right-[20%] w-[40rem] h-[40rem] bg-red-500/10 rounded-full blur-[8rem] animate-pulse" />
-          </div>
 
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto text-center space-y-12 pt-16">
@@ -587,9 +477,6 @@ export default function HomePage() {
             >
               {/* Card Container */}
               <div className="relative rounded-3xl overflow-hidden bg-[#0A0C13] border border-red-500/20">
-                {/* Background Effects */}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,120,50,0.1),transparent_70%)]" />
-                <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-[#0A0C13] to-orange-900/20" />
                 
                 {/* Content */}
                 <div className="relative flex items-center justify-center gap-16 p-16">
@@ -719,9 +606,6 @@ export default function HomePage() {
 
               {/* Video Container */}
               <div className="max-w-sm mx-auto relative rounded-3xl bg-[#0A0C13] border border-red-500/20 overflow-hidden">
-                {/* Background Effects */}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,120,50,0.1),transparent_70%)]" />
-                <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-[#0A0C13] to-orange-900/20" />
                 
                 {/* Video */}
                 <div className="relative w-full" style={{ aspectRatio: '9/16' }}>
@@ -738,9 +622,11 @@ export default function HomePage() {
                   </video>
 
                   {/* Audio Toggle Button */}
-                  <button
+                  <Button
                     onClick={toggleAudio}
-                    className="absolute bottom-4 right-4 p-2 rounded-full bg-black/50 hover:bg-black/70 transition-all duration-300 border border-red-500/20 text-white group hover:scale-125 z-10"
+                    size="icon"
+                    variant="outline"
+                    className="absolute bottom-4 right-4 rounded-full bg-black/50 hover:bg-black/70 transition-all duration-300 border border-red-500/20 text-white group hover:scale-125 z-10"
                     aria-label={isVideoMuted ? "Unmute video" : "Mute video"}
                   >
                     {/* Tooltip */}
@@ -764,7 +650,7 @@ export default function HomePage() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
                       </svg>
                     )}
-                  </button>
+                  </Button>
                 </div>
               </div>
             </motion.div>
@@ -773,11 +659,6 @@ export default function HomePage() {
 
         {/* Prelaunch Mission Section */}
         <section className="relative bg-[#0A0C13] py-24 overflow-hidden">
-          {/* Section-specific glow */}
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-[20%] left-[10%] w-[35rem] h-[35rem] bg-orange-500/10 rounded-full blur-[8rem] animate-pulse" />
-            <div className="absolute bottom-[20%] right-[10%] w-[35rem] h-[35rem] bg-red-500/10 rounded-full blur-[8rem] animate-pulse" style={{ animationDelay: '1.5s' }} />
-          </div>
 
           <div className="max-w-6xl mx-auto px-4 relative z-10">
             <div className="text-center mb-24">

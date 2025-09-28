@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'OUTOFREACH3D™ - Create 3D items for the Virtual World',
-    description: 'OOR3D™ gives creators the power to design, customize, and launch digital wearables for IMVU, Second Life, Sims 4, and more — without complicated 3D software.',
+    description: 'OOR3D™ gives creators the power to design, customize, and launch digital wearables for IMVU, Second Life, Sims 4, and more. All without complicated 3D software.',
     url: 'https://outofreach3d.com',
     siteName: 'OUTOFREACH3D',
     images: [

@@ -81,10 +81,9 @@ export default function MobileWarning() {
 
           <div className="mt-4 flex justify-end">
             <Button
-              variant="ghost"
               size="sm"
               onClick={handleDismiss}
-              className="text-sm text-gray-400 hover:text-white hover:bg-white/[0.05]"
+              className="text-sm"
             >
               Got it
             </Button>

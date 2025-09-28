@@ -40,8 +40,7 @@ export default function EarlyAccessPopup({ onClose }: EarlyAccessPopupProps) {
             </Link>
           </GradientButton>
           <Button
-            variant="ghost"
-            className="w-full text-gray-400 hover:text-white hover:bg-white/[0.05] rounded-full"
+            className="w-full rounded-full"
             onClick={onClose}
           >
             Close

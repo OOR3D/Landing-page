@@ -5,7 +5,7 @@ import { Montserrat } from "next/font/google"
 import { Button } from "@/components/ui/button"
 import Link from 'next/link'
 import NavigationWrapper from "@/components/NavigationWrapper"
-import { Mail, MessageSquare } from 'lucide-react'
+import { MessageSquare } from 'lucide-react'
 import { GradientButton } from "@/components/ui/gradient-button"
 
 const montserrat = Montserrat({
@@ -34,31 +34,11 @@ export default function ContactPage() {
                 Have questions? We're here to help however we can.
               </p>
 
-              <div className="grid gap-8 md:grid-cols-2 max-w-2xl mx-auto">
-                {/* Email Contact */}
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8, delay: 0.4 }}
-                  className="bg-[#0A0C13]/40 p-8 rounded-2xl border border-gray-800/50 hover:border-red-500/50 transition-all duration-300"
-                >
-                  <Mail className="w-8 h-8 text-red-400 mb-4 mx-auto" />
-                  <h2 className="text-xl font-semibold mb-4">Need help?</h2>
-                  <p className="text-gray-400 mb-4">
-                    Email us and we'll get back to you within 48 hours.
-                  </p>
-                  <Link
-                    href="mailto:support@outofreach3d.com"
-                    className="text-red-400 hover:text-red-300 transition-colors"
-                  >
-                    📧 support@outofreach3d.com
-                  </Link>
-                </motion.div>
-
+              <div className="max-w-md mx-auto">
                 {/* Discord Community */}
                 <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
                   className="bg-[#0A0C13]/40 p-8 rounded-2xl border border-gray-800/50 hover:border-red-500/50 transition-all duration-300 relative z-[1]"
                 >
