@@ -310,7 +310,7 @@ export default function HomePage() {
                 viewport={{ once: true, margin: "-100px" }}
                 className="text-3xl md:text-4xl text-white font-semibold mb-8"
               >
-                You don't need to learn complicated software to create products for your avatar anymore.
+                You do not need permission to make a living from your creations
               </motion.p>
               
               <motion.p
