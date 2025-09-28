@@ -165,27 +165,13 @@ export default function Header() {
                 {/* Centered Nav Items */}
                 <div className="flex-1 flex justify-center">
                   <nav className="flex items-center gap-6 relative z-40">
-                    <Link 
+                    <Link
                       href="/"
                       className="text-white/70 hover:text-white hover:scale-110 transition-all duration-200"
                     >
                       Home
                     </Link>
-                    <Link 
-                      href="/events/contest"
-                      className="text-white/70 hover:text-white hover:scale-110 transition-all duration-200"
-                    >
-                      Events
-                    </Link>
                     <Link
-                      href="https://experience.outofreach3d.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white/70 hover:text-white hover:scale-110 transition-all duration-200"
-                    >
-                      Experience
-                    </Link>
-                    <Link 
                       href="/contact"
                       className="text-white/70 hover:text-white hover:scale-110 transition-all duration-200"
                     >
@@ -266,30 +252,14 @@ export default function Header() {
               <div className="flex flex-col h-full pt-24 pb-8 px-8">
                 {/* Navigation Links */}
                 <div className="flex flex-col gap-6">
-                  <Link 
+                  <Link
                     href="/"
                     className="text-white/70 hover:text-white text-lg font-medium transition-colors"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Home
                   </Link>
-                  <Link 
-                    href="/events/contest"
-                    className="text-white/70 hover:text-white text-lg font-medium transition-colors"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    Events
-                  </Link>
                   <Link
-                    href="https://experience.outofreach3d.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white/70 hover:text-white text-lg font-medium transition-colors"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    Experience
-                  </Link>
-                  <Link 
                     href="/contact"
                     className="text-white/70 hover:text-white text-lg font-medium transition-colors"
                     onClick={() => setIsMobileMenuOpen(false)}

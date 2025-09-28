@@ -4,7 +4,6 @@ import Particles from '@/components/Particles'
 import CookieConsent from '@/components/CookieConsent'
 import Script from 'next/script'
 import type { Metadata } from 'next'
-import CustomCursor from '@/components/CustomCursor'
 import MobileWarning from '@/components/MobileWarning'
 
 const inter = Inter({ subsets: ["latin"] })
@@ -84,7 +83,6 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <Particles />
-        <CustomCursor />
         <MobileWarning />
         {children}
         <CookieConsent />

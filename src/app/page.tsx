@@ -23,15 +23,6 @@ const montserrat = Montserrat({
 
 export default function HomePage() {
   const [showContent, setShowContent] = useState(true) // Default to true to avoid flash
-  const [isVideoMuted, setIsVideoMuted] = useState(true)
-  const videoRef = useRef<HTMLVideoElement>(null)
-
-  const toggleAudio = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !videoRef.current.muted
-      setIsVideoMuted(!isVideoMuted)
-    }
-  }
 
   useEffect(() => {
     // Check if this is the first visit
@@ -55,7 +46,7 @@ export default function HomePage() {
 
   return (
     <NavigationWrapper>
-      <main className="min-h-screen bg-[#0A0C13] text-white [&_*]:cursor-none">
+      <main className="min-h-screen bg-[#0A0C13] text-white">
         {/* Background Glow Effects */}
         <div className="fixed inset-0 pointer-events-none">
           {/* Top-right glow */}
@@ -258,10 +249,19 @@ export default function HomePage() {
               className="text-center mb-24"
             >
               <h2 className={`text-4xl md:text-6xl font-extrabold mb-8 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className} pb-2`}>
-                Skip the complexity.
-                <br />
-                Start bringing your ideas to life.
+                A New Era
               </h2>
+
+              {/* Subtitle */}
+              <motion.p
+                initial={{ opacity: 0, y: -20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="text-2xl md:text-3xl text-gray-300 text-center mb-12"
+              >
+                The Way You Create Is About To Change Forever.
+              </motion.p>
             </motion.div>
 
             {/* Dashboard Image */}
@@ -289,18 +289,12 @@ export default function HomePage() {
                 {/* Image container */}
                 <div className="relative rounded-2xl overflow-hidden">
                   <div className="relative aspect-[16/9]">
-                    <Image
-                      src="/dashboard-hero.jpg"
-                      alt="OOR3D Dashboard"
-                      fill
-                      className="object-cover"
-                      priority
-                      quality={100}
-                      sizes="(max-width: 1024px) 100vw, 1920px"
-                      style={{
-                        objectFit: 'cover',
-                        imageRendering: '-webkit-optimize-contrast'
-                      }}
+                    <iframe
+                      src="https://www.youtube.com/embed/WTSFG9HavAU"
+                      title="OOR3D Demo Video"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="w-full h-full rounded-2xl"
                     />
                   </div>
                 </div>
@@ -603,92 +597,6 @@ export default function HomePage() {
                       </motion.div>
                     </motion.div>
                   </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Video Section */}
-        <section className="relative bg-[#0A0C13] py-24">
-          <div className="container mx-auto px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              className="max-w-4xl mx-auto"
-            >
-              {/* Title */}
-              <motion.h2
-                initial={{ opacity: 0, y: -20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                className={`text-4xl md:text-6xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className}`}
-              >
-                A New Era
-              </motion.h2>
-
-              {/* Subtitle */}
-              <motion.p
-                initial={{ opacity: 0, y: -20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                viewport={{ once: true }}
-                className="text-2xl md:text-3xl text-gray-300 text-center mb-12"
-              >
-                The Way You Create Is About To Change Forever.
-              </motion.p>
-
-              {/* Video Container */}
-              <div className="max-w-sm mx-auto relative rounded-3xl bg-[#0A0C13] border border-red-500/20 overflow-hidden">
-                {/* Background Effects */}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,120,50,0.1),transparent_70%)]" />
-                <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-[#0A0C13] to-orange-900/20" />
-                
-                {/* Video */}
-                <div className="relative w-full" style={{ aspectRatio: '9/16' }}>
-                  <video 
-                    ref={videoRef}
-                    className="w-full h-full object-cover"
-                    autoPlay 
-                    loop 
-                    muted 
-                    playsInline
-                  >
-                    <source src="https://publicmediaok.s3.amazonaws.com/OOR3D+PRELAUNCH+TEASER+(1).mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-
-                  {/* Audio Toggle Button */}
-                  <button
-                    onClick={toggleAudio}
-                    className="absolute bottom-4 right-4 p-2 rounded-full bg-black/50 hover:bg-black/70 transition-all duration-300 border border-red-500/20 text-white group hover:scale-125 z-10"
-                    aria-label={isVideoMuted ? "Unmute video" : "Mute video"}
-                  >
-                    {/* Tooltip */}
-                    <div className="absolute bottom-full right-0 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-1000 z-20 translate-x-[-50%]">
-                      <div className="relative">
-                        <div className="bg-black/90 text-white text-sm px-2 py-1 rounded whitespace-nowrap backdrop-blur-sm">
-                          {isVideoMuted ? "Unmute" : "Mute"}
-                        </div>
-                        {/* Tooltip Arrow */}
-                        <div className="absolute -bottom-1 right-4 border-4 border-transparent border-t-black/90" />
-                      </div>
-                    </div>
-
-                    {isVideoMuted ? (
-                      <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
-                      </svg>
-                    ) : (
-                      <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-                      </svg>
-                    )}
-                  </button>
                 </div>
               </div>
             </motion.div>
