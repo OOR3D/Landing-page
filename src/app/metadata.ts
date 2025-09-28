@@ -83,10 +83,7 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
+  other: {
+    'theme-color': '#000000',
   },
-  themeColor: '#000000',
 }

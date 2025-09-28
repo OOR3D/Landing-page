@@ -8,55 +8,7 @@ import MobileWarning from '@/components/MobileWarning'
 
 const inter = Inter({ subsets: ["latin"] })
 
-export const metadata: Metadata = {
-  title: 'OUTOFREACH3D™ – Create, Customize, and Sell for IMVU, Second Life & More',
-  description: 'Create virtual products for IMVU, Second Life, Sims 4, Roblox, Inzoi, GTA 6 and more. Design once, sell everywhere.',
-  icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
-  },
-  manifest: '/site.webmanifest',
-  themeColor: '#000000',
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  openGraph: {
-    title: 'OUTOFREACH3D™ - Create 3D items for the Virtual World',
-    description: 'OOR3D™ gives creators the power to design, customize, and launch digital wearables for IMVU, Second Life, Sims 4, and more — without complicated 3D software.',
-    url: 'https://outofreach3d.com',
-    siteName: 'OUTOFREACH3D',
-    images: [
-      {
-        url: 'https://outofreach3d.com/preview-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'OUTOFREACH3D™ - Create 3D items for the Virtual World',
-      },
-    ],
-    locale: 'en_US',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'OUTOFREACH3D™ - Create 3D items for the Virtual World',
-    description: 'Create virtual products for IMVU, Second Life, Sims 4, Roblox, Inzoi, GTA 6 and more. Design once, sell everywhere.',
-    images: ['https://outofreach3d.com/preview-image.jpg'],
-  },
-}
+// Metadata is now centralized in metadata.ts and imported in page.tsx
 
 export default function RootLayout({
   children,
@@ -66,6 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
         <script
           async
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}

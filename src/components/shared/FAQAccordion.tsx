@@ -75,7 +75,7 @@ export default function FAQAccordion({ showAll = false }: FAQAccordionProps) {
             <div className="relative">
               <Accordion.Trigger className="flex items-center justify-between w-full py-4 sm:py-6 px-4 sm:px-8 text-left group/trigger">
                 <h3 className="text-base sm:text-lg font-semibold text-gray-200 group-hover:text-white transition-colors duration-300 pr-4">{faq.question}</h3>
-                <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 transform transition-all duration-300 ease-[cubic-bezier(0.87,_0,_0.13,_1)] group-data-[state=open]:rotate-180 group-hover:text-red-400 flex-shrink-0" />
+                <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 transform transition-all duration-300 ease-out group-data-[state=open]:rotate-180 group-hover:text-red-400 flex-shrink-0" />
               </Accordion.Trigger>
               <Accordion.Content className="overflow-hidden data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
                 <div className="px-4 sm:px-8 pb-4 sm:pb-6 text-sm sm:text-base text-gray-400 leading-relaxed">
