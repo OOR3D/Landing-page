@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Backdrop filter fallbacks for better browser support */
+@supports not (backdrop-filter: blur(10px)) {
+  .backdrop-blur-sm { background-color: rgba(0, 0, 0, 0.8) !important; }
+  .backdrop-blur-md { background-color: rgba(0, 0, 0, 0.85) !important; }
+  .backdrop-blur-lg { background-color: rgba(0, 0, 0, 0.9) !important; }
+  .backdrop-blur-xl { background-color: rgba(0, 0, 0, 0.95) !important; }
+  .backdrop-blur-\[12px\] { background-color: rgba(10, 12, 19, 0.9) !important; }
+}
+
 :root {
   --foreground-rgb: 255, 255, 255;
   --background-start-rgb: 15, 15, 20;

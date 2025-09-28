@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 
 interface Particle {
@@ -14,6 +14,8 @@ interface Particle {
 
 export default function Particles() {
   const containerRef = useRef<HTMLDivElement>(null)
+  const [particles, setParticles] = useState<Particle[]>([])
+  const [isMounted, setIsMounted] = useState(false)
   
   // Generate random particles
   const generateParticles = (count: number): Particle[] => {
@@ -27,7 +29,22 @@ export default function Particles() {
     }))
   }
 
-  const particles = generateParticles(75) // Generate 75 particles
+  // Generate particles only on client side after mount
+  useEffect(() => {
+    setIsMounted(true)
+    setParticles(generateParticles(75))
+  }, [])
+
+  // Don't render particles until mounted to prevent hydration mismatch
+  if (!isMounted) {
+    return (
+      <div 
+        ref={containerRef}
+        className="fixed inset-0 pointer-events-none overflow-hidden"
+        style={{ zIndex: 1 }}
+      />
+    )
+  }
 
   return (
     <div 

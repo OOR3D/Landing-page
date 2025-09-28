@@ -11,7 +11,13 @@ import { GradientButton } from "@/components/ui/gradient-button"
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
   const { scrollY } = useScroll()
+
+  // Handle hydration
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
@@ -126,12 +132,13 @@ export default function Header() {
         <motion.header 
           className="w-full relative overflow-hidden"
           style={{
-            width: headerWidth,
-            marginTop: headerMargin,
-            borderRadius: headerRadius,
-            background: headerBackground,
-            backdropFilter: headerBackdropBlur,
-            border: headerBorder,
+            width: isMounted ? headerWidth : "100%",
+            marginTop: isMounted ? headerMargin : "0px",
+            borderRadius: isMounted ? headerRadius : "0px",
+            background: isMounted ? headerBackground : "rgba(10, 12, 19, 0)",
+            backdropFilter: isMounted ? headerBackdropBlur : "blur(0px)",
+            WebkitBackdropFilter: isMounted ? headerBackdropBlur : "blur(0px)", // Safari support
+            border: isMounted ? headerBorder : "1px solid transparent",
             transition: `all ${transitionConfig.duration}s cubic-bezier(${transitionConfig.ease.join(',')})`
           }}
         >
@@ -140,7 +147,7 @@ export default function Header() {
               {/* Single Logo with animation */}
               <motion.div 
                 style={{ 
-                  x: logoTranslateX,
+                  x: isMounted ? logoTranslateX : "0px",
                   transition: `all ${transitionConfig.duration}s cubic-bezier(${transitionConfig.ease.join(',')})`
                 }}
                 className="w-[140px] flex items-center relative z-40 -ml-1"
@@ -183,7 +190,7 @@ export default function Header() {
                 {/* Early Access Button */}
                 <motion.div
                   style={{ 
-                    x: earlyAccessTranslateX,
+                    x: isMounted ? earlyAccessTranslateX : "0px",
                     transition: `all ${transitionConfig.duration}s cubic-bezier(${transitionConfig.ease.join(',')})`
                   }}
                   className="w-[140px] flex justify-end relative z-40"
@@ -210,7 +217,7 @@ export default function Header() {
             <motion.div 
               className="absolute inset-0 mix-blend-soft-light"
               style={{
-                opacity: patternOpacity,
+                opacity: isMounted ? patternOpacity : 0,
                 backgroundImage: `
                   linear-gradient(45deg, rgba(255, 240, 230, 0.05) 25%, transparent 25%),
                   linear-gradient(-45deg, rgba(255, 240, 230, 0.05) 25%, transparent 25%),
@@ -247,6 +254,10 @@ export default function Header() {
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.3 }}
               className="fixed top-0 right-0 h-screen w-[300px] bg-[#0A0C13]/60 backdrop-blur-[12px] z-[50] flex flex-col shadow-2xl border-l border-white/10"
+              style={{
+                backdropFilter: 'blur(12px)',
+                WebkitBackdropFilter: 'blur(12px)' // Safari support
+              }}
             >
               {/* Menu Items Container */}
               <div className="flex flex-col h-full pt-24 pb-8 px-8">
