@@ -3,21 +3,12 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
-import { motion, useScroll, useTransform, useMotionValueEvent, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
-import { Button } from "@/components/ui/button"
 import { GradientButton } from "@/components/ui/gradient-button"
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMounted, setIsMounted] = useState(false)
-  const { scrollY } = useScroll()
-
-  // Handle hydration
-  useEffect(() => {
-    setIsMounted(true)
-  }, [])
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
@@ -31,127 +22,25 @@ export default function Header() {
     }
   }, [isMobileMenuOpen])
 
-  // Tighter scroll threshold for more immediate response
-  const scrollThreshold = [0, 50]
-
-  // Unified transition config for smoother animation
-  const transitionConfig = {
-    duration: 0.5,
-    ease: [0.4, 0, 0.2, 1],
-    stiffness: 100,
-    damping: 30
-  }
-
-  const scrollValues = {
-    initial: {
-      width: "100%",
-      margin: "0px",
-      radius: "0px",
-      background: "rgba(10, 12, 19, 0)",
-      blur: "blur(0px)",
-      border: "1px solid transparent",
-      translate: "0px",
-      pattern: 0
-    },
-    final: {
-      width: "50%",
-      margin: "16px",
-      radius: "40px",
-      background: "rgba(7, 9, 14, 0.6)",
-      blur: "blur(10px)",
-      border: "1px solid rgba(255, 255, 255, 0.1)",
-      translate: "0px",
-      pattern: 0.5
-    }
-  }
-
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    const shouldBeScrolled = latest > scrollThreshold[0]
-    if (isScrolled !== shouldBeScrolled) {
-      setIsScrolled(shouldBeScrolled)
-    }
-  })
-  
-  const headerWidth = useTransform(
-    scrollY,
-    scrollThreshold,
-    [scrollValues.initial.width, scrollValues.final.width]
-  )
-
-  const headerMargin = useTransform(
-    scrollY,
-    scrollThreshold,
-    [scrollValues.initial.margin, scrollValues.final.margin]
-  )
-
-  const headerRadius = useTransform(
-    scrollY,
-    scrollThreshold,
-    [scrollValues.initial.radius, scrollValues.final.radius]
-  )
-
-  const headerBackground = useTransform(
-    scrollY,
-    scrollThreshold,
-    [scrollValues.initial.background, scrollValues.final.background]
-  )
-
-  const headerBackdropBlur = useTransform(
-    scrollY,
-    scrollThreshold,
-    [scrollValues.initial.blur, scrollValues.final.blur]
-  )
-
-  const headerBorder = useTransform(
-    scrollY,
-    scrollThreshold,
-    [scrollValues.initial.border, scrollValues.final.border]
-  )
-
-  const logoTranslateX = useTransform(
-    scrollY,
-    scrollThreshold,
-    [scrollValues.initial.translate, scrollValues.final.translate]
-  )
-
-  const earlyAccessTranslateX = useTransform(
-    scrollY,
-    scrollThreshold,
-    [scrollValues.initial.translate, `-${scrollValues.final.translate}`]
-  )
-
-  const patternOpacity = useTransform(
-    scrollY,
-    scrollThreshold,
-    [scrollValues.initial.pattern, scrollValues.final.pattern]
-  )
-
   return (
     <>
       <div className="fixed top-0 left-0 right-0 z-40 flex justify-center">
-        <motion.header 
-          className="w-full relative overflow-hidden"
+        <header 
+          className="relative overflow-hidden"
           style={{
-            width: isMounted ? headerWidth : "100%",
-            marginTop: isMounted ? headerMargin : "0px",
-            borderRadius: isMounted ? headerRadius : "0px",
-            background: isMounted ? headerBackground : "rgba(10, 12, 19, 0)",
-            backdropFilter: isMounted ? headerBackdropBlur : "blur(0px)",
-            WebkitBackdropFilter: isMounted ? headerBackdropBlur : "blur(0px)", // Safari support
-            border: isMounted ? headerBorder : "1px solid transparent",
-            transition: `all ${transitionConfig.duration}s cubic-bezier(${transitionConfig.ease.join(',')})`
+            width: "50%",
+            marginTop: "16px",
+            borderRadius: "40px",
+            background: "rgba(7, 9, 14, 0.6)",
+            backdropFilter: "blur(10px)",
+            WebkitBackdropFilter: "blur(10px)",
+            border: "1px solid rgba(255, 255, 255, 0.1)"
           }}
         >
           <div className="relative container mx-auto px-4">
             <div className="flex items-center justify-between h-16">
-              {/* Single Logo with animation */}
-              <motion.div 
-                style={{ 
-                  x: isMounted ? logoTranslateX : "0px",
-                  transition: `all ${transitionConfig.duration}s cubic-bezier(${transitionConfig.ease.join(',')})`
-                }}
-                className="w-[140px] flex items-center relative z-40 -ml-1"
-              >
+              {/* Logo */}
+              <div className="w-[140px] flex items-center relative z-40 -ml-1">
                 <Link 
                   href="/" 
                   className="relative w-[100px] h-[30px] hover:scale-110 transition-transform duration-200 cursor-pointer"
@@ -165,7 +54,7 @@ export default function Header() {
                     sizes="100px"
                   />
                 </Link>
-              </motion.div>
+              </div>
 
               {/* Desktop Navigation */}
               <div className="hidden min-[1155px]:flex items-center justify-between flex-1">
@@ -188,19 +77,13 @@ export default function Header() {
                 </div>
 
                 {/* Early Access Button */}
-                <motion.div
-                  style={{ 
-                    x: isMounted ? earlyAccessTranslateX : "0px",
-                    transition: `all ${transitionConfig.duration}s cubic-bezier(${transitionConfig.ease.join(',')})`
-                  }}
-                  className="w-[140px] flex justify-end relative z-40"
-                >
+                <div className="w-[140px] flex justify-end relative z-40">
                   <GradientButton asChild>
                     <Link href="/early-access">
                       Early Access
                     </Link>
                   </GradientButton>
-                </motion.div>
+                </div>
               </div>
 
               {/* Mobile Menu Button */}
@@ -214,10 +97,10 @@ export default function Header() {
             </div>
 
             {/* Checkerboard pattern */}
-            <motion.div 
+            <div 
               className="absolute inset-0 mix-blend-soft-light"
               style={{
-                opacity: isMounted ? patternOpacity : 0,
+                opacity: 0.5,
                 backgroundImage: `
                   linear-gradient(45deg, rgba(255, 240, 230, 0.05) 25%, transparent 25%),
                   linear-gradient(-45deg, rgba(255, 240, 230, 0.05) 25%, transparent 25%),
@@ -225,12 +108,11 @@ export default function Header() {
                   linear-gradient(-45deg, transparent 75%, rgba(255, 240, 230, 0.05) 75%)
                 `,
                 backgroundSize: '8px 8px',
-                backgroundPosition: '0 0, 0 4px, 4px -4px, -4px 0px',
-                transition: `all ${transitionConfig.duration}s cubic-bezier(${transitionConfig.ease.join(',')})`
+                backgroundPosition: '0 0, 0 4px, 4px -4px, -4px 0px'
               }}
             />
           </div>
-        </motion.header>
+        </header>
       </div>
 
       {/* Mobile Navigation and Backdrop - Side Panel */}
