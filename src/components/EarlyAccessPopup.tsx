@@ -4,7 +4,6 @@ import { motion } from "framer-motion"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { GradientButton } from "@/components/ui/gradient-button"
-import CustomCursor from "./CustomCursor"
 
 interface EarlyAccessPopupProps {
   onClose: () => void
@@ -16,10 +15,9 @@ export default function EarlyAccessPopup({ onClose }: EarlyAccessPopupProps) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 flex items-center justify-center bg-black/50 z-50 px-4 cursor-none [&_*]:cursor-none"
+      className="fixed inset-0 flex items-center justify-center bg-black/50 z-50 px-4"
       onClick={onClose}
     >
-      <CustomCursor />
       <motion.div 
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}

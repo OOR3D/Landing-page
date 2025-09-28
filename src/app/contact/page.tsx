@@ -17,7 +17,7 @@ const montserrat = Montserrat({
 export default function ContactPage() {
   return (
     <NavigationWrapper>
-      <main className="min-h-screen bg-[#0A0C13] text-white [&_*]:cursor-none">
+      <main className="min-h-screen bg-[#0A0C13] text-white">
         <div className="relative min-h-screen flex flex-col items-center justify-center py-24 md:py-32">
           <div className="container mx-auto px-4">
             <motion.div

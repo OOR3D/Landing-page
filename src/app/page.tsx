@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Montserrat } from "next/font/google"
 import { Button } from "@/components/ui/button"
-import { GradientButton } from "@/components/ui/gradient-button"
 import LoadingScreen from '@/components/LoadingScreen'
 import { fadeIn, scaleUp } from '@/lib/animations'
 import NavigationWrapper from "@/components/NavigationWrapper"
@@ -24,12 +23,33 @@ const montserrat = Montserrat({
 export default function HomePage() {
   const [showContent, setShowContent] = useState(true) // Default to true to avoid flash
   const [isVideoMuted, setIsVideoMuted] = useState(true)
+  const [isDashboardVideoMuted, setIsDashboardVideoMuted] = useState(true)
+  const [isDashboardVideoPlaying, setIsDashboardVideoPlaying] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
+  const dashboardVideoRef = useRef<HTMLVideoElement>(null)
 
   const toggleAudio = () => {
     if (videoRef.current) {
       videoRef.current.muted = !videoRef.current.muted
       setIsVideoMuted(!isVideoMuted)
+    }
+  }
+
+  const toggleDashboardAudio = () => {
+    if (dashboardVideoRef.current) {
+      dashboardVideoRef.current.muted = !dashboardVideoRef.current.muted
+      setIsDashboardVideoMuted(!isDashboardVideoMuted)
+    }
+  }
+
+  const playDashboardVideo = async () => {
+    if (dashboardVideoRef.current) {
+      try {
+        await dashboardVideoRef.current.play()
+        setIsDashboardVideoPlaying(true)
+      } catch (error) {
+        console.log('Video play failed:', error)
+      }
     }
   }
 
@@ -55,7 +75,7 @@ export default function HomePage() {
 
   return (
     <NavigationWrapper>
-      <main className="min-h-screen bg-[#0A0C13] text-white [&_*]:cursor-none">
+      <main className="min-h-screen bg-[#0A0C13] text-white">
         {/* Background Glow Effects */}
         <div className="fixed inset-0 pointer-events-none">
           {/* Top-right glow */}
@@ -120,14 +140,14 @@ export default function HomePage() {
               transition={{ duration: 0.6 }}
               className="flex flex-col items-center gap-4 mb-16"
             >
-              <GradientButton
+              <Button
                 size="lg"
                 asChild
               >
                 <Link href="/early-access">
                   Get Started
                 </Link>
-              </GradientButton>
+              </Button>
             </motion.div>
 
             {/* Trust Bar Section - Moved inside hero */}
@@ -264,7 +284,7 @@ export default function HomePage() {
               </h2>
             </motion.div>
 
-            {/* Dashboard Image */}
+            {/* Dashboard Video */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -285,23 +305,77 @@ export default function HomePage() {
                 {/* Outer glowing border */}
                 <div className="absolute -inset-4 rounded-[2rem] border-2 border-white/10 blur-[1px]" />
                 <div className="absolute -inset-4 rounded-[2rem] border border-white/5" />
-                
-                {/* Image container */}
+
+                {/* Video container */}
                 <div className="relative rounded-2xl overflow-hidden">
                   <div className="relative aspect-[16/9]">
-                    <Image
-                      src="/dashboard-hero.jpg"
-                      alt="OOR3D Dashboard"
-                      fill
-                      className="object-cover"
-                      priority
-                      quality={100}
-                      sizes="(max-width: 1024px) 100vw, 1920px"
+                    <video
+                      ref={dashboardVideoRef}
+                      className="w-full h-full object-cover"
+                      loop
+                      muted
+                      playsInline
+                      onPlay={() => setIsDashboardVideoPlaying(true)}
+                      onPause={() => setIsDashboardVideoPlaying(false)}
                       style={{
                         objectFit: 'cover',
                         imageRendering: '-webkit-optimize-contrast'
                       }}
-                    />
+                    >
+                      <source src="https://publicmediaok.s3.us-east-1.amazonaws.com/OUTOFREACH3D+Final.mp4" type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+
+                    {/* Play Button Overlay */}
+                    {!isDashboardVideoPlaying && (
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/20 backdrop-blur-sm z-20">
+                        <button
+                          onClick={playDashboardVideo}
+                          className="group relative flex items-center justify-center w-20 h-20 rounded-full bg-red-500/90 hover:bg-red-500 transition-all duration-300 shadow-2xl hover:scale-110"
+                          aria-label="Play video"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="w-8 h-8 text-white ml-1"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M8 5v14l11-7z"/>
+                          </svg>
+                          {/* Pulse effect */}
+                          <div className="absolute inset-0 rounded-full border-2 border-red-400/50 animate-ping group-hover:animate-none" />
+                        </button>
+                      </div>
+                    )}
+
+                    {/* Audio Toggle Button */}
+                    <button
+                      onClick={toggleDashboardAudio}
+                      className="absolute bottom-4 right-4 p-2 rounded-full bg-black/50 hover:bg-black/70 transition-all duration-300 border border-red-500/20 text-white group hover:scale-125 z-10"
+                      aria-label={isDashboardVideoMuted ? "Unmute video" : "Mute video"}
+                    >
+                      {/* Tooltip */}
+                      <div className="absolute bottom-full right-0 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-1000 z-20 translate-x-[-50%]">
+                        <div className="relative">
+                          <div className="bg-black/90 text-white text-sm px-2 py-1 rounded whitespace-nowrap backdrop-blur-sm">
+                            {isDashboardVideoMuted ? "Unmute" : "Mute"}
+                          </div>
+                          {/* Tooltip Arrow */}
+                          <div className="absolute -bottom-1 right-4 border-4 border-transparent border-t-black/90" />
+                        </div>
+                      </div>
+
+                      {isDashboardVideoMuted ? (
+                        <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+                        </svg>
+                      ) : (
+                        <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                        </svg>
+                      )}
+                    </button>
                   </div>
                 </div>
               </div>
@@ -336,7 +410,7 @@ export default function HomePage() {
                 viewport={{ once: true, margin: "-100px" }}
                 className="pt-4"
               >
-                <GradientButton
+                <Button
                   size="lg"
                   asChild
                   className="text-xl py-6 px-12"
@@ -344,7 +418,7 @@ export default function HomePage() {
                   <Link href="/early-access">
                     Create Now
                   </Link>
-                </GradientButton>
+                </Button>
               </motion.div>
             </div>
           </div>
@@ -427,7 +501,7 @@ export default function HomePage() {
                   viewport={{ once: true }}
                   className="mt-12 md:mt-24 flex justify-center w-full"
                 >
-                  <GradientButton
+                  <Button
                     size="lg"
                     asChild
                     className="text-base md:text-xl py-4 md:py-6 px-8 md:px-12"
@@ -435,7 +509,7 @@ export default function HomePage() {
                     <Link href="/early-access">
                       Start Now
                     </Link>
-                  </GradientButton>
+                  </Button>
                 </motion.div>
               </div>
             </motion.div>
@@ -591,7 +665,7 @@ export default function HomePage() {
                         transition={{ duration: 0.8, delay: 0.4 }}
                         viewport={{ once: true }}
                       >
-                        <GradientButton
+                        <Button
                           size="lg"
                           asChild
                           className="text-xl py-6 px-12"
@@ -599,7 +673,7 @@ export default function HomePage() {
                           <Link href="/early-access">
                             Take me there
                           </Link>
-                        </GradientButton>
+                        </Button>
                       </motion.div>
                     </motion.div>
                   </div>
@@ -842,7 +916,7 @@ export default function HomePage() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.6 }}
                   >
-                    <GradientButton
+                    <Button
                       size="lg"
                       asChild
                       className="text-xl py-6 px-12"
@@ -855,7 +929,7 @@ export default function HomePage() {
                           Join Discord
                         </div>
                       </Link>
-                    </GradientButton>
+                    </Button>
                   </motion.div>
                 </motion.div>
               </motion.div>
