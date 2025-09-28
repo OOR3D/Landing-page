@@ -23,7 +23,7 @@ export default function LoadingScreen() {
   }, []);
 
   return (
-    <div className="fixed inset-0 bg-[#0a0f1a] flex items-center justify-center" style={{ zIndex: 2 }}>
+    <div className="fixed inset-0 bg-[#0D0429] flex items-center justify-center" style={{ zIndex: 2 }}>
       <motion.div 
         className="text-white text-4xl font-bold"
         initial={{ opacity: 0 }}

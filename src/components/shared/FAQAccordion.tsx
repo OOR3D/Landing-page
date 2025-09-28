@@ -69,8 +69,8 @@ export default function FAQAccordion({ showAll = false }: FAQAccordionProps) {
             value={`item-${index}`}
             className="relative rounded-[2rem] sm:rounded-[2rem] rounded-[1.25rem] border border-gray-800/30 overflow-hidden group hover:border-red-500/30 transition-all duration-500 ease-in-out"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0a0f1a] via-[#0a0f1a] to-[#0a0f1a] transition-opacity duration-500 ease-in-out" />
-            <div className="absolute inset-0 bg-gradient-to-r from-red-950/10 via-[#0a0f1a] to-red-950/10 opacity-0 group-data-[state=open]:opacity-100 transition-opacity duration-500 ease-in-out" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0D0429] via-[#0D0429] to-[#0D0429] transition-opacity duration-500 ease-in-out" />
+            <div className="absolute inset-0 bg-gradient-to-r from-red-950/10 via-[#0D0429] to-red-950/10 opacity-0 group-data-[state=open]:opacity-100 transition-opacity duration-500 ease-in-out" />
             
             <div className="relative">
               <Accordion.Trigger className="flex items-center justify-between w-full py-4 sm:py-6 px-4 sm:px-8 text-left group/trigger">

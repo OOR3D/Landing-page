@@ -12,7 +12,7 @@ const montserrat = Montserrat({
 
 const DiscordCTA = () => {
   return (
-    <div className="w-full max-w-4xl mx-auto px-8 py-12 text-center bg-[#0a0f1a] rounded-[2rem] border border-white/10">
+    <div className="w-full max-w-4xl mx-auto px-8 py-12 text-center bg-[#0D0429] rounded-[2rem] border border-white/10">
       <div className="relative mb-6">
         <Image
           src="/images/discord-logo.svg"

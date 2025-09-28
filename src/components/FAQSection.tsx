@@ -16,7 +16,7 @@ const montserrat = Montserrat({
 
 export default function FAQSection() {
   return (
-    <section className="relative py-16 sm:py-24 bg-[#0a0f1a]">
+    <section className="relative py-16 sm:py-24 bg-[#0D0429]">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center justify-center gap-2 sm:gap-4 mb-4 sm:mb-6">

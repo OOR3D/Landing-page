@@ -2,24 +2,15 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
-import { Montserrat } from "next/font/google"
 import { Button } from "@/components/ui/button"
 import LoadingScreen from '@/components/LoadingScreen'
-import { fadeIn, scaleUp } from '@/lib/animations'
 import NavigationWrapper from "@/components/NavigationWrapper"
 import Image from 'next/image'
-import PrelaunchMission from '@/components/PrelaunchMission'
 import FAQSection from '@/components/FAQSection'
-import { HelpCircle } from 'lucide-react'
-import NoDownloadsRequired from '@/components/NoDownloadsRequired'
-import MagneticElement from '@/components/MagneticElement'
+import { motion } from 'framer-motion'
+import { Montserrat } from 'next/font/google'
 
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["700"],
-  variable: "--font-montserrat",
-})
+const montserrat = Montserrat({ subsets: ['latin'] })
 
 export default function HomePage() {
   const [showContent, setShowContent] = useState(true) // Default to true to avoid flash
@@ -55,40 +46,38 @@ export default function HomePage() {
 
   return (
     <NavigationWrapper>
-      <main className="min-h-screen bg-[#0a0f1a] text-white">
+      <main className="min-h-screen bg-[#0D0429] text-white">
 
         {/* Hero Section */}
         <section className="relative min-h-screen flex flex-col items-center justify-center pt-32 overflow-hidden">
 
           {/* Background Effects */}
           <div className="absolute inset-0">
-            <div className="absolute top-20 left-10 w-32 h-32 bg-red-500/10 rounded-full blur-2xl animate-pulse" />
-            <div className="absolute bottom-20 right-10 w-40 h-40 bg-blue-500/10 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '1s' }} />
+            <div className="absolute top-20 left-10 w-32 h-32 bg-red-500/10 rounded-full" />
+            <div className="absolute bottom-20 right-10 w-40 h-40 bg-blue-500/10 rounded-full" />
           </div>
 
           <div className="container mx-auto px-4 z-10 text-center py-12">
-            <MagneticElement className="mb-4">
-              <motion.div
-                initial={{ opacity: 0, y: -20, scale: 0.8 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -20, scale: 0.8 }}
-                transition={{ duration: 0.6, type: "spring", stiffness: 200 }}
-              >
-                <span className="inline-block px-6 py-2 bg-gradient-to-r from-red-600/20 to-red-400/20 rounded-full text-sm font-semibold text-red-300 border border-red-400/30 backdrop-blur-xl shadow-lg hover:shadow-red-500/25 transition-all duration-300">
-                  <motion.span
-                    animate={{ textShadow: ["0 0 0px rgba(239, 68, 68, 0.5)", "0 0 10px rgba(239, 68, 68, 0.8)", "0 0 0px rgba(239, 68, 68, 0.5)"] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                  >
-                    PRELAUNCH
-                  </motion.span>
-                </span>
-              </motion.div>
-            </MagneticElement>
+            <motion.div
+              className="mb-4"
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, type: "spring", stiffness: 200 }}
+            >
+              <span className="inline-block px-6 py-2 bg-gradient-to-r from-red-600/20 to-red-400/20 rounded-full text-sm font-semibold text-red-300 border border-red-400/30 backdrop-blur-xl shadow-lg hover:shadow-red-500/25 transition-all duration-300">
+                <motion.span
+                  animate={{ textShadow: ["0 0 0px rgba(239, 68, 68, 0.5)", "0 0 10px rgba(239, 68, 68, 0.8)", "0 0 0px rgba(239, 68, 68, 0.5)"] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  PRELAUNCH
+                </motion.span>
+              </span>
+            </motion.div>
             
             <motion.h1
-              initial={{ opacity: 0, y: -50, rotateX: -30 }}
-              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-              exit={{ opacity: 0, y: -50, rotateX: -30 }}
+              initial={{ opacity: 0, y: -30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -30 }}
               transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
               className={`text-5xl md:text-7xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-red-600 via-red-400 to-red-700 ${montserrat.className} pb-2 mb-8`}
               style={{
@@ -128,61 +117,56 @@ export default function HomePage() {
             </motion.h2>
 
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, type: "spring", stiffness: 200 }}
               className="flex flex-col items-center gap-4 mb-16"
             >
-              <MagneticElement>
-                <motion.div
-                  whileHover={{
-                    boxShadow: "0 0 30px rgba(239, 68, 68, 0.5)",
-                  }}
-                  transition={{ duration: 0.3 }}
+              <motion.div
+                whileHover={{
+                  scale: 1.02,
+                }}
+                transition={{ duration: 0.3 }}
+              >
+                <Button
+                  size="lg"
+                  asChild
+                  className="text-lg px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 border-2 border-red-500/50 hover:border-red-400/80 shadow-lg hover:shadow-red-500/25 transition-all duration-300"
                 >
-                  <Button
-                    size="lg"
-                    asChild
-                    className="text-lg px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 border-2 border-red-500/50 hover:border-red-400/80 shadow-lg hover:shadow-red-500/25 transition-all duration-300"
-                  >
-                    <Link href="/early-access" className="flex items-center gap-2">
-                      <motion.span
-                        animate={{ x: [0, 5, 0] }}
-                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                      >
-                        Get Started
-                      </motion.span>
-                      <motion.svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        animate={{ x: [0, 3, 0] }}
-                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.1 }}
-                      >
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                      </motion.svg>
-                    </Link>
-                  </Button>
-                </motion.div>
-              </MagneticElement>
+                  <Link href="/early-access" className="flex items-center gap-2">
+                    <motion.span
+                      animate={{ x: [0, 5, 0] }}
+                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                      Get Started
+                    </motion.span>
+                    <motion.svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      animate={{ x: [0, 3, 0] }}
+                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.1 }}
+                    >
+                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </motion.svg>
+                  </Link>
+                </Button>
+              </motion.div>
             </motion.div>
 
             {/* Trust Bar Section - Moved inside hero */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 30 }}
               transition={{ duration: 0.8 }}
               className="w-full"
             >
               <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
                 transition={{ duration: 0.6 }}
                 className="text-center mb-8"
               >
@@ -210,30 +194,23 @@ export default function HomePage() {
                   { src: "/Trusted By/logitech.svg", alt: "Logitech" },
                   { src: "/Trusted By/steam.svg", alt: "Steam" }
                 ].map((logo, index) => (
-                  <MagneticElement key={`logo-${index}`} intensity={0.2}>
-                    <motion.div
-                      className="flex items-center justify-center opacity-80 hover:opacity-100 transition-all duration-300 p-2"
-                      whileHover={{
-                        scale: 1.15,
-                        rotateY: 5,
-                        filter: "drop-shadow(0 0 20px rgba(239, 68, 68, 0.3))"
+                  <div
+                    key={`logo-${index}`}
+                    className="flex items-center justify-center opacity-80 hover:opacity-100 transition-all duration-300 p-2"
+                  >
+                    <Image
+                      src={logo.src}
+                      alt={logo.alt}
+                      className="h-12 w-auto"
+                      width={120}
+                      height={48}
+                      style={{
+                        filter: 'brightness(0) invert(1)',
+                        objectFit: 'contain',
+                        maxWidth: 'none'
                       }}
-                      transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
-                    >
-                      <Image
-                        src={logo.src}
-                        alt={logo.alt}
-                        className="h-12 w-auto"
-                        width={120}
-                        height={48}
-                        style={{
-                          filter: 'brightness(0) invert(1)',
-                          objectFit: 'contain',
-                          maxWidth: 'none'
-                        }}
-                      />
-                    </motion.div>
-                  </MagneticElement>
+                    />
+                  </div>
                 ))}
               </div>
             </motion.div>
@@ -241,7 +218,7 @@ export default function HomePage() {
         </section>
 
         {/* Create Without Complexity Section */}
-        <section className="relative bg-[#0a0f1a] py-32">
+        <section className="relative bg-[#0D0429] py-32">
 
           <div className="container mx-auto px-4">
             <motion.div
@@ -261,23 +238,23 @@ export default function HomePage() {
             {/* Dashboard Video */}
             <motion.div
               className="relative max-w-[120rem] mx-auto mb-24"
-              initial={{ opacity: 0, y: 20, rotateX: 10 }}
-              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
               viewport={{ once: true, margin: "-100px" }}
             >
               {/* Star-like glow effects */}
               <div className="absolute -inset-4 rounded-[2rem] opacity-75">
-                <div className="absolute top-0 left-1/4 w-2 h-2 bg-white/30 rounded-full blur-[2px] animate-pulse" />
-                <div className="absolute top-0 right-1/4 w-2 h-2 bg-white/30 rounded-full blur-[2px] animate-pulse" style={{ animationDelay: '0.5s' }} />
-                <div className="absolute bottom-0 left-1/3 w-2 h-2 bg-white/30 rounded-full blur-[2px] animate-pulse" style={{ animationDelay: '1s' }} />
-                <div className="absolute bottom-0 right-1/3 w-2 h-2 bg-white/30 rounded-full blur-[2px] animate-pulse" style={{ animationDelay: '1.5s' }} />
+                <div className="absolute top-0 left-1/4 w-2 h-2 bg-white/30 rounded-full" />
+                <div className="absolute top-0 right-1/4 w-2 h-2 bg-white/30 rounded-full" />
+                <div className="absolute bottom-0 left-1/3 w-2 h-2 bg-white/30 rounded-full" />
+                <div className="absolute bottom-0 right-1/3 w-2 h-2 bg-white/30 rounded-full" />
               </div>
 
               {/* Border container */}
               <div className="relative">
                 {/* Outer glowing border */}
-                <div className="absolute -inset-4 rounded-[2rem] border-2 border-white/10 blur-[1px]" />
+                <div className="absolute -inset-4 rounded-[2rem] border-2 border-white/10" />
                 <div className="absolute -inset-4 rounded-[2rem] border border-white/5" />
 
                 {/* Video container */}
@@ -340,7 +317,7 @@ export default function HomePage() {
         </section>
 
         {/* Who is it for Section */}
-        <section className="relative bg-[#0a0f1a] py-32 w-full">
+        <section className="relative bg-[#0D0429] py-32 w-full">
           <div className="container mx-auto px-4 flex items-center justify-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -366,8 +343,8 @@ export default function HomePage() {
                 <div className="relative h-[300px] md:h-[400px] w-full max-w-5xl mx-auto overflow-hidden">
                   {/* Background effects for text section */}
                   <div className="absolute inset-0 opacity-30">
-                    <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-red-500/5 rounded-full blur-3xl animate-pulse" />
-                    <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-blue-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+                    <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-red-500/5 rounded-full" />
+                    <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-blue-500/5 rounded-full" />
                   </div>
 
                   <div className="relative w-full h-full flex items-center justify-center">
@@ -384,19 +361,16 @@ export default function HomePage() {
                         "Artists",
                         "You"
                       ].map((item, index) => (
-                        <MagneticElement key={item} intensity={0.1}>
-                          <motion.div
-                            className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white ${montserrat.className} cursor-pointer text-center`}
-                            whileHover={{
-                              scale: 1.05,
-                              textShadow: "0 0 30px rgba(239, 68, 68, 0.5)",
-                              rotateY: 2,
-                            }}
-                            transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
-                          >
-                            {item}
-                          </motion.div>
-                        </MagneticElement>
+                        <motion.div
+                          key={item}
+                          className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white ${montserrat.className} cursor-pointer text-center`}
+                          whileHover={{
+                            scale: 1.05,
+                          }}
+                          transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
+                        >
+                          {item}
+                        </motion.div>
                       ))}
                     </div>
                   </div>
@@ -421,7 +395,7 @@ export default function HomePage() {
         </section>
 
         {/* Platforms Section */}
-        <section className="relative bg-[#0a0f1a] py-32">
+        <section className="relative bg-[#0D0429] py-32">
 
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto text-center space-y-12 pt-16">
@@ -474,7 +448,7 @@ export default function HomePage() {
         </section>
 
         {/* No Downloads Required Section - Floating Style */}
-        <section className="relative bg-[#0a0f1a] py-32">
+        <section className="relative bg-[#0D0429] py-32">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -484,7 +458,7 @@ export default function HomePage() {
               className="max-w-6xl mx-auto"
             >
               {/* Card Container */}
-              <div className="relative rounded-3xl overflow-hidden bg-[#0a0f1a] border border-red-500/20">
+              <div className="relative rounded-3xl overflow-hidden bg-[#0D0429] border border-red-500/20">
                 
                 {/* Content */}
                 <div className="relative flex items-center justify-center gap-16 p-16">
@@ -581,7 +555,7 @@ export default function HomePage() {
         </section>
 
         {/* Video Section */}
-        <section className="relative bg-[#0a0f1a] py-24">
+        <section className="relative bg-[#0D0429] py-24">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -613,7 +587,7 @@ export default function HomePage() {
               </motion.p>
 
               {/* Video Container */}
-              <div className="max-w-sm mx-auto relative rounded-3xl bg-[#0a0f1a] border border-red-500/20 overflow-hidden">
+              <div className="max-w-sm mx-auto relative rounded-3xl bg-[#0D0429] border border-red-500/20 overflow-hidden">
                 
                 {/* Video */}
                 <div className="relative w-full" style={{ aspectRatio: '9/16' }}>
@@ -666,7 +640,7 @@ export default function HomePage() {
         </section>
 
         {/* Prelaunch Mission Section */}
-        <section className="relative bg-[#0a0f1a] py-24 overflow-hidden">
+        <section className="relative bg-[#0D0429] py-24 overflow-hidden">
 
           <div className="max-w-6xl mx-auto px-4 relative z-10">
             <div className="text-center mb-24">

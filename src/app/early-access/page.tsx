@@ -19,9 +19,9 @@ export default function EarlyAccess() {
 
   return (
     <NavigationWrapper>
-      <main className="min-h-screen bg-[#0a0f1a] flex flex-col items-center justify-center relative py-40">
+      <main className="min-h-screen bg-[#0D0429] flex flex-col items-center justify-center relative py-40">
         {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-[#0a0f1a] to-red-900/20" />
+        <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-[#0D0429] to-red-900/20" />
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

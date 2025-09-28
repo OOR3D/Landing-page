@@ -40,21 +40,21 @@ export default function Header() {
       width: "100%",
       margin: "0px",
       radius: "0px",
-      background: "rgba(10, 12, 19, 0)",
+      background: "rgba(13, 4, 41, 0)",
       blur: "blur(0px)",
       border: "1px solid transparent",
       translate: "0px",
       pattern: 0
     },
     final: {
-      width: "50%",
-      margin: "16px",
-      radius: "40px",
-      background: "rgba(7, 9, 14, 0.6)",
-      blur: "blur(10px)",
+      width: "60%",
+      margin: "12px",
+      radius: "24px",
+      background: "rgba(13, 4, 41, 0.8)",
+      blur: "blur(8px)",
       border: "1px solid rgba(255, 255, 255, 0.1)",
       translate: "0px",
-      pattern: 0.5
+      pattern: 0.3
     }
   }
 
@@ -142,11 +142,11 @@ export default function Header() {
                   x: logoTranslateX,
                   transition: `all ${transitionConfig.duration}s cubic-bezier(${transitionConfig.ease.join(',')})`
                 }}
-                className="w-[140px] flex items-center relative z-40 -ml-1"
+                className="w-[140px] flex items-center relative z-50 -ml-1"
               >
-                <Link 
-                  href="/" 
-                  className="relative w-[100px] h-[30px] hover:scale-110 transition-transform duration-200 cursor-pointer"
+                <Link
+                  href="/"
+                  className="relative w-[100px] h-[30px] hover:scale-110 transition-transform duration-200 cursor-pointer z-50"
                 >
                   <Image
                     src="/OOR-LOGO.svg"
@@ -163,16 +163,16 @@ export default function Header() {
               <div className="hidden min-[1155px]:flex items-center justify-between flex-1">
                 {/* Centered Nav Items */}
                 <div className="flex-1 flex justify-center">
-                  <nav className="flex items-center gap-6 relative z-40">
+                  <nav className="flex items-center gap-6 relative z-50">
                     <Link
                       href="/"
-                      className="text-white/70 hover:text-white hover:scale-110 transition-all duration-200"
+                      className="text-white/70 hover:text-white hover:scale-110 transition-all duration-200 px-3 py-2 rounded-md relative z-50"
                     >
                       Home
                     </Link>
                     <Link
                       href="/contact"
-                      className="text-white/70 hover:text-white hover:scale-110 transition-all duration-200"
+                      className="text-white/70 hover:text-white hover:scale-110 transition-all duration-200 px-3 py-2 rounded-md relative z-50"
                     >
                       Contact
                     </Link>
@@ -185,7 +185,7 @@ export default function Header() {
                     x: earlyAccessTranslateX,
                     transition: `all ${transitionConfig.duration}s cubic-bezier(${transitionConfig.ease.join(',')})`
                   }}
-                  className="w-[140px] flex justify-end relative z-40"
+                  className="w-[140px] flex justify-end relative z-50"
                 >
                   <Button asChild>
                     <Link href="/early-access">
@@ -247,7 +247,7 @@ export default function Header() {
               animate={{ x: '0%' }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.3 }}
-              className="fixed top-0 right-0 h-screen w-[300px] bg-[#0a0f1a]/60 backdrop-blur-[12px] z-[50] flex flex-col shadow-2xl border-l border-white/10"
+              className="fixed top-0 right-0 h-screen w-[300px] bg-[#0D0429]/60 backdrop-blur-[12px] z-[50] flex flex-col shadow-2xl border-l border-white/10"
             >
               {/* Menu Items Container */}
               <div className="flex flex-col h-full pt-24 pb-8 px-8">
@@ -255,14 +255,14 @@ export default function Header() {
                 <div className="flex flex-col gap-6">
                   <Link
                     href="/"
-                    className="text-white/70 hover:text-white text-lg font-medium transition-colors"
+                    className="text-white/70 hover:text-white text-lg font-medium transition-colors px-4 py-2 rounded-md relative z-50"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Home
                   </Link>
                   <Link
                     href="/contact"
-                    className="text-white/70 hover:text-white text-lg font-medium transition-colors"
+                    className="text-white/70 hover:text-white text-lg font-medium transition-colors px-4 py-2 rounded-md relative z-50"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Contact

@@ -7,9 +7,9 @@ import { scaleUp } from '@/lib/animations'
 
 export default function NoDownloadsRequired() {
   return (
-    <section className="relative overflow-hidden bg-[#0a0f1a] py-24">
+    <section className="relative overflow-hidden bg-[#0D0429] py-24">
       {/* Background gradients */}
-      <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-[#0a0f1a] to-red-900/20" />
+      <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-[#0D0429] to-red-900/20" />
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

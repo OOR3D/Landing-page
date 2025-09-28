@@ -16,7 +16,7 @@ const montserrat = Montserrat({
 export default function TermsPage() {
   return (
     <NavigationWrapper>
-      <main className="min-h-screen bg-[#0a0f1a] text-white py-40">
+      <main className="min-h-screen bg-[#0D0429] text-white py-40">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <motion.div

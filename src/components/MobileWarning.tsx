@@ -55,7 +55,7 @@ export default function MobileWarning() {
         transition={{ duration: 0.3 }}
         className="fixed bottom-4 left-4 right-4 z-[100] pointer-events-none"
       >
-        <div className="bg-[#0a0f1a] border border-red-500/20 rounded-2xl p-4 shadow-xl backdrop-blur-xl pointer-events-auto">
+        <div className="bg-[#0D0429] border border-red-500/20 rounded-2xl p-4 shadow-xl backdrop-blur-xl pointer-events-auto">
           <div className="flex items-start gap-4">
             <div className="flex-shrink-0 p-2 bg-red-500/10 rounded-lg">
               <Smartphone className="w-6 h-6 text-red-400" />

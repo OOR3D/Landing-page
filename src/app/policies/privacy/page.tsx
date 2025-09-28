@@ -15,7 +15,7 @@ const montserrat = Montserrat({
 export default function PrivacyPolicyPage() {
   return (
     <NavigationWrapper>
-      <main className="min-h-screen bg-[#0a0f1a] text-white">
+      <main className="min-h-screen bg-[#0D0429] text-white">
         <div className="container mx-auto px-4 py-40">
           <div className="max-w-4xl mx-auto">
             {/* Back Button */}

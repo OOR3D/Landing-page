@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const PrelaunchMission = () => {
   return (
-    <section className="w-full bg-[#0a0f1a] py-24">
+    <section className="w-full bg-[#0D0429] py-24">
       <div className="max-w-6xl mx-auto px-4">
         <div className="mb-24">
           <motion.h2
