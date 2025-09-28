@@ -30,7 +30,7 @@ export default function ContactForm() {
           type="text"
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          className="bg-[#0A0C13] border-gray-800 focus:border-red-500/50 rounded-xl"
+          className="bg-[#0a0f1a] border-gray-800 focus:border-red-500/50 rounded-xl"
           required
         />
       </div>
@@ -44,7 +44,7 @@ export default function ContactForm() {
           type="email"
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          className="bg-[#0A0C13] border-gray-800 focus:border-red-500/50 rounded-xl"
+          className="bg-[#0a0f1a] border-gray-800 focus:border-red-500/50 rounded-xl"
           required
         />
       </div>

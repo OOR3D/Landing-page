@@ -36,9 +36,9 @@ export default function PoliciesPage() {
 
   return (
     <NavigationWrapper>
-      <main className="min-h-screen bg-[#0A0C13] text-white">
+      <main className="min-h-screen bg-[#0a0f1a] text-white">
         <section className="relative min-h-screen py-40 flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-[#0A0C13] to-orange-900/20 z-0" />
+          <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-[#0a0f1a] to-red-900/20 z-0" />
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -52,7 +52,7 @@ export default function PoliciesPage() {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className={`text-4xl md:text-5xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className} leading-[1.4] md:leading-[1.4] py-2`}
+                className={`text-4xl md:text-5xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-red-300 to-red-500 ${montserrat.className} leading-[1.4] md:leading-[1.4] py-2`}
               >
                 Policy Hub
               </motion.h1>
@@ -75,7 +75,7 @@ export default function PoliciesPage() {
                     transition={{ duration: 0.8, delay: 0.4 + index * 0.2 }}
                   >
                     <Link href={policy.href}>
-                      <div className="bg-[#0A0C13]/40 p-8 rounded-2xl border border-gray-800/50 hover:border-red-500/50 transition-all duration-300 group hover:-translate-y-2">
+                      <div className="bg-[#0a0f1a]/40 p-8 rounded-2xl border border-gray-800/50 hover:border-red-500/50 transition-all duration-300 group hover:-translate-y-2">
                         <div className="mb-6 group-hover:scale-110 transition-transform duration-300">
                           {policy.icon}
                         </div>

@@ -7,9 +7,9 @@ import { scaleUp } from '@/lib/animations'
 
 export default function NoDownloadsRequired() {
   return (
-    <section className="relative overflow-hidden bg-[#0A0C13] py-24">
+    <section className="relative overflow-hidden bg-[#0a0f1a] py-24">
       {/* Background gradients */}
-      <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-[#0A0C13] to-orange-900/20" />
+      <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-[#0a0f1a] to-red-900/20" />
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -38,10 +38,10 @@ export default function NoDownloadsRequired() {
                 </div>
 
                 {/* Main Circle with Text */}
-                <div className="w-32 h-32 rounded-full bg-gradient-to-br from-red-500/20 to-orange-500/20 flex items-center justify-center">
+                <div className="w-32 h-32 rounded-full bg-gradient-to-br from-red-500/20 to-red-400/20 flex items-center justify-center">
                   <div className="text-center">
                     <span className="text-lg font-bold">It's All</span>
-                    <span className="block bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-orange-400 font-bold">Online</span>
+                    <span className="block bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-red-500 font-bold">Online</span>
                   </div>
                 </div>
 
@@ -75,7 +75,7 @@ export default function NoDownloadsRequired() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-2xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-orange-400 to-amber-400">
+              <h3 className="text-2xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-red-300 to-red-500">
                 OOR3D™ REQUIRES ZERO DOWNLOADS OF ANY SOFTWARE.
               </h3>
             </motion.div>

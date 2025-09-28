@@ -15,7 +15,7 @@ const montserrat = Montserrat({
 export default function RefundPolicyPage() {
   return (
     <NavigationWrapper>
-      <main className="min-h-screen bg-[#0A0C13] text-white">
+      <main className="min-h-screen bg-[#0a0f1a] text-white">
         <div className="container mx-auto px-4 py-40">
           <div className="max-w-4xl mx-auto">
             {/* Back Button */}
@@ -40,7 +40,7 @@ export default function RefundPolicyPage() {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className={`text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className} leading-[1.4] md:leading-[1.4] py-2`}
+                className={`text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-red-300 to-red-500 ${montserrat.className} leading-[1.4] md:leading-[1.4] py-2`}
               >
                 Refund Policy
               </motion.h1>

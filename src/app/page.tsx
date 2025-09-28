@@ -13,6 +13,7 @@ import PrelaunchMission from '@/components/PrelaunchMission'
 import FAQSection from '@/components/FAQSection'
 import { HelpCircle } from 'lucide-react'
 import NoDownloadsRequired from '@/components/NoDownloadsRequired'
+import MagneticElement from '@/components/MagneticElement'
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -54,32 +55,65 @@ export default function HomePage() {
 
   return (
     <NavigationWrapper>
-      <main className="min-h-screen bg-[#0A0C13] text-white">
+      <main className="min-h-screen bg-[#0a0f1a] text-white">
 
         {/* Hero Section */}
-        <section className="relative min-h-screen flex flex-col items-center justify-center pt-32">
+        <section className="relative min-h-screen flex flex-col items-center justify-center pt-32 overflow-hidden">
+
+          {/* Background Effects */}
+          <div className="absolute inset-0">
+            <div className="absolute top-20 left-10 w-32 h-32 bg-red-500/10 rounded-full blur-2xl animate-pulse" />
+            <div className="absolute bottom-20 right-10 w-40 h-40 bg-blue-500/10 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '1s' }} />
+          </div>
 
           <div className="container mx-auto px-4 z-10 text-center py-12">
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.6 }}
-              className="mb-4"
-            >
-              <span className="inline-block px-4 py-1.5 bg-gradient-to-r from-red-500/10 to-orange-500/10 rounded-full text-sm font-semibold text-orange-400 border border-orange-500/20 backdrop-blur-xl">
-                PRELAUNCH
-              </span>
-            </motion.div>
+            <MagneticElement className="mb-4">
+              <motion.div
+                initial={{ opacity: 0, y: -20, scale: 0.8 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -20, scale: 0.8 }}
+                transition={{ duration: 0.6, type: "spring", stiffness: 200 }}
+              >
+                <span className="inline-block px-6 py-2 bg-gradient-to-r from-red-600/20 to-red-400/20 rounded-full text-sm font-semibold text-red-300 border border-red-400/30 backdrop-blur-xl shadow-lg hover:shadow-red-500/25 transition-all duration-300">
+                  <motion.span
+                    animate={{ textShadow: ["0 0 0px rgba(239, 68, 68, 0.5)", "0 0 10px rgba(239, 68, 68, 0.8)", "0 0 0px rgba(239, 68, 68, 0.5)"] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    PRELAUNCH
+                  </motion.span>
+                </span>
+              </motion.div>
+            </MagneticElement>
             
             <motion.h1
-              initial={{ opacity: 0, y: -50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -50 }}
-              transition={{ duration: 0.8 }}
-              className={`text-5xl md:text-7xl font-extrabold mb-8 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className} pb-2`}
+              initial={{ opacity: 0, y: -50, rotateX: -30 }}
+              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+              exit={{ opacity: 0, y: -50, rotateX: -30 }}
+              transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
+              className={`text-5xl md:text-7xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-red-600 via-red-400 to-red-700 ${montserrat.className} pb-2 mb-8`}
+              style={{
+                textShadow: "0 0 40px rgba(239, 68, 68, 0.3)",
+              }}
             >
-              Create 3D Products for the Virtual World
+              <motion.span
+                animate={{
+                  backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+                style={{
+                  background: "linear-gradient(90deg, #dc2626, #ef4444, #f87171, #ef4444, #dc2626)",
+                  backgroundSize: "200% 200%",
+                  WebkitBackgroundClip: "text",
+                  backgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
+              >
+                Create 3D Products for the Virtual World
+              </motion.span>
             </motion.h1>
             
             <motion.h2
@@ -97,17 +131,44 @@ export default function HomePage() {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.6, type: "spring", stiffness: 200 }}
               className="flex flex-col items-center gap-4 mb-16"
             >
-              <Button
-                size="lg"
-                asChild
-              >
-                <Link href="/early-access">
-                  Get Started
-                </Link>
-              </Button>
+              <MagneticElement>
+                <motion.div
+                  whileHover={{
+                    boxShadow: "0 0 30px rgba(239, 68, 68, 0.5)",
+                  }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <Button
+                    size="lg"
+                    asChild
+                    className="text-lg px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 border-2 border-red-500/50 hover:border-red-400/80 shadow-lg hover:shadow-red-500/25 transition-all duration-300"
+                  >
+                    <Link href="/early-access" className="flex items-center gap-2">
+                      <motion.span
+                        animate={{ x: [0, 5, 0] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        Get Started
+                      </motion.span>
+                      <motion.svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        animate={{ x: [0, 3, 0] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.1 }}
+                      >
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                      </motion.svg>
+                    </Link>
+                  </Button>
+                </motion.div>
+              </MagneticElement>
             </motion.div>
 
             {/* Trust Bar Section - Moved inside hero */}
@@ -133,96 +194,54 @@ export default function HomePage() {
                 </p>
               </motion.div>
 
-              {/* Infinite scroll container */}
-              <div className="relative flex justify-center overflow-hidden">
-                <div className="max-w-4xl relative mx-auto w-full">
-                  <div className="flex justify-center overflow-hidden whitespace-nowrap py-8 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent_100%)]">
-                    <motion.div 
-                      className="flex items-center gap-16"
-                      animate={{
-                        x: [0, -2400]
+              {/* Trust Partners */}
+              <div className="flex flex-wrap justify-center items-center gap-8 py-8">
+                {[
+                  { src: "/Trusted By/stripe.svg", alt: "Stripe" },
+                  { src: "/Trusted By/nvidia.svg", alt: "NVIDIA" },
+                  { src: "/Trusted By/meta.svg", alt: "Meta" },
+                  { src: "/Trusted By/unity.svg", alt: "Unity" },
+                  { src: "/Trusted By/epicgames.svg", alt: "Epic Games" },
+                  { src: "/Trusted By/blender.svg", alt: "Blender" },
+                  { src: "/Trusted By/sega.svg", alt: "SEGA" },
+                  { src: "/Trusted By/amd.svg", alt: "AMD" },
+                  { src: "/Trusted By/msi.svg", alt: "MSI" },
+                  { src: "/Trusted By/autodeskmaya.svg", alt: "Autodesk Maya" },
+                  { src: "/Trusted By/logitech.svg", alt: "Logitech" },
+                  { src: "/Trusted By/steam.svg", alt: "Steam" }
+                ].map((logo, index) => (
+                  <MagneticElement key={`logo-${index}`} intensity={0.2}>
+                    <motion.div
+                      className="flex items-center justify-center opacity-80 hover:opacity-100 transition-all duration-300 p-2"
+                      whileHover={{
+                        scale: 1.15,
+                        rotateY: 5,
+                        filter: "drop-shadow(0 0 20px rgba(239, 68, 68, 0.3))"
                       }}
-                      transition={{
-                        x: {
-                          duration: 30,
-                          ease: "linear",
-                          repeat: Infinity,
-                          repeatType: "loop",
-                          repeatDelay: 0
-                        }
-                      }}
+                      transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
                     >
-                      <div className="flex items-center gap-16">
-                        {[
-                          { src: "/Trusted By/stripe.svg", alt: "Stripe" },
-                          { src: "/Trusted By/nvidia.svg", alt: "NVIDIA" },
-                          { src: "/Trusted By/meta.svg", alt: "Meta" },
-                          { src: "/Trusted By/unity.svg", alt: "Unity" },
-                          { src: "/Trusted By/epicgames.svg", alt: "Epic Games" },
-                          { src: "/Trusted By/blender.svg", alt: "Blender" },
-                          { src: "/Trusted By/sega.svg", alt: "SEGA" },
-                          { src: "/Trusted By/amd.svg", alt: "AMD" },
-                          { src: "/Trusted By/msi.svg", alt: "MSI" },
-                          { src: "/Trusted By/autodeskmaya.svg", alt: "Autodesk Maya" },
-                          { src: "/Trusted By/logitech.svg", alt: "Logitech" },
-                          { src: "/Trusted By/steam.svg", alt: "Steam" },
-                          // Second complete set
-                          { src: "/Trusted By/stripe.svg", alt: "Stripe" },
-                          { src: "/Trusted By/nvidia.svg", alt: "NVIDIA" },
-                          { src: "/Trusted By/meta.svg", alt: "Meta" },
-                          { src: "/Trusted By/unity.svg", alt: "Unity" },
-                          { src: "/Trusted By/epicgames.svg", alt: "Epic Games" },
-                          { src: "/Trusted By/blender.svg", alt: "Blender" },
-                          { src: "/Trusted By/sega.svg", alt: "SEGA" },
-                          { src: "/Trusted By/amd.svg", alt: "AMD" },
-                          { src: "/Trusted By/msi.svg", alt: "MSI" },
-                          { src: "/Trusted By/autodeskmaya.svg", alt: "Autodesk Maya" },
-                          { src: "/Trusted By/logitech.svg", alt: "Logitech" },
-                          { src: "/Trusted By/steam.svg", alt: "Steam" },
-                          // Third complete set
-                          { src: "/Trusted By/stripe.svg", alt: "Stripe" },
-                          { src: "/Trusted By/nvidia.svg", alt: "NVIDIA" },
-                          { src: "/Trusted By/meta.svg", alt: "Meta" },
-                          { src: "/Trusted By/unity.svg", alt: "Unity" },
-                          { src: "/Trusted By/epicgames.svg", alt: "Epic Games" },
-                          { src: "/Trusted By/blender.svg", alt: "Blender" },
-                          { src: "/Trusted By/sega.svg", alt: "SEGA" },
-                          { src: "/Trusted By/amd.svg", alt: "AMD" },
-                          { src: "/Trusted By/msi.svg", alt: "MSI" },
-                          { src: "/Trusted By/autodeskmaya.svg", alt: "Autodesk Maya" },
-                          { src: "/Trusted By/logitech.svg", alt: "Logitech" },
-                          { src: "/Trusted By/steam.svg", alt: "Steam" }
-                        ].map((logo, index) => (
-                          <motion.div 
-                            key={`logo-${index}`}
-                            className="flex items-center justify-center opacity-80 hover:opacity-100 transition-all duration-300"
-                            whileHover={{ scale: 1.1 }}
-                          >
-                            <Image
-                              src={logo.src}
-                              alt={logo.alt}
-                              className="h-12 w-auto"
-                              width={120}
-                              height={48}
-                              style={{
-                                filter: 'brightness(0) invert(1)',
-                                objectFit: 'contain',
-                                maxWidth: 'none'
-                              }}
-                            />
-                          </motion.div>
-                        ))}
-                      </div>
+                      <Image
+                        src={logo.src}
+                        alt={logo.alt}
+                        className="h-12 w-auto"
+                        width={120}
+                        height={48}
+                        style={{
+                          filter: 'brightness(0) invert(1)',
+                          objectFit: 'contain',
+                          maxWidth: 'none'
+                        }}
+                      />
                     </motion.div>
-                  </div>
-                </div>
+                  </MagneticElement>
+                ))}
               </div>
             </motion.div>
           </div>
         </section>
 
         {/* Create Without Complexity Section */}
-        <section className="relative bg-[#0A0C13] py-32">
+        <section className="relative bg-[#0a0f1a] py-32">
 
           <div className="container mx-auto px-4">
             <motion.div
@@ -232,20 +251,20 @@ export default function HomePage() {
               transition={{ duration: 0.8 }}
               className="text-center mb-24"
             >
-              <h2 className={`text-4xl md:text-6xl font-extrabold mb-8 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className} pb-2`}>
-                Skip the complexity.
+              <h2 className={`text-4xl md:text-6xl font-extrabold mb-8 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-red-600 via-red-400 to-red-700 ${montserrat.className} pb-2`}>
+                This isn't a platform.
                 <br />
-                Start bringing your ideas to life.
+                It's independence.
               </h2>
             </motion.div>
 
             {/* Dashboard Video */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true, margin: "-100px" }}
               className="relative max-w-[120rem] mx-auto mb-24"
+              initial={{ opacity: 0, y: 20, rotateX: 10 }}
+              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+              transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
+              viewport={{ once: true, margin: "-100px" }}
             >
               {/* Star-like glow effects */}
               <div className="absolute -inset-4 rounded-[2rem] opacity-75">
@@ -265,7 +284,7 @@ export default function HomePage() {
                 <div className="relative rounded-2xl overflow-hidden">
                   <div className="relative aspect-[16/9]">
                     <iframe
-                      src="https://www.youtube.com/embed/WTSFG9HavAU?autoplay=1&mute=1&loop=1&playlist=WTSFG9HavAU&modestbranding=1&rel=0&showinfo=0&controls=1"
+                      src="https://www.youtube.com/embed/WTSFG9HavAU?autoplay=0&mute=0&loop=1&playlist=WTSFG9HavAU&modestbranding=1&rel=0&showinfo=0&controls=1"
                       className="w-full h-full"
                       frameBorder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -288,7 +307,7 @@ export default function HomePage() {
               >
                 You don't need to learn complicated software to create products for your avatar anymore.
               </motion.p>
-              
+
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -321,7 +340,7 @@ export default function HomePage() {
         </section>
 
         {/* Who is it for Section */}
-        <section className="relative bg-[#0A0C13] py-32 w-full">
+        <section className="relative bg-[#0a0f1a] py-32 w-full">
           <div className="container mx-auto px-4 flex items-center justify-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -330,7 +349,7 @@ export default function HomePage() {
               viewport={{ once: true }}
               className="w-full flex flex-col items-center justify-center"
             >
-              <h2 className={`text-4xl md:text-6xl font-bold mb-16 bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className} text-center`}>
+              <h2 className={`text-4xl md:text-6xl font-bold mb-16 bg-clip-text text-transparent bg-gradient-to-r from-red-600 via-red-400 to-red-700 ${montserrat.className} text-center`}>
                 No Experience, No Problem
               </h2>
 
@@ -345,47 +364,40 @@ export default function HomePage() {
 
               <div className="relative min-h-[400px] md:min-h-[600px] w-full flex flex-col items-center justify-center mb-8 md:mb-16">
                 <div className="relative h-[300px] md:h-[400px] w-full max-w-5xl mx-auto overflow-hidden">
+                  {/* Background effects for text section */}
+                  <div className="absolute inset-0 opacity-30">
+                    <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-red-500/5 rounded-full blur-3xl animate-pulse" />
+                    <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-blue-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+                  </div>
+
                   <div className="relative w-full h-full flex items-center justify-center">
-                    <div className="flex justify-center overflow-hidden h-full w-full [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent_100%)]">
-                      <motion.div 
-                        className="flex flex-col items-center gap-8 md:gap-16 pt-16 md:pt-32"
-                        animate={{
-                          y: [0, -2340]
-                        }}
-                        transition={{
-                          y: {
-                            duration: 30,
-                            ease: "linear",
-                            repeat: Infinity,
-                            repeatType: "loop",
-                            repeatDelay: 0
-                          }
-                        }}
-                      >
-                        {[1, 2, 3, 4, 5, 6].map((set) => (
-                          <div key={set} className="flex flex-col items-center justify-center gap-8 md:gap-16">
-                            {[
-                              "Beginners",
-                              "Dreamers",
-                              "First-Timers",
-                              "Professionals",
-                              "Creators",
-                              "Amateurs",
-                              "Businesses",
-                              "Designers",
-                              "Artists",
-                              "You"
-                            ].map((item, index) => (
-                              <div 
-                                key={`${set}-${index}`}
-                                className={`text-4xl sm:text-6xl md:text-7xl lg:text-9xl font-bold text-white ${montserrat.className}`}
-                              >
-                                {item}
-                              </div>
-                            ))}
-                          </div>
-                        ))}
-                      </motion.div>
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-12 max-w-4xl">
+                      {[
+                        "Beginners",
+                        "Dreamers",
+                        "First-Timers",
+                        "Professionals",
+                        "Creators",
+                        "Amateurs",
+                        "Businesses",
+                        "Designers",
+                        "Artists",
+                        "You"
+                      ].map((item, index) => (
+                        <MagneticElement key={item} intensity={0.1}>
+                          <motion.div
+                            className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white ${montserrat.className} cursor-pointer text-center`}
+                            whileHover={{
+                              scale: 1.05,
+                              textShadow: "0 0 30px rgba(239, 68, 68, 0.5)",
+                              rotateY: 2,
+                            }}
+                            transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
+                          >
+                            {item}
+                          </motion.div>
+                        </MagneticElement>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -393,15 +405,11 @@ export default function HomePage() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8 }}
+                  transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
                   viewport={{ once: true }}
                   className="mt-12 md:mt-24 flex justify-center w-full"
                 >
-                  <Button
-                    size="lg"
-                    asChild
-                    className="text-base md:text-xl py-4 md:py-6 px-8 md:px-12"
-                  >
+                  <Button asChild>
                     <Link href="/early-access">
                       Start Now
                     </Link>
@@ -413,7 +421,7 @@ export default function HomePage() {
         </section>
 
         {/* Platforms Section */}
-        <section className="relative bg-[#0A0C13] py-32">
+        <section className="relative bg-[#0a0f1a] py-32">
 
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto text-center space-y-12 pt-16">
@@ -423,7 +431,7 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                <h2 className={`text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className}`}>
+                <h2 className={`text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-red-600 via-red-400 to-red-700 ${montserrat.className}`}>
                   Platform Compatibility
                 </h2>
                 <motion.div 
@@ -466,7 +474,7 @@ export default function HomePage() {
         </section>
 
         {/* No Downloads Required Section - Floating Style */}
-        <section className="relative bg-[#0A0C13] py-32">
+        <section className="relative bg-[#0a0f1a] py-32">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -476,7 +484,7 @@ export default function HomePage() {
               className="max-w-6xl mx-auto"
             >
               {/* Card Container */}
-              <div className="relative rounded-3xl overflow-hidden bg-[#0A0C13] border border-red-500/20">
+              <div className="relative rounded-3xl overflow-hidden bg-[#0a0f1a] border border-red-500/20">
                 
                 {/* Content */}
                 <div className="relative flex items-center justify-center gap-16 p-16">
@@ -519,7 +527,7 @@ export default function HomePage() {
                           <div className="absolute inset-0 flex items-center justify-center">
                             <div className="text-center whitespace-nowrap">
                               <span className="text-xl font-bold text-white">It's All </span>
-                              <span className="text-xl bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-orange-400 font-bold">Online</span>
+                              <span className="text-xl bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-red-500 font-bold">Online</span>
                             </div>
                           </div>
                         </div>
@@ -544,7 +552,7 @@ export default function HomePage() {
                         viewport={{ once: true }}
                         className="text-3xl md:text-5xl font-bold mb-6"
                       >
-                        <span className={`bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className}`}>
+                        <span className={`bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-red-300 to-red-500 ${montserrat.className}`}>
                           OOR3D™ requires no downloads of any softwares.
                         </span>
                       </motion.h3>
@@ -573,7 +581,7 @@ export default function HomePage() {
         </section>
 
         {/* Video Section */}
-        <section className="relative bg-[#0A0C13] py-24">
+        <section className="relative bg-[#0a0f1a] py-24">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -588,7 +596,7 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                className={`text-4xl md:text-6xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className}`}
+                className={`text-4xl md:text-6xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-red-600 via-red-400 to-red-700 ${montserrat.className}`}
               >
                 A New Era
               </motion.h2>
@@ -605,7 +613,7 @@ export default function HomePage() {
               </motion.p>
 
               {/* Video Container */}
-              <div className="max-w-sm mx-auto relative rounded-3xl bg-[#0A0C13] border border-red-500/20 overflow-hidden">
+              <div className="max-w-sm mx-auto relative rounded-3xl bg-[#0a0f1a] border border-red-500/20 overflow-hidden">
                 
                 {/* Video */}
                 <div className="relative w-full" style={{ aspectRatio: '9/16' }}>
@@ -653,12 +661,12 @@ export default function HomePage() {
                   </Button>
                 </div>
               </div>
-            </motion.div>
+              </motion.div>
           </div>
         </section>
 
         {/* Prelaunch Mission Section */}
-        <section className="relative bg-[#0A0C13] py-24 overflow-hidden">
+        <section className="relative bg-[#0a0f1a] py-24 overflow-hidden">
 
           <div className="max-w-6xl mx-auto px-4 relative z-10">
             <div className="text-center mb-24">
@@ -667,7 +675,7 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                className={`text-4xl md:text-6xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className}`}
+                className={`text-4xl md:text-6xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-red-600 via-red-400 to-red-700 ${montserrat.className}`}
               >
                 Prelaunch Mission
               </motion.h2>
@@ -700,7 +708,7 @@ export default function HomePage() {
                   whileInView={{ opacity: 1 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
                   viewport={{ once: true }}
-                  className="bg-gradient-to-br from-red-500/10 to-orange-500/10 rounded-[2rem] p-8 border border-red-500/20 backdrop-blur-xl"
+                  className="bg-gradient-to-br from-red-500/10 to-red-400/10 rounded-[2rem] p-8 border border-red-500/20 backdrop-blur-xl"
                 >
                   <div className="flex items-center justify-center mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -726,7 +734,7 @@ export default function HomePage() {
                   whileInView={{ opacity: 1 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
                   viewport={{ once: true }}
-                  className="bg-gradient-to-br from-red-500/10 to-orange-500/10 rounded-[2rem] p-8 border border-red-500/20 backdrop-blur-xl"
+                  className="bg-gradient-to-br from-red-500/10 to-red-400/10 rounded-[2rem] p-8 border border-red-500/20 backdrop-blur-xl"
                 >
                   <div className="flex items-center justify-center mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -752,7 +760,7 @@ export default function HomePage() {
                   whileInView={{ opacity: 1 }}
                   transition={{ duration: 0.8, delay: 0.6 }}
                   viewport={{ once: true }}
-                  className="bg-gradient-to-br from-red-500/10 to-orange-500/10 rounded-[2rem] p-8 border border-red-500/20 backdrop-blur-xl"
+                  className="bg-gradient-to-br from-red-500/10 to-red-400/10 rounded-[2rem] p-8 border border-red-500/20 backdrop-blur-xl"
                 >
                   <div className="flex items-center justify-center mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -772,7 +780,7 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="bg-gradient-to-br from-red-500/10 to-orange-500/10 rounded-xl p-12 border border-red-500/20 text-center relative overflow-hidden backdrop-blur-xl"
+                className="bg-gradient-to-br from-red-500/10 to-red-400/10 rounded-xl p-12 border border-red-500/20 text-center relative overflow-hidden backdrop-blur-xl"
               >
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -781,7 +789,7 @@ export default function HomePage() {
                   transition={{ duration: 0.8, delay: 0.2 }}
                   className="relative z-10"
                 >
-                  <h3 className={`text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className}`}>
+                  <h3 className={`text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-red-600 via-red-400 to-red-700 ${montserrat.className}`}>
                     Join Our Discord Community
                   </h3>
                   <motion.p 

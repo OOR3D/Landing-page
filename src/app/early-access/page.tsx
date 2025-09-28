@@ -19,9 +19,9 @@ export default function EarlyAccess() {
 
   return (
     <NavigationWrapper>
-      <main className="min-h-screen bg-[#0a0c13] flex flex-col items-center justify-center relative py-40">
+      <main className="min-h-screen bg-[#0a0f1a] flex flex-col items-center justify-center relative py-40">
         {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-[#0A0C13] to-orange-900/20" />
+        <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-[#0a0f1a] to-red-900/20" />
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -34,7 +34,7 @@ export default function EarlyAccess() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className={`text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 leading-[1.4] md:leading-[1.4] py-2 ${montserrat.className}`}
+            className={`text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-red-300 to-red-500 leading-[1.4] md:leading-[1.4] py-2 ${montserrat.className}`}
           >
             Get Early Access to OOR3D™
           </motion.h1>

@@ -51,7 +51,7 @@ export default function CookieConsent() {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
-            className="relative w-full max-w-md mx-4 p-8 bg-[#0A0C13] rounded-2xl border border-red-500/20 shadow-2xl [&_*]:!cursor-default"
+            className="relative w-full max-w-md mx-4 p-8 bg-[#0a0f1a] rounded-2xl border border-red-500/20 shadow-2xl [&_*]:!cursor-default"
           >
             <div className="flex flex-col items-center text-center gap-6">
               <div className="rounded-full bg-red-500/10 p-3">

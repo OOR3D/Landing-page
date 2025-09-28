@@ -12,7 +12,7 @@ const montserrat = Montserrat({
 
 const DiscordCTA = () => {
   return (
-    <div className="w-full max-w-4xl mx-auto px-8 py-12 text-center bg-[#0A0C13] rounded-[2rem] border border-white/10">
+    <div className="w-full max-w-4xl mx-auto px-8 py-12 text-center bg-[#0a0f1a] rounded-[2rem] border border-white/10">
       <div className="relative mb-6">
         <Image
           src="/images/discord-logo.svg"
@@ -22,7 +22,7 @@ const DiscordCTA = () => {
           className="mx-auto"
         />
       </div>
-      <h2 className={`text-3xl md:text-4xl font-bold mb-5 bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className}`}>
+      <h2 className={`text-3xl md:text-4xl font-bold mb-5 bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-red-300 to-red-500 ${montserrat.className}`}>
         JOIN OUR DISCORD COMMUNITY
       </h2>
       <p className="text-base md:text-lg text-gray-300 max-w-2xl mx-auto mb-6">

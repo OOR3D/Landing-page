@@ -17,7 +17,7 @@ const montserrat = Montserrat({
 export default function ContactPage() {
   return (
     <NavigationWrapper>
-      <main className="min-h-screen bg-[#0A0C13] text-white">
+      <main className="min-h-screen bg-[#0a0f1a] text-white">
         <div className="relative min-h-screen flex flex-col items-center justify-center py-24 md:py-32">
           <div className="container mx-auto px-4">
             <motion.div
@@ -26,7 +26,7 @@ export default function ContactPage() {
               transition={{ duration: 0.8 }}
               className="max-w-3xl mx-auto text-center"
             >
-              <h1 className={`text-4xl md:text-6xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className}`}>
+              <h1 className={`text-4xl md:text-6xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-red-300 to-red-500 ${montserrat.className}`}>
                 Get in Touch
               </h1>
 
@@ -40,7 +40,7 @@ export default function ContactPage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
-                  className="bg-[#0A0C13]/40 p-8 rounded-2xl border border-gray-800/50 hover:border-red-500/50 transition-all duration-300 relative z-[1]"
+                  className="bg-[#0a0f1a]/40 p-8 rounded-2xl border border-gray-800/50 hover:border-red-500/50 transition-all duration-300 relative z-[1]"
                 >
                   <MessageSquare className="w-8 h-8 text-orange-400 mb-4 mx-auto" />
                   <h2 className="text-xl font-semibold mb-4">Get real-time support</h2>

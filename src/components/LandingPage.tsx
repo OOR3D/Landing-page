@@ -39,7 +39,7 @@ export default function LandingPage() {
             <div className="p-6 bg-zinc-900/50 backdrop-blur-sm rounded-lg">
               <h3 className="text-2xl font-semibold mb-4 text-white">Future of Creating</h3>
               <p className="text-gray-400">
-                Join us in 2025 for a revolutionary approach to creation.
+                Join us in 2025 for an innovative approach to creation.
               </p>
             </div>
           </div>

@@ -16,7 +16,7 @@ const montserrat = Montserrat({
 
 export default function FAQSection() {
   return (
-    <section className="relative py-16 sm:py-24 bg-[#0A0C13]">
+    <section className="relative py-16 sm:py-24 bg-[#0a0f1a]">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center justify-center gap-2 sm:gap-4 mb-4 sm:mb-6">
@@ -25,7 +25,7 @@ export default function FAQSection() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className={`text-2xl sm:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className}`}
+              className={`text-2xl sm:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-600 via-red-400 to-red-700 ${montserrat.className}`}
             >
               Frequently Asked Questions
             </motion.h2>

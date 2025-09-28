@@ -247,7 +247,7 @@ export default function Header() {
               animate={{ x: '0%' }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.3 }}
-              className="fixed top-0 right-0 h-screen w-[300px] bg-[#0A0C13]/60 backdrop-blur-[12px] z-[50] flex flex-col shadow-2xl border-l border-white/10"
+              className="fixed top-0 right-0 h-screen w-[300px] bg-[#0a0f1a]/60 backdrop-blur-[12px] z-[50] flex flex-col shadow-2xl border-l border-white/10"
             >
               {/* Menu Items Container */}
               <div className="flex flex-col h-full pt-24 pb-8 px-8">

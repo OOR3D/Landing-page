@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const PrelaunchMission = () => {
   return (
-    <section className="w-full bg-[#0A0C13] py-24">
+    <section className="w-full bg-[#0a0f1a] py-24">
       <div className="max-w-6xl mx-auto px-4">
         <div className="mb-24">
           <motion.h2
@@ -11,7 +11,7 @@ const PrelaunchMission = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400"
+            className="text-4xl md:text-5xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-red-300 to-red-500"
           >
             Prelaunch Mission
           </motion.h2>
