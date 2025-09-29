@@ -484,7 +484,7 @@ export default function HomePage() {
                       transition={{ duration: 0.8, delay: 0.6 }}
                       className="text-2xl md:text-3xl text-white font-semibold"
                     >
-                      Second Life • Sims 4 • Roblox • Inzoi • GTA 6
+                      Second Life • Sims 4 • Roblox • Inzoi • GTA 6 • VR chat
                     </motion.div>
                   </motion.div>
                 </motion.div>
