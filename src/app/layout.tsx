@@ -20,6 +20,12 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
         <script
+          defer
+          data-website-id="68da666d2826e137a0b58749"
+          data-domain="outofreach3d.com"
+          src="https://datafa.st/js/script.js">
+        </script>
+        <script
           async
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
         />
