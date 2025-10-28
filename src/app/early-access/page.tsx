@@ -33,7 +33,7 @@ export default function EarlyAccess() {
           <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[60rem] h-[60rem] bg-orange-500/10 rounded-full blur-[10rem] animate-pulse" style={{ animationDelay: '1.5s' }} />
         </div>
 
-        <section className="relative min-h-screen flex flex-col items-center justify-center pt-32">
+        <section className="relative min-h-screen flex flex-col items-center justify-center pt-32 pb-0">
           <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-[#0A0C13] to-orange-900/20 z-0" />
           <motion.div
             initial={{ opacity: 0 }}
@@ -69,7 +69,7 @@ export default function EarlyAccess() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-lg text-orange-400 mb-12 font-medium"
+              className="text-lg text-red-400 mb-12 font-medium"
             >
               Spots are limited
             </motion.p>
@@ -118,7 +118,7 @@ export default function EarlyAccess() {
 
           {/* Founding Creator Pass Section */}
           {hasSubmitted && (
-          <div className="w-screen relative left-[calc(-50vw+50%)] py-12 mt-12">
+          <div className="w-screen relative left-[calc(-50vw+50%)] pt-24 pb-32 mt-12 mb-0">
             {/* Dark background overlay to create transition effect */}
             <div className="absolute inset-0 bg-[#0A0C13] z-0" />
             {/* Section-specific glow effects */}
@@ -156,7 +156,7 @@ export default function EarlyAccess() {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
-                className="text-lg text-orange-400 mb-12 font-medium"
+                className="text-lg text-red-400 mb-12 font-medium"
               >
                 $19 One-Time Investment — Limited Spots Available
               </motion.p>
@@ -171,7 +171,7 @@ export default function EarlyAccess() {
                 className="bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-2xl p-8 border border-orange-500/20 backdrop-blur-xl"
               >
                 <div className="flex items-center mb-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-orange-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-red-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                   <h3 className="text-xl font-semibold text-white">Lifetime Beta Access</h3>
@@ -188,7 +188,7 @@ export default function EarlyAccess() {
                 className="bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-2xl p-8 border border-orange-500/20 backdrop-blur-xl"
               >
                 <div className="flex items-center mb-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-orange-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-red-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.172l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
                   </svg>
                   <h3 className="text-xl font-semibold text-white">Private Discord Access</h3>
@@ -205,7 +205,7 @@ export default function EarlyAccess() {
                 className="bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-2xl p-8 border border-orange-500/20 backdrop-blur-xl"
               >
                 <div className="flex items-center mb-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-orange-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-red-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                   </svg>
                   <h3 className="text-xl font-semibold text-white">Early Feature Previews</h3>
@@ -222,7 +222,7 @@ export default function EarlyAccess() {
                 className="bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-2xl p-8 border border-orange-500/20 backdrop-blur-xl"
               >
                 <div className="flex items-center mb-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-orange-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-red-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   <h3 className="text-xl font-semibold text-white">Lifetime Recognition</h3>
@@ -240,9 +240,9 @@ export default function EarlyAccess() {
               transition={{ duration: 0.8, delay: 1.6 }}
               className="text-center max-w-2xl mx-auto"
             >
-              <div className="bg-gradient-to-br from-orange-500/5 to-red-500/5 rounded-2xl p-12 border border-orange-500/20 backdrop-blur-xl mb-8">
+              <div className="bg-gradient-to-br from-orange-500/5 to-red-500/5 rounded-2xl p-12 border border-orange-500/20 backdrop-blur-xl mb-12">
                 <p className="text-gray-300 mb-8 text-lg">
-                  Join the first creators who believed in OOR3D before it launched. <span className="font-semibold text-orange-400">Only $19</span> for lifetime access to everything above.
+                  Join the first creators who believed in OOR3D before it launched. <span className="font-semibold text-red-400">Only $19</span> for lifetime access to everything above.
                 </p>
                 <GradientButton asChild className="py-3 px-8 text-lg">
                   <a href="https://buy.stripe.com/7sY4gs8Ho4dfcC77lQgfu04" target="_blank" rel="noopener noreferrer">
@@ -262,25 +262,6 @@ export default function EarlyAccess() {
             </motion.div>
           </motion.div>
 
-          {/* Quick Note Section - inside black background */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="max-w-3xl mx-auto px-4 text-center"
-          >
-            <h3 className="text-2xl font-bold text-white mb-6">A quick note before you join</h3>
-            <div className="space-y-3 text-gray-300">
-              <p><span className="font-semibold text-white">If you already signed up for Early Access, you're good.</span></p>
-              <p><span className="font-semibold text-white">You do NOT need to pay anything.</span></p>
-              <p><span className="font-semibold text-white">You'll still get in when the doors open.</span></p>
-            </div>
-            <div className="mt-8 pt-6 border-t border-gray-700/50">
-              <p className="text-gray-300">
-                This section is for the most serious creators, the ones who want to be part of OOR3D's foundation. The $19 investment is a <span className="font-semibold text-orange-400">one-time early supporter fee</span> — it's separate from any future pricing for OOR3D itself.
-              </p>
-            </div>
-          </motion.div>
           </div>
           )}
 
