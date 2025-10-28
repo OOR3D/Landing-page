@@ -77,24 +77,15 @@ export default function FounderCreatorSuccess() {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed"
+                className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed"
               >
-                You’re now part of the first group of creators who believed in OOR3D before it even launched.
+                You're now part of the first group of creators who believed in OOR3D before it even launched.
                 Your commitment to this means everything to us.
-              </motion.p>
-
-              <motion.p
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-                className="text-lg text-orange-400 mb-12 font-medium"
-              >
-                Together, we're building something revolutionary.
               </motion.p>
             </div>
 
             {/* Content Cards */}
-            <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <div className="max-w-4xl mx-auto grid grid-cols-1 gap-8 mb-16">
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -108,24 +99,7 @@ export default function FounderCreatorSuccess() {
                   <h3 className="text-xl font-semibold text-white">Early Access Granted</h3>
                 </div>
                 <p className="text-gray-300">
-                  You've been added to our exclusive early access list. We'll notify you as soon as OOR3D™ is ready for you to explore.
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 1.0 }}
-                className="bg-gradient-to-br from-red-500/10 to-orange-500/10 rounded-2xl p-8 border border-red-500/20 backdrop-blur-xl"
-              >
-                <div className="flex items-center mb-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-red-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
-                  <h3 className="text-xl font-semibold text-white">Community Access</h3>
-                </div>
-                <p className="text-gray-300">
-                  Join our Discord community to connect with fellow creators, share your vision, and influence the development of OOR3D™.
+                  You've been added to our exclusive early access list. We'll notify you as soon as OOR3D™ is ready for you.
                 </p>
               </motion.div>
             </div>
