@@ -42,7 +42,7 @@ export default function EarlyAccess() {
             className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,120,50,0.1),transparent_70%)] z-0"
           />
 
-          <div className="container mx-auto px-4 z-10 w-full py-12">
+          <div className="container mx-auto px-4 z-10 w-full py-12 pb-0">
           {/* Header Section */}
           <div className="text-center mb-16">
             <motion.h1
@@ -118,11 +118,20 @@ export default function EarlyAccess() {
 
           {/* Founding Creator Pass Section */}
           {hasSubmitted && (
+          <div className="w-screen relative left-[calc(-50vw+50%)] py-12 mt-12">
+            {/* Dark background overlay to create transition effect */}
+            <div className="absolute inset-0 bg-[#0A0C13] z-0" />
+            {/* Section-specific glow effects */}
+            <div className="absolute inset-0 pointer-events-none z-0">
+              <div className="absolute top-[20%] left-[30%] w-[30rem] h-[30rem] bg-red-500/10 rounded-full blur-[8rem] animate-pulse" />
+              <div className="absolute bottom-[10%] right-[20%] w-[35rem] h-[35rem] bg-orange-500/10 rounded-full blur-[8rem] animate-pulse" style={{ animationDelay: '1s' }} />
+            </div>
+
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="w-full"
+            className="w-full relative z-10"
           >
             <div className="text-center mb-16">
               <motion.h2
@@ -252,7 +261,29 @@ export default function EarlyAccess() {
               </motion.p>
             </motion.div>
           </motion.div>
+
+          {/* Quick Note Section - inside black background */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="max-w-3xl mx-auto px-4 text-center"
+          >
+            <h3 className="text-2xl font-bold text-white mb-6">A quick note before you join</h3>
+            <div className="space-y-3 text-gray-300">
+              <p><span className="font-semibold text-white">If you already signed up for Early Access, you're good.</span></p>
+              <p><span className="font-semibold text-white">You do NOT need to pay anything.</span></p>
+              <p><span className="font-semibold text-white">You'll still get in when the doors open.</span></p>
+            </div>
+            <div className="mt-8 pt-6 border-t border-gray-700/50">
+              <p className="text-gray-300">
+                This section is for the most serious creators, the ones who want to be part of OOR3D's foundation. The $19 investment is a <span className="font-semibold text-orange-400">one-time early supporter fee</span> — it's separate from any future pricing for OOR3D itself.
+              </p>
+            </div>
+          </motion.div>
+          </div>
           )}
+
         </div>
         </section>
       </main>
