@@ -8,7 +8,6 @@ export const earlyAccessValidator = v.object({
   discordTag: v.string(),
   motivation: v.string(),
   socialLink: v.optional(v.string()),
-  hasPaid: v.boolean(),
   notes: v.optional(v.string()),
 });
 
@@ -18,6 +17,12 @@ export const earlyAccessValidator = v.object({
 export const submitEarlyAccess = mutation({
   args: earlyAccessValidator,
   handler: async (ctx, args) => {
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(args.email)) {
+      throw new Error("Please provide a valid email address.");
+    }
+
     // Check if email already exists
     const existing = await ctx.db
       .query("earlyAccess")
@@ -25,13 +30,8 @@ export const submitEarlyAccess = mutation({
       .first();
 
     if (existing) {
-      throw new Error("This email has already been registered for early access.");
-    }
-
-    // Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(args.email)) {
-      throw new Error("Please provide a valid email address.");
+      // Return success without inserting duplicate - don't leak registration status
+      return { success: true, alreadyRegistered: true };
     }
 
     // Insert into database

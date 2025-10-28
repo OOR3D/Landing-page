@@ -90,7 +90,7 @@ export default function HomePage() {
               transition={{ duration: 0.8 }}
               className={`text-5xl md:text-7xl font-extrabold mb-8 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className} pb-2`}
             >
-              Create 3D Products for the Virtual World
+              Create Products for the Virtual World
             </motion.h1>
             
             <motion.h2
