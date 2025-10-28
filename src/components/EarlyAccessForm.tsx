@@ -286,8 +286,8 @@ export default function EarlyAccessForm({ onSubmitSuccess }: { onSubmitSuccess?:
               <SelectValue placeholder="Select an option" />
             </SelectTrigger>
             <SelectContent className="bg-[#0A0C13] border-gray-800">
-              <SelectItem value="yes" className="text-white hover:bg-gray-800 cursor-pointer">Yes</SelectItem>
-              <SelectItem value="no" className="text-white hover:bg-gray-800 cursor-pointer">No</SelectItem>
+              <SelectItem value="yes" className="text-white hover:bg-red-500/10 hover:text-red-400 cursor-pointer">Yes</SelectItem>
+              <SelectItem value="no" className="text-white hover:bg-red-500/10 hover:text-red-400 cursor-pointer">No</SelectItem>
             </SelectContent>
           </Select>
           {errors.isInDiscordServer && (
@@ -343,8 +343,8 @@ export default function EarlyAccessForm({ onSubmitSuccess }: { onSubmitSuccess?:
               <SelectValue placeholder="Select an option" />
             </SelectTrigger>
             <SelectContent className="bg-[#0A0C13] border-gray-800">
-              <SelectItem value="yes" className="text-white hover:bg-gray-800 cursor-pointer">Yes</SelectItem>
-              <SelectItem value="no" className="text-white hover:bg-gray-800 cursor-pointer">No</SelectItem>
+              <SelectItem value="yes" className="text-white hover:bg-red-500/10 hover:text-red-400 cursor-pointer">Yes</SelectItem>
+              <SelectItem value="no" className="text-white hover:bg-red-500/10 hover:text-red-400 cursor-pointer">No</SelectItem>
             </SelectContent>
           </Select>
         </motion.div>
@@ -416,9 +416,9 @@ export default function EarlyAccessForm({ onSubmitSuccess }: { onSubmitSuccess?:
                 <SelectValue placeholder="Select platform" />
               </SelectTrigger>
               <SelectContent className="bg-[#0A0C13] border-gray-800">
-                <SelectItem value="IMVU Classic" className="text-white hover:bg-gray-800 cursor-pointer">IMVU Classic</SelectItem>
-                <SelectItem value="IMVU Studio" className="text-white hover:bg-gray-800 cursor-pointer">IMVU Studio</SelectItem>
-                <SelectItem value="Both" className="text-white hover:bg-gray-800 cursor-pointer">Both</SelectItem>
+                <SelectItem value="IMVU Classic" className="text-white hover:bg-red-500/10 hover:text-red-400 cursor-pointer">IMVU Classic</SelectItem>
+                <SelectItem value="IMVU Studio" className="text-white hover:bg-red-500/10 hover:text-red-400 cursor-pointer">IMVU Studio</SelectItem>
+                <SelectItem value="Both" className="text-white hover:bg-red-500/10 hover:text-red-400 cursor-pointer">Both</SelectItem>
               </SelectContent>
             </Select>
             {errors.imvuPlatform && (
@@ -468,10 +468,10 @@ export default function EarlyAccessForm({ onSubmitSuccess }: { onSubmitSuccess?:
                 <SelectValue placeholder="Select your skill level" />
               </SelectTrigger>
               <SelectContent className="bg-[#0A0C13] border-gray-800">
-                <SelectItem value="beginner" className="text-white hover:bg-gray-800 cursor-pointer">Beginner</SelectItem>
-                <SelectItem value="intermediate" className="text-white hover:bg-gray-800 cursor-pointer">Intermediate</SelectItem>
-                <SelectItem value="advanced" className="text-white hover:bg-gray-800 cursor-pointer">Advanced</SelectItem>
-                <SelectItem value="expert" className="text-white hover:bg-gray-800 cursor-pointer">Expert/Professional</SelectItem>
+                <SelectItem value="beginner" className="text-white hover:bg-red-500/10 hover:text-red-400 cursor-pointer">Beginner</SelectItem>
+                <SelectItem value="intermediate" className="text-white hover:bg-red-500/10 hover:text-red-400 cursor-pointer">Intermediate</SelectItem>
+                <SelectItem value="advanced" className="text-white hover:bg-red-500/10 hover:text-red-400 cursor-pointer">Advanced</SelectItem>
+                <SelectItem value="expert" className="text-white hover:bg-red-500/10 hover:text-red-400 cursor-pointer">Expert/Professional</SelectItem>
               </SelectContent>
             </Select>
             {errors.skillLevel && (
