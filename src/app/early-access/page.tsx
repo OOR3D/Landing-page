@@ -133,133 +133,210 @@ export default function EarlyAccess() {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="w-full relative z-10"
           >
-            <div className="text-center mb-16">
+            <div className="text-center mb-24">
               <motion.h2
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
+                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
                 className={`text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-orange-400 via-white to-red-400 leading-[1.4] md:leading-[1.4] py-2 ${montserrat.className}`}
               >
                 Become a Founding Creator
               </motion.h2>
 
-              <motion.p
-                initial={{ opacity: 0, y: -20 }}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed"
+                transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+                className="text-lg text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed"
               >
-                Join the exclusive group of creators who are shaping the future of OOR3D from day one.
-              </motion.p>
-
-              <motion.p
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-                className="text-lg text-red-400 mb-12 font-medium"
-              >
-                $19 One-Time Investment — Limited Spots Available
-              </motion.p>
+                <p><span className="font-semibold text-white">Founding Creator is unrelated to early access, it's legacy.</span></p>
+                <p className="pt-4">A chance to be part of the few who helped shape OOR3D™ from the start.</p>
+              </motion.div>
             </div>
 
-            {/* Benefits Cards */}
-            <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            {/* Hero Image */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
+              className="max-w-4xl mx-auto mb-24"
+            >
+              <div className="relative rounded-2xl overflow-hidden border border-orange-500/20">
+                <img 
+                  src="https://assets.oor3d.com/img/card-actions/auth-hero.webp" 
+                  alt="Founding Creator" 
+                  className="w-full h-auto"
+                />
+              </div>
+            </motion.div>
+
+            {/* What this is Section */}
+            <div className="max-w-4xl mx-auto text-center mb-24">
+              <motion.h3
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+                className="text-3xl md:text-4xl text-white font-semibold mb-8"
+              >
+                What this is
+              </motion.h3>
+              
               <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 1.0, ease: "easeOut" }}
+                className="space-y-4"
+              >
+                <p className="text-xl md:text-2xl text-gray-300"><span className="font-semibold text-white">This is the starting line.</span> The first 15 people who'll help shape the identity, tools, and culture of OOR3D™. The ones we'll listen to first, test with first, and credit forever. Becoming a Founding Creator means your feedback carries weight. Your name becomes part of the platform's foundation - visible proof that you were here when it all began.</p>
+              </motion.div>
+            </div>
+
+            {/* Benefits Section Title */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 1.2, ease: "easeOut" }}
+              className="text-center mb-20"
+            >
+              <h2 className={`text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className} mb-6 py-2`}>
+                What comes with being one of the first
+              </h2>
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 1.4 }}
+                className="text-xl md:text-2xl text-gray-300"
+              >
+                These are the marks of those who showed up before anyone else.
+              </motion.p>
+            </motion.div>
+
+            {/* Benefits Cards */}
+            <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 1.6, ease: "easeOut" }}
+                className="md:col-span-2 bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-2xl p-8 border border-orange-500/20 backdrop-blur-xl"
+              >
+                <div className="flex items-center mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-red-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                  <h3 className="text-xl font-semibold text-white">Claim your universal username</h3>
+                </div>
+                <p className="text-gray-300 mb-4">
+                  Every game lets you choose a username, but OOR3D™ isn't a game. This is your creative identity inside a platform that will host thousands of creators across multiple virtual worlds.
+                </p>
+                <p className="text-gray-300">
+                  Currently, usernames are 5 characters or longer. Founding Creators can pick shorter names, as short as you want. You'll be the first to lock in the name that defines you.
+                </p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 1.8, ease: "easeOut" }}
                 className="bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-2xl p-8 border border-orange-500/20 backdrop-blur-xl"
               >
                 <div className="flex items-center mb-4">
                   <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-red-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
-                  <h3 className="text-xl font-semibold text-white">Lifetime Beta Access</h3>
+                  <h3 className="text-xl font-semibold text-white">Ongoing beta access</h3>
                 </div>
+                <p className="text-gray-300 mb-4">
+                  You'll always get early access to test new updates and features before public release.
+                </p>
                 <p className="text-gray-300">
-                  Test every new feature before anyone else. Shape the future of OOR3D by providing feedback that directly influences our development roadmap.
+                  You'll see what's next before the crowd does.
                 </p>
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 1.0 }}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 2.0, ease: "easeOut" }}
                 className="bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-2xl p-8 border border-orange-500/20 backdrop-blur-xl"
               >
                 <div className="flex items-center mb-4">
                   <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-red-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.172l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
                   </svg>
-                  <h3 className="text-xl font-semibold text-white">Private Discord Access</h3>
+                  <h3 className="text-xl font-semibold text-white">Direct feature requests</h3>
                 </div>
+                <p className="text-gray-300 mb-4">
+                  You'll have a private lane to submit ideas and requests for features that help you or your business.
+                </p>
                 <p className="text-gray-300">
-                  Join our exclusive Founding Creator community. Connect with fellow creators, share insights, and have direct communication with the OOR3D team.
+                  We'll review them directly and if it's something that helps creators, it moves up the roadmap.
                 </p>
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 1.2 }}
-                className="bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-2xl p-8 border border-orange-500/20 backdrop-blur-xl"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 2.2, ease: "easeOut" }}
+                className="md:col-span-2 bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-2xl p-8 border border-orange-500/20 backdrop-blur-xl"
               >
                 <div className="flex items-center mb-4">
                   <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-red-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                   </svg>
-                  <h3 className="text-xl font-semibold text-white">Early Feature Previews</h3>
+                  <h3 className="text-xl font-semibold text-white">Founding badge</h3>
                 </div>
+                <p className="text-gray-300 mb-4">
+                  You'll have a Founding Creator badge on Discord and inside the app. It's your mark of being there and believing before anyone else.
+                </p>
                 <p className="text-gray-300">
-                  Get exclusive access to upcoming features, tools, and content before the general release. Be the first to explore what's next.
+                  As the platform grows, that badge will mean something: recognition, history, and respect from every creator that comes after.
                 </p>
               </motion.div>
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 1.4 }}
-                className="bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-2xl p-8 border border-orange-500/20 backdrop-blur-xl"
+            {/* What this isn't Section */}
+            <div className="max-w-4xl mx-auto text-center mb-24">
+              <motion.h3
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 2.4, ease: "easeOut" }}
+                className="text-3xl md:text-4xl text-white font-semibold mb-8"
               >
-                <div className="flex items-center mb-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-red-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <h3 className="text-xl font-semibold text-white">Lifetime Recognition</h3>
-                </div>
-                <p className="text-gray-300">
-                  Your name will be displayed as a Founding Creator in our hall of fame. Forever remembered as part of the movement that changed digital creation.
-                </p>
+                You do not need to pay to get early access.
+              </motion.h3>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 2.6, ease: "easeOut" }}
+                className="space-y-4"
+              >
+                <p className="text-xl md:text-2xl text-gray-300">Early access is free. If you've already applied, you're in the review pool. We'll be selecting the first wave of creators soon. This offer is for something else entirely. </p>
+                <p className="text-xl md:text-2xl text-gray-300 pt-4">It's for the few who want to be <span className="font-semibold text-white">remembered</span>.</p>
               </motion.div>
               </div>
 
             {/* Call to Action */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.6 }}
+              initial={{ opacity: 0, scale: 0.95, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 1, delay: 2.8, ease: "easeOut" }}
               className="text-center max-w-2xl mx-auto"
             >
-              <div className="bg-gradient-to-br from-orange-500/5 to-red-500/5 rounded-2xl p-12 border border-orange-500/20 backdrop-blur-xl mb-12">
+              <div className="bg-gradient-to-br from-orange-500/5 to-red-500/5 rounded-2xl p-12 border border-orange-500/20 backdrop-blur-xl mb-8">
+                <p className="text-gray-300 mb-2 text-lg">
+                  <span className="font-semibold text-red-400">$19. One time. Fifteen seats only.</span>
+                </p>
                 <p className="text-gray-300 mb-8 text-lg">
-                  Join the first creators who believed in OOR3D before it launched. <span className="font-semibold text-red-400">Only $19</span> for lifetime access to everything above.
+                  Once it's full, it's closed forever.
                 </p>
                 <GradientButton asChild className="py-3 px-8 text-lg">
                   <a href="https://buy.stripe.com/7sY4gs8Ho4dfcC77lQgfu04" target="_blank" rel="noopener noreferrer">
-                    Become a Founding Creator
+                    Claim Your Spot
                   </a>
                 </GradientButton>
-              </div>
-
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.8, delay: 1.8 }}
-                className="text-sm text-gray-400 italic"
-              >
-                Your support helps us build OOR3D™ for creators everywhere.
-              </motion.p>
-            </motion.div>
+            </div>
+          </motion.div>
           </motion.div>
 
           </div>
