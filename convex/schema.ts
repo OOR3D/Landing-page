@@ -8,7 +8,6 @@ export default defineSchema({
     discordTag: v.string(),
     motivation: v.string(),
     socialLink: v.optional(v.string()),
-    hasPaid: v.boolean(),
     notes: v.optional(v.string()),
     createdAt: v.number(),
   })
