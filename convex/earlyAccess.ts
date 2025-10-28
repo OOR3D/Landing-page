@@ -37,7 +37,6 @@ export const submitEarlyAccess = mutation({
     // Insert into database
     const id = await ctx.db.insert("earlyAccess", {
       ...args,
-      createdAt: Date.now(),
     });
 
     return { success: true, id };
@@ -51,7 +50,6 @@ export const listEarlyAccess = query({
   handler: async (ctx) => {
     return await ctx.db
       .query("earlyAccess")
-      .withIndex("by_created_at")
       .order("desc")
       .collect();
   },

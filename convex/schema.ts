@@ -9,9 +9,7 @@ export default defineSchema({
     motivation: v.string(),
     socialLink: v.optional(v.string()),
     notes: v.optional(v.string()),
-    createdAt: v.number(),
   })
-    .index("by_email", ["email"])
-    .index("by_created_at", ["createdAt"]),
+    .index("by_email", ["email"]),
 });
 
