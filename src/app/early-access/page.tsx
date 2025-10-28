@@ -140,7 +140,7 @@ export default function EarlyAccess() {
                 transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
                 className={`text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-orange-400 via-white to-red-400 leading-[1.4] md:leading-[1.4] py-2 ${montserrat.className}`}
               >
-                Become a Founding Creator
+                Join the Founding Circle
               </motion.h2>
 
               <motion.div
@@ -149,8 +149,8 @@ export default function EarlyAccess() {
                 transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
                 className="text-lg text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed"
               >
-                <p><span className="font-semibold text-white">Founding Creator is unrelated to early access, it's legacy.</span></p>
-                <p className="pt-4">A chance to be part of the few who helped shape OOR3D™ from the start.</p>
+                <p>The Founding Circle costs <span className="font-semibold text-white">money</span> - however it's completely separate from early access.</p>
+                <p className="pt-4">It's for the few who want to go a step further and be part of OOR3D™'s foundation.</p>
               </motion.div>
             </div>
 
@@ -172,19 +172,10 @@ export default function EarlyAccess() {
 
             {/* What this is Section */}
             <div className="max-w-4xl mx-auto text-center mb-24">
-              <motion.h3
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
-                className="text-3xl md:text-4xl text-white font-semibold mb-8"
-              >
-                What this is
-              </motion.h3>
-              
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 1.0, ease: "easeOut" }}
+                transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
                 className="space-y-4"
               >
                 <p className="text-xl md:text-2xl text-gray-300"><span className="font-semibold text-white">This is the starting line.</span> The first 15 people who'll help shape the identity, tools, and culture of OOR3D™. The ones we'll listen to first, test with first, and credit forever. Becoming a Founding Creator means your feedback carries weight. Your name becomes part of the platform's foundation - visible proof that you were here when it all began.</p>
@@ -226,10 +217,15 @@ export default function EarlyAccess() {
                   <h3 className="text-xl font-semibold text-white">Claim your universal username</h3>
                 </div>
                 <p className="text-gray-300 mb-4">
-                  Every game lets you choose a username, but OOR3D™ isn't a game. This is your creative identity inside a platform that will host thousands of creators across multiple virtual worlds.
+                  Every game lets you choose a username, but OOR3D™ isn't a game.
+                  This is your creative identity inside a platform that will host thousands of creators across multiple virtual worlds.
+                </p>
+                <p className="text-gray-300 mb-4">
+                  Founding Creators get first pick on usernames - and with full freedom.
+                  While everyone else is limited to 5 characters or more, you can choose something shorter, cleaner, and truly yours.
                 </p>
                 <p className="text-gray-300">
-                  Currently, usernames are 5 characters or longer. Founding Creators can pick shorter names, as short as you want. You'll be the first to lock in the name that defines you.
+                  You'll be the first to claim the name that defines you.
                 </p>
               </motion.div>
 
@@ -243,13 +239,10 @@ export default function EarlyAccess() {
                   <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-red-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
-                  <h3 className="text-xl font-semibold text-white">Ongoing beta access</h3>
+                  <h3 className="text-xl font-semibold text-white">Ongoing beta & roadmap access</h3>
                 </div>
-                <p className="text-gray-300 mb-4">
-                  You'll always get early access to test new updates and features before public release.
-                </p>
                 <p className="text-gray-300">
-                  You'll see what's next before the crowd does.
+                  Get behind-the-scenes visibility into upcoming tools, experiments, and drops, long before the crowd sees them.
                 </p>
               </motion.div>
 
@@ -265,11 +258,8 @@ export default function EarlyAccess() {
                   </svg>
                   <h3 className="text-xl font-semibold text-white">Direct feature requests</h3>
                 </div>
-                <p className="text-gray-300 mb-4">
-                  You'll have a private lane to submit ideas and requests for features that help you or your business.
-                </p>
                 <p className="text-gray-300">
-                  We'll review them directly and if it's something that helps creators, it moves up the roadmap.
+                  You'll have a private lane to submit ideas and requests for features that help you or your business. We'll review them directly and if it's something that helps creators, it moves up the roadmap.
                 </p>
               </motion.div>
 
@@ -285,11 +275,8 @@ export default function EarlyAccess() {
                   </svg>
                   <h3 className="text-xl font-semibold text-white">Founding badge</h3>
                 </div>
-                <p className="text-gray-300 mb-4">
-                  You'll have a Founding Creator badge on Discord and inside the app. It's your mark of being there and believing before anyone else.
-                </p>
                 <p className="text-gray-300">
-                  As the platform grows, that badge will mean something: recognition, history, and respect from every creator that comes after.
+                  You'll have a Founding Creator badge on Discord and inside the app. It's your mark of being there and believing before anyone else. As the platform grows, that badge will mean something: recognition, history, and respect from <span className="font-semibold text-white">every creator that comes after</span>.
                 </p>
               </motion.div>
               </div>
@@ -311,7 +298,7 @@ export default function EarlyAccess() {
                 transition={{ duration: 0.8, delay: 2.6, ease: "easeOut" }}
                 className="space-y-4"
               >
-                <p className="text-xl md:text-2xl text-gray-300">Early access is free. If you've already applied, you're in the review pool. We'll be selecting the first wave of creators soon. This offer is for something else entirely. </p>
+                <p className="text-xl md:text-2xl text-gray-300">Early access is free. If you've already applied, you're in the review pool. This offer is for something else entirely. </p>
                 <p className="text-xl md:text-2xl text-gray-300 pt-4">It's for the few who want to be <span className="font-semibold text-white">remembered</span>.</p>
               </motion.div>
               </div>

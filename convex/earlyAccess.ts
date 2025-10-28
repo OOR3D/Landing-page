@@ -4,11 +4,16 @@ import { mutation, query } from "./_generated/server";
 // Validator for early access form submission
 export const earlyAccessValidator = v.object({
   email: v.string(),
-  imvuName: v.string(),
-  discordTag: v.string(),
+  imvuName: v.optional(v.string()),
+  discordTag: v.optional(v.string()),
+  isInDiscordServer: v.boolean(),
+  isImvuCreator: v.boolean(),
+  imvuStoreLink: v.optional(v.string()),
+  imvuPlatform: v.optional(v.string()),
+  creationTools: v.optional(v.string()),
+  skillLevel: v.optional(v.string()),
   motivation: v.string(),
-  socialLink: v.optional(v.string()),
-  notes: v.optional(v.string()),
+  expectations: v.string(),
 });
 
 /**
@@ -21,6 +26,11 @@ export const submitEarlyAccess = mutation({
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(args.email)) {
       throw new Error("Please provide a valid email address.");
+    }
+
+    // Check if user is in Discord server
+    if (!args.isInDiscordServer) {
+      throw new Error("You must join our Discord server to apply for early access.");
     }
 
     // Check if email already exists
@@ -37,7 +47,6 @@ export const submitEarlyAccess = mutation({
     // Insert into database
     const id = await ctx.db.insert("earlyAccess", {
       ...args,
-      createdAt: Date.now(),
     });
 
     return { success: true, id };
@@ -51,7 +60,6 @@ export const listEarlyAccess = query({
   handler: async (ctx) => {
     return await ctx.db
       .query("earlyAccess")
-      .withIndex("by_created_at")
       .order("desc")
       .collect();
   },
