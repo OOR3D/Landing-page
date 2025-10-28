@@ -10,6 +10,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { GradientButton } from '@/components/ui/gradient-button'
 import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { AlertDialog, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '@/components/ui/alert-dialog'
 import { useToast } from '@/hooks/use-toast'
 
 interface FormData {
@@ -45,6 +46,7 @@ export default function EarlyAccessForm({ onSubmitSuccess }: { onSubmitSuccess?:
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({})
   const [submitSuccess, setSubmitSuccess] = useState(false)
+  const [showSuccessDialog, setShowSuccessDialog] = useState(false)
 
   const { toast } = useToast()
   const submitEarlyAccess = useMutation(api.earlyAccess.submitEarlyAccess)
@@ -139,12 +141,8 @@ export default function EarlyAccessForm({ onSubmitSuccess }: { onSubmitSuccess?:
       })
 
       setSubmitSuccess(true)
+      setShowSuccessDialog(true)
       localStorage.setItem("oor3d_early_access_submitted", "true")
-
-      toast({
-        title: "Application Submitted! 📝",
-        description: "Thank you for your belief in OOR3D™!",
-      })
 
       // Call the callback if provided
       onSubmitSuccess?.()
@@ -180,44 +178,76 @@ export default function EarlyAccessForm({ onSubmitSuccess }: { onSubmitSuccess?:
     'bg-[#0A0C13] border border-gray-800 focus:border-2 focus:border-red-400 focus-visible:ring-0 rounded-xl text-white placeholder:text-gray-500'
   const labelClasses = 'text-sm font-medium text-gray-300 mb-2'
 
-  // Show success state
-  if (submitSuccess) {
-    return (
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="w-full max-w-4xl mx-auto space-y-8"
-      >
-        {/* Success Message */}
-        <div className="text-center py-12 px-6 bg-[#0a0c13] rounded-2xl border border-gray-700/50 backdrop-blur-xl">
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            className="mb-6"
-          >
-            <div className="text-6xl mb-4">✓</div>
-          </motion.div>
-          <h3 className="text-2xl font-bold mb-4 text-white">
-            Application Received
-          </h3>
-          <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-            Thank you for submitting your early access application. Our team will review your submission and we'll notify you if you made it to early access.
-          </p>
-        </div>
-      </motion.div>
-    )
-  }
-
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      className="w-full max-w-2xl mx-auto"
-    >
-      <form onSubmit={handleSubmit} className="space-y-6">
+    <>
+      {/* Success Dialog */}
+      <AlertDialog open={showSuccessDialog}>
+        <AlertDialogContent className="bg-[#0a0c13] border-red-500/30 max-w-md !rounded-[3rem]" style={{ borderRadius: '3rem' }}>
+          <AlertDialogHeader>
+            <div className="flex justify-center mb-4">
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ type: "spring", duration: 0.5 }}
+                className="w-16 h-16 rounded-full bg-red-500/20 flex items-center justify-center"
+              >
+                <svg className="w-8 h-8 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+              </motion.div>
+            </div>
+            <AlertDialogTitle className="text-2xl text-center text-white">
+              Application Received!
+            </AlertDialogTitle>
+            <AlertDialogDescription className="text-center text-gray-300 text-base leading-relaxed pt-2">
+              Thank you for submitting your early access application. Our team will review your submission and we'll notify you if you made it to early access.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter className="sm:justify-center">
+            <GradientButton 
+              onClick={() => setShowSuccessDialog(false)}
+              className="w-full sm:w-auto px-8 py-3"
+            >
+              Complete Application
+            </GradientButton>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      {/* Show success state */}
+      {submitSuccess ? (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="w-full max-w-4xl mx-auto space-y-8"
+        >
+          {/* Success Message */}
+          <div className="text-center py-12 px-6 bg-[#0a0c13] rounded-2xl border border-gray-700/50 backdrop-blur-xl">
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.6 }}
+              className="mb-6"
+            >
+              <div className="text-6xl mb-4">✓</div>
+            </motion.div>
+            <h3 className="text-2xl font-bold mb-4 text-white">
+              Application Received
+            </h3>
+            <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
+              Thank you for submitting your early access application. Our team will review your submission and we'll notify you if you made it to early access.
+            </p>
+          </div>
+        </motion.div>
+      ) : (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="w-full max-w-2xl mx-auto"
+        >
+          <form onSubmit={handleSubmit} className="space-y-6">
         {/* Email */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -513,5 +543,7 @@ export default function EarlyAccessForm({ onSubmitSuccess }: { onSubmitSuccess?:
         </motion.div>
       </form>
     </motion.div>
+      )}
+    </>
   )
 }
