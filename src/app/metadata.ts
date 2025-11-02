@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     'digital assets'
   ],
   openGraph: {
-    title: 'OUTOFREACH3D™ - Create Products for the Virtual World',
+    title: 'OUTOFREACH3D™ - The workspace for creators of the virtual world',
     description: 'OOR3D™ gives creators the power to design, customize and sell digital wearables for IMVU, Second Life, Sims 4, and more — without complicated 3D software.',
     url: 'https://outofreach3d.com',
     siteName: 'OUTOFREACH3D',
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'OUTOFREACH3D™ - Create Products for the Virtual World',
+    title: 'OUTOFREACH3D™ - The workspace for creators of the virtual world',
     description: 'Create virtual products for IMVU, Second Life, Sims 4, Roblox, Inzoi, GTA 6 and more. Design once, sell everywhere.',
     images: ['https://outofreach3d.com/preview-image.jpg'],
   },
