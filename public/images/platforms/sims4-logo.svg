@@ -1,0 +1,129 @@
+<svg id='The_Sims_24' width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><rect width='24' height='24' stroke='none' fill='#000000' opacity='0'/>
+
+
+<g transform="matrix(0.42 0 0 0.42 12 12)" >
+<g style="" >
+<g transform="matrix(1 0 0 1 0 0)" >
+<polygon style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(126,179,75); fill-rule: nonzero; opacity: 1;" points="-12,0 0,-24 12,0 0,24 " />
+</g>
+<g transform="matrix(1 0 0 1 6 12)" >
+<linearGradient id="SVGID_pTlfCe_VvLKTMt1otO~Mfa_31" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 1 0 0)" x1="30.221" y1="20.808" x2="28.424" y2="46.737">
+<stop offset="0%" style="stop-color:rgb(41,162,83);stop-opacity: 1"/>
+<stop offset="100%" style="stop-color:rgb(43,165,88);stop-opacity: 1"/>
+</linearGradient>
+<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: url(#SVGID_pTlfCe_VvLKTMt1otO~Mfa_31); fill-rule: nonzero; opacity: 1;" transform=" translate(-30, -36)" d="M 24 24 L 36 24 L 24 48 L 24 24 z" stroke-linecap="round" />
+</g>
+<g transform="matrix(1 0 0 1 -6 12)" >
+<linearGradient id="SVGID_pTlfCe_VvLKTMt1otO~Mfb_32" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 1 0 0)" x1="17.394" y1="21.508" x2="22.508" y2="42.544">
+<stop offset="0%" style="stop-color:rgb(37,158,81);stop-opacity: 1"/>
+<stop offset="39.5%" style="stop-color:rgb(30,143,77);stop-opacity: 1"/>
+<stop offset="100%" style="stop-color:rgb(21,125,72);stop-opacity: 1"/>
+</linearGradient>
+<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: url(#SVGID_pTlfCe_VvLKTMt1otO~Mfb_32); fill-rule: nonzero; opacity: 1;" transform=" translate(-18, -36)" d="M 24 48 C 24 48 11.997 24.058 12 24 L 24 24 L 24 48 z" stroke-linecap="round" />
+</g>
+<g transform="matrix(1 0 0 1 6 -12)" >
+<linearGradient id="SVGID_pTlfCe_VvLKTMt1otO~Mfc_33" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 1 -30 -12)" x1="32.583" y1="8.185" x2="25.377" y2="18.828">
+<stop offset="0%" style="stop-color:rgb(135,182,66);stop-opacity: 1"/>
+<stop offset="27%" style="stop-color:rgb(131,180,67);stop-opacity: 1"/>
+<stop offset="51.4%" style="stop-color:rgb(120,174,72);stop-opacity: 1"/>
+<stop offset="74.8%" style="stop-color:rgb(102,164,79);stop-opacity: 1"/>
+<stop offset="97.39999999999999%" style="stop-color:rgb(76,150,90);stop-opacity: 1"/>
+<stop offset="100%" style="stop-color:rgb(73,148,91);stop-opacity: 1"/>
+</linearGradient>
+<polygon style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: url(#SVGID_pTlfCe_VvLKTMt1otO~Mfc_33); fill-rule: nonzero; opacity: 1;" points="-6,12 6,12 -6,-12 " />
+</g>
+<g transform="matrix(1 0 0 1 3.38 -15.15)" >
+<linearGradient id="SVGID_pTlfCe_VvLKTMt1otO~Mfd_34" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 1 -27.38 -8.85)" x1="28.822" y1="4.74" x2="24.34" y2="11.359">
+<stop offset="0%" style="stop-color:rgb(162,207,56);stop-opacity: 1"/>
+<stop offset="34.699999999999996%" style="stop-color:rgb(158,204,58);stop-opacity: 1"/>
+<stop offset="66%" style="stop-color:rgb(147,196,64);stop-opacity: 1"/>
+<stop offset="95.89999999999999%" style="stop-color:rgb(129,181,73);stop-opacity: 1"/>
+<stop offset="100%" style="stop-color:rgb(126,179,75);stop-opacity: 1"/>
+</linearGradient>
+<polygon style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: url(#SVGID_pTlfCe_VvLKTMt1otO~Mfd_34); fill-rule: nonzero; opacity: 1;" points="0.7,8.85 3.39,4.7 -3.38,-8.85 " />
+</g>
+<g transform="matrix(1 0 0 1 -6 -12)" >
+<linearGradient id="SVGID_pTlfCe_VvLKTMt1otO~Mfe_35" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 1 0 0)" x1="15.265" y1="3.153" x2="19.763" y2="17.703">
+<stop offset="0%" style="stop-color:rgb(162,207,56);stop-opacity: 1"/>
+<stop offset="28.799999999999997%" style="stop-color:rgb(158,204,58);stop-opacity: 1"/>
+<stop offset="54.800000000000004%" style="stop-color:rgb(147,196,62);stop-opacity: 1"/>
+<stop offset="79.60000000000001%" style="stop-color:rgb(129,182,70);stop-opacity: 1"/>
+<stop offset="100%" style="stop-color:rgb(108,166,79);stop-opacity: 1"/>
+</linearGradient>
+<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: url(#SVGID_pTlfCe_VvLKTMt1otO~Mfe_35); fill-rule: nonzero; opacity: 1;" transform=" translate(-18, -12)" d="M 24 0 C 24 0 11.997 23.942 12 24 L 24 24 L 24 0 z" stroke-linecap="round" />
+</g>
+<g transform="matrix(1 0 0 1 0 12)" >
+<linearGradient id="SVGID_pTlfCe_VvLKTMt1otO~Mff_36" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 1 0 0)" x1="24.285" y1="41.929" x2="23.93" y2="19.596">
+<stop offset="0%" style="stop-color:rgb(40,147,69);stop-opacity: 1"/>
+<stop offset="26.6%" style="stop-color:rgb(43,149,70);stop-opacity: 1"/>
+<stop offset="49.7%" style="stop-color:rgb(54,153,71);stop-opacity: 1"/>
+<stop offset="71.5%" style="stop-color:rgb(72,162,74);stop-opacity: 1"/>
+<stop offset="92.4%" style="stop-color:rgb(97,173,78);stop-opacity: 1"/>
+<stop offset="100%" style="stop-color:rgb(108,178,80);stop-opacity: 1"/>
+</linearGradient>
+<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: url(#SVGID_pTlfCe_VvLKTMt1otO~Mff_36); fill-rule: nonzero; opacity: 1;" transform=" translate(-24, -36)" d="M 29.538 24 L 24 48 C 24 48 18.459 24.058 18.462 24 L 29.538 24 z" stroke-linecap="round" />
+</g>
+<g transform="matrix(1 0 0 1 0 -12)" >
+<linearGradient id="SVGID_pTlfCe_VvLKTMt1otO~Mfg_37" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 1 0 0)" x1="24.598" y1="2.057" x2="23.911" y2="27.247">
+<stop offset="0%" style="stop-color:rgb(193,213,124);stop-opacity: 1"/>
+<stop offset="9.5%" style="stop-color:rgb(187,210,116);stop-opacity: 1"/>
+<stop offset="42.8%" style="stop-color:rgb(171,200,91);stop-opacity: 1"/>
+<stop offset="63.1%" style="stop-color:rgb(165,196,82);stop-opacity: 1"/>
+<stop offset="65.7%" style="stop-color:rgb(168,198,84);stop-opacity: 1"/>
+<stop offset="84.6%" style="stop-color:rgb(183,208,94);stop-opacity: 1"/>
+<stop offset="100%" style="stop-color:rgb(188,211,97);stop-opacity: 1"/>
+</linearGradient>
+<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: url(#SVGID_pTlfCe_VvLKTMt1otO~Mfg_37); fill-rule: nonzero; opacity: 1;" transform=" translate(-24, -12)" d="M 29.538 24 L 24 0 C 24 0 18.459 23.942 18.462 24 L 29.538 24 z" stroke-linecap="round" />
+</g>
+<g transform="matrix(1 0 0 1 2.77 -3.15)" >
+<linearGradient id="SVGID_pTlfCe_VvLKTMt1otO~Mfh_38" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 1 -26.77 -20.85)" x1="29.631" y1="19.635" x2="26.905" y2="23.66">
+<stop offset="0%" style="stop-color:rgb(161,196,68);stop-opacity: 1"/>
+<stop offset="100%" style="stop-color:rgb(161,198,67);stop-opacity: 1"/>
+</linearGradient>
+<polygon style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: url(#SVGID_pTlfCe_VvLKTMt1otO~Mfh_38); fill-rule: nonzero; opacity: 1;" points="-2.77,3.15 1.32,-3.15 2.77,3.15 " />
+</g>
+<g transform="matrix(1 0 0 1 -8.08 -2.99)" >
+<linearGradient id="SVGID_pTlfCe_VvLKTMt1otO~Mfi_39" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 1 -15.92 -21.01)" x1="15.085" y1="18.309" x2="16.514" y2="22.935">
+<stop offset="0%" style="stop-color:rgb(117,171,88);stop-opacity: 1"/>
+<stop offset="43.5%" style="stop-color:rgb(113,168,89);stop-opacity: 1"/>
+<stop offset="82.6%" style="stop-color:rgb(102,160,91);stop-opacity: 1"/>
+<stop offset="100%" style="stop-color:rgb(95,155,93);stop-opacity: 1"/>
+</linearGradient>
+<polygon style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: url(#SVGID_pTlfCe_VvLKTMt1otO~Mfi_39); fill-rule: nonzero; opacity: 1;" points="-3.92,2.99 -2.06,-0.76 3.92,-2.99 2.54,2.99 " />
+</g>
+<g transform="matrix(1 0 0 1 4.5 15)" >
+<linearGradient id="SVGID_pTlfCe_VvLKTMt1otO~Mfj_40" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 1 -28.5 -39)" x1="20.791" y1="34.45" x2="41.461" y2="46.636">
+<stop offset="21.7%" style="stop-color:rgb(21,125,72);stop-opacity: 1"/>
+<stop offset="32.4%" style="stop-color:rgb(31,143,79);stop-opacity: 1"/>
+<stop offset="45.2%" style="stop-color:rgb(38,156,84);stop-opacity: 1"/>
+<stop offset="62.3%" style="stop-color:rgb(42,163,87);stop-opacity: 1"/>
+<stop offset="100%" style="stop-color:rgb(43,165,88);stop-opacity: 1"/>
+</linearGradient>
+<polygon style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: url(#SVGID_pTlfCe_VvLKTMt1otO~Mfj_40); fill-rule: nonzero; opacity: 1;" points="-4.5,9 -1.15,-5.54 4.5,-9 " />
+</g>
+<g transform="matrix(1 0 0 1 7.3 5.48)" >
+<linearGradient id="SVGID_pTlfCe_VvLKTMt1otO~Mfk_41" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 1 -31.3 -29.48)" x1="29.762" y1="34.173" x2="32.23" y2="25.617">
+<stop offset="0%" style="stop-color:rgb(32,134,71);stop-opacity: 1"/>
+<stop offset="28.000000000000004%" style="stop-color:rgb(36,143,72);stop-opacity: 1"/>
+<stop offset="100%" style="stop-color:rgb(46,161,75);stop-opacity: 1"/>
+</linearGradient>
+<polygon style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: url(#SVGID_pTlfCe_VvLKTMt1otO~Mfk_41); fill-rule: nonzero; opacity: 1;" points="-3.95,3.98 -2.45,-2.5 3.95,-3.98 1.7,0.51 " />
+</g>
+<g transform="matrix(1 0 0 1 0.54 9.07)" >
+<linearGradient id="SVGID_pTlfCe_VvLKTMt1otO~Mfl_42" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 1 -24.54 -33.07)" x1="24.647" y1="36.083" x2="24.486" y2="25.959">
+<stop offset="0%" style="stop-color:rgb(70,153,66);stop-opacity: 1"/>
+<stop offset="100%" style="stop-color:rgb(77,162,71);stop-opacity: 1"/>
+</linearGradient>
+<polygon style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: url(#SVGID_pTlfCe_VvLKTMt1otO~Mfl_42); fill-rule: nonzero; opacity: 1;" points="-4.31,-1.38 4.31,-6.1 2.82,0.39 -2.58,6.1 " />
+</g>
+<g transform="matrix(1 0 0 1 -4.78 12.1)" >
+<linearGradient id="SVGID_pTlfCe_VvLKTMt1otO~Mfm_43" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 1 -19.22 -36.1)" x1="18.276" y1="30.652" x2="20.27" y2="42.1">
+<stop offset="0%" style="stop-color:rgb(49,149,74);stop-opacity: 1"/>
+<stop offset="14.099999999999998%" style="stop-color:rgb(46,145,73);stop-opacity: 1"/>
+<stop offset="100%" style="stop-color:rgb(29,127,70);stop-opacity: 1"/>
+</linearGradient>
+<polygon style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: url(#SVGID_pTlfCe_VvLKTMt1otO~Mfm_43); fill-rule: nonzero; opacity: 1;" points="-2.74,-3.1 1.01,-4.4 2.74,3.07 1.03,4.4 " />
+</g>
+</g>
+</g>
+</svg>
