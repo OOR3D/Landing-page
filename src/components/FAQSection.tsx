@@ -49,7 +49,7 @@ export default function FAQSection() {
             <FAQAccordion />
 
             <Link 
-              href="/faq"
+              href="https://app.outofreach3d.com/help/faq/general"
               className="block text-center mt-8 sm:mt-12"
             >
               <Button

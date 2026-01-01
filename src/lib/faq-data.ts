@@ -5,7 +5,7 @@ export const faqs = [
   },
   {
     question: "When does this platform release?",
-    answer: "OOR3D™ is set to launch in 2025. We're building everything in public, so you'll get sneak peeks, early access, and real chances to help shape the platform along the way. Join our Discord to get involved early."
+    answer: "OOR3D™ is set to launch in 2026. We're building everything in public, so you'll get sneak peeks, early access, and real chances to help shape the platform along the way. Join our Discord to get involved early."
   },
   {
     question: "Do I need to be a pro to join/participate/create?",

@@ -39,7 +39,7 @@ export default function LandingPage() {
             <div className="p-6 bg-zinc-900/50 backdrop-blur-sm rounded-lg">
               <h3 className="text-2xl font-semibold mb-4 text-white">Future of Creating</h3>
               <p className="text-gray-400">
-                Join us in 2025 for a revolutionary approach to creation.
+                Join us in 2026 for a revolutionary approach to creation.
               </p>
             </div>
           </div>
@@ -71,7 +71,7 @@ export default function LandingPage() {
 
       {/* Footer */}
       <footer className="py-8 text-center text-gray-400 bg-black/30 backdrop-blur-sm">
-        <p>© 2025 OUTOFREACH, Inc. All rights reserved.</p>
+        <p>© 2026 OUTOFREACH, Inc. All rights reserved.</p>
       </footer>
     </div>
   )

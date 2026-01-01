@@ -68,6 +68,12 @@ export default function Header() {
                       Home
                     </Link>
                     <Link
+                      href="https://app.outofreach3d.com/upgrades"
+                      className="text-white/70 hover:text-white hover:scale-110 transition-all duration-200"
+                    >
+                      Pricing
+                    </Link>
+                    <Link
                       href="/contact"
                       className="text-white/70 hover:text-white hover:scale-110 transition-all duration-200"
                     >
@@ -76,11 +82,11 @@ export default function Header() {
                   </nav>
                 </div>
 
-                {/* Early Access Button */}
+                {/* Login Button */}
                 <div className="w-[140px] flex justify-end relative z-40">
                   <GradientButton asChild>
-                    <Link href="/early-access">
-                      Early Access
+                    <Link href="https://auth.outofreach3d.com/login">
+                      Login
                     </Link>
                   </GradientButton>
                 </div>
@@ -153,6 +159,13 @@ export default function Header() {
                     Home
                   </Link>
                   <Link
+                    href="https://app.outofreach3d.com/upgrades"
+                    className="text-white/70 hover:text-white text-lg font-medium transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Pricing
+                  </Link>
+                  <Link
                     href="/contact"
                     className="text-white/70 hover:text-white text-lg font-medium transition-colors"
                     onClick={() => setIsMobileMenuOpen(false)}
@@ -162,10 +175,10 @@ export default function Header() {
                   <div className="pt-2">
                     <GradientButton asChild className="w-full">
                       <Link 
-                        href="/early-access"
+                        href="https://auth.outofreach3d.com/login"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
-                        Early Access
+                        Login
                       </Link>
                     </GradientButton>
                   </div>

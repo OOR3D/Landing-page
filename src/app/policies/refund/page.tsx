@@ -52,8 +52,8 @@ export default function RefundPolicyPage() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="prose prose-lg prose-invert max-w-none [&>h2]:font-extrabold [&>h2]:text-2xl [&>h2]:mt-12 [&>h2]:mb-6 [&>h3]:font-bold [&>h3]:text-xl [&>h3]:mt-8 [&>h3]:mb-4 [&>p]:mb-6 [&>ul]:mb-6"
             >
-              <p className="text-gray-400">Effective Date: March 25, 2025</p>
-              <p className="text-gray-400">Last Updated: March 25, 2025</p>
+              <p className="text-gray-400">Effective Date: March 25, 2026</p>
+              <p className="text-gray-400">Last Updated: March 25, 2026</p>
               
               <p>
                 At OUTOFREACH3D™, we aim to deliver a quality experience. Due to the nature of digital products, all purchases are final and non-refundable.

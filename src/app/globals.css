@@ -279,3 +279,16 @@ main, div, section {
 .animate-scroll {
   animation: scroll 20s linear infinite;
 }
+
+@keyframes scroll-vertical {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+.animate-scroll-vertical {
+  animation: scroll-vertical 1.5s linear infinite;
+}

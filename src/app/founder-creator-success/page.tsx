@@ -17,16 +17,6 @@ const montserrat = Montserrat({
 export default function FounderCreatorSuccess() {
   const router = useRouter()
 
-  useEffect(() => {
-    // Check if user has submitted early access form
-    const hasSubmitted = localStorage.getItem("oor3d_early_access_submitted")
-
-    if (!hasSubmitted || hasSubmitted !== "true") {
-      // Redirect to early access page if they haven't submitted
-      router.push('/early-access')
-      return
-    }
-  }, [router])
 
   return (
     <NavigationWrapper>

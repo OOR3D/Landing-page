@@ -79,7 +79,7 @@ export default function HomePage() {
               className="mb-4"
             >
               <span className="inline-block px-4 py-1.5 bg-gradient-to-r from-red-500/10 to-orange-500/10 rounded-full text-sm font-semibold text-orange-400 border border-orange-500/20 backdrop-blur-xl">
-                PRELAUNCH
+                NOW IN BETA
               </span>
             </motion.div>
             
@@ -90,7 +90,7 @@ export default function HomePage() {
               transition={{ duration: 0.8 }}
               className={`text-5xl md:text-7xl font-extrabold mb-8 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className} pb-2`}
             >
-              Create Products for the Virtual World
+              The workspace for creators of the virtual world
             </motion.h1>
             
             <motion.h2
@@ -100,7 +100,7 @@ export default function HomePage() {
               transition={{ duration: 0.8 }}
               className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed"
             >
-              Design and customize virtual items for IMVU, Second Life, Sims 4, and more.<br />
+              Create and customize virtual items for IMVU, Second Life, Sims 4, and more.<br />
               No complicated software, no prior experience needed. All powered by OOR3D™.
             </motion.h2>
 
@@ -115,7 +115,7 @@ export default function HomePage() {
                 size="lg"
                 asChild
               >
-                <Link href="/early-access">
+                <Link href="https://auth.outofreach3d.com/signup">
                   Get Started
                 </Link>
               </GradientButton>
@@ -335,8 +335,8 @@ export default function HomePage() {
                   asChild
                   className="text-xl py-6 px-12"
                 >
-                  <Link href="/early-access">
-                    Create Now
+                  <Link href="https://discord.gg/oor3d" target="_blank" rel="noopener noreferrer">
+                    Join Discord
                   </Link>
                 </GradientButton>
               </motion.div>
@@ -371,23 +371,14 @@ export default function HomePage() {
                 <div className="relative h-[300px] md:h-[400px] w-full max-w-5xl mx-auto overflow-hidden">
                   <div className="relative w-full h-full flex items-center justify-center">
                     <div className="flex justify-center overflow-hidden h-full w-full [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent_100%)]">
-                      <motion.div 
-                        className="flex flex-col items-center gap-8 md:gap-16 pt-16 md:pt-32"
-                        animate={{
-                          y: [0, -2340]
-                        }}
-                        transition={{
-                          y: {
-                            duration: 30,
-                            ease: "linear",
-                            repeat: Infinity,
-                            repeatType: "loop",
-                            repeatDelay: 0
-                          }
+                      <div 
+                        className="flex flex-col items-center animate-scroll-vertical"
+                        style={{
+                          animation: 'scroll-vertical 20s linear infinite'
                         }}
                       >
-                        {[1, 2, 3, 4, 5, 6].map((set) => (
-                          <div key={set} className="flex flex-col items-center justify-center gap-8 md:gap-16">
+                        {[1, 2].map((set) => (
+                          <div key={set} className="flex flex-col items-center justify-center py-4">
                             {[
                               "Beginners",
                               "Dreamers",
@@ -402,14 +393,14 @@ export default function HomePage() {
                             ].map((item, index) => (
                               <div 
                                 key={`${set}-${index}`}
-                                className={`text-4xl sm:text-6xl md:text-7xl lg:text-9xl font-bold text-white ${montserrat.className}`}
+                                className={`text-4xl sm:text-6xl md:text-7xl lg:text-9xl font-bold text-white ${montserrat.className} py-4 md:py-8`}
                               >
                                 {item}
                               </div>
                             ))}
                           </div>
                         ))}
-                      </motion.div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -426,8 +417,8 @@ export default function HomePage() {
                     asChild
                     className="text-base md:text-xl py-4 md:py-6 px-8 md:px-12"
                   >
-                    <Link href="/early-access">
-                      Start Now
+                    <Link href="https://discord.gg/oor3d" target="_blank" rel="noopener noreferrer">
+                      Join Discord
                     </Link>
                   </GradientButton>
                 </motion.div>
@@ -590,8 +581,8 @@ export default function HomePage() {
                           asChild
                           className="text-xl py-6 px-12"
                         >
-                          <Link href="/early-access">
-                            Take me there
+                          <Link href="https://discord.gg/oor3d" target="_blank" rel="noopener noreferrer">
+                            Join Discord
                           </Link>
                         </GradientButton>
                       </motion.div>
@@ -603,7 +594,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Prelaunch Mission Section */}
+        {/* Beta Section */}
         <section className="relative bg-[#0A0C13] py-24 overflow-hidden">
           {/* Section-specific glow */}
           <div className="absolute inset-0 pointer-events-none">
@@ -620,7 +611,7 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 className={`text-4xl md:text-6xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className}`}
               >
-                Prelaunch Mission
+                OOR3D™ is Now in Beta
               </motion.h2>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -629,9 +620,8 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 className="max-w-3xl mx-auto text-center space-y-6 text-xl text-gray-300"
               >
-                <p>We're in the building phase of OOR3D™.</p>
-                <p>We're building in public so creators like you can get involved early.</p>
-                <p>Whether you're just starting out or you're a seasoned pro, you're in the right place.</p>
+                <p>OOR3D™ is now available in beta. Start creating today.</p>
+                <p>Join creators who are already building and shaping the future of virtual world content.</p>
               </motion.div>
             </div>
 
@@ -658,8 +648,8 @@ export default function HomePage() {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                   </div>
-                  <h3 className="text-2xl font-semibold mb-4 text-center text-white">Early Access</h3>
-                  <p className="text-gray-300 text-center">Join our exclusive early access program and be among the first to experience the future of 3D content creation.</p>
+                  <h3 className="text-2xl font-semibold mb-4 text-center text-white">Beta Access</h3>
+                  <p className="text-gray-300 text-center">OOR3D™ is now live in beta. Sign up and start creating 3D content for your virtual worlds today.</p>
                 </motion.div>
 
                 {/* Mission Item 2 */}

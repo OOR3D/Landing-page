@@ -72,7 +72,7 @@ export function Footer() {
             Policy Hub
           </Link>
           <Link 
-            href="/faq" 
+            href="https://app.outofreach3d.com/help/faq/general" 
             className="text-gray-400 hover:text-white hover:scale-110 transition-all duration-200"
           >
             FAQ

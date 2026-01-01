@@ -83,8 +83,8 @@ export default function NoDownloadsRequired() {
               size="lg"
               asChild
             >
-              <Link href="/early-access">
-                Get Early Access
+              <Link href="https://discord.gg/oor3d" target="_blank" rel="noopener noreferrer">
+                Join Discord
               </Link>
             </GradientButton>
           </div>
