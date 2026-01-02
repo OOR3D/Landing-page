@@ -84,7 +84,8 @@ const testimonials: Testimonial[] = [
     name: "Zyh Files",
     location: "US",
     text: "This team is incredible! Their work is top quality, and they're always so kind and helpful. They take the time to assist with any questions and truly care about delivering great results. Highly recommend working with them!",
-    role: "Creator"
+    role: "Creator",
+    imageUrl: "https://userimages01-akm.imvu.com/userdata/35/29/40/97/userpics/Snap_juLj4V95Bi2070531931.jpg"
   },
   {
     name: "BD IMVU",
@@ -93,16 +94,18 @@ const testimonials: Testimonial[] = [
     role: "Creator"
   },
   {
-    name: "DayI",
+    name: "Day",
     location: "",
     text: "Professional team that guide you with patience, fast response. Easy to understand the point that I'm learning as a new mesher.",
-    role: "Creator"
+    role: "Creator",
+    imageUrl: "https://user-images.trustpilot.com/68348e682f2478681e018402/73x73.png"
   },
   {
     name: "Kapri DRVS",
     location: "US",
     text: "been searching for a good quality mesher for about a year until i found outofreach3d! and then till this day i've been with them ever since! quality is amazing and prices are reasonable & service is very good.",
-    role: "Creator"
+    role: "Creator",
+    imageUrl: "https://userimages02-akm.imvu.com/userdata/74/05/72/48/userpics/Snap_LRMnUfXCWv1814264248.jpg"
   },
   {
     name: "Jessie",

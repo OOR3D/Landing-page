@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { Globe, Youtube, Instagram } from "lucide-react"
+import Image from "next/image"
+import { Globe, Youtube, Instagram, Twitter } from "lucide-react"
 
 function XIcon() {
   return (
@@ -28,136 +29,109 @@ function TikTokIcon() {
   )
 }
 
+const footerLinks = [
+  {
+    title: "Product",
+    links: [
+      { name: "Home", href: "/" },
+      { name: "Early Access", href: "/early-access" },
+      { name: "New Features", href: "/new" },
+      { name: "Founder Success", href: "/founder-creator-success" },
+    ]
+  },
+  {
+    title: "Support",
+    links: [
+      { name: "Help Center", href: "https://app.outofreach3d.com/help" },
+      { name: "FAQ", href: "/faq" },
+      { name: "Contact", href: "https://discord.gg/oor3d" },
+      { name: "Status", href: "#", disabled: true },
+    ]
+  },
+  {
+    title: "Legal",
+    links: [
+      { name: "Privacy Policy", href: "https://app.outofreach3d.com/help/policy/privacy-policy" },
+      { name: "Terms of Service", href: "https://app.outofreach3d.com/help/policy/terms-of-service" },
+      { name: "Refund Policy", href: "https://app.outofreach3d.com/help/policy/refund-policy" },
+      { name: "License & Usage", href: "https://app.outofreach3d.com/help/policy/license-usage" },
+      { name: "About Company", href: "https://app.outofreach3d.com/help/company" },
+    ]
+  },
+  {
+    title: "Socials",
+    links: [
+      { name: "Discord", href: "https://discord.gg/oor3d", icon: <DiscordIcon /> },
+      { name: "X (Twitter)", href: "https://twitter.com/outofreach3d", icon: <XIcon /> },
+      { name: "YouTube", href: "https://www.youtube.com/@outofreach3d", icon: <Youtube className="w-5 h-5" /> },
+      { name: "Instagram", href: "https://www.instagram.com/outofreach3d", icon: <Instagram className="w-5 h-5" /> },
+      { name: "TikTok", href: "https://www.tiktok.com/@outofreach3d", icon: <TikTokIcon /> },
+    ]
+  }
+]
+
 export function Footer() {
   return (
-    <footer className="border-t border-gray-800/50 bg-[#0a0c13] w-full">
-      {/* Background Glow Effects */}
-      <div className="fixed inset-0 pointer-events-none">
-        {/* Top-right glow */}
-        <div className="absolute -top-[30%] right-[10%] w-[45rem] h-[45rem] bg-red-500/10 rounded-full blur-[12rem] animate-pulse" />
-        {/* Left-center glow */}
-        <div className="absolute top-[30%] -left-[20%] w-[35rem] h-[35rem] bg-orange-500/10 rounded-full blur-[12rem] animate-pulse" style={{ animationDelay: '1s' }} />
-        {/* Bottom-right glow */}
-        <div className="absolute bottom-[10%] right-[20%] w-[40rem] h-[40rem] bg-red-500/10 rounded-full blur-[12rem] animate-pulse" style={{ animationDelay: '2s' }} />
-        {/* Center glow */}
-        <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[50rem] h-[50rem] bg-orange-500/5 rounded-full blur-[14rem] animate-pulse" style={{ animationDelay: '1.5s' }} />
+    <footer className="w-full relative py-12 px-4 md:px-6">
+      <div className="max-w-[1400px] mx-auto bg-[#0D0429]/90 backdrop-blur-xl border border-white/5 rounded-[32px] overflow-hidden relative">
+        {/* Background Glow Effects - Contained within the box */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <div className="absolute -top-[30%] right-[10%] w-[35rem] h-[35rem] bg-[#FF4AE7]/8 rounded-full blur-[10rem] animate-pulse" />
+          <div className="absolute top-[30%] -left-[20%] w-[30rem] h-[30rem] bg-[#FE0101]/5 rounded-full blur-[10rem] animate-pulse" style={{ animationDelay: '1s' }} />
+        </div>
+
+        <div className="px-8 py-16 relative z-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-20 max-w-5xl mx-auto">
+              {footerLinks.map((column) => (
+                <div key={column.title} className="flex flex-col gap-4 text-left">
+                  <h3 className="font-semibold text-white tracking-wide">{column.title}</h3>
+                  <ul className="flex flex-col gap-3">
+                    {column.links.map((link) => (
+                      <li key={link.name}>
+                        {link.disabled ? (
+                          <span className="text-sm text-gray-600 cursor-not-allowed">{link.name}</span>
+                        ) : (
+                          <Link 
+                            href={link.href}
+                            className="text-sm text-gray-400 hover:text-white transition-colors duration-200 flex items-center gap-2"
+                            target={link.href.startsWith('http') ? "_blank" : undefined}
+                            rel={link.href.startsWith('http') ? "noopener noreferrer" : undefined}
+                          >
+                            {link.name}
+                          </Link>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+          </div>
+
+          <div className="flex flex-col items-center justify-center pt-10 border-t border-white/5 text-center">
+              <Link href="/" className="mb-6 hover:opacity-80 transition-opacity relative w-[100px] h-[30px]">
+                  <Image 
+                      src="/OOR-LOGO.svg" 
+                      alt="OOR3D Logo" 
+                      fill
+                      className="object-contain"
+                  />
+              </Link>
+              
+              <p className="text-gray-500 text-sm max-w-md mb-8">
+                  We build the engine. You shape the virtual world.
+              </p>
+
+              <p className="text-xs text-gray-600">
+                  © {new Date().getFullYear()} OUTOFREACH™, Inc. All rights reserved.
+              </p>
+              
+              <div className="flex gap-6 mt-4 text-xs text-gray-600">
+                  <Link href="https://app.outofreach3d.com/help/policy/privacy-policy" className="hover:text-gray-400 transition-colors">Privacy Policy</Link>
+                  <Link href="https://app.outofreach3d.com/help/policy/terms-of-service" className="hover:text-gray-400 transition-colors">Terms of Service</Link>
+              </div>
+          </div>
+        </div>
       </div>
-
-      {/* Content */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        className="container mx-auto px-4 py-12 relative z-10"
-      >
-        {/* Main Links */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-6 mb-12 text-sm"
-        >
-          <Link 
-            href="/" 
-            className="text-gray-400 hover:text-white hover:scale-110 transition-all duration-200"
-          >
-            Home
-          </Link>
-          <Link 
-            href="/policies" 
-            className="text-gray-400 hover:text-white hover:scale-110 transition-all duration-200"
-          >
-            Policy Hub
-          </Link>
-          <Link 
-            href="https://app.outofreach3d.com/help/faq/general" 
-            className="text-gray-400 hover:text-white hover:scale-110 transition-all duration-200"
-          >
-            FAQ
-          </Link>
-          <Link 
-            href="/contact"
-            className="text-gray-400 hover:text-white hover:scale-110 transition-all duration-200"
-          >
-            Contact
-          </Link>
-        </motion.div>
-
-        {/* Social Links */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="flex justify-center gap-6 mb-12"
-        >
-          <Link
-            href="/"
-            className="text-gray-400 hover:text-white hover:scale-110 transition-all duration-200"
-            aria-label="Home"
-          >
-            <Globe className="w-5 h-5" />
-          </Link>
-          <a
-            href="https://twitter.com/outofreach3d"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-400 hover:text-white hover:scale-110 transition-all duration-200"
-            aria-label="X (formerly Twitter)"
-          >
-            <XIcon />
-          </a>
-          <a
-            href="https://www.youtube.com/@outofreach3d"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-400 hover:text-white hover:scale-110 transition-all duration-200"
-            aria-label="YouTube"
-          >
-            <Youtube className="w-6 h-7 -mt-1" />
-          </a>
-          <a
-            href="https://discord.gg/oor3d"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-400 hover:text-white hover:scale-110 transition-all duration-200"
-            aria-label="Discord"
-          >
-            <DiscordIcon />
-          </a>
-          <a
-            href="https://www.instagram.com/outofreach3d"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-400 hover:text-white hover:scale-110 transition-all duration-200"
-            aria-label="Instagram"
-          >
-            <Instagram className="w-5 h-5" />
-          </a>
-          <a
-            href="https://www.tiktok.com/@outofreach3d"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-400 hover:text-white hover:scale-110 transition-all duration-200"
-            aria-label="TikTok"
-          >
-            <TikTokIcon />
-          </a>
-        </motion.div>
-
-        {/* Copyright */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="text-center text-sm text-gray-500 px-4 pb-4"
-        >
-          © {new Date().getFullYear()} OUTOFREACH™, Inc. All rights reserved.
-        </motion.div>
-      </motion.div>
     </footer>
   )
-} 
+}
