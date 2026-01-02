@@ -70,11 +70,12 @@ const footerLinks = [
 export function Footer() {
   return (
     <footer className="w-full relative py-12 px-4 md:px-6">
-      <div className="max-w-[1400px] mx-auto bg-[#0D0429]/90 backdrop-blur-xl border border-white/5 rounded-[32px] overflow-hidden relative">
+      <div className="max-w-[1400px] mx-auto bg-[#0D0429]/90 backdrop-blur-xl border border-white/10 rounded-[32px] overflow-hidden relative">
         {/* Background Glow Effects - Contained within the box */}
         <div className="absolute inset-0 pointer-events-none z-0">
-          <div className="absolute -top-[30%] right-[10%] w-[35rem] h-[35rem] bg-[#FF4AE7]/8 rounded-full blur-[10rem] animate-pulse" />
-          <div className="absolute top-[30%] -left-[20%] w-[30rem] h-[30rem] bg-[#FE0101]/5 rounded-full blur-[10rem] animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute -top-[30%] right-[10%] w-[35rem] h-[35rem] bg-[#FF4AE7]/[0.06] rounded-full blur-[10rem]" />
+          <div className="absolute top-[30%] -left-[20%] w-[30rem] h-[30rem] bg-[#FE0101]/[0.04] rounded-full blur-[10rem]" />
+          <div className="absolute bottom-[10%] right-[30%] w-[25rem] h-[25rem] bg-[#7877C6]/[0.03] rounded-full blur-[8rem]" />
         </div>
 
         <div className="px-8 py-16 relative z-10">
