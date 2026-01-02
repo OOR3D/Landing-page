@@ -14,6 +14,7 @@ import PrelaunchMission from '@/components/PrelaunchMission'
 import FAQSection from '@/components/FAQSection'
 import { HelpCircle } from 'lucide-react'
 import NoDownloadsRequired from '@/components/NoDownloadsRequired'
+import TestimonialsSection from '@/components/TestimonialsSection'
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -760,6 +761,9 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+
+        {/* Testimonials Section */}
+        <TestimonialsSection />
 
         {/* FAQ Section */}
         <FAQSection />

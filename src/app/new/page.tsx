@@ -7,6 +7,13 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { Montserrat } from "next/font/google"
 import { ChevronDown, ArrowRight, Play, Globe, Users, Palette } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
+import TestimonialsSection from '@/components/TestimonialsSection'
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -49,7 +56,7 @@ export default function NewLandingPage() {
 
   return (
     <div 
-      className={`min-h-screen text-white selection:bg-[#FE0101] selection:text-white ${montserrat.variable}`}
+      className={`min-h-screen text-white selection:bg-[#FE0101]/30 selection:text-white ${montserrat.variable}`}
       style={{ 
         background: nebulaBackground,
         backgroundColor: colors.bgPrimary,
@@ -124,11 +131,11 @@ export default function NewLandingPage() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className={`text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 ${montserrat.className}`}
           >
-            <span className="block text-white mb-2 drop-shadow-2xl">The easiest way to create for</span>
+            <span className="block text-white mb-2 drop-shadow-2xl">The Workspace for</span>
             <span 
               className="bg-clip-text text-transparent bg-gradient-to-r from-[#FF8CEA] via-[#FE0101] to-[#FF8CEA] bg-[length:200%_auto] animate-gradient"
             >
-              virtual worlds
+              Virtual Creators
             </span>
           </motion.h1>
 
@@ -138,9 +145,9 @@ export default function NewLandingPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-xl md:text-2xl text-white/60 max-w-2xl mx-auto mb-10 leading-relaxed font-light"
           >
-            Pick products. Add your textures. Export to IMVU.
+            Design, customize, and export game-ready assets directly from your browser.
             <br />
-            <span className="text-white/40">No downloads. No 3D skills required.</span>
+            <span className="text-white/40 text-base md:text-lg block mt-2">No 3D experience required.</span>
           </motion.p>
 
           <motion.div
@@ -227,7 +234,7 @@ export default function NewLandingPage() {
         </div>
       </section>
 
-      {/* Video Showcase - "The Stage" */}
+      {/* Meet Remix - Video Showcase */}
       <section className="px-4 py-32 relative z-20">
         <motion.div
           initial={{ opacity: 0, y: 60, scale: 0.95 }}
@@ -244,6 +251,15 @@ export default function NewLandingPage() {
             <div className="absolute bottom-0 right-1/3 w-2 h-2 bg-white/30 rounded-full blur-[2px] animate-pulse" style={{ animationDelay: '1.5s' }} />
           </div>
 
+          <div className="text-center mb-12">
+            <h2 className={`text-4xl md:text-5xl font-bold mb-4 ${montserrat.className}`}>
+              Meet Remix
+            </h2>
+            <p className="text-xl text-white/60">
+              The powerful editor that makes 3D creation accessible to everyone.
+            </p>
+          </div>
+
           {/* Border container */}
           <div className="relative">
             {/* Outer glowing border */}
@@ -254,8 +270,8 @@ export default function NewLandingPage() {
             <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-[#FE0101]/10 bg-[#150a2e]">
               <div className="aspect-video relative">
                 <iframe
-                  src="https://www.youtube.com/embed/WTSFG9HavAU"
-                  title="OOR3D Demo"
+                  src="https://www.youtube.com/embed/nrmqh6p7c_k"
+                  title="OOR3D Remix Editor Demo"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   className="w-full h-full rounded-2xl"
@@ -266,49 +282,97 @@ export default function NewLandingPage() {
         </motion.div>
       </section>
 
-      {/* Features Grid - Premium Bento */}
-      <section className="px-6 py-24 relative">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-6 md:grid-rows-2 gap-6 h-auto md:h-[800px]">
-            
-            {/* Card 1: 3 Steps (Large) */}
-            <BentoCard className="md:col-span-4 md:row-span-2 flex flex-col justify-center p-12">
-              <span className="text-[#FE0101] font-bold tracking-wider text-sm uppercase mb-4 block">Workflow</span>
-              <h2 className={`text-4xl md:text-5xl font-bold mb-12 leading-tight ${montserrat.className}`}>
-                From concept to<br/>
-                <span className="text-white/40">IMVU product.</span>
-              </h2>
-              
-              <div className="space-y-12">
-                <Step number="01" title="Pick" desc="Choose a base model from our library." />
-                <Step number="02" title="Texture" desc="Upload your art. See it instantly." />
-                <Step number="03" title="Export" desc="Get files ready for upload." />
-              </div>
-            </BentoCard>
-
-            {/* Card 2: Browser Based */}
-            <BentoCard className="md:col-span-2 md:row-span-1 p-8 flex flex-col justify-between group">
-              <div className="w-12 h-12 rounded-2xl bg-[#FE0101]/10 flex items-center justify-center text-[#FE0101] group-hover:scale-110 transition-transform">
-                <Globe className="w-6 h-6" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold mb-2">100% Browser</h3>
-                <p className="text-white/50 text-sm">No massive downloads. Create from anywhere.</p>
-              </div>
-            </BentoCard>
-
-            {/* Card 3: No Skills */}
-            <BentoCard className="md:col-span-2 md:row-span-1 p-8 flex flex-col justify-between group">
-              <div className="w-12 h-12 rounded-2xl bg-[#FE0101]/10 flex items-center justify-center text-[#FE0101] group-hover:scale-110 transition-transform">
-                <Palette className="w-6 h-6" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold mb-2">No 3D Skills</h3>
-                <p className="text-white/50 text-sm">Products are pre-made. Just add your creative touch.</p>
-              </div>
-            </BentoCard>
-
+      {/* Features Grid - 3 Step Workflow */}
+      <section className="px-6 py-24 relative z-10">
+        <div className="max-w-[1600px] mx-auto">
+          <div className="text-center mb-16">
+            <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${montserrat.className}`}>How It Works</h2>
+            <p className="text-xl text-white/60">From concept to creation in three simple steps.</p>
           </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 group/cards">
+              {/* Step 1: Pick */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="group relative bg-[#150a2e]/50 backdrop-blur-xl border border-white/10 rounded-[32px] p-8 hover:border-[#FE0101]/50 transition-all duration-500 hover:scale-[1.02] hover:!opacity-100 group-hover/cards:opacity-40"
+              >
+                <div className="absolute -top-20 -left-20 w-48 h-48 opacity-100 transition-all duration-500 pointer-events-none z-20 group-hover:scale-110 group-hover:drop-shadow-[0_0_25px_rgba(254,1,1,0.3)]">
+                  <Image src="/1 3d.png" alt="Step 1" fill className="object-contain" />
+                </div>
+                
+                <div className="relative z-10 h-full flex flex-col pt-24">
+                  <div className="mb-4">
+                    <h3 className="text-2xl font-bold mb-2 text-white">Pick</h3>
+                    <p className="text-white/50 leading-relaxed text-sm">Choose a base model from our curated library of high-quality assets.</p>
+                  </div>
+                  
+                  <div className="mt-auto relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-black/20 border border-white/5 group-hover:border-[#FE0101]/20 transition-colors">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <p className="text-white/20 text-xs">Generate: "Grid of 3D clothing models"</p>
+                    </div>
+                     {/* <Image src="/images/step-1-pick.png" alt="Pick a model" fill className="object-cover" /> */}
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Step 2: Customize */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="group relative bg-[#150a2e]/50 backdrop-blur-xl border border-white/10 rounded-[32px] p-8 hover:border-[#FE0101]/50 transition-all duration-500 hover:scale-[1.02] hover:!opacity-100 group-hover/cards:opacity-40"
+              >
+                <div className="absolute -top-20 -left-20 w-48 h-48 opacity-100 transition-all duration-500 pointer-events-none z-20 group-hover:scale-110 group-hover:drop-shadow-[0_0_25px_rgba(254,1,1,0.3)]">
+                   <Image src="/2 3d.png" alt="Step 2" fill className="object-contain" />
+                </div>
+                
+                <div className="relative z-10 h-full flex flex-col pt-24">
+                  <div className="mb-4">
+                    <h3 className="text-2xl font-bold mb-2 text-white">Customize</h3>
+                    <p className="text-white/50 leading-relaxed text-sm">Upload your art or use AI tools. See it applied instantly in 3D.</p>
+                  </div>
+                  
+                  <div className="mt-auto relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-black/20 border border-white/5 group-hover:border-[#FE0101]/20 transition-colors">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <p className="text-white/20 text-xs">Generate: "Applying texture to model"</p>
+                    </div>
+                    {/* <Image src="/images/step-2-texture.png" alt="Customize your model" fill className="object-cover" /> */}
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Step 3: Export */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="group relative bg-[#150a2e]/50 backdrop-blur-xl border border-white/10 rounded-[32px] p-8 hover:border-[#FE0101]/50 transition-all duration-500 hover:scale-[1.02] hover:!opacity-100 group-hover/cards:opacity-40"
+              >
+                <div className="absolute -top-20 -left-20 w-48 h-48 opacity-100 transition-all duration-500 pointer-events-none z-20 group-hover:scale-110 group-hover:drop-shadow-[0_0_25px_rgba(254,1,1,0.3)]">
+                   <Image src="/3 3d.png" alt="Step 3" fill className="object-contain" />
+                </div>
+                
+                <div className="relative z-10 h-full flex flex-col pt-24">
+                  <div className="mb-4">
+                    <h3 className="text-2xl font-bold mb-2 text-white">Export</h3>
+                    <p className="text-white/50 leading-relaxed text-sm">Get game-ready files. Download and upload directly to IMVU.</p>
+                  </div>
+                  
+                  <div className="mt-auto relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-black/20 border border-white/5 group-hover:border-[#FE0101]/20 transition-colors">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                       <p className="text-white/20 text-xs">Generate: "Download ready files"</p>
+                    </div>
+                    {/* <Image src="/images/step-3-export.png" alt="Export files" fill className="object-cover" /> */}
+                  </div>
+                </div>
+              </motion.div>
+
+            </div>
         </div>
       </section>
 
@@ -324,23 +388,98 @@ export default function NewLandingPage() {
                 Start creating for IMVU today. We're actively expanding to support more of the virtual worlds you love.
               </p>
                 <div className="flex flex-wrap items-center gap-6">
-                  {/* IMVU is active */}
-                  <div className="relative w-8 h-8" title="IMVU">
-                     <Image src="/images/platforms/imvu-logo.webp" alt="IMVU" fill className="object-contain" />
-                  </div>
-                  
-                  {/* Coming Soon */}
-                  <div className="w-px h-6 bg-white/10 mx-2" />
-                  
-                  <div className="relative w-8 h-8 opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" title="Second Life">
-                    <Image src="/images/platforms/second-life-logo.svg" alt="Second Life" fill className="object-contain" />
-                  </div>
-                  <div className="relative w-8 h-8 opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" title="The Sims 4">
-                    <Image src="/images/platforms/sims4-logo.svg" alt="The Sims 4" fill className="object-contain" />
-                  </div>
-                  <div className="relative w-8 h-8 opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" title="Roblox">
-                    <Image src="/images/platforms/roblox-logo.svg" alt="Roblox" fill className="object-contain" />
-                  </div>
+                  <TooltipProvider delayDuration={0}>
+                    {/* IMVU is active */}
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Link href="https://imvu.com" target="_blank" className="relative w-8 h-8 cursor-pointer hover:scale-110 transition-transform duration-300">
+                           <Image src="/images/platforms/imvu-logo.webp" alt="IMVU" fill className="object-contain" />
+                        </Link>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>IMVU</p>
+                      </TooltipContent>
+                    </Tooltip>
+                    
+                    {/* Coming Soon */}
+                    
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Link href="https://secondlife.com" target="_blank" className="relative w-8 h-8 opacity-50 hover:opacity-100 hover:scale-110 transition-all duration-300 cursor-pointer">
+                          <Image src="/images/platforms/second-life-logo.svg" alt="Second Life" fill className="object-contain" />
+                        </Link>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Second Life</p>
+                      </TooltipContent>
+                    </Tooltip>
+
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Link href="https://www.ea.com/games/the-sims/the-sims-4" target="_blank" className="relative w-8 h-8 opacity-50 hover:opacity-100 hover:scale-110 transition-all duration-300 cursor-pointer">
+                          <Image src="/images/platforms/sims4-logo.svg" alt="The Sims 4" fill className="object-contain" />
+                        </Link>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>The Sims 4</p>
+                      </TooltipContent>
+                    </Tooltip>
+
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Link href="https://www.roblox.com" target="_blank" className="relative w-8 h-8 opacity-50 hover:opacity-100 hover:scale-110 transition-all duration-300 cursor-pointer">
+                          <Image src="/images/platforms/roblox-logo.svg" alt="Roblox" fill className="object-contain" />
+                        </Link>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Roblox</p>
+                      </TooltipContent>
+                    </Tooltip>
+
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Link href="https://vrchat.com" target="_blank" className="relative w-8 h-8 opacity-50 hover:opacity-100 hover:scale-110 transition-all duration-300 cursor-pointer">
+                          <Image src="/images/platforms/vrchat-logo.png" alt="VRChat" fill className="object-contain" />
+                        </Link>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>VRChat</p>
+                      </TooltipContent>
+                    </Tooltip>
+
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Link href="https://web.zepeto.me" target="_blank" className="relative w-8 h-8 opacity-50 hover:opacity-100 hover:scale-110 transition-all duration-300 cursor-pointer">
+                          <Image src="/images/platforms/zepeto-logo.svg" alt="Zepeto" fill className="object-contain" />
+                        </Link>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Zepeto</p>
+                      </TooltipContent>
+                    </Tooltip>
+
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Link href="https://playinzoi.com" target="_blank" className="relative w-8 h-8 opacity-50 hover:opacity-100 hover:scale-110 transition-all duration-300 cursor-pointer">
+                          <Image src="/images/platforms/inzoi-logo.svg" alt="Inzoi" fill className="object-contain" />
+                        </Link>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Inzoi</p>
+                      </TooltipContent>
+                    </Tooltip>
+
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Link href="https://fivem.net" target="_blank" className="relative w-8 h-8 opacity-50 hover:opacity-100 hover:scale-110 transition-all duration-300 cursor-pointer">
+                          <Image src="/images/platforms/fivem-logo.svg" alt="FiveM" fill className="object-contain" />
+                        </Link>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>FiveM</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
                 </div>
             </div>
             
@@ -356,27 +495,90 @@ export default function NewLandingPage() {
         </div>
       </section>
 
+      {/* Remix Editor Showcase */}
+      {/* <section className="px-6 py-24 relative z-10">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${montserrat.className}`}>
+              Meet Remix
+            </h2>
+            <p className="text-xl text-white/60 max-w-2xl mx-auto">
+              The powerful editor that makes 3D creation accessible to everyone.
+            </p>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="relative rounded-[32px] overflow-hidden shadow-2xl shadow-[#FE0101]/20 border border-white/10 bg-[#150a2e]"
+          >
+            <div className="aspect-video relative">
+              <iframe
+                src="https://www.youtube.com/embed/nrmqh6p7c_k"
+                title="OOR3D Remix Editor Demo"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full"
+              />
+            </div>
+          </motion.div>
+        </div>
+      </section> */}
+
+      {/* Testimonials Section */}
+      <TestimonialsSection />
+
       {/* Community Section */}
-      <section className="px-6 py-24">
-        <div className="max-w-4xl mx-auto">
-          <BentoCard className="p-16 text-center relative overflow-hidden border-[#5865F2]/30">
-            <div className="absolute inset-0 bg-[#5865F2]/5" />
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-b from-[#5865F2]/10 to-transparent" />
+      <section className="px-6 py-24 relative overflow-hidden">
+        {/* Decorative background elements */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#5865F2]/10 rounded-full blur-[120px] pointer-events-none" />
+        
+        <div className="max-w-5xl mx-auto relative z-10">
+          <BentoCard className="p-8 md:p-16 text-center relative overflow-hidden border-[#5865F2]/30 group">
+            {/* Hover Gradient */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#5865F2]/10 via-[#150a2e]/50 to-[#FE0101]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             
-            <div className="relative z-10">
-              <h2 className={`text-4xl font-bold mb-6 ${montserrat.className}`}>Join the Creators</h2>
-              <p className="text-xl text-white/60 mb-10 max-w-lg mx-auto">
-                Get help, share designs, and shape the future of OOR3D in our Discord.
-              </p>
-              <Link 
-                href="https://discord.gg/oor3d"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-[#5865F2] hover:bg-[#4752C4] text-white rounded-full font-semibold transition-all hover:scale-105 shadow-lg shadow-[#5865F2]/20"
+            <div className="relative z-10 flex flex-col items-center">
+              {/* Floating Discord Logo */}
+              <motion.div 
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="w-24 h-24 mb-8 relative drop-shadow-[0_0_30px_rgba(88,101,242,0.6)]"
               >
-                <Users className="w-5 h-5" />
-                Join Discord Server
-              </Link>
+                <Image 
+                  src="/images/discord-logo.svg" 
+                  alt="Discord" 
+                  fill 
+                  className="object-contain"
+                />
+              </motion.div>
+
+              <h2 className={`text-4xl md:text-6xl font-bold mb-6 tracking-tight ${montserrat.className}`}>
+                Join the <span className="text-[#5865F2]">Community</span>
+              </h2>
+              
+              <p className="text-xl text-white/60 mb-10 max-w-xl mx-auto leading-relaxed">
+                Connect with thousands of creators. Share your designs, get instant feedback, and shape the future of OOR3D.
+              </p>
+
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <Link 
+                  href="https://discord.gg/oor3d"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button 
+                    size="default" 
+                    className="group relative overflow-hidden bg-[#5865F2] hover:bg-[#4752C4] text-white rounded-full px-8 py-6 text-base h-auto shadow-[0_0_20px_rgba(88,101,242,0.3)] hover:shadow-[0_0_50px_rgba(88,101,242,0.6)] transition-all duration-500 ease-out"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out" />
+                    <Users className="w-5 h-5 mr-2 relative z-10" />
+                    <span className="relative z-10 font-semibold tracking-wide">Join Discord Server</span>
+                  </Button>
+                </Link>
+              </div>
             </div>
           </BentoCard>
         </div>
