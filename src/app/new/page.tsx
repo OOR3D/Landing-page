@@ -562,7 +562,7 @@ export default function NewLandingPage() {
               </h2>
               
               <p className="text-xl text-white/60 mb-10 max-w-xl mx-auto leading-relaxed">
-                Connect with thousands of creators. Share your designs, get instant feedback, and shape the future of OOR3D.
+                Connect with Hundreds of creators. Share your designs, get instant feedback, and shape the future of OOR3D.
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
@@ -573,9 +573,12 @@ export default function NewLandingPage() {
                 >
                   <Button 
                     size="default" 
-                    className="relative overflow-hidden bg-gradient-to-b from-[#5865F2] to-[#4752C4] text-white rounded-full px-8 py-6 text-base h-auto shadow-[0_4px_20px_rgba(88,101,242,0.4),0_0_0_1px_rgba(255,255,255,0.1)] hover:bg-none hover:from-[#5865F2] hover:to-[#4752C4] hover:text-white hover:border-transparent"
+                    className="relative overflow-hidden bg-gradient-to-b from-[#5865F2] to-[#4752C4] text-white rounded-full px-8 py-6 text-base h-auto shadow-[0_4px_20px_rgba(88,101,242,0.4),0_0_0_1px_rgba(255,255,255,0.1)] transition-transform duration-100 active:scale-95 hover:text-white active:text-white"
                   >
+                    {/* Top Highlight Line */}
                     <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+                    
+                    {/* Content */}
                     <div className="relative z-10 flex items-center gap-2">
                       <Users className="w-5 h-5" />
                       <span className="font-semibold tracking-wide">Join Discord Server</span>
