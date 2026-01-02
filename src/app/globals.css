@@ -292,3 +292,9 @@ main, div, section {
 .animate-scroll-vertical {
   animation: scroll-vertical 1.5s linear infinite;
 }
+
+/* Custom selection color */
+::selection {
+  background-color: rgba(255, 20, 147, 0.6);
+  color: white;
+}

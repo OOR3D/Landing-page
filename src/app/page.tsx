@@ -3,9 +3,9 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { Montserrat } from "next/font/google"
-import { ChevronDown, ArrowRight, Play, Globe, Users, Palette } from 'lucide-react'
+import { ChevronDown, Play, Globe, Users, Palette, Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
   Tooltip,
@@ -48,17 +48,21 @@ const faqs = [
   { q: "Is there a free trial?", a: "Yes! Sign up and explore during our beta." },
 ]
 
+import FeaturesBento from '@/components/FeaturesBento'
+import SecurityFeatures from '@/components/SecurityFeatures'
+import PlatformLogos from '@/components/PlatformLogos'
 import { Footer } from '@/components/Footer'
 
 export default function NewLandingPage() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null)
+  
   const { scrollY } = useScroll()
   const heroY = useTransform(scrollY, [0, 500], [0, 150])
   const opacity = useTransform(scrollY, [0, 300], [1, 0])
 
   return (
     <div 
-      className={`min-h-screen text-white selection:bg-[#FE0101]/30 selection:text-white ${montserrat.variable}`}
+      className={`min-h-screen text-white selection:bg-[#FF1493]/60 selection:text-white ${montserrat.variable}`}
       style={{ 
         background: nebulaBackground,
         backgroundColor: colors.bgPrimary,
@@ -160,7 +164,7 @@ export default function NewLandingPage() {
           >
             <Link href="https://auth.outofreach3d.com/signup">
               <Button variant="red" size="default" className="rounded-full px-6 w-auto">
-                Start Creating <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+                <Sparkles className="w-4 h-4 mr-2" /> Start Creating
               </Button>
             </Link>
           </motion.div>
@@ -380,124 +384,33 @@ export default function NewLandingPage() {
         </div>
       </section>
 
-      {/* Platforms Section - Dedicated */}
-      <section className="px-6 py-24 relative">
-        <div className="max-w-5xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className={`text-3xl md:text-4xl font-bold mb-6 ${montserrat.className}`}>
-                Built for your favorite platforms
-              </h2>
-              <p className="text-lg text-white/60 mb-8">
-                Start creating for IMVU today. We're actively expanding to support more of the virtual worlds you love.
-              </p>
-                <div className="flex flex-wrap items-center gap-6">
-                  <TooltipProvider delayDuration={0}>
-                    {/* IMVU is active */}
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <Link href="https://imvu.com" target="_blank" className="relative w-8 h-8 cursor-pointer hover:scale-110 transition-transform duration-300">
-                           <Image src="/images/platforms/imvu-logo.webp" alt="IMVU" fill className="object-contain" />
-                        </Link>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>IMVU</p>
-                      </TooltipContent>
-                    </Tooltip>
-                    
-                    {/* Coming Soon */}
-                    
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <Link href="https://secondlife.com" target="_blank" className="relative w-8 h-8 opacity-50 hover:opacity-100 hover:scale-110 transition-all duration-300 cursor-pointer">
-                          <Image src="/images/platforms/second-life-logo.svg" alt="Second Life" fill className="object-contain" />
-                        </Link>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Second Life</p>
-                      </TooltipContent>
-                    </Tooltip>
+      {/* Features Bento Grid */}
+      <FeaturesBento />
 
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <Link href="https://www.ea.com/games/the-sims/the-sims-4" target="_blank" className="relative w-8 h-8 opacity-50 hover:opacity-100 hover:scale-110 transition-all duration-300 cursor-pointer">
-                          <Image src="/images/platforms/sims4-logo.svg" alt="The Sims 4" fill className="object-contain" />
-                        </Link>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>The Sims 4</p>
-                      </TooltipContent>
-                    </Tooltip>
-
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <Link href="https://www.roblox.com" target="_blank" className="relative w-8 h-8 opacity-50 hover:opacity-100 hover:scale-110 transition-all duration-300 cursor-pointer">
-                          <Image src="/images/platforms/roblox-logo.svg" alt="Roblox" fill className="object-contain" />
-                        </Link>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Roblox</p>
-                      </TooltipContent>
-                    </Tooltip>
-
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <Link href="https://vrchat.com" target="_blank" className="relative w-8 h-8 opacity-50 hover:opacity-100 hover:scale-110 transition-all duration-300 cursor-pointer">
-                          <Image src="/images/platforms/vrchat-logo.png" alt="VRChat" fill className="object-contain" />
-                        </Link>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>VRChat</p>
-                      </TooltipContent>
-                    </Tooltip>
-
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <Link href="https://web.zepeto.me" target="_blank" className="relative w-8 h-8 opacity-50 hover:opacity-100 hover:scale-110 transition-all duration-300 cursor-pointer">
-                          <Image src="/images/platforms/zepeto-logo.svg" alt="Zepeto" fill className="object-contain" />
-                        </Link>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Zepeto</p>
-                      </TooltipContent>
-                    </Tooltip>
-
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <Link href="https://playinzoi.com" target="_blank" className="relative w-8 h-8 opacity-50 hover:opacity-100 hover:scale-110 transition-all duration-300 cursor-pointer">
-                          <Image src="/images/platforms/inzoi-logo.svg" alt="Inzoi" fill className="object-contain" />
-                        </Link>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Inzoi</p>
-                      </TooltipContent>
-                    </Tooltip>
-
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <Link href="https://fivem.net" target="_blank" className="relative w-8 h-8 opacity-50 hover:opacity-100 hover:scale-110 transition-all duration-300 cursor-pointer">
-                          <Image src="/images/platforms/fivem-logo.svg" alt="FiveM" fill className="object-contain" />
-                        </Link>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>FiveM</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </div>
-            </div>
-            
-            <div className="relative aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 shadow-2xl transform md:rotate-3 transition-transform duration-500 hover:rotate-0">
-              <Image
-                src="/Starting with IMVU.png"
-                alt="Platform Support - Starting with IMVU"
-                fill
-                className="object-cover"
-              />
-            </div>
+      {/* 3D Showcase Placeholder */}
+      {/* <section className="px-6 py-24 relative z-10">
+        <div className="max-w-7xl mx-auto text-center">
+          <p className="text-white/40 uppercase tracking-widest text-sm mb-4">Interactive Preview</p>
+          <div className="aspect-[16/9] w-full bg-white/5 rounded-[32px] border border-white/10 flex items-center justify-center">
+             <p className="text-white/60">3D Interactive Viewer Coming Soon</p>
           </div>
         </div>
+      </section> */}
+
+      {/* Platforms Section - Dedicated */}
+      <section className="relative w-full py-24">
+        <PlatformLogos>
+          <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${montserrat.className}`}>
+            Built to support your favorite platforms
+          </h2>
+          <p className="text-xl text-white/60 mb-8 max-w-2xl mx-auto">
+            Start creating for IMVU today. We're actively expanding to support more of the virtual worlds you love.
+          </p>
+        </PlatformLogos>
       </section>
+
+      {/* Security & Support Features */}
+      <SecurityFeatures />
 
       {/* Remix Editor Showcase */}
       {/* <section className="px-6 py-24 relative z-10">

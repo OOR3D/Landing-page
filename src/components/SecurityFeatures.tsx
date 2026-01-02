@@ -1,0 +1,119 @@
+"use client"
+
+import { motion } from 'framer-motion'
+import { Montserrat } from "next/font/google"
+import { Shield, Headphones, Database, Handshake } from 'lucide-react'
+import Image from 'next/image'
+import { cn } from "@/lib/utils"
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-montserrat",
+})
+
+const features = [
+  {
+    title: "Secure Asset Protection",
+    description: "Your designs are your IP. We store all assets in isolated, encrypted environments to ensure your creative work remains exclusively yours.",
+    icon: Shield,
+    imagePath: "/protected.png",
+  },
+  {
+    title: "Support Next Door",
+    description: "Direct access to 3D specialists and our core team ready to help you optimize your workflow and solve technical challenges fast.",
+    icon: Headphones,
+    imagePath: "/headset.png",
+    containerClass: "scale-125",
+    hoverScaleClass: "group-hover:scale-[1.35]",
+  },
+  {
+    title: "Infinite Cloud Inventory",
+    description: "Never lose a file again. Your entire catalog of models, textures, and exports is backed up and accessible 24/7/365.",
+    icon: Database,
+    imagePath: "/cloud.png",
+  },
+  {
+    title: "Partner in Creation",
+    description: "Every tool you need to build a successful virtual brand, right at your fingertips. We build the engine, you shape the virtual world.",
+    icon: Handshake,
+    imagePath: "/spartnership.png",
+    imageClass: "[mask-image:radial-gradient(circle_at_center,black_40%,transparent_100%)]",
+  }
+]
+
+export default function SecurityFeatures() {
+  return (
+    <section className="px-6 py-24 relative z-10">
+      <div className="max-w-[1400px] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          {features.map((feature, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className={cn(
+                "group relative flex flex-col md:flex-row items-center md:items-start gap-6 p-8 md:p-16",
+                // Mobile borders (all except last have bottom border)
+                index !== features.length - 1 && "border-b border-white/10 md:border-b-0",
+                // Desktop borders
+                // Right border for odd items (1st and 3rd, which are index 0 and 2)
+                index % 2 === 0 && "md:border-r border-white/10",
+                // Bottom border for the first row (index 0 and 1)
+                index < 2 && "md:border-b border-white/10"
+              )}
+            >
+              {/* Icon Container - No Box */}
+              <div className={cn(
+                "relative shrink-0 w-40 h-40 md:w-56 md:h-56 flex items-center justify-center transition-transform duration-500 ease-out",
+                // @ts-ignore
+                feature.containerClass,
+                // @ts-ignore
+                feature.hoverScaleClass || "group-hover:scale-105"
+              )}>
+                {/* Hover Glow removed */}
+                
+                <div
+                  className="relative w-full h-full drop-shadow-2xl"
+                >
+                  <Image 
+                    src={feature.imagePath} 
+                    alt={feature.title}
+                    fill
+                    className={cn("object-contain", 
+                      // @ts-ignore
+                      feature.imageClass
+                    )}
+                  />
+                </div>
+              </div>
+
+              <div className="flex-1 pt-4 text-center md:text-left max-w-xl">
+                <motion.h3 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
+                  className={`text-2xl md:text-3xl font-bold mb-4 text-white ${montserrat.className}`}
+                >
+                  {feature.title}
+                </motion.h3>
+                <motion.p 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
+                  className="text-white/60 leading-relaxed text-sm md:text-base"
+                >
+                  {feature.description}
+                </motion.p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

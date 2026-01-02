@@ -182,7 +182,7 @@ export default function TestimonialsSection() {
             transition={{ duration: 0.8 }}
             className={`text-3xl md:text-5xl font-bold text-white ${montserrat.className}`}
           >
-            Built by Veterans of the Metaverse
+            Brought to you by
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -191,7 +191,7 @@ export default function TestimonialsSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-lg md:text-xl text-white/70 leading-relaxed max-w-2xl mx-auto"
           >
-            Made by the team at <span className="text-[#FF4AE7] font-semibold">OUTOFREACH Inc.</span>, with decades of experience creating content for virtual worlds like <span className="text-white font-medium">IMVU</span> and <span className="text-white font-medium">Second Life</span>.
+            the team at <span className="text-[#FF4AE7] font-semibold">OUTOFREACH Inc.</span>, with decades of experience creating content for virtual worlds like <span className="text-white font-medium">IMVU</span> and <span className="text-white font-medium">Second Life</span>.
           </motion.p>
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}

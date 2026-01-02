@@ -95,7 +95,7 @@ function FloatingAsset({
 export default function NotFound() {
   return (
     <div 
-      className={`min-h-screen text-white selection:bg-[#FE0101]/30 selection:text-white ${montserrat.variable} flex flex-col`}
+      className={`min-h-screen text-white selection:bg-[#FF1493]/60 selection:text-white ${montserrat.variable} flex flex-col`}
       style={{ 
         background: nebulaBackground,
         backgroundColor: colors.bgPrimary,
