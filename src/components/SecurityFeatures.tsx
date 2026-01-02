@@ -29,7 +29,7 @@ const features = [
   },
   {
     title: "Infinite Cloud Inventory",
-    description: "Never lose a file again. Your entire catalog of models, textures, and exports is backed up and accessible 24/7/365.",
+    description: "Never lose a file again. Your entire catalog of products, textures, and exports is backed up and accessible 24/7/365.",
     icon: Database,
     imagePath: "/cloud.png",
   },

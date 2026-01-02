@@ -108,9 +108,58 @@ export default function NewLandingPage() {
       <section className="relative min-h-[90vh] flex flex-col items-center justify-center pt-32 pb-20 px-6 overflow-hidden">
          {/* Curved Background */}
         <div 
-          className="absolute inset-0 z-0 rounded-b-[120px] md:rounded-b-[200px] overflow-hidden border-b border-white/5"
+          className="absolute inset-0 z-0 rounded-b-[60px] md:rounded-b-[100px] overflow-hidden border-b border-white/5"
           style={{ background: nebulaBackground }}
         >
+           {/* Animated Border Beam - Bottom Edge Only */}
+           
+           {/* Glow Layer (Blurry) */}
+           <div 
+             className="absolute inset-0 rounded-b-[60px] md:rounded-b-[100px] pointer-events-none"
+             style={{
+               WebkitMaskImage: 'linear-gradient(to bottom, transparent calc(100% - 120px), black 100%)',
+               maskImage: 'linear-gradient(to bottom, transparent calc(100% - 120px), black 100%)',
+             }}
+           >
+             <div 
+               className="absolute inset-0 rounded-b-[60px] md:rounded-b-[100px]"
+               style={{
+                 padding: '3px',
+                 background: 'linear-gradient(90deg, transparent 49%, #FF4AE7 50%, transparent 51%)',
+                 backgroundSize: '200% 100%',
+                 animation: 'border-beam 15s linear infinite',
+                 WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                 WebkitMaskComposite: 'xor',
+                 maskComposite: 'exclude',
+                 filter: 'blur(4px)',
+                 opacity: 0.6,
+               }}
+             />
+           </div>
+
+           {/* Core Beam (Sharp) */}
+           <div 
+             className="absolute inset-0 rounded-b-[60px] md:rounded-b-[100px] pointer-events-none"
+             style={{
+               WebkitMaskImage: 'linear-gradient(to bottom, transparent calc(100% - 120px), black 100%)',
+               maskImage: 'linear-gradient(to bottom, transparent calc(100% - 120px), black 100%)'
+             }}
+           >
+             <div 
+               className="absolute inset-0 rounded-b-[60px] md:rounded-b-[100px]"
+               style={{
+                 padding: '1px',
+                 background: 'linear-gradient(90deg, transparent 49.8%, #FFFFFF 50%, transparent 50.2%)',
+                 backgroundSize: '200% 100%',
+                 animation: 'border-beam 15s linear infinite',
+                 WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                 WebkitMaskComposite: 'xor',
+                 maskComposite: 'exclude',
+                 filter: 'drop-shadow(0 0 5px #FF4AE7)',
+               }}
+             />
+           </div>
+
            {/* Animated Glow Behind Hero */}
            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#FF4AE7] rounded-full blur-[180px] opacity-[0.08] pointer-events-none animate-pulse-slow" />
         </div>
@@ -328,13 +377,13 @@ export default function NewLandingPage() {
       {/* Platforms Section - Dedicated */}
       <section className="relative w-full py-24">
         <PlatformLogos>
-          <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${montserrat.className}`}>
+          <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-6 ${montserrat.className} px-2`}>
             Built to support the platforms you create for
           </h2>
-          <p className="text-xl text-white/60 mb-2 max-w-5xl mx-auto">
+          <p className="text-lg sm:text-xl text-white/60 mb-2 max-w-5xl mx-auto px-4">
             <span className="text-white/80 font-medium">IMVU</span> is supported today. Expansion to additional platforms is already in motion.
           </p>
-          <p className="text-xl text-white/80 font-medium mb-8 max-w-5xl mx-auto">
+          <p className="text-lg sm:text-xl text-white/80 font-medium mb-8 max-w-5xl mx-auto px-4">
             Second Life, The Sims 4, Roblox, VRChat, Zepeto, Inzoi, FiveM, Avakin Life, Minecraft, and GTA 6.
           </p>
         </PlatformLogos>
@@ -589,13 +638,13 @@ function StackedDeckSection() {
   // Card 2 fades in as Card 1 moves
   const opacity2 = useTransform(scrollYProgress, [0.2, 0.3], [0, 1])
   // Card 3 fades in slightly later
-  const opacity3 = useTransform(scrollYProgress, [0.2, 0.3], [0, 1])
+  const opacity3 = useTransform(scrollYProgress, [0.5, 0.6], [0, 1])
 
   return (
     <section ref={containerRef} className="px-6 relative z-10 min-h-[300vh] hidden md:block">
       <div className="sticky top-0 h-screen flex flex-col justify-center overflow-visible">
         {/* Adjusted top position to clear header */}
-        <motion.div style={{ opacity }} className="text-center mb-12 absolute top-32 left-0 right-0 z-20">
+        <motion.div style={{ opacity }} className="text-center mb-24 absolute top-32 left-0 right-0 z-20">
           <h2 className={`text-5xl md:text-7xl font-bold mb-6 ${montserrat.className}`}>How It Works</h2>
           <p className="text-2xl text-white/60">From concept to creation in three simple steps.</p>
         </motion.div>
@@ -619,7 +668,7 @@ function StackedDeckSection() {
                      src="/pick your asset.jpg" 
                      alt="Pick a model" 
                      fill 
-                     className="object-cover object-bottom saturate-[0.8] transition-all duration-500"
+                     className="object-cover object-bottom transition-all duration-500"
                    />
               </FeatureCard>
             </motion.div>
@@ -635,12 +684,12 @@ function StackedDeckSection() {
                 desc="Upload your images or textures. See it applied instantly in 3D."
                 img="/2 3d.png"
               >
-                 <div className="absolute inset-0 w-full h-full" style={{ maskImage: 'linear-gradient(to bottom, transparent 0%, black 40%)', WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 40%)' }}>
+                 <div className="absolute inset-0 w-full h-full">
                    <Image 
                       src="/image_VLrJ0nd__1767391135933_raw.jpg" 
                       alt="Customize model" 
                       fill 
-                      className="object-cover object-center translate-y-6 transition-all duration-500"
+                      className="object-cover object-center transition-all duration-500 scale-[1.2]"
                     />
                  </div>
               </FeatureCard>
@@ -677,7 +726,7 @@ function MobileFeatures() {
   return (
     <section className="px-6 py-24 relative z-10 md:hidden">
        <div className="max-w-[1600px] mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-24">
             <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${montserrat.className}`}>How It Works</h2>
             <p className="text-xl text-white/60">From concept to creation in three simple steps.</p>
           </div>
@@ -688,16 +737,16 @@ function MobileFeatures() {
                   src="/pick your asset.jpg" 
                   alt="Pick a model" 
                   fill 
-                  className="object-cover object-bottom saturate-[0.8]"
+                  className="object-cover object-bottom"
                 />
              </FeatureCard>
              <FeatureCard step="2" title="Customize" desc="Upload your images or textures." img="/2 3d.png">
-                <div className="absolute inset-0 w-full h-full" style={{ maskImage: 'linear-gradient(to bottom, transparent 0%, black 20%)', WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 20%)' }}>
+                <div className="absolute inset-0 w-full h-full">
                   <Image 
                     src="/image_VLrJ0nd__1767391135933_raw.jpg" 
                     alt="Customize model" 
                     fill 
-                    className="object-cover object-center translate-y-6"
+                    className="object-cover object-center scale-[1.2]"
                   />
                 </div>
              </FeatureCard>
@@ -716,7 +765,7 @@ function MobileFeatures() {
 }
 
 function FeatureCard({ step, title, desc, img, children }: any) {
-  const iconSrc = step === "3" ? "/check%20mark.png" : "/right%20arrow.png"
+  const iconSrc = "/check%20mark.png"
   
   // Get image source from children to create color-matched background
   const getImageSrc = () => {
@@ -747,31 +796,31 @@ function FeatureCard({ step, title, desc, img, children }: any) {
         />
       </div>
 
-      {/* Top Section: Header & Text - Takes up ~30% */}
-      <div className="relative z-10 px-8 pt-8 pb-4 flex flex-col shrink-0 h-[30%]">
-        <div className="flex justify-between items-start w-full mb-6">
+      {/* Top Section: Header & Text - Takes up ~35% */}
+      <div className="relative z-10 px-6 sm:px-8 pt-6 sm:pt-8 pb-4 flex flex-col shrink-0 h-[35%]">
+        <div className="flex justify-between items-start w-full mb-4 sm:mb-6">
            {/* Step Number Image (Top Left) */}
-           <div className="absolute -top-16 -left-16 w-40 h-40 pointer-events-none group-hover:scale-110 group-hover:drop-shadow-[0_0_25px_rgba(254,1,1,0.3)] transition-all duration-500">
+           <div className="absolute -top-12 -left-12 sm:-top-16 sm:-left-16 w-32 h-32 sm:w-40 sm:h-40 pointer-events-none group-hover:scale-110 group-hover:drop-shadow-[0_0_25px_rgba(254,1,1,0.3)] transition-all duration-500">
               <Image src={img} alt={`Step ${step}`} fill className="object-contain" />
            </div>
            
            {/* Arrow Icon (Top Right) */}
-           <div className={`absolute top-0 right-2 opacity-90 group-hover:opacity-100 transition-opacity ${step === "3" ? "w-16 h-16" : "w-20 h-20"}`}>
-              <Image src={iconSrc} alt={step === "3" ? "Completed" : "Next"} fill className="object-contain" />
+           <div className="absolute top-2 right-2 sm:top-0 sm:right-2 opacity-90 group-hover:opacity-100 transition-opacity w-12 h-12 sm:w-16 sm:h-16">
+              <Image src={iconSrc} alt="Completed" fill className="object-contain" />
            </div>
         </div>
         
-        <div className="mt-auto mb-2 relative z-10">
-          <h3 className="text-3xl font-bold mb-2 text-white">{title}</h3>
-          <p className="text-white/60 leading-tight text-base line-clamp-3">{desc}</p>
+        <div className="mt-auto mb-6 relative z-10 pb-2">
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 text-white transition-all duration-300">{title}</h3>
+          <p className="text-white/60 leading-tight text-sm sm:text-base md:text-lg line-clamp-3 transition-all duration-300">{desc}</p>
         </div>
       </div>
 
-      {/* Bottom Section: Image with Convex Arch - Takes up ~70% */}
-      <div className="relative h-[70%] w-full z-10">
+      {/* Bottom Section: Image with Convex Arch - Takes up ~65% */}
+      <div className="relative h-[65%] w-full z-10">
          {/* The Convex Container */}
          <div 
-           className="absolute inset-0 w-full h-full overflow-hidden border-t border-white/10 bg-black/20"
+           className="absolute inset-0 w-full h-full overflow-hidden border-t border-white/10 bg-transparent"
            style={{
              borderTopLeftRadius: '50% 10%',  // Creates the convex arch
              borderTopRightRadius: '50% 10%', // Creates the convex arch
@@ -781,8 +830,8 @@ function FeatureCard({ step, title, desc, img, children }: any) {
          > 
             {children}
             
-            {/* Inner shadow for depth */}
-            <div className="absolute inset-0 shadow-[inset_0_10px_40px_rgba(0,0,0,0.4)] pointer-events-none rounded-[inherit]" />
+            {/* Inner shadow for depth - Reduced opacity for clarity */}
+            <div className="absolute inset-0 shadow-[inset_0_10px_40px_rgba(0,0,0,0.2)] pointer-events-none rounded-[inherit]" />
          </div>
       </div>
     </div>

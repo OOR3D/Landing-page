@@ -293,6 +293,20 @@ main, div, section {
   animation: scroll-vertical 1.5s linear infinite;
 }
 
+@keyframes border-beam {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.animate-border-beam {
+  background-size: 200% 100%;
+  animation: border-beam 3s linear infinite;
+}
+
 /* Custom selection color */
 ::selection {
   background-color: rgba(255, 20, 147, 0.6);
