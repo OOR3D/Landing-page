@@ -31,21 +31,19 @@ function TikTokIcon() {
 
 const footerLinks = [
   {
-    title: "Product",
+    title: "Platform",
     links: [
       { name: "Home", href: "/" },
-      { name: "Early Access", href: "/early-access" },
-      { name: "New Features", href: "/new" },
-      { name: "Founder Success", href: "/founder-creator-success" },
+      { name: "Pricing", href: "https://app.outofreach3d.com/upgrades" },
+      { name: "Open App", href: "https://app.outofreach3d.com" },
     ]
   },
   {
     title: "Support",
     links: [
       { name: "Help Center", href: "https://app.outofreach3d.com/help" },
-      { name: "FAQ", href: "/faq" },
       { name: "Contact", href: "https://discord.gg/oor3d" },
-      { name: "Status", href: "#", disabled: true },
+      { name: "Company", href: "https://app.outofreach3d.com/help/company" },
     ]
   },
   {
@@ -55,11 +53,10 @@ const footerLinks = [
       { name: "Terms of Service", href: "https://app.outofreach3d.com/help/policy/terms-of-service" },
       { name: "Refund Policy", href: "https://app.outofreach3d.com/help/policy/refund-policy" },
       { name: "License & Usage", href: "https://app.outofreach3d.com/help/policy/license-usage" },
-      { name: "About Company", href: "https://app.outofreach3d.com/help/company" },
     ]
   },
   {
-    title: "Socials",
+    title: "Connect",
     links: [
       { name: "Discord", href: "https://discord.gg/oor3d", icon: <DiscordIcon /> },
       { name: "X (Twitter)", href: "https://twitter.com/outofreach3d", icon: <XIcon /> },
@@ -88,18 +85,14 @@ export function Footer() {
                   <ul className="flex flex-col gap-3">
                     {column.links.map((link) => (
                       <li key={link.name}>
-                        {link.disabled ? (
-                          <span className="text-sm text-gray-600 cursor-not-allowed">{link.name}</span>
-                        ) : (
-                          <Link 
-                            href={link.href}
-                            className="text-sm text-gray-400 hover:text-white transition-colors duration-200 flex items-center gap-2"
-                            target={link.href.startsWith('http') ? "_blank" : undefined}
-                            rel={link.href.startsWith('http') ? "noopener noreferrer" : undefined}
-                          >
-                            {link.name}
-                          </Link>
-                        )}
+                        <Link 
+                          href={link.href}
+                          className="text-sm text-gray-400 hover:text-white transition-colors duration-200 flex items-center gap-2"
+                          target={link.href.startsWith('http') ? "_blank" : undefined}
+                          rel={link.href.startsWith('http') ? "noopener noreferrer" : undefined}
+                        >
+                          {link.name}
+                        </Link>
                       </li>
                     ))}
                   </ul>
