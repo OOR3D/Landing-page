@@ -72,10 +72,72 @@ export const PlatformLogos = ({ children }: { children?: React.ReactNode }) => {
 
   return (
     <div className="relative w-full min-h-[600px] md:min-h-[750px] flex items-center justify-center">
-      {/* Central Content */}
-      <div className="relative z-10 max-w-5xl mx-auto text-center px-4">
-        {children}
-      </div>
+      {/* Central Content - Animated */}
+      <motion.div 
+        className="relative z-10 max-w-5xl mx-auto text-center px-4"
+        initial={{ opacity: 0, y: 40, scale: 0.95 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ 
+          duration: 0.8,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+      >
+        {/* Animated wrapper for children with staggered effect */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{
+            hidden: {},
+            visible: {
+              transition: {
+                staggerChildren: 0.15,
+              }
+            }
+          }}
+        >
+          {/* Wrap each child in its own animated container */}
+          {Array.isArray(children) ? (
+            children.map((child, index) => (
+              <motion.div
+                key={index}
+                variants={{
+                  hidden: { opacity: 0, y: 30, filter: "blur(8px)" },
+                  visible: { 
+                    opacity: 1, 
+                    y: 0, 
+                    filter: "blur(0px)",
+                    transition: {
+                      duration: 0.7,
+                      ease: [0.22, 1, 0.36, 1]
+                    }
+                  }
+                }}
+              >
+                {child}
+              </motion.div>
+            ))
+          ) : (
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 30, filter: "blur(8px)" },
+                visible: { 
+                  opacity: 1, 
+                  y: 0, 
+                  filter: "blur(0px)",
+                  transition: {
+                    duration: 0.7,
+                    ease: [0.22, 1, 0.36, 1]
+                  }
+                }
+              }}
+            >
+              {children}
+            </motion.div>
+          )}
+        </motion.div>
+      </motion.div>
 
       {/* Floating Logos */}
       <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center">

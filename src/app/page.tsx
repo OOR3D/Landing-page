@@ -404,7 +404,7 @@ export default function NewLandingPage() {
             Built to support the platforms you create for
           </h2>
           <p className="text-xl text-white/60 mb-2 max-w-5xl mx-auto">
-            IMVU is supported today. Expansion to additional platforms is already in motion.
+            <span className="text-white/80 font-medium">IMVU</span> is supported today. Expansion to additional platforms is already in motion.
           </p>
           <p className="text-xl text-white/80 font-medium mb-8 max-w-5xl mx-auto">
             Second Life, The Sims 4, Roblox, VRChat, Zepeto, Inzoi, FiveM, Avakin Life, Minecraft, and GTA 6.
