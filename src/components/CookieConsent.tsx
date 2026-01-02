@@ -15,13 +15,10 @@ export default function CookieConsent() {
       // Show banner after 4 seconds
       const timer = setTimeout(() => {
         setShowBanner(true)
-        // Prevent scrolling
-        document.body.style.overflow = 'hidden'
       }, 4000)
 
       return () => {
         clearTimeout(timer)
-        document.body.style.overflow = 'auto'
       }
     }
   }, [])
@@ -29,51 +26,65 @@ export default function CookieConsent() {
   const acceptCookies = () => {
     localStorage.setItem('cookieConsent', 'true')
     setShowBanner(false)
-    // Re-enable scrolling
-    document.body.style.overflow = 'auto'
   }
 
   return (
     <AnimatePresence>
       {showBanner && (
-        <div className="fixed inset-0 flex items-center justify-center z-50">
-          {/* Backdrop */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-          />
-          
-          {/* Popup */}
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.9, opacity: 0 }}
-            transition={{ type: "spring", stiffness: 200, damping: 20 }}
-            className="relative w-full max-w-md mx-4 p-8 bg-[#0A0C13] rounded-2xl border border-red-500/20 shadow-2xl [&_*]:!cursor-default"
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 100 }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          className="fixed bottom-4 left-4 right-4 z-50 pointer-events-none"
+        >
+          <div 
+            className="relative rounded-[24px] p-5 shadow-2xl pointer-events-auto overflow-hidden max-w-2xl mx-auto"
+            style={{
+              backgroundColor: 'rgba(13, 4, 41, 0.85)',
+              backdropFilter: 'blur(20px)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              boxShadow: '0 0 0 1px rgba(0,0,0,0.2), 0 8px 40px rgba(0,0,0,0.5), 0 0 60px rgba(254, 1, 1, 0.1)'
+            }}
           >
-            <div className="flex flex-col items-center text-center gap-6">
-              <div className="rounded-full bg-red-500/10 p-3">
-                <Cookie className="w-8 h-8 text-red-400" />
-              </div>
-              
-              <div className="space-y-3">
-                <h3 className="text-2xl font-semibold text-white">Cookie Settings</h3>
-                <p className="text-gray-300 text-center max-w-sm mx-auto">
-                  We use cookies to improve your experience. By continuing, you agree to our cookie policy.
-                </p>
+            {/* Gradient accent line at top */}
+            <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[#FE0101] to-transparent opacity-60" />
+            
+            {/* Subtle glow effect */}
+            <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-40 h-40 bg-[#FF4AE7]/10 rounded-full blur-[60px] pointer-events-none" />
+
+            <div className="relative z-10 flex flex-col sm:flex-row items-center gap-4">
+              <div className="flex items-center gap-4 flex-1">
+                <div 
+                  className="flex-shrink-0 rounded-full p-2.5"
+                  style={{
+                    backgroundColor: 'rgba(254, 1, 1, 0.1)',
+                    border: '1px solid rgba(254, 1, 1, 0.2)',
+                    boxShadow: '0 0 20px rgba(254, 1, 1, 0.1)'
+                  }}
+                >
+                  <Cookie className="w-5 h-5 text-[#FF6B6B]" />
+                </div>
+                
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-base font-semibold text-white tracking-tight mb-1">Cookie Settings</h3>
+                  <p className="text-sm text-white/50 leading-relaxed">
+                    We use cookies to improve your experience. By continuing, you agree to our cookie policy.
+                  </p>
+                </div>
               </div>
 
               <Button
                 onClick={acceptCookies}
-                className="bg-red-500 hover:bg-red-600 text-white px-8 !cursor-pointer hover:!cursor-pointer rounded-full"
+                variant="red"
+                size="sm"
+                className="rounded-full !cursor-pointer hover:!cursor-pointer flex-shrink-0"
               >
                 Accept
               </Button>
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       )}
     </AnimatePresence>
   )

@@ -177,8 +177,10 @@ export default function NewLandingPage() {
         />
         <FloatingAsset 
           src="/t shirt.png" // T-shirt
-          className="absolute top-1/3 right-[15%] w-24 h-24 lg:w-36 lg:h-36 opacity-60 blur-[2px] hidden lg:block"
+          className="absolute top-1/3 right-[15%] w-24 h-24 lg:w-36 lg:h-36 hidden lg:block"
           delay={1.5}
+          targetBlur={4}
+          targetOpacity={0.6}
         />
       </section>
 
@@ -571,11 +573,13 @@ export default function NewLandingPage() {
                 >
                   <Button 
                     size="default" 
-                    className="group relative overflow-hidden bg-[#5865F2] hover:bg-[#4752C4] text-white rounded-full px-8 py-6 text-base h-auto shadow-[0_0_20px_rgba(88,101,242,0.3)] hover:shadow-[0_0_50px_rgba(88,101,242,0.6)] transition-all duration-500 ease-out"
+                    className="relative overflow-hidden bg-gradient-to-b from-[#5865F2] to-[#4752C4] text-white rounded-full px-8 py-6 text-base h-auto shadow-[0_4px_20px_rgba(88,101,242,0.4),0_0_0_1px_rgba(255,255,255,0.1)] hover:bg-none hover:from-[#5865F2] hover:to-[#4752C4] hover:text-white hover:border-transparent"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out" />
-                    <Users className="w-5 h-5 mr-2 relative z-10" />
-                    <span className="relative z-10 font-semibold tracking-wide">Join Discord Server</span>
+                    <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+                    <div className="relative z-10 flex items-center gap-2">
+                      <Users className="w-5 h-5" />
+                      <span className="font-semibold tracking-wide">Join Discord Server</span>
+                    </div>
                   </Button>
                 </Link>
               </div>
@@ -587,16 +591,13 @@ export default function NewLandingPage() {
       {/* Footer */}
       <footer className="border-t border-white/5 bg-[#08021a] py-16 px-6">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex items-center gap-4 opacity-50">
-            <Image src="/OOR-LOGO.svg" alt="OOR3D" width={40} height={12} className="brightness-0 invert" />
-            <span className="text-xs">© 2026</span>
-          </div>
-          
           <div className="flex gap-8 text-sm text-white/40">
             <Link href="https://app.outofreach3d.com/help/policy/terms-of-service" className="hover:text-white transition-colors">Terms</Link>
             <Link href="https://app.outofreach3d.com/help/policy/privacy-policy" className="hover:text-white transition-colors">Privacy</Link>
             <Link href="/contact" className="hover:text-white transition-colors">Contact</Link>
           </div>
+          
+          <span className="text-xs text-white/40">© 2026 OUTOFREACH, Inc. All rights reserved.</span>
         </div>
       </footer>
     </div>
@@ -654,22 +655,43 @@ function Badge({ children, variant = 'default' }: { children: React.ReactNode, v
   )
 }
 
-function FloatingAsset({ src, className, delay }: { src: string, className: string, delay: number }) {
+function FloatingAsset({ 
+  src, 
+  className, 
+  delay,
+  targetBlur = 0,
+  targetOpacity = 1 
+}: { 
+  src: string, 
+  className: string, 
+  delay: number,
+  targetBlur?: number,
+  targetOpacity?: number 
+}) {
   return (
     <motion.div
-      animate={{ 
-        y: [0, -20, 0],
-        rotate: [0, 5, -5, 0]
-      }}
+      initial={{ opacity: 0, scale: 0.5, filter: "blur(20px)" }}
+      animate={{ opacity: targetOpacity, scale: 1, filter: `blur(${targetBlur}px)` }}
       transition={{ 
-        duration: 6,
-        repeat: Infinity,
-        ease: "easeInOut",
-        delay: delay
+        duration: 1.2, 
+        delay: delay * 0.2, // Reduced delay multiplier for faster entrance
+        ease: "easeOut" 
       }}
       className={`${className} pointer-events-none`}
     >
-      <div className="relative w-full h-full">
+      <motion.div
+        animate={{ 
+          y: [0, -20, 0],
+          rotate: [0, 5, -5, 0]
+        }}
+        transition={{ 
+          duration: 6,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: delay // Keep original phase delay for floating
+        }}
+        className="relative w-full h-full"
+      >
         {/* Glow effect behind image */}
         <div className="absolute inset-0 bg-[#FE0101]/20 blur-2xl rounded-full transform scale-75" />
         <Image 
@@ -679,7 +701,7 @@ function FloatingAsset({ src, className, delay }: { src: string, className: stri
           className="object-contain drop-shadow-2xl"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
-      </div>
+      </motion.div>
     </motion.div>
   )
 }

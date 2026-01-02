@@ -121,19 +121,23 @@ export default function HomePage() {
                 </Link>
               </GradientButton>
             </motion.div>
+          </div>
+        </section>
 
-            {/* Trust Bar Section - Moved inside hero */}
+        {/* Trust Bar Section - Moved below hero */}
+        <section className="py-12 bg-[#0A0C13]">
+          <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 30 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.8 }}
               className="w-full"
             >
               <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
+                viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
                 className="text-center mb-8"
               >
