@@ -39,7 +39,7 @@ function BentoCard({ title, description, icon, imageSrc, className, delay = 0, b
       {/* Lighting Effects */}
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-50 z-20" />
       <div className="absolute -top-20 -left-20 w-64 h-64 bg-white/10 rounded-full blur-[80px] pointer-events-none z-0" />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/5 to-transparent pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/20 to-transparent pointer-events-none z-0" />
 
       
       {/* Image Layer - Massive & Breaking Frame */}
@@ -50,7 +50,7 @@ function BentoCard({ title, description, icon, imageSrc, className, delay = 0, b
                src={imageSrc} 
                alt={title} 
                fill 
-               className="object-contain drop-shadow-2xl transform group-hover:scale-105 transition-transform duration-700"
+               className="object-contain drop-shadow-2xl transition-transform duration-700"
                priority
              />
            </div>
@@ -64,7 +64,7 @@ function BentoCard({ title, description, icon, imageSrc, className, delay = 0, b
       </div>
 
       {/* Content Layer */}
-      <div className="relative z-20 mt-auto m-8 bg-black/20 backdrop-blur-md p-6 rounded-3xl border border-white/5">
+      <div className="relative z-20 mt-auto m-8">
         <h3 className={`text-2xl md:text-3xl font-bold text-white mb-3 drop-shadow-md ${montserrat.className}`}>{title}</h3>
         <p className="text-white/90 text-sm md:text-base leading-relaxed font-medium drop-shadow-sm">{description}</p>
       </div>
@@ -112,10 +112,10 @@ export default function FeaturesBento() {
           <BentoCard
             title="Universal Inventory"
             description="Your personal digital vault. Store assets securely."
-            imageSrc="/folder.png"
+            imageSrc="/folder-1.png"
             delay={0.3}
             bgColor="bg-[#064e3b]" // Dark Emerald
-            imageClassName="!w-[130%] !h-[130%] translate-x-8 translate-y-12" // Pushing edges
+            imageClassName="!w-[100%] !h-[100%]" // Centered
           />
 
           {/* Variety of Products - Large */}

@@ -16,7 +16,7 @@ const platforms = [
   { name: "Roblox", src: "/images/platforms/roblox-logo.svg", width: 60, height: 60, top: 18, left: 82, url: "https://www.roblox.com" },
   
   // Inner Mid Row
-  { name: "Second Life", src: "/images/platforms/second-life-logo.svg", width: 140, height: 40, top: 32, left: 32, url: "https://secondlife.com" },
+  { name: "Second Life", src: "/images/platforms/second-life-logo.svg", width: 140, height: 40, top: 28, left: 32, url: "https://secondlife.com" },
   { name: "Minecraft", src: "/images/platforms/minecraft-logo.svg", width: 120, height: 40, top: 32, left: 68, url: "https://www.minecraft.net" },
   
   // Outer Mid Row

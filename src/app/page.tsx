@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
@@ -64,8 +64,7 @@ export default function NewLandingPage() {
     <div 
       className={`min-h-screen text-white selection:bg-[#FF1493]/60 selection:text-white ${montserrat.variable}`}
       style={{ 
-        background: nebulaBackground,
-        backgroundColor: colors.bgPrimary,
+        backgroundColor: '#020005', // Deep dark background for the void
       }}
     >
       {/* Noise Overlay for Texture */}
@@ -107,8 +106,14 @@ export default function NewLandingPage() {
 
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex flex-col items-center justify-center pt-32 pb-20 px-6 overflow-hidden">
-        {/* Animated Glow Behind Hero */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#FF4AE7] rounded-full blur-[180px] opacity-[0.08] pointer-events-none animate-pulse-slow" />
+         {/* Curved Background */}
+        <div 
+          className="absolute inset-0 z-0 rounded-b-[120px] md:rounded-b-[200px] overflow-hidden border-b border-white/5"
+          style={{ background: nebulaBackground }}
+        >
+           {/* Animated Glow Behind Hero */}
+           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#FF4AE7] rounded-full blur-[180px] opacity-[0.08] pointer-events-none animate-pulse-slow" />
+        </div>
 
         <div className="max-w-7xl mx-auto text-center relative z-10">
           <motion.div
@@ -191,17 +196,29 @@ export default function NewLandingPage() {
       </section>
 
       {/* Trusted By - Scrolling Logos */}
-      <section className="py-12 border-b border-white/5 bg-[#08021a]/50 backdrop-blur-sm relative z-10">
+      <section className="py-12 border-b border-white/5 bg-[#08021a]/50 backdrop-blur-sm relative z-10 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-10">
+          <motion.div 
+            className="text-center mb-10"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          >
             <p className="text-sm font-medium text-white/50 uppercase tracking-widest mb-2">
               Trusted by Industry Leaders
             </p>
             <p className="text-white/40 text-sm max-w-2xl mx-auto font-light">
               Innovating a new standard for creation in virtual spaces, powered by global pioneers of technology.
             </p>
-          </div>
-          <div className="relative flex overflow-hidden mask-gradient-x">
+          </motion.div>
+          <motion.div 
+            className="relative flex overflow-hidden mask-gradient-x"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          >
             <motion.div 
               className="flex items-center min-w-full"
               animate={{ x: ["0%", "-25%"] }}
@@ -238,10 +255,11 @@ export default function NewLandingPage() {
                 </div>
               ))}
             </motion.div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
+      <div className="relative z-10" style={{ background: nebulaBackground }}>
       {/* Meet Remix - Video Showcase */}
       <section className="px-4 py-32 relative z-20">
         <motion.div
@@ -290,99 +308,9 @@ export default function NewLandingPage() {
         </motion.div>
       </section>
 
-      {/* Features Grid - 3 Step Workflow */}
-      <section className="px-6 py-24 relative z-10">
-        <div className="max-w-[1600px] mx-auto">
-          <div className="text-center mb-16">
-            <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${montserrat.className}`}>How It Works</h2>
-            <p className="text-xl text-white/60">From concept to creation in three simple steps.</p>
-          </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 group/cards">
-              {/* Step 1: Pick */}
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="group relative bg-[#150a2e]/50 backdrop-blur-xl border border-white/10 rounded-[32px] p-8 hover:border-[#FE0101]/50 transition-all duration-500 hover:scale-[1.02] hover:!opacity-100 group-hover/cards:opacity-40"
-              >
-                <div className="absolute -top-20 -left-20 w-48 h-48 opacity-100 transition-all duration-500 pointer-events-none z-20 group-hover:scale-110 group-hover:drop-shadow-[0_0_25px_rgba(254,1,1,0.3)]">
-                  <Image src="/1 3d.png" alt="Step 1" fill className="object-contain" />
-                </div>
-                
-                <div className="relative z-10 h-full flex flex-col pt-24">
-                  <div className="mb-4">
-                    <h3 className="text-2xl font-bold mb-2 text-white">Pick</h3>
-                    <p className="text-white/50 leading-relaxed text-sm">Choose a base model from our curated library of high-quality assets.</p>
-                  </div>
-                  
-                  <div className="mt-auto relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-black/20 border border-white/5 group-hover:border-[#FE0101]/20 transition-colors">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <p className="text-white/20 text-xs">Generate: "Grid of 3D clothing models"</p>
-                    </div>
-                     {/* <Image src="/images/step-1-pick.png" alt="Pick a model" fill className="object-cover" /> */}
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Step 2: Customize */}
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="group relative bg-[#150a2e]/50 backdrop-blur-xl border border-white/10 rounded-[32px] p-8 hover:border-[#FE0101]/50 transition-all duration-500 hover:scale-[1.02] hover:!opacity-100 group-hover/cards:opacity-40"
-              >
-                <div className="absolute -top-20 -left-20 w-48 h-48 opacity-100 transition-all duration-500 pointer-events-none z-20 group-hover:scale-110 group-hover:drop-shadow-[0_0_25px_rgba(254,1,1,0.3)]">
-                   <Image src="/2 3d.png" alt="Step 2" fill className="object-contain" />
-                </div>
-                
-                <div className="relative z-10 h-full flex flex-col pt-24">
-                  <div className="mb-4">
-                    <h3 className="text-2xl font-bold mb-2 text-white">Customize</h3>
-                    <p className="text-white/50 leading-relaxed text-sm">Upload your images or textures. See it applied instantly in 3D</p>
-                  </div>
-                  
-                  <div className="mt-auto relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-black/20 border border-white/5 group-hover:border-[#FE0101]/20 transition-colors">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <p className="text-white/20 text-xs">Generate: "Applying texture to model"</p>
-                    </div>
-                    {/* <Image src="/images/step-2-texture.png" alt="Customize your model" fill className="object-cover" /> */}
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Step 3: Export */}
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="group relative bg-[#150a2e]/50 backdrop-blur-xl border border-white/10 rounded-[32px] p-8 hover:border-[#FE0101]/50 transition-all duration-500 hover:scale-[1.02] hover:!opacity-100 group-hover/cards:opacity-40"
-              >
-                <div className="absolute -top-20 -left-20 w-48 h-48 opacity-100 transition-all duration-500 pointer-events-none z-20 group-hover:scale-110 group-hover:drop-shadow-[0_0_25px_rgba(254,1,1,0.3)]">
-                   <Image src="/3 3d.png" alt="Step 3" fill className="object-contain" />
-                </div>
-                
-                <div className="relative z-10 h-full flex flex-col pt-24">
-                  <div className="mb-4">
-                    <h3 className="text-2xl font-bold mb-2 text-white">Export</h3>
-                    <p className="text-white/50 leading-relaxed text-sm">Get game-ready files. Download and upload directly to supported platforms</p>
-                  </div>
-                  
-                  <div className="mt-auto relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-black/20 border border-white/5 group-hover:border-[#FE0101]/20 transition-colors">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                       <p className="text-white/20 text-xs">Generate: "Download ready files"</p>
-                    </div>
-                    {/* <Image src="/images/step-3-export.png" alt="Export files" fill className="object-cover" /> */}
-                  </div>
-                </div>
-              </motion.div>
-
-            </div>
-        </div>
-      </section>
+      {/* Features Grid - 3 Step Workflow - Stacked Deck */}
+      <StackedDeckSection />
+      <MobileFeatures />
 
       {/* Features Bento Grid */}
       <FeaturesBento />
@@ -565,6 +493,7 @@ export default function NewLandingPage() {
 
       {/* Footer */}
       <Footer />
+      </div>
     </div>
   )
 }
@@ -617,6 +546,186 @@ function Badge({ children, variant = 'default' }: { children: React.ReactNode, v
     <span className="px-3 py-1 rounded-full text-xs font-medium bg-[#FE0101] text-white shadow-lg shadow-[#FE0101]/20">
       {children}
     </span>
+  )
+}
+
+// New Stacked Deck Component
+function StackedDeckSection() {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  })
+
+  // Increased scroll range for sequential animation
+  // Sequence:
+  // 0.0 - 0.2: Start locked
+  // 0.2 - 0.5: Card 1 moves Left
+  // 0.5 - 0.8: Card 3 moves Right
+  
+  // Card 1 (Left) - Top of stack
+  const x1 = useTransform(scrollYProgress, [0.2, 0.5], ["0%", "-110%"]) 
+  const r1 = useTransform(scrollYProgress, [0.2, 0.5], [0, -5]) // Rotate slightly as it moves
+  const s1 = useTransform(scrollYProgress, [0.2, 0.5], [1, 1])
+
+  // Card 2 (Center) - Middle of stack
+  // Stays in center, maybe subtle scale up
+  const r2 = useTransform(scrollYProgress, [0, 1], [0, 0])
+  const s2 = useTransform(scrollYProgress, [0.2, 0.8], [0.95, 1])
+  
+  // Card 3 (Right) - Bottom of stack
+  const x3 = useTransform(scrollYProgress, [0.5, 0.8], ["0%", "110%"])
+  const r3 = useTransform(scrollYProgress, [0.5, 0.8], [0, 5])
+  const s3 = useTransform(scrollYProgress, [0.5, 0.8], [0.9, 1])
+
+  // Opacity for entry
+  const opacity = useTransform(scrollYProgress, [0, 0.1], [0, 1])
+
+  return (
+    <section ref={containerRef} className="px-6 relative z-10 min-h-[300vh] hidden md:block">
+      <div className="sticky top-0 h-screen flex flex-col justify-center overflow-visible">
+        {/* Adjusted top position to clear header */}
+        <motion.div style={{ opacity }} className="text-center mb-12 absolute top-32 left-0 right-0 z-20">
+          <h2 className={`text-5xl md:text-7xl font-bold mb-6 ${montserrat.className}`}>How It Works</h2>
+          <p className="text-2xl text-white/60">From concept to creation in three simple steps.</p>
+        </motion.div>
+
+        {/* Increased size for focus */}
+        <div className="relative h-[65vh] w-full max-w-[90vw] 2xl:max-w-[1800px] mx-auto mt-48">
+          <div className="flex items-center justify-center h-full w-full">
+            
+            {/* Step 1: Pick - Moves Left */}
+            <motion.div 
+              style={{ x: x1, rotate: r1, scale: s1, zIndex: 3, transformOrigin: "top center" }}
+              className="absolute w-[32%] h-full"
+            >
+              <FeatureCard 
+                step="1"
+                title="Pick" 
+                desc="Choose a base model from our curated library of high-quality assets."
+                img="/1 3d.png"
+              >
+                  <Image 
+                     src="/pick your asset.jpg" 
+                     alt="Pick a model" 
+                     fill 
+                     className="object-cover object-bottom saturate-[0.8] transition-all duration-500"
+                   />
+              </FeatureCard>
+            </motion.div>
+
+            {/* Step 2: Customize - Center */}
+            <motion.div 
+              style={{ rotate: r2, scale: s2, zIndex: 2, transformOrigin: "top center" }}
+              className="absolute w-[32%] h-full"
+            >
+              <FeatureCard 
+                step="2"
+                title="Customize" 
+                desc="Upload your images or textures. See it applied instantly in 3D."
+                img="/2 3d.png"
+              >
+                 <Image 
+                    src="/image_VLrJ0nd__1767391135933_raw.jpg" 
+                    alt="Customize model" 
+                    fill 
+                    className="object-cover object-center scale-105 translate-y-6 transition-all duration-500"
+                  />
+              </FeatureCard>
+            </motion.div>
+
+            {/* Step 3: Export - Moves Right */}
+            <motion.div 
+              style={{ x: x3, rotate: r3, scale: s3, zIndex: 1, transformOrigin: "top center" }}
+              className="absolute w-[32%] h-full"
+            >
+              <FeatureCard 
+                step="3"
+                title="Export" 
+                desc="Get game-ready files. Download and upload directly to supported platforms."
+                img="/3 3d.png"
+              >
+                 <div className="absolute inset-0 flex items-center justify-center">
+                     <p className="text-white/20 text-xs">Generate: "Download ready files"</p>
+                  </div>
+              </FeatureCard>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Mobile Version (simpler, vertical stack)
+function MobileFeatures() {
+  return (
+    <section className="px-6 py-24 relative z-10 md:hidden">
+       <div className="max-w-[1600px] mx-auto">
+          <div className="text-center mb-16">
+            <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${montserrat.className}`}>How It Works</h2>
+            <p className="text-xl text-white/60">From concept to creation in three simple steps.</p>
+          </div>
+          
+          <div className="flex flex-col gap-6">
+             <FeatureCard step="1" title="Pick" desc="Choose a base model from our curated library." img="/1 3d.png">
+                <Image 
+                  src="/pick your asset.jpg" 
+                  alt="Pick a model" 
+                  fill 
+                  className="object-cover object-bottom saturate-[0.8]"
+                />
+             </FeatureCard>
+             <FeatureCard step="2" title="Customize" desc="Upload your images or textures." img="/2 3d.png">
+                <Image 
+                  src="/image_VLrJ0nd__1767391135933_raw.jpg" 
+                  alt="Customize model" 
+                  fill 
+                  className="object-cover object-center scale-105 translate-y-6"
+                />
+             </FeatureCard>
+             <FeatureCard step="3" title="Export" desc="Get game-ready files." img="/3 3d.png">
+                <div className="absolute inset-0 flex items-center justify-center">
+                     <p className="text-white/20 text-xs">Generate: "Download ready files"</p>
+                  </div>
+             </FeatureCard>
+          </div>
+       </div>
+    </section>
+  )
+}
+
+function FeatureCard({ step, title, desc, img, children }: any) {
+  const iconSrc = step === "3" ? "/check%20mark.png" : "/right%20arrow.png"
+
+  return (
+    <div className="h-full group relative bg-[#150a2e] border border-white/10 rounded-[32px] hover:border-[#FE0101]/50 transition-all duration-500 hover:scale-[1.02] flex flex-col overflow-visible">
+      {/* Background Image Container */}
+      <div className="absolute inset-0 z-0 overflow-hidden rounded-[32px]">
+        <div className="absolute inset-0 top-[20%]">
+           {children}
+           {/* Fade overlay at the top of the image */}
+           <div className="absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-[#150a2e] to-transparent z-10" />
+        </div>
+        {/* Gradient Overlay: Fades top to background color, keeps bottom clear */}
+        <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-[#150a2e] to-transparent pointer-events-none" />
+      </div>
+
+      <div className="absolute -top-16 -left-16 w-40 h-40 opacity-100 transition-all duration-500 pointer-events-none z-50 group-hover:scale-110 group-hover:drop-shadow-[0_0_25px_rgba(254,1,1,0.3)]">
+        <Image src={img} alt={`Step ${step}`} fill className="object-contain" />
+      </div>
+
+      <div className={`absolute top-0 right-2 z-[60] opacity-90 group-hover:opacity-100 transition-opacity ${step === "3" ? "w-16 h-16" : "w-20 h-20"}`}>
+         <Image src={iconSrc} alt={step === "3" ? "Completed" : "Next"} fill className="object-contain" />
+      </div>
+      
+      <div className="relative z-10 flex flex-col pt-24 px-8 pb-4 pointer-events-none">
+        <div className="">
+          <h3 className="text-4xl font-bold mb-3 text-white">{title}</h3>
+          <p className="text-white/60 leading-relaxed text-lg">{desc}</p>
+        </div>
+      </div>
+    </div>
   )
 }
 
