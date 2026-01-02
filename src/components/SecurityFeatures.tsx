@@ -38,7 +38,6 @@ const features = [
     description: "Every tool you need to build a successful virtual brand, right at your fingertips. We build the engine, you shape the virtual world.",
     icon: Handshake,
     imagePath: "/spartnership.png",
-    imageClass: "[mask-image:radial-gradient(circle_at_center,black_40%,transparent_100%)]",
   }
 ]
 

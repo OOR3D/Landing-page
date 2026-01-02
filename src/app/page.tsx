@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { Montserrat } from "next/font/google"
-import { ChevronDown, Play, Globe, Users, Palette, Sparkles } from 'lucide-react'
+import { ChevronDown, Play, Globe, Users, Palette, Sparkles, ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
   Tooltip,
@@ -401,10 +401,13 @@ export default function NewLandingPage() {
       <section className="relative w-full py-24">
         <PlatformLogos>
           <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${montserrat.className}`}>
-            Built to support your favorite platforms
+            Built to support the platforms you create for
           </h2>
-          <p className="text-xl text-white/60 mb-8 max-w-2xl mx-auto">
-            Start creating for IMVU today. We're actively expanding to support more of the virtual worlds you love.
+          <p className="text-xl text-white/60 mb-2 max-w-5xl mx-auto">
+            IMVU is supported today. Expansion to additional platforms is already in motion.
+          </p>
+          <p className="text-xl text-white/80 font-medium mb-8 max-w-5xl mx-auto">
+            Second Life, The Sims 4, Roblox, VRChat, Zepeto, Inzoi, FiveM, Avakin Life, Minecraft, and GTA 6.
           </p>
         </PlatformLogos>
       </section>
@@ -443,6 +446,57 @@ export default function NewLandingPage() {
           </motion.div>
         </div>
       </section> */}
+
+      {/* The Engine Section */}
+      <section className="px-6 py-32 relative overflow-hidden">
+        {/* Decorative background elements */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#FF4AE7]/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-[#FE0101]/10 rounded-full blur-[100px] pointer-events-none" />
+        
+        <div className="max-w-6xl mx-auto relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center"
+          >
+            <h2 className={`text-5xl md:text-6xl lg:text-7xl font-bold mb-6 ${montserrat.className} text-white leading-tight`}>
+              The Engine Behind Superpowered Creators
+            </h2>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="text-lg md:text-xl text-white/60 mb-12 max-w-2xl mx-auto leading-relaxed"
+            >
+              OUTOFREACH3D brings your tools, products, and workflow into a single system, so you can create faster and stay steps ahead.
+            </motion.p>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            >
+              <Link href="https://auth.outofreach3d.com/signup">
+                <Button variant="red" size="lg" className="rounded-full px-8 w-full sm:w-auto">
+                  Start creating
+                </Button>
+              </Link>
+              <Link href="https://app.outofreach3d.com/upgrades">
+                <Button variant="outline" size="lg" className="rounded-full px-8 w-full sm:w-auto border-white/20 hover:border-white/40">
+                  See our plans
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </Link>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
 
       {/* Testimonials Section */}
       <TestimonialsSection />

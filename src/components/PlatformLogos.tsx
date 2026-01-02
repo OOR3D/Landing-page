@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 import {
   Tooltip,
   TooltipContent,
@@ -9,29 +10,77 @@ import {
 } from "@/components/ui/tooltip"
 
 const platforms = [
-  { name: "IMVU", src: "/images/platforms/imvu-logo.webp", width: 60, height: 60, top: 10, left: 10, url: "https://imvu.com" },
-  { name: "Second Life", src: "/images/platforms/second-life-logo.svg", width: 140, height: 40, top: 20, left: 80, url: "https://secondlife.com" },
-  { name: "The Sims 4", src: "/images/platforms/sims4-logo.svg", width: 60, height: 60, top: 80, left: 15, url: "https://www.ea.com/games/the-sims/the-sims-4" },
-  { name: "Roblox", src: "/images/platforms/roblox-logo.svg", width: 60, height: 60, top: 85, left: 85, url: "https://www.roblox.com" },
-  { name: "VRChat", src: "/images/platforms/vrchat-logo.png", width: 60, height: 60, top: 45, left: 5, url: "https://vrchat.com" },
-  { name: "Zepeto", src: "/images/platforms/zepeto-logo.svg", width: 60, height: 60, top: 50, left: 95, url: "https://web.zepeto.me" },
-  { name: "Inzoi", src: "/images/platforms/inzoi-logo.svg", width: 80, height: 40, top: 5, left: 40, url: "https://playinzoi.com" },
-  { name: "FiveM", src: "/images/platforms/fivem-logo.svg", width: 50, height: 50, top: 90, left: 45, url: "https://fivem.net" },
-  { name: "Avakin Life", src: "/images/platforms/avakinlife-logo.png", width: 60, height: 60, top: 25, left: 25, url: "https://avakin.com" },
-  { name: "Minecraft", src: "/images/platforms/minecraft-logo.svg", width: 120, height: 40, top: 75, left: 5, url: "https://www.minecraft.net" },
+  // Top Row
+  { name: "Zepeto", src: "/images/platforms/zepeto-logo.svg", width: 60, height: 60, top: 12, left: 50, url: "https://web.zepeto.me" },
+  { name: "IMVU", src: "/images/platforms/imvu-logo.webp", width: 60, height: 60, top: 18, left: 18, url: "https://imvu.com" },
+  { name: "Roblox", src: "/images/platforms/roblox-logo.svg", width: 60, height: 60, top: 18, left: 82, url: "https://www.roblox.com" },
+  
+  // Inner Mid Row
+  { name: "Second Life", src: "/images/platforms/second-life-logo.svg", width: 140, height: 40, top: 32, left: 32, url: "https://secondlife.com" },
+  { name: "Minecraft", src: "/images/platforms/minecraft-logo.svg", width: 120, height: 40, top: 32, left: 68, url: "https://www.minecraft.net" },
+  
+  // Outer Mid Row
+  { name: "The Sims 4", src: "/images/platforms/sims4-logo.svg", width: 60, height: 60, top: 50, left: 12, url: "https://www.ea.com/games/the-sims/the-sims-4" },
+  { name: "VRChat", src: "/images/platforms/vrchat-logo.png", width: 60, height: 60, top: 50, left: 88, url: "https://vrchat.com" },
+  
+  // Low Row
+  { name: "Inzoi", src: "/images/platforms/inzoi-logo.svg", width: 80, height: 40, top: 72, left: 15, url: "https://playinzoi.com" },
+  { name: "FiveM", src: "/images/platforms/fivem-logo.svg", width: 50, height: 50, top: 72, left: 85, url: "https://fivem.net" },
+  
+  // Bottom Row
+  { name: "Avakin Life", src: "/images/platforms/avakinlife-logo.png", width: 60, height: 60, top: 88, left: 35, url: "https://avakin.com" },
+  { name: "GTA 6", src: "/images/platforms/gta6-logo.png", width: 80, height: 60, top: 88, left: 65, url: "https://www.rockstargames.com/gta6" },
 ];
 
+// Calculate responsive horizontal position based on screen width
+const getResponsivePosition = (basePosition: number, screenWidth: number) => {
+  // Only adjust on very small screens to preserve circular shape
+  if (screenWidth < 640) {
+    const center = 50;
+    const offset = (basePosition - center) * 0.5; // Reduce spread by 50% only on small screens
+    return Math.max(10, Math.min(90, center + offset));
+  }
+  // On all other screens, use original positions to keep circles circular
+  return basePosition;
+};
+
+// Calculate responsive vertical position - keep more spread for height
+const getResponsiveTopPosition = (basePosition: number, screenWidth: number) => {
+  // On small screens, keep good vertical spread but ensure safe bounds
+  if (screenWidth < 640) {
+    return Math.max(5, Math.min(95, basePosition));
+  }
+  // On all other screens, use original positions
+  return basePosition;
+};
+
 export const PlatformLogos = ({ children }: { children?: React.ReactNode }) => {
+  const [windowWidth, setWindowWidth] = useState(0);
+
+  useEffect(() => {
+    // Set initial width
+    setWindowWidth(window.innerWidth);
+    
+    // Handle resize
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
-    <div className="relative w-full min-h-[600px] flex items-center justify-center">
+    <div className="relative w-full min-h-[600px] md:min-h-[750px] flex items-center justify-center">
       {/* Central Content */}
-      <div className="relative z-10 max-w-4xl mx-auto text-center px-4">
+      <div className="relative z-10 max-w-5xl mx-auto text-center px-4">
         {children}
       </div>
 
       {/* Floating Logos */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <TooltipProvider delayDuration={0}>
+      <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center">
+        <div className="relative w-full max-w-full sm:max-w-[95%] md:max-w-[92%] lg:max-w-[90%] xl:max-w-[88%] h-full px-2 sm:px-4 md:px-6">
+          <TooltipProvider delayDuration={0}>
           {platforms.map((platform, index) => (
             <motion.div
               key={platform.name}
@@ -46,8 +95,8 @@ export const PlatformLogos = ({ children }: { children?: React.ReactNode }) => {
                 y: "-50%"
               }}
               whileInView={{ 
-                top: `${platform.top}%`, 
-                left: `${platform.left}%`, 
+                top: `${windowWidth > 0 ? getResponsiveTopPosition(platform.top, windowWidth) : platform.top}%`, 
+                left: `${windowWidth > 0 ? getResponsivePosition(platform.left, windowWidth) : platform.left}%`, 
                 opacity: 1, 
                 scale: 1, 
                 filter: "blur(0px)",
@@ -110,7 +159,8 @@ export const PlatformLogos = ({ children }: { children?: React.ReactNode }) => {
               </motion.div>
             </motion.div>
           ))}
-        </TooltipProvider>
+          </TooltipProvider>
+        </div>
       </div>
       
       {/* Background Gradient Effect - Subtle center glow */}

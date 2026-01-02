@@ -191,7 +191,7 @@ export default function TestimonialsSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-lg md:text-xl text-white/70 leading-relaxed max-w-2xl mx-auto"
           >
-            the team at <span className="text-[#FF4AE7] font-semibold">OUTOFREACH Inc.</span>, with decades of experience creating content for virtual worlds like <span className="text-white font-medium">IMVU</span> and <span className="text-white font-medium">Second Life</span>.
+            The team at <span className="text-[#FF4AE7] font-semibold">OUTOFREACH Inc.</span>, with decades of experience creating content for virtual worlds like <span className="text-white font-medium">IMVU</span> and <span className="text-white font-medium">Second Life</span>.
           </motion.p>
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
