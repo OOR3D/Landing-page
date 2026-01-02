@@ -601,7 +601,7 @@ function StackedDeckSection() {
         </motion.div>
 
         {/* Increased size for focus - Reduced by ~15% */}
-        <div className="relative h-[55vh] w-full max-w-[75vw] 2xl:max-w-[1500px] mx-auto mt-48">
+        <div className="relative h-[55vh] w-full max-w-[75vw] 2xl:max-w-[1500px] mx-auto mt-64">
           <div className="flex items-center justify-center h-full w-full">
             
             {/* Step 1: Pick - Moves Left */}
@@ -635,12 +635,14 @@ function StackedDeckSection() {
                 desc="Upload your images or textures. See it applied instantly in 3D."
                 img="/2 3d.png"
               >
-                 <Image 
-                    src="/image_VLrJ0nd__1767391135933_raw.jpg" 
-                    alt="Customize model" 
-                    fill 
-                    className="object-cover object-center translate-y-6 transition-all duration-500"
-                  />
+                 <div className="absolute inset-0 w-full h-full" style={{ maskImage: 'linear-gradient(to bottom, transparent 0%, black 40%)', WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 40%)' }}>
+                   <Image 
+                      src="/image_VLrJ0nd__1767391135933_raw.jpg" 
+                      alt="Customize model" 
+                      fill 
+                      className="object-cover object-center translate-y-6 transition-all duration-500"
+                    />
+                 </div>
               </FeatureCard>
             </motion.div>
 
@@ -655,9 +657,12 @@ function StackedDeckSection() {
                 desc="Get game-ready files. Download and upload directly to supported platforms."
                 img="/3 3d.png"
               >
-                 <div className="absolute inset-0 flex items-center justify-center">
-                     <p className="text-white/20 text-xs">Generate: "Download ready files"</p>
-                  </div>
+                 <Image 
+                    src="/f6dcb969-48ba-4c8f-b8a5-688b0559c71b.png" 
+                    alt="Export files" 
+                    fill 
+                    className="object-cover object-center transition-all duration-500"
+                  />
               </FeatureCard>
             </motion.div>
           </div>
@@ -687,17 +692,22 @@ function MobileFeatures() {
                 />
              </FeatureCard>
              <FeatureCard step="2" title="Customize" desc="Upload your images or textures." img="/2 3d.png">
-                <Image 
-                  src="/image_VLrJ0nd__1767391135933_raw.jpg" 
-                  alt="Customize model" 
-                  fill 
-                  className="object-cover object-center translate-y-6"
-                />
+                <div className="absolute inset-0 w-full h-full" style={{ maskImage: 'linear-gradient(to bottom, transparent 0%, black 20%)', WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 20%)' }}>
+                  <Image 
+                    src="/image_VLrJ0nd__1767391135933_raw.jpg" 
+                    alt="Customize model" 
+                    fill 
+                    className="object-cover object-center translate-y-6"
+                  />
+                </div>
              </FeatureCard>
              <FeatureCard step="3" title="Export" desc="Get game-ready files." img="/3 3d.png">
-                <div className="absolute inset-0 flex items-center justify-center">
-                     <p className="text-white/20 text-xs">Generate: "Download ready files"</p>
-                  </div>
+                <Image 
+                  src="/f6dcb969-48ba-4c8f-b8a5-688b0559c71b.png" 
+                  alt="Export files" 
+                  fill 
+                  className="object-cover object-center"
+                />
              </FeatureCard>
           </div>
        </div>
@@ -707,33 +717,73 @@ function MobileFeatures() {
 
 function FeatureCard({ step, title, desc, img, children }: any) {
   const iconSrc = step === "3" ? "/check%20mark.png" : "/right%20arrow.png"
+  
+  // Get image source from children to create color-matched background
+  const getImageSrc = () => {
+    if (step === "1") return "/pick your asset.jpg"
+    if (step === "2") return "/image_VLrJ0nd__1767391135933_raw.jpg"
+    if (step === "3") return "/f6dcb969-48ba-4c8f-b8a5-688b0559c71b.png"
+    return ""
+  }
+  
+  const imageSrc = getImageSrc()
 
   return (
-    <div className="h-full group relative bg-[#150a2e] border border-white/10 rounded-[32px] hover:border-[#FE0101]/50 transition-all duration-500 hover:scale-[1.02] flex flex-col overflow-visible">
-      {/* Background Image Container */}
+    <div 
+      className="h-full group relative border border-white/10 rounded-[32px] hover:border-[#FE0101]/50 transition-all duration-500 hover:scale-[1.02] flex flex-col overflow-visible bg-[#150a2e]"
+    >
+      {/* Dynamic Background Color Layer (Applied to the whole card) */}
       <div className="absolute inset-0 z-0 overflow-hidden rounded-[32px]">
-        <div className="absolute inset-0 top-[20%]">
-           {children}
-           {/* Fade overlay at the top of the image */}
-           <div className="absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-[#150a2e] to-transparent z-10" />
-        </div>
-        {/* Gradient Overlay: Fades top to background color, keeps bottom clear */}
-        <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-[#150a2e] to-transparent pointer-events-none" />
+        <Image
+          src={imageSrc}
+          alt=""
+          fill
+          className="object-cover"
+          style={{ 
+            filter: 'blur(80px) saturate(1.5) brightness(0.6)',
+            transform: 'scale(1.5)',
+            opacity: 0.4
+          }}
+        />
       </div>
 
-      <div className="absolute -top-16 -left-16 w-40 h-40 opacity-100 transition-all duration-500 pointer-events-none z-50 group-hover:scale-110 group-hover:drop-shadow-[0_0_25px_rgba(254,1,1,0.3)]">
-        <Image src={img} alt={`Step ${step}`} fill className="object-contain" />
+      {/* Top Section: Header & Text - Takes up ~30% */}
+      <div className="relative z-10 px-8 pt-8 pb-4 flex flex-col shrink-0 h-[30%]">
+        <div className="flex justify-between items-start w-full mb-6">
+           {/* Step Number Image (Top Left) */}
+           <div className="absolute -top-16 -left-16 w-40 h-40 pointer-events-none group-hover:scale-110 group-hover:drop-shadow-[0_0_25px_rgba(254,1,1,0.3)] transition-all duration-500">
+              <Image src={img} alt={`Step ${step}`} fill className="object-contain" />
+           </div>
+           
+           {/* Arrow Icon (Top Right) */}
+           <div className={`absolute top-0 right-2 opacity-90 group-hover:opacity-100 transition-opacity ${step === "3" ? "w-16 h-16" : "w-20 h-20"}`}>
+              <Image src={iconSrc} alt={step === "3" ? "Completed" : "Next"} fill className="object-contain" />
+           </div>
+        </div>
+        
+        <div className="mt-auto mb-2 relative z-10">
+          <h3 className="text-3xl font-bold mb-2 text-white">{title}</h3>
+          <p className="text-white/60 leading-tight text-base line-clamp-3">{desc}</p>
+        </div>
       </div>
 
-      <div className={`absolute top-0 right-2 z-[60] opacity-90 group-hover:opacity-100 transition-opacity ${step === "3" ? "w-16 h-16" : "w-20 h-20"}`}>
-         <Image src={iconSrc} alt={step === "3" ? "Completed" : "Next"} fill className="object-contain" />
-      </div>
-      
-      <div className="relative z-10 flex flex-col pt-24 px-8 pb-4 pointer-events-none">
-        <div className="">
-          <h3 className="text-4xl font-bold mb-3 text-white">{title}</h3>
-          <p className="text-white/60 leading-relaxed text-lg">{desc}</p>
-        </div>
+      {/* Bottom Section: Image with Convex Arch - Takes up ~70% */}
+      <div className="relative h-[70%] w-full z-10">
+         {/* The Convex Container */}
+         <div 
+           className="absolute inset-0 w-full h-full overflow-hidden border-t border-white/10 bg-black/20"
+           style={{
+             borderTopLeftRadius: '50% 10%',  // Creates the convex arch
+             borderTopRightRadius: '50% 10%', // Creates the convex arch
+             borderBottomLeftRadius: '32px',  // Match card border radius
+             borderBottomRightRadius: '32px', // Match card border radius
+           }}
+         > 
+            {children}
+            
+            {/* Inner shadow for depth */}
+            <div className="absolute inset-0 shadow-[inset_0_10px_40px_rgba(0,0,0,0.4)] pointer-events-none rounded-[inherit]" />
+         </div>
       </div>
     </div>
   )
