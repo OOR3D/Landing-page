@@ -83,7 +83,7 @@ export default function NewLandingPage() {
             boxShadow: '0 0 0 1px rgba(0,0,0,0.2), 0 8px 40px rgba(0,0,0,0.4)'
           }}
         >
-          <Link href="/new" className="mr-6 opacity-90 hover:opacity-100 transition-opacity">
+          <Link href="/" className="mr-6 opacity-90 hover:opacity-100 transition-opacity">
             <Image src="/OOR-LOGO.svg" alt="OOR3D" width={40} height={12} className="brightness-0 invert" />
           </Link>
           

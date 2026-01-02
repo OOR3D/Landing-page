@@ -42,6 +42,7 @@ const footerLinks = [
     title: "Support",
     links: [
       { name: "Help Center", href: "https://app.outofreach3d.com/help" },
+      { name: "Resources", href: "https://app.outofreach3d.com/help/resources" },
       { name: "Contact", href: "https://discord.gg/oor3d" },
       { name: "Company", href: "https://app.outofreach3d.com/help/company" },
     ]
