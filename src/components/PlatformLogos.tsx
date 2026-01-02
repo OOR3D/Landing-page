@@ -61,7 +61,11 @@ export const PlatformLogos = ({ children }: { children?: React.ReactNode }) => {
                 delay: index * 0.1, // Staggered entrance
               }}
               style={{
-                  width: platform.width + 40,
+                  width: platform.name === "Second Life" 
+                    ? platform.width - 40 
+                    : platform.name === "Minecraft" 
+                    ? platform.width - 10 
+                    : platform.width + 40,
                   height: platform.height + 40
               }}
             >
