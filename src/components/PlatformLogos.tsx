@@ -23,7 +23,7 @@ const platforms = [
 
 export const PlatformLogos = ({ children }: { children?: React.ReactNode }) => {
   return (
-    <div className="relative w-full min-h-[600px] flex items-center justify-center overflow-hidden">
+    <div className="relative w-full min-h-[600px] flex items-center justify-center">
       {/* Central Content */}
       <div className="relative z-10 max-w-4xl mx-auto text-center px-4">
         {children}
@@ -61,8 +61,8 @@ export const PlatformLogos = ({ children }: { children?: React.ReactNode }) => {
                 delay: index * 0.1, // Staggered entrance
               }}
               style={{
-                  width: platform.width,
-                  height: platform.height
+                  width: platform.width + 40,
+                  height: platform.height + 40
               }}
             >
                {/* Continuous Floating Animation Wrapper */}
@@ -83,14 +83,20 @@ export const PlatformLogos = ({ children }: { children?: React.ReactNode }) => {
                     <Link 
                       href={platform.url}
                       target="_blank"
-                      className="relative block w-full h-full hover:scale-125 transition-transform duration-300 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+                      className="group relative flex items-center justify-center w-full h-full"
                     >
-                      <Image
-                          src={platform.src}
-                          alt={platform.name}
-                          fill
-                          className="object-contain"
-                      />
+                      <div className="absolute inset-0 bg-[#251D3E]/40 backdrop-blur-md border border-white/10 rounded-[28px] shadow-lg group-hover:bg-[#251D3E]/60 group-hover:border-white/20 group-hover:scale-110 transition-all duration-300" />
+                      <div className="relative w-full h-full p-4 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center">
+                        <div className="relative w-full h-full">
+                          <Image
+                              src={platform.src}
+                              alt={platform.name}
+                              fill
+                              className="object-contain drop-shadow-lg"
+                              sizes={`${platform.width}px`}
+                          />
+                        </div>
+                      </div>
                     </Link>
                   </TooltipTrigger>
                   <TooltipContent>
