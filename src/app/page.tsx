@@ -578,8 +578,18 @@ function StackedDeckSection() {
   const r3 = useTransform(scrollYProgress, [0.5, 0.8], [0, 5])
   const s3 = useTransform(scrollYProgress, [0.5, 0.8], [0.9, 1])
 
-  // Opacity for entry
+  // Opacity for entry (Text)
   const opacity = useTransform(scrollYProgress, [0, 0.1], [0, 1])
+
+  // Card 1 Entry Animation (From bottom)
+  const entryOpacity = useTransform(scrollYProgress, [0.05, 0.2], [0, 1])
+  const entryY = useTransform(scrollYProgress, [0.05, 0.2], [100, 0])
+  
+  // Opacity for Card 2 and 3 to hide them until scroll starts
+  // Card 2 fades in as Card 1 moves
+  const opacity2 = useTransform(scrollYProgress, [0.2, 0.3], [0, 1])
+  // Card 3 fades in slightly later
+  const opacity3 = useTransform(scrollYProgress, [0.2, 0.3], [0, 1])
 
   return (
     <section ref={containerRef} className="px-6 relative z-10 min-h-[300vh] hidden md:block">
@@ -590,13 +600,13 @@ function StackedDeckSection() {
           <p className="text-2xl text-white/60">From concept to creation in three simple steps.</p>
         </motion.div>
 
-        {/* Increased size for focus */}
-        <div className="relative h-[65vh] w-full max-w-[90vw] 2xl:max-w-[1800px] mx-auto mt-48">
+        {/* Increased size for focus - Reduced by ~15% */}
+        <div className="relative h-[55vh] w-full max-w-[75vw] 2xl:max-w-[1500px] mx-auto mt-48">
           <div className="flex items-center justify-center h-full w-full">
             
             {/* Step 1: Pick - Moves Left */}
             <motion.div 
-              style={{ x: x1, rotate: r1, scale: s1, zIndex: 3, transformOrigin: "top center" }}
+              style={{ x: x1, y: entryY, rotate: r1, scale: s1, opacity: entryOpacity, zIndex: 3, transformOrigin: "top center" }}
               className="absolute w-[32%] h-full"
             >
               <FeatureCard 
@@ -616,7 +626,7 @@ function StackedDeckSection() {
 
             {/* Step 2: Customize - Center */}
             <motion.div 
-              style={{ rotate: r2, scale: s2, zIndex: 2, transformOrigin: "top center" }}
+              style={{ rotate: r2, scale: s2, opacity: opacity2, zIndex: 2, transformOrigin: "top center" }}
               className="absolute w-[32%] h-full"
             >
               <FeatureCard 
@@ -629,14 +639,14 @@ function StackedDeckSection() {
                     src="/image_VLrJ0nd__1767391135933_raw.jpg" 
                     alt="Customize model" 
                     fill 
-                    className="object-cover object-center scale-105 translate-y-6 transition-all duration-500"
+                    className="object-cover object-center translate-y-6 transition-all duration-500"
                   />
               </FeatureCard>
             </motion.div>
 
             {/* Step 3: Export - Moves Right */}
             <motion.div 
-              style={{ x: x3, rotate: r3, scale: s3, zIndex: 1, transformOrigin: "top center" }}
+              style={{ x: x3, rotate: r3, scale: s3, opacity: opacity3, zIndex: 1, transformOrigin: "top center" }}
               className="absolute w-[32%] h-full"
             >
               <FeatureCard 
@@ -681,7 +691,7 @@ function MobileFeatures() {
                   src="/image_VLrJ0nd__1767391135933_raw.jpg" 
                   alt="Customize model" 
                   fill 
-                  className="object-cover object-center scale-105 translate-y-6"
+                  className="object-cover object-center translate-y-6"
                 />
              </FeatureCard>
              <FeatureCard step="3" title="Export" desc="Get game-ready files." img="/3 3d.png">
