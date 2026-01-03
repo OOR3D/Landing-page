@@ -4,11 +4,16 @@ import Particles from '@/components/Particles'
 import CookieConsent from '@/components/CookieConsent'
 import Script from 'next/script'
 import MobileWarning from '@/components/MobileWarning'
+import { Metadata } from 'next'
+import MobileWarning from '@/components/MobileWarning'
+import { ConvexClientProvider } from '@/components/ConvexClientProvider'
 import { metadata as siteMetadata } from './metadata'
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = siteMetadata
+// Export metadata for Next.js
+export const metadata: Metadata = siteMetadata
 
 export default function RootLayout({
   children,

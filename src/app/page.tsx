@@ -253,6 +253,46 @@ export default function NewLandingPage() {
               Beta v0.1
             </span>
           </motion.div>
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1 }}
+            className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,120,50,0.1),transparent_70%)] z-0"
+          />
+
+          <div className="container mx-auto px-4 z-10 text-center py-12">
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.6 }}
+              className="mb-4"
+            >
+              <span className="inline-block px-4 py-1.5 bg-gradient-to-r from-red-500/10 to-orange-500/10 rounded-full text-sm font-semibold text-orange-400 border border-orange-500/20 backdrop-blur-xl">
+                PRELAUNCH
+              </span>
+            </motion.div>
+            
+            <motion.h1
+              initial={{ opacity: 0, y: -50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -50 }}
+              transition={{ duration: 0.8 }}
+              className={`text-5xl md:text-7xl font-extrabold mb-8 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className} pb-2`}
+            >
+              The workspace for creators of the virtual world
+            </motion.h1>
+            
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              transition={{ duration: 0.8 }}
+              className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed"
+            >
+              Create and customize virtual items for IMVU, Second Life, Sims 4, and more.<br />
+              No complicated software, no prior experience needed. All powered by OOR3D™.
+            </motion.h2>
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}

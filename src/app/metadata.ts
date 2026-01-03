@@ -45,8 +45,8 @@ export const metadata: Metadata = {
     'digital assets'
   ],
   openGraph: {
-    title: 'OUTOFREACH3D™ - Create Products for the Virtual World',
-    description: 'OOR3D™ gives creators the power to design, customize and sell digital wearables for IMVU, Second Life, Sims 4, and more — without complicated 3D software.',
+    title: 'Create Products for your Avatar - IMVU, Second Life & Sims 4',
+    description: 'OOR3D is your complete workspace for creating products for your characters in video games. Everything you need to design, customize, and export avatar products for IMVU, Second Life, Sims 4, and every virtual platform. Remix existing products or create your own from scratch.',
     url: 'https://outofreach3d.com',
     siteName: 'OUTOFREACH3D™',
     images: [
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
         url: 'https://assets.oor3d.com/img/card-actions/The%20universal%20virtual%20world%20creator%20workspace.png',
         width: 1200,
         height: 630,
-        alt: 'OUTOFREACH3D™ - Create 3D Products for the virtual world'
+        alt: 'OOR3D - Create Products for Your Avatar'
       }
     ],
     locale: 'en_US',
@@ -64,6 +64,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'OUTOFREACH3D™ - Create Products for the Virtual World',
     description: 'Create virtual products for IMVU, Second Life, Sims 4, Roblox, Inzoi, GTA 6 and more. Design once, sell everywhere.',
+    title: 'Create Products for your Avatar - IMVU, Second Life & Sims 4',
+    description: 'OOR3D is your complete workspace for creating products for your characters in video games. Everything you need to design, customize, and export avatar products for IMVU, Second Life, Sims 4, and every virtual platform. Remix existing products or create your own from scratch.',
     images: ['https://assets.oor3d.com/img/card-actions/The%20universal%20virtual%20world%20creator%20workspace.png'],
   },
   icons: {
