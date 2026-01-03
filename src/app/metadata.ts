@@ -67,7 +67,10 @@ export const metadata: Metadata = {
     images: ['https://assets.oor3d.com/img/card-actions/The%20universal%20virtual%20world%20creator%20workspace.png'],
   },
   icons: {
-    icon: '/icons/favicon.ico',
+    icon: [
+      { url: '/icons/favicon.svg', type: 'image/svg+xml' },
+      { url: '/icons/favicon.ico', sizes: 'any' },
+    ],
     shortcut: '/icons/favicon.ico',
     apple: '/icons/apple-touch-icon.png',
   },

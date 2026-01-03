@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
-import Image from "next/image"
 import { Globe, Youtube, Instagram, Twitter } from "lucide-react"
 
 function XIcon() {
@@ -104,11 +103,12 @@ export function Footer() {
           </div>
 
           <div className="flex flex-col items-center justify-center pt-10 border-t border-white/5 text-center">
-              <Link href="/" draggable={false} className="mb-6 hover:opacity-80 transition-opacity relative w-[100px] h-[30px]">
-                  <Image 
+              <Link href="/" draggable={false} className="mb-6 hover:opacity-80 transition-opacity flex items-center justify-center">
+                  <img 
                       src="https://assets.oor3d.com/logo/OOR-allwhite.svg" 
                       alt="OOR3D Logo" 
-                      fill
+                      width={100}
+                      height={30}
                       draggable={false}
                       className="object-contain"
                   />

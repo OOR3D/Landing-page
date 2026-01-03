@@ -182,10 +182,11 @@ function BentoCard({ title, description, icon, imageSrc, className, delay = 0, b
              <Image 
                src={imageSrc} 
                alt={title} 
-               width={2000}
-               height={2000}
+               width={1200}
+               height={1200}
                draggable={false}
                className="object-contain drop-shadow-2xl transition-transform duration-700"
+               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
                priority
              />
            </motion.div>

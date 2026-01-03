@@ -135,7 +135,7 @@ export default function NewLandingPage() {
           }}
         >
           <Link href="/" className="mr-6 opacity-90 hover:opacity-100 transition-opacity">
-            <Image src="https://assets.oor3d.com/logo/OOR-allwhite.svg" alt="OOR3D" width={40} height={12} draggable={false} className="brightness-0 invert" />
+            <img src="https://assets.oor3d.com/logo/OOR-allwhite.svg" alt="OOR3D" width={40} height={12} draggable={false} className="brightness-0 invert" />
           </Link>
           
           <div className="hidden md:flex items-center gap-1 mr-2">
@@ -360,14 +360,13 @@ export default function NewLandingPage() {
                   ].map((logo, index) => (
                     <div 
                       key={`${i}-${index}`}
-                      className="relative w-24 h-8 opacity-30 hover:opacity-100 transition-opacity duration-300"
+                      className="relative w-24 h-8 opacity-30 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
                     >
-                      <Image
+                      <img
                         src={logo.src}
                         alt={logo.alt}
-                        fill
                         draggable={false}
-                        className="object-contain brightness-0 invert"
+                        className="w-full h-full object-contain brightness-0 invert"
                       />
                     </div>
                   ))}
@@ -566,14 +565,13 @@ export default function NewLandingPage() {
               <motion.div 
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="w-24 h-24 mb-8 relative drop-shadow-[0_0_30px_rgba(88,101,242,0.6)]"
+                className="w-24 h-24 mb-8 relative drop-shadow-[0_0_30px_rgba(88,101,242,0.6)] flex items-center justify-center"
               >
-                <Image 
+                <img 
                   src="https://assets.oor3d.com/svg/icons/social-media/discord.svg" 
                   alt="Discord" 
-                  fill 
                   draggable={false}
-                  className="object-contain"
+                  className="w-full h-full object-contain"
                 />
               </motion.div>
 

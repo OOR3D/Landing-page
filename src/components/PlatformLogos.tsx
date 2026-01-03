@@ -203,15 +203,24 @@ export const PlatformLogos = ({ children }: { children?: React.ReactNode }) => {
                     >
                       <div className="absolute inset-0 bg-[#251D3E]/40 backdrop-blur-md border border-white/10 rounded-[28px] shadow-lg group-hover:bg-[#251D3E]/60 group-hover:border-white/20 group-hover:scale-110 transition-all duration-300" />
                       <div className="relative w-full h-full p-4 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center">
-                        <div className="relative w-full h-full">
-                          <Image
+                        <div className="relative w-full h-full flex items-center justify-center">
+                          {platform.src.endsWith('.svg') ? (
+                            <img
+                              src={platform.src}
+                              alt={platform.name}
+                              draggable={false}
+                              className="w-full h-full object-contain drop-shadow-lg"
+                            />
+                          ) : (
+                            <Image
                               src={platform.src}
                               alt={platform.name}
                               fill
                               draggable={false}
                               className="object-contain drop-shadow-lg"
                               sizes={`${platform.width}px`}
-                          />
+                            />
+                          )}
                         </div>
                       </div>
                     </Link>
