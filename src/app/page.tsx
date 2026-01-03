@@ -113,14 +113,43 @@ export default function NewLandingPage() {
         >
            {/* Animated Border Beam - Bottom Edge Only */}
            
-           {/* Glow Layer (Blurry) */}
-           <div 
+           {/* Pink Border Glow Effect - Combined */}
+           <motion.div 
              className="absolute inset-0 rounded-b-[60px] md:rounded-b-[100px] pointer-events-none"
+             initial={{ opacity: 0 }}
+             animate={{ 
+               opacity: 1,
+               x: [0, -3, 2, -1, 3, -2, 1, -2, 0],
+               y: [0, 2, -3, 1, -2, 3, -1, 2, 0],
+             }}
+             transition={{ 
+               opacity: { duration: 0.8, delay: 0.2 },
+               x: { 
+                 duration: 8,
+                 repeat: Infinity,
+                 ease: "easeInOut",
+                 // Very uneven spacing creates speed variation within one cycle:
+                 // Tight intervals (0->0.02) = fast movement
+                 // Wide intervals (0.75->0.95) = slow movement
+                 times: [0, 0.02, 0.15, 0.25, 0.45, 0.55, 0.75, 0.95, 1]
+               },
+               y: { 
+                 duration: 10,
+                 repeat: Infinity,
+                 ease: "easeInOut",
+                 // Different uneven pattern for y-axis - creates different speed profile
+                 times: [0, 0.03, 0.18, 0.28, 0.48, 0.58, 0.78, 0.97, 1]
+               }
+             }}
              style={{
                WebkitMaskImage: 'linear-gradient(to bottom, transparent calc(100% - 120px), black 100%)',
                maskImage: 'linear-gradient(to bottom, transparent calc(100% - 120px), black 100%)',
              }}
            >
+             {/* Background Glow */}
+             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#FF4AE7] rounded-full blur-[180px] opacity-[0.08] pointer-events-none" />
+             
+             {/* Glow Layer (Blurry) */}
              <div 
                className="absolute inset-0 rounded-b-[60px] md:rounded-b-[100px]"
                style={{
@@ -135,16 +164,8 @@ export default function NewLandingPage() {
                  opacity: 0.6,
                }}
              />
-           </div>
-
-           {/* Core Beam (Sharp) */}
-           <div 
-             className="absolute inset-0 rounded-b-[60px] md:rounded-b-[100px] pointer-events-none"
-             style={{
-               WebkitMaskImage: 'linear-gradient(to bottom, transparent calc(100% - 120px), black 100%)',
-               maskImage: 'linear-gradient(to bottom, transparent calc(100% - 120px), black 100%)'
-             }}
-           >
+             
+             {/* Core Beam (Sharp) */}
              <div 
                className="absolute inset-0 rounded-b-[60px] md:rounded-b-[100px]"
                style={{
@@ -158,7 +179,7 @@ export default function NewLandingPage() {
                  filter: 'drop-shadow(0 0 5px #FF4AE7)',
                }}
              />
-           </div>
+           </motion.div>
 
            {/* Animated Glow Behind Hero */}
            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#FF4AE7] rounded-full blur-[180px] opacity-[0.08] pointer-events-none animate-pulse-slow" />
@@ -831,8 +852,8 @@ function FeatureCard({ step, title, desc, img, children, isHovered, isAnyHovered
   const shouldGreyOut = isAnyHovered && !isHovered
 
   return (
-    <div 
-      className={`h-full group relative border border-white/10 rounded-[32px] hover:border-[#FE0101]/50 transition-all duration-500 ease-in-out hover:scale-105 flex flex-col overflow-visible bg-[#150a2e] drop-shadow-[0_10px_30px_rgba(0,0,0,0.4)] hover:drop-shadow-[0_15px_40px_rgba(0,0,0,0.5)] ${shouldGreyOut ? 'grayscale' : 'grayscale-0'}`}
+    <div
+      className={`h-full group relative border border-white/10 rounded-[32px] hover:border-[#FE0101]/50 transition-all duration-500 ease-in-out hover:scale-105 flex flex-col overflow-visible bg-[#150a2e] drop-shadow-[0_10px_30px_rgba(0,0,0,0.4)] hover:drop-shadow-[0_15px_40px_rgba(0,0,0,0.5)] ${shouldGreyOut ? 'grayscale opacity-80' : 'grayscale-0'}`}
       onMouseEnter={() => onHoverChange?.(true)}
       onMouseLeave={() => onHoverChange?.(false)}
     >

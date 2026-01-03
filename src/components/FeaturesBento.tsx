@@ -32,9 +32,11 @@ interface BentoCardProps {
   enableBlurOverlay?: boolean
   enableUpwardAnimation?: boolean
   imageAboveBlur?: boolean
+  imageX?: number
+  imageY?: number
 }
 
-function BentoCard({ title, description, icon, imageSrc, className, delay = 0, bgColor, imageClassName, allowOverflow = false, enableTravelAnimation = false, enableFloatAnimation = false, enablePulseAnimation = false, enableRotateAnimation = false, constrainBottom = false, sectionRef, enableBlurOverlay = false, enableUpwardAnimation = false, imageAboveBlur = false }: BentoCardProps) {
+function BentoCard({ title, description, icon, imageSrc, className, delay = 0, bgColor, imageClassName, allowOverflow = false, enableTravelAnimation = false, enableFloatAnimation = false, enablePulseAnimation = false, enableRotateAnimation = false, constrainBottom = false, sectionRef, enableBlurOverlay = false, enableUpwardAnimation = false, imageAboveBlur = false, imageX, imageY }: BentoCardProps) {
   const cardRef = useRef<HTMLDivElement>(null)
   
   // Scroll-based animation for rocket travel
@@ -159,7 +161,10 @@ function BentoCard({ title, description, icon, imageSrc, className, delay = 0, b
              } : enableUpwardAnimation ? {
                y: upwardY,
                scale: upwardScale,
-             } : {}}
+             } : {
+               ...(imageX !== undefined && { x: imageX }),
+               ...(imageY !== undefined && { y: imageY }),
+             }}
            >
              <Image 
                src={imageSrc} 
@@ -240,7 +245,9 @@ export default function FeaturesBento() {
             delay={0.1}
             bgColor="bg-[#1e1b4b]" // Deep Indigo
             enableBlurOverlay={true}
-            imageClassName="!w-[100%] !h-[100%] -translate-y-22 translate-x-4 drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]" // Full width
+            imageClassName="!w-[100%] !h-[100%] drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]" // Full width
+            imageX={24}
+            imageY={-40}
           />
 
           {/* Quick Export */}
@@ -266,7 +273,8 @@ export default function FeaturesBento() {
             delay={0.3}
             bgColor="bg-[#064e3b]" // Dark Emerald
             enableBlurOverlay={true}
-            imageClassName="!w-[100%] !h-[100%] translate-y-16 drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]" // Centered, positioned lower
+            imageClassName="!w-[100%] !h-[100%] drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]" // Centered, positioned lower
+            imageY={60}
           />
 
           {/* Variety of Products - Large */}
