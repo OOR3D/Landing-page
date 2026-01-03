@@ -16,8 +16,16 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'assets.oor3d.com',
+        pathname: '/**',
       },
     ],
+  },
+  webpack: (config) => {
+    config.module.rules.push({
+      test: /\.(glsl|vert|frag)$/,
+      type: 'asset/source'
+    })
+    return config
   },
 }
 

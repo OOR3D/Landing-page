@@ -48,6 +48,13 @@ const getColorForName = (name: string): string => {
 
 const testimonials: Testimonial[] = [
   {
+    name: "Zyh Files",
+    location: "US",
+    text: "This team is incredible! Their work is top quality, and they're always so kind and helpful. They take the time to assist with any questions and truly care about delivering great results. Highly recommend working with them!",
+    role: "Creator",
+    imageUrl: "https://userimages01-akm.imvu.com/userdata/35/29/40/97/userpics/Snap_juLj4V95Bi2070531931.jpg"
+  },
+  {
     name: "Bo Life",
     location: "US",
     text: "amazing and fast reponses",
@@ -79,13 +86,6 @@ const testimonials: Testimonial[] = [
     location: "FR",
     text: "Good quality, listening, highly recommend !",
     role: "Creator"
-  },
-  {
-    name: "Zyh Files",
-    location: "US",
-    text: "This team is incredible! Their work is top quality, and they're always so kind and helpful. They take the time to assist with any questions and truly care about delivering great results. Highly recommend working with them!",
-    role: "Creator",
-    imageUrl: "https://userimages01-akm.imvu.com/userdata/35/29/40/97/userpics/Snap_juLj4V95Bi2070531931.jpg"
   },
   {
     name: "BD IMVU",

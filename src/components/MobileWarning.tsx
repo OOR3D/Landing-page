@@ -79,7 +79,7 @@ export default function MobileWarning() {
                 boxShadow: '0 0 20px rgba(254, 1, 1, 0.1)'
               }}
             >
-              <Monitor className="w-5 h-5 text-[#FF6B6B]" />
+              <Monitor className="w-5 h-5 text-[#FE0101]" />
             </div>
             
             <div className="flex-1 min-w-0">
@@ -102,10 +102,10 @@ export default function MobileWarning() {
 
           <div className="relative z-10 mt-4 flex justify-end">
             <Button
-              variant="ghost"
+              variant="red"
               size="sm"
               onClick={handleDismiss}
-              className="text-sm font-medium text-white/50 hover:text-white hover:bg-white/5 rounded-full px-4 transition-all duration-300"
+              className="rounded-full !cursor-pointer hover:!cursor-pointer flex-shrink-0"
             >
               Got it
             </Button>

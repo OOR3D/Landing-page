@@ -52,21 +52,69 @@ import FeaturesBento from '@/components/FeaturesBento'
 import SecurityFeatures from '@/components/SecurityFeatures'
 import PlatformLogos from '@/components/PlatformLogos'
 import { Footer } from '@/components/Footer'
+import LoadingScreen from '@/components/LoadingScreen'
 
 export default function NewLandingPage() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
+  const [loadingProgress, setLoadingProgress] = useState(0)
   
   const { scrollY } = useScroll()
   const heroY = useTransform(scrollY, [0, 500], [0, 150])
   const opacity = useTransform(scrollY, [0, 300], [1, 0])
 
+  useEffect(() => {
+    // Check if user has visited before
+    if (typeof window === 'undefined') return
+    
+    // Clean up old key if it exists
+    if (localStorage.getItem('hasVisitedBefore')) {
+      localStorage.removeItem('hasVisitedBefore')
+    }
+    
+    const hasVisited = localStorage.getItem('oor3d_has_visited')
+    
+    // Show loader for everyone, but make it 3x faster for returning visitors
+    const startTime = performance.now()
+    const baseDuration = 1500 // 1.5 seconds for first-time visitors
+    const duration = hasVisited === 'true' ? baseDuration / 3 : baseDuration // 3x faster for returning visitors (500ms)
+    
+    const animate = () => {
+      const elapsed = performance.now() - startTime
+      const progress = Math.min((elapsed / duration) * 100, 100)
+      setLoadingProgress(progress)
+      
+      if (progress < 100) {
+        requestAnimationFrame(animate)
+      } else {
+        // Ensure we set exactly 100% when done
+        setLoadingProgress(100)
+      }
+    }
+    
+    requestAnimationFrame(animate)
+  }, [])
+
+  const handleLoadingComplete = () => {
+    setIsLoading(false)
+    // Mark as visited after loader completes
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('oor3d_has_visited', 'true')
+    }
+  }
+
   return (
-    <div 
-      className={`min-h-screen text-white selection:bg-[#FF1493]/60 selection:text-white ${montserrat.variable}`}
-      style={{ 
-        backgroundColor: '#020005', // Deep dark background for the void
-      }}
-    >
+    <>
+      <AnimatePresence>
+        {isLoading && <LoadingScreen progress={loadingProgress} onComplete={handleLoadingComplete} />}
+      </AnimatePresence>
+      {!isLoading && (
+        <div 
+          className={`min-h-screen text-white selection:bg-[#FF1493]/60 selection:text-white ${montserrat.variable}`}
+          style={{ 
+            backgroundColor: '#020005', // Deep dark background for the void
+          }}
+        >
       {/* Noise Overlay for Texture */}
       <div className="fixed inset-0 opacity-[0.03] pointer-events-none z-0 mix-blend-overlay"
            style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} 
@@ -521,7 +569,7 @@ export default function NewLandingPage() {
                 className="w-24 h-24 mb-8 relative drop-shadow-[0_0_30px_rgba(88,101,242,0.6)]"
               >
                 <Image 
-                  src="https://assets.oor3d.com/svg/icons/branding/discord-3d-logo.svg" 
+                  src="https://assets.oor3d.com/svg/icons/social-media/discord.svg" 
                   alt="Discord" 
                   fill 
                   draggable={false}
@@ -569,12 +617,106 @@ export default function NewLandingPage() {
 
       {/* Footer */}
       <Footer />
+        </div>
       </div>
-    </div>
+      )}
+    </>
   )
 }
 
 // Components
+
+// Word-by-word animation component (uses whileInView for scroll-triggered animation)
+function AnimatedText({ 
+  text, 
+  className = '', 
+  delay = 0,
+  wordDelay = 0.1
+}: { 
+  text: string, 
+  className?: string,
+  delay?: number,
+  wordDelay?: number
+}) {
+  const words = text.split(' ')
+  
+  return (
+    <span className={className}>
+      {words.map((word, i) => (
+        <motion.span
+          key={i}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{
+            duration: 0.5,
+            delay: delay + (i * wordDelay),
+            ease: "easeOut"
+          }}
+          className="inline-block"
+        >
+          {word}
+          {i < words.length - 1 && '\u00A0'}
+        </motion.span>
+      ))}
+    </span>
+  )
+}
+
+// Word-by-word animation component for scroll-based sections
+function ScrollAnimatedText({ 
+  text, 
+  className = '', 
+  delay = 0,
+  wordDelay = 0.1,
+  scrollProgress
+}: { 
+  text: string, 
+  className?: string,
+  delay?: number,
+  wordDelay?: number,
+  scrollProgress: any
+}) {
+  const words = text.split(' ')
+  const [hasAnimated, setHasAnimated] = useState(false)
+  
+  useEffect(() => {
+    // Check initial value
+    if (scrollProgress.get() > 0.01) {
+      setHasAnimated(true)
+    }
+
+    // Subscribe to changes
+    const unsubscribe = scrollProgress.on("change", (latest: number) => {
+      if (!hasAnimated && latest > 0.01) {
+        setHasAnimated(true)
+      }
+    })
+    
+    return () => unsubscribe()
+  }, [scrollProgress, hasAnimated])
+  
+  return (
+    <span className={className}>
+      {words.map((word, i) => (
+        <motion.span
+          key={i}
+          initial={{ opacity: 0, y: 20 }}
+          animate={hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{
+            duration: 0.5,
+            delay: delay + (i * wordDelay),
+            ease: "easeOut"
+          }}
+          className="inline-block"
+        >
+          {word}
+          {i < words.length - 1 && '\u00A0'}
+        </motion.span>
+      ))}
+    </span>
+  )
+}
 
 function NavLink({ href, children }: { href: string, children: React.ReactNode }) {
   return (
@@ -671,13 +813,27 @@ function StackedDeckSection() {
   const opacity3 = useTransform(scrollYProgress, [0.5, 0.6], [0, 1])
 
   return (
-    <section ref={containerRef} className="px-6 relative z-10 min-h-[300vh] hidden md:block">
+    <section ref={containerRef} className="px-6 relative z-10 min-h-[300vh] hidden md:block overflow-visible">
       <div className="sticky top-0 h-screen flex flex-col justify-center overflow-visible">
         {/* Adjusted top position to clear header */}
-        <motion.div style={{ opacity }} className="text-center mb-24 absolute top-32 left-0 right-0 z-20">
-          <h2 className={`text-5xl md:text-7xl font-bold mb-6 ${montserrat.className}`}>How It Works</h2>
-          <p className="text-2xl text-white/60">From concept to creation in three simple steps.</p>
-        </motion.div>
+        <div className="text-center mb-24 absolute top-32 left-0 right-0 z-20">
+          <h2 className={`text-5xl md:text-7xl font-bold mb-6 ${montserrat.className}`}>
+            <ScrollAnimatedText 
+              text="How It Works" 
+              delay={0.1}
+              wordDelay={0.15}
+              scrollProgress={scrollYProgress}
+            />
+          </h2>
+          <p className="text-2xl text-white/60">
+            <ScrollAnimatedText 
+              text="From concept to creation in three simple steps." 
+              delay={0.4}
+              wordDelay={0.1}
+              scrollProgress={scrollYProgress}
+            />
+          </p>
+        </div>
 
         {/* Increased size for focus - Reduced by ~15% */}
         <div className="relative h-[55vh] w-full max-w-[75vw] 2xl:max-w-[1500px] mx-auto mt-64 overflow-visible">
@@ -768,11 +924,23 @@ function MobileFeatures() {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null)
   
   return (
-    <section className="px-6 py-24 relative z-10 md:hidden">
-       <div className="max-w-[1600px] mx-auto">
-          <div className="text-center mb-24">
-            <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${montserrat.className}`}>How It Works</h2>
-            <p className="text-xl text-white/60">From concept to creation in three simple steps.</p>
+    <section className="px-4 sm:px-6 py-24 relative z-10 md:hidden overflow-visible">
+       <div className="max-w-[1600px] mx-auto overflow-visible">
+          <div className="text-center mb-24 px-2">
+            <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${montserrat.className}`}>
+              <AnimatedText 
+                text="How It Works" 
+                delay={0.1}
+                wordDelay={0.15}
+              />
+            </h2>
+            <p className="text-xl text-white/60">
+              <AnimatedText 
+                text="From concept to creation in three simple steps." 
+                delay={0.4}
+                wordDelay={0.1}
+              />
+            </p>
           </div>
           
           <div className="flex flex-col gap-6">
@@ -780,13 +948,13 @@ function MobileFeatures() {
                step="1" 
                title="Choose" 
                desc="Pick a base model from our curated library." 
-               img="/1 3d.png"
+               img="/workflow/1 3d.png"
                isHovered={hoveredCard === "1"}
                isAnyHovered={hoveredCard !== null}
                onHoverChange={(isHovering: boolean) => setHoveredCard(isHovering ? "1" : null)}
              >
                 <Image 
-                  src="/pick your asset.jpg" 
+                  src="/workflow/pick your asset.jpg" 
                   alt="Pick a model" 
                   fill 
                   draggable={false}
@@ -797,14 +965,14 @@ function MobileFeatures() {
                step="2" 
                title="Customize" 
                desc="Upload your images or textures." 
-               img="/2 3d.png"
+               img="/workflow/2 3d.png"
                isHovered={hoveredCard === "2"}
                isAnyHovered={hoveredCard !== null}
                onHoverChange={(isHovering: boolean) => setHoveredCard(isHovering ? "2" : null)}
              >
                 <div className="absolute inset-0 w-full h-full">
                   <Image 
-                    src="/image_VLrJ0nd__1767391135933_raw.jpg" 
+                    src="/workflow/image_VLrJ0nd__1767391135933_raw.jpg" 
                     alt="Customize model" 
                     fill 
                     draggable={false}
@@ -816,13 +984,13 @@ function MobileFeatures() {
                step="3" 
                title="Export" 
                desc="Get game-ready files." 
-               img="/3 3d.png"
+               img="/workflow/3 3d.png"
                isHovered={hoveredCard === "3"}
                isAnyHovered={hoveredCard !== null}
                onHoverChange={(isHovering: boolean) => setHoveredCard(isHovering ? "3" : null)}
              >
                 <Image 
-                  src="/f6dcb969-48ba-4c8f-b8a5-688b0559c71b.png" 
+                  src="/workflow/f6dcb969-48ba-4c8f-b8a5-688b0559c71b.png" 
                   alt="Export files" 
                   fill 
                   draggable={false}
@@ -856,6 +1024,7 @@ function FeatureCard({ step, title, desc, img, children, isHovered, isAnyHovered
       className={`h-full group relative border border-white/10 rounded-[32px] hover:border-[#FE0101]/50 transition-all duration-500 ease-in-out hover:scale-105 flex flex-col overflow-visible bg-[#150a2e] drop-shadow-[0_10px_30px_rgba(0,0,0,0.4)] hover:drop-shadow-[0_15px_40px_rgba(0,0,0,0.5)] ${shouldGreyOut ? 'grayscale opacity-80' : 'grayscale-0'}`}
       onMouseEnter={() => onHoverChange?.(true)}
       onMouseLeave={() => onHoverChange?.(false)}
+      style={{ overflow: 'visible' }}
     >
       {/* Dynamic Background Color Layer (Applied to the whole card) */}
       <div className="absolute inset-0 z-0 overflow-hidden rounded-[32px]">
@@ -876,13 +1045,13 @@ function FeatureCard({ step, title, desc, img, children, isHovered, isAnyHovered
       {/* Top Section: Header & Text - Takes up ~35% */}
       <div className="relative z-10 px-6 sm:px-8 pt-6 sm:pt-8 pb-4 flex flex-col shrink-0 h-[35%]">
         <div className="flex justify-between items-start w-full mb-4 sm:mb-6">
-           {/* Step Number Image (Top Left) */}
-           <div className="absolute -top-12 -left-12 sm:-top-16 sm:-left-16 w-32 h-32 sm:w-40 sm:h-40 pointer-events-none group-hover:scale-110 group-hover:drop-shadow-[0_0_25px_rgba(254,1,1,0.3)] transition-all duration-500">
+           {/* Step Number Image (Top Left) - Made responsive */}
+           <div className="absolute -top-8 -left-8 sm:-top-12 sm:-left-12 md:-top-16 md:-left-16 w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 pointer-events-none group-hover:scale-110 group-hover:drop-shadow-[0_0_25px_rgba(254,1,1,0.3)] transition-all duration-500 z-20">
               <Image src={img} alt={`Step ${step}`} fill draggable={false} className="object-contain" />
            </div>
            
            {/* Arrow Icon (Top Right) */}
-           <div className="absolute top-2 right-2 sm:top-0 sm:right-2 opacity-90 group-hover:opacity-100 transition-opacity w-12 h-12 sm:w-16 sm:h-16">
+           <div className="absolute top-2 right-2 sm:top-0 sm:right-2 opacity-90 group-hover:opacity-100 transition-opacity w-12 h-12 sm:w-16 sm:h-16 z-20">
               <Image src={iconSrc} alt="Completed" fill draggable={false} className="object-contain" />
            </div>
         </div>

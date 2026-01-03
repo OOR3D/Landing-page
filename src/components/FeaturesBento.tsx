@@ -38,6 +38,17 @@ interface BentoCardProps {
 
 function BentoCard({ title, description, icon, imageSrc, className, delay = 0, bgColor, imageClassName, allowOverflow = false, enableTravelAnimation = false, enableFloatAnimation = false, enablePulseAnimation = false, enableRotateAnimation = false, constrainBottom = false, sectionRef, enableBlurOverlay = false, enableUpwardAnimation = false, imageAboveBlur = false, imageX, imageY }: BentoCardProps) {
   const cardRef = useRef<HTMLDivElement>(null)
+  const [isMobile, setIsMobile] = useState(false)
+  
+  // Detect mobile screen size
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
   
   // Scroll-based animation for rocket travel
   const { scrollYProgress } = useScroll({
@@ -46,29 +57,31 @@ function BentoCard({ title, description, icon, imageSrc, className, delay = 0, b
   })
 
   // Travel animation values - rocket moves from left to right and up
+  // Responsive values for mobile
   const travelX = enableTravelAnimation 
-    ? useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], [-600, -150, 48, 48, 300])
+    ? useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], isMobile ? [-300, -75, 24, 24, 150] : [-600, -150, 48, 48, 300])
     : useMotionValue(0)
   
   const travelY = enableTravelAnimation
-    ? useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], [400, 100, -48, -48, -200])
+    ? useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], isMobile ? [200, 50, -24, -24, -100] : [400, 100, -48, -48, -200])
     : useMotionValue(0)
   
   const travelRotate = enableTravelAnimation
-    ? useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], [-40, -5, 12, 12, 40])
+    ? useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], isMobile ? [-20, -2.5, 6, 6, 20] : [-40, -5, 12, 12, 40])
     : useMotionValue(0)
   
   const travelScale = enableTravelAnimation
-    ? useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], [1.8, 1.8, 1.8, 1.8, 1.8])
-    : useMotionValue(1.8)
+    ? useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], isMobile ? [1.2, 1.2, 1.2, 1.2, 1.2] : [1.8, 1.8, 1.8, 1.8, 1.8])
+    : useMotionValue(isMobile ? 1.2 : 1.8)
 
   // Upward animation values - image comes up from bottom
+  // Responsive values for mobile (smaller movement)
   const upwardY = enableUpwardAnimation
-    ? useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [930, 680, 680, 630])
+    ? useTransform(scrollYProgress, [0, 0.3, 0.6, 1], isMobile ? [400, 300, 300, 280] : [930, 680, 680, 630])
     : useMotionValue(0)
     
   const upwardScale = enableUpwardAnimation
-    ? useTransform(scrollYProgress, [0, 1], [1.1, 1.2])
+    ? useTransform(scrollYProgress, [0, 1], isMobile ? [1.0, 1.05] : [1.1, 1.2])
     : useMotionValue(1)
 
   return (
@@ -79,7 +92,7 @@ function BentoCard({ title, description, icon, imageSrc, className, delay = 0, b
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
       className={cn(
-        "group relative rounded-[40px] flex flex-col justify-between h-full min-h-[450px] transition-transform duration-500 hover:scale-[1.02] shadow-2xl",
+        "group relative rounded-[40px] flex flex-col justify-between h-full min-h-[400px] md:min-h-[450px] transition-transform duration-500 hover:scale-[1.02] shadow-2xl",
         allowOverflow ? "overflow-visible" : "overflow-hidden",
         bgColor,
         className
@@ -111,9 +124,9 @@ function BentoCard({ title, description, icon, imageSrc, className, delay = 0, b
              className={cn("relative", enableTravelAnimation || enableUpwardAnimation ? "" : imageClassName)}
              initial={
                enableTravelAnimation 
-                 ? { x: -600, y: 400, rotate: -40, scale: 1.8, filter: "blur(20px)", opacity: 0 } 
+                 ? { x: isMobile ? -300 : -600, y: isMobile ? 200 : 400, rotate: isMobile ? -20 : -40, scale: isMobile ? 1.2 : 1.8, filter: "blur(20px)", opacity: 0 } 
                  : enableUpwardAnimation 
-                 ? { y: 930, scale: 1.1, filter: "blur(20px)", opacity: 0 } 
+                 ? { y: isMobile ? 400 : 930, scale: isMobile ? 1.0 : 1.1, filter: "blur(20px)", opacity: 0 } 
                  : { filter: "blur(20px)", opacity: 0, scale: 0.8 }
              }
              whileInView={
@@ -162,8 +175,8 @@ function BentoCard({ title, description, icon, imageSrc, className, delay = 0, b
                y: upwardY,
                scale: upwardScale,
              } : {
-               ...(imageX !== undefined && { x: imageX }),
-               ...(imageY !== undefined && { y: imageY }),
+               ...(imageX !== undefined && { x: isMobile ? imageX * 0.4 : imageX }),
+               ...(imageY !== undefined && { y: isMobile ? imageY * 0.4 : imageY }),
              }}
            >
              <Image 
@@ -235,7 +248,7 @@ export default function FeaturesBento() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 auto-rows-[minmax(500px,auto)]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 auto-rows-[minmax(400px,auto)] md:auto-rows-[minmax(500px,auto)]">
           {/* Browser Based - Large */}
           <BentoCard
             title="Browser-based"
@@ -245,7 +258,7 @@ export default function FeaturesBento() {
             delay={0.1}
             bgColor="bg-[#1e1b4b]" // Deep Indigo
             enableBlurOverlay={true}
-            imageClassName="!w-[100%] !h-[100%] drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]" // Full width
+            imageClassName="!w-[85%] md:!w-[100%] !h-[85%] md:!h-[100%] drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]" // Responsive width/height
             imageX={24}
             imageY={-40}
           />
@@ -290,7 +303,7 @@ export default function FeaturesBento() {
             constrainBottom={true}
             enableBlurOverlay={true}
             enableUpwardAnimation={true}
-            imageClassName="!w-[120%] !h-[120%] drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+            imageClassName="!w-[95%] md:!w-[120%] !h-[95%] md:!h-[120%] drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
           />
         </div>
       </div>

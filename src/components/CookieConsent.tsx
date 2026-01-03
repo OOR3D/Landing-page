@@ -63,7 +63,7 @@ export default function CookieConsent() {
                     boxShadow: '0 0 20px rgba(254, 1, 1, 0.1)'
                   }}
                 >
-                  <Cookie className="w-5 h-5 text-[#FF6B6B]" />
+                  <Cookie className="w-5 h-5 text-[#FE0101]" />
                 </div>
                 
                 <div className="flex-1 min-w-0">
