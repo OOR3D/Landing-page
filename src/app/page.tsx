@@ -773,7 +773,7 @@ function StackedDeckSection() {
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start start", "end end"]
+    offset: ["start end", "end start"]
   })
 
   // Increased scroll range for sequential animation
@@ -800,13 +800,13 @@ function StackedDeckSection() {
   // Opacity for entry (Text)
   const opacity = useTransform(scrollYProgress, [0, 0.1], [0, 1])
 
-  // Card 1 Entry Animation (From bottom) - Start visible
-  const entryOpacity = useTransform(scrollYProgress, [0, 0.05], [1, 1])
-  const entryY = useTransform(scrollYProgress, [0, 0.05], [0, 0])
+  // Card 1 Entry Animation - visible from start, animates up
+  const entryOpacity = useTransform(scrollYProgress, [0, 0.1], [0.8, 1])
+  const entryY = useTransform(scrollYProgress, [0, 0.15], [50, 0])
   
-  // All cards visible by default
-  const opacity2 = useTransform(scrollYProgress, [0, 0.1], [1, 1])
-  const opacity3 = useTransform(scrollYProgress, [0, 0.1], [1, 1])
+  // Cards fade in as you scroll
+  const opacity2 = useTransform(scrollYProgress, [0, 0.15], [0.6, 1])
+  const opacity3 = useTransform(scrollYProgress, [0, 0.2], [0.4, 1])
 
   return (
     <section ref={containerRef} className="px-6 relative z-10 min-h-[300vh] hidden md:block overflow-visible">
