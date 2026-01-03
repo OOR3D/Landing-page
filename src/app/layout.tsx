@@ -3,6 +3,7 @@ import './globals.css'
 import Particles from '@/components/Particles'
 import CookieConsent from '@/components/CookieConsent'
 import Script from 'next/script'
+import MobileWarning from '@/components/MobileWarning'
 import { Metadata } from 'next'
 import MobileWarning from '@/components/MobileWarning'
 import { ConvexClientProvider } from '@/components/ConvexClientProvider'
@@ -10,6 +11,7 @@ import { metadata as siteMetadata } from './metadata'
 
 const inter = Inter({ subsets: ["latin"] })
 
+export const metadata = siteMetadata
 // Export metadata for Next.js
 export const metadata: Metadata = siteMetadata
 
@@ -44,16 +46,14 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        <ConvexClientProvider>
-          <Particles />
-          <MobileWarning />
-          {children}
-          <CookieConsent />
-          <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
-            strategy="afterInteractive"
-          />
-        </ConvexClientProvider>
+        <Particles />
+        <MobileWarning />
+        {children}
+        <CookieConsent />
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   )

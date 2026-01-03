@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     title: 'Create Products for your Avatar - IMVU, Second Life & Sims 4',
     description: 'OOR3D is your complete workspace for creating products for your characters in video games. Everything you need to design, customize, and export avatar products for IMVU, Second Life, Sims 4, and every virtual platform. Remix existing products or create your own from scratch.',
     url: 'https://outofreach3d.com',
-    siteName: 'OUTOFREACH3D',
+    siteName: 'OUTOFREACH3D™',
     images: [
       {
         url: 'https://assets.oor3d.com/img/card-actions/The%20universal%20virtual%20world%20creator%20workspace.png',
@@ -62,16 +62,21 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
+    title: 'OUTOFREACH3D™ - Create Products for the Virtual World',
+    description: 'Create virtual products for IMVU, Second Life, Sims 4, Roblox, Inzoi, GTA 6 and more. Design once, sell everywhere.',
     title: 'Create Products for your Avatar - IMVU, Second Life & Sims 4',
     description: 'OOR3D is your complete workspace for creating products for your characters in video games. Everything you need to design, customize, and export avatar products for IMVU, Second Life, Sims 4, and every virtual platform. Remix existing products or create your own from scratch.',
     images: ['https://assets.oor3d.com/img/card-actions/The%20universal%20virtual%20world%20creator%20workspace.png'],
   },
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
+    icon: [
+      { url: '/icons/favicon.svg', type: 'image/svg+xml' },
+      { url: '/icons/favicon.ico', sizes: 'any' },
+    ],
+    shortcut: '/icons/favicon.ico',
+    apple: '/icons/apple-touch-icon.png',
   },
-  manifest: '/site.webmanifest',
+  manifest: '/icons/site.webmanifest',
   robots: {
     index: true,
     follow: true,
