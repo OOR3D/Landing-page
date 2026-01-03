@@ -122,7 +122,7 @@ export default function NotFound() {
           }}
         >
           <Link href="/" className="mr-6 opacity-90 hover:opacity-100 transition-opacity">
-            <Image src="/OOR-LOGO.svg" alt="OOR3D" width={40} height={12} draggable={false} className="brightness-0 invert" />
+            <Image src="https://assets.oor3d.com/logo/OOR-allwhite.svg" alt="OOR3D" width={40} height={12} draggable={false} className="brightness-0 invert" />
           </Link>
           
           <div className="hidden md:flex items-center gap-1 mr-2">
@@ -188,7 +188,7 @@ export default function NotFound() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-xl text-white/60 max-w-xl mx-auto mb-10 leading-relaxed font-light"
           >
-            This page doesn't exist in OOR3D's universe yet.
+            This page doesn't exist in OOR3D™'s universe yet.
             <br />
             <span className="text-white/40 text-base block mt-2">Let's get you back on track.</span>
           </motion.p>
@@ -215,21 +215,21 @@ export default function NotFound() {
 
         {/* Floating 3D Assets */}
         <FloatingAsset 
-          src="/texture.png"
+          src="/assets/texture.png"
           className="absolute top-1/4 left-[5%] w-32 h-32 lg:w-48 lg:h-48 hidden md:block"
           delay={0}
           targetOpacity={0.6}
           targetBlur={2}
         />
         <FloatingAsset 
-          src="/download.png"
+          src="/assets/download.png"
           className="absolute bottom-1/4 right-[5%] w-40 h-40 lg:w-56 lg:h-56 hidden md:block"
           delay={2}
           targetOpacity={0.6}
           targetBlur={2}
         />
         <FloatingAsset 
-          src="/t shirt.png"
+          src="/assets/t shirt.png"
           className="absolute top-1/3 right-[15%] w-24 h-24 lg:w-36 lg:h-36 hidden lg:block"
           delay={1.5}
           targetBlur={4}

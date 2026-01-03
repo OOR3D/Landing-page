@@ -42,7 +42,7 @@ const nebulaBackground = `
 
 // FAQ Data
 const faqs = [
-  { q: "What is OOR3D?", a: "A browser-based platform to customize 3D products with your textures and export to virtual worlds." },
+  { q: "What is OOR3D™?", a: "A browser-based platform to customize 3D products with your textures and export to virtual worlds." },
   { q: "Do I need 3D experience?", a: "No! Products are pre-made. Just add your textures." },
   { q: "What platforms?", a: "IMVU now. Second Life, Sims, Roblox coming soon." },
   { q: "Is there a free trial?", a: "Yes! Sign up and explore during our beta." },
@@ -87,7 +87,7 @@ export default function NewLandingPage() {
           }}
         >
           <Link href="/" className="mr-6 opacity-90 hover:opacity-100 transition-opacity">
-            <Image src="/OOR-LOGO.svg" alt="OOR3D" width={40} height={12} draggable={false} className="brightness-0 invert" />
+            <Image src="https://assets.oor3d.com/logo/OOR-allwhite.svg" alt="OOR3D" width={40} height={12} draggable={false} className="brightness-0 invert" />
           </Link>
           
           <div className="hidden md:flex items-center gap-1 mr-2">
@@ -247,17 +247,17 @@ export default function NewLandingPage() {
 
         {/* 3D Asset Floating Elements (Decorations) */}
         <FloatingAsset 
-          src="/texture.png" // Paintbrush sphere
+          src="/assets/texture.png" // Paintbrush sphere
           className="absolute top-1/4 left-[5%] w-32 h-32 lg:w-48 lg:h-48 hidden md:block"
           delay={0}
         />
         <FloatingAsset 
-          src="/download.png" // Box arrow
+          src="/assets/download.png" // Box arrow
           className="absolute bottom-1/4 right-[5%] w-40 h-40 lg:w-56 lg:h-56 hidden md:block"
           delay={2}
         />
         <FloatingAsset 
-          src="/t shirt.png" // T-shirt
+          src="/assets/t shirt.png" // T-shirt
           className="absolute top-1/3 right-[15%] w-24 h-24 lg:w-36 lg:h-36 hidden lg:block"
           delay={1.5}
           targetBlur={4}
@@ -368,7 +368,7 @@ export default function NewLandingPage() {
               <div className="aspect-video relative">
                 <iframe
                   src="https://www.youtube.com/embed/nrmqh6p7c_k"
-                  title="OOR3D Remix Editor Demo"
+                  title="OOR3D™ Remix Editor Demo"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   className="w-full h-full rounded-2xl"
@@ -439,7 +439,7 @@ export default function NewLandingPage() {
             <div className="aspect-video relative">
               <iframe
                 src="https://www.youtube.com/embed/nrmqh6p7c_k"
-                title="OOR3D Remix Editor Demo"
+                title="OOR3D™ Remix Editor Demo"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 className="w-full h-full"
@@ -474,7 +474,7 @@ export default function NewLandingPage() {
               transition={{ duration: 0.8, delay: 0.1 }}
               className="text-lg md:text-xl text-white/60 mb-12 max-w-2xl mx-auto leading-relaxed"
             >
-              OUTOFREACH3D brings your tools, products, and workflow into a single system, so you can create faster and stay steps ahead.
+              OUTOFREACH3D™ brings your tools, products, and workflow into a single system, so you can create faster and stay steps ahead.
             </motion.p>
             
             <motion.div
@@ -521,7 +521,7 @@ export default function NewLandingPage() {
                 className="w-24 h-24 mb-8 relative drop-shadow-[0_0_30px_rgba(88,101,242,0.6)]"
               >
                 <Image 
-                  src="/images/discord-logo.svg" 
+                  src="https://assets.oor3d.com/svg/icons/branding/discord-3d-logo.svg" 
                   alt="Discord" 
                   fill 
                   draggable={false}
@@ -534,7 +534,7 @@ export default function NewLandingPage() {
               </h2>
               
               <p className="text-xl text-white/60 mb-10 max-w-xl mx-auto leading-relaxed">
-                Connect with Hundreds of creators. Share your designs, get instant feedback, and shape the future of OOR3D.
+                Connect with Hundreds of creators. Share your designs, get instant feedback, and shape the future of OOR3D™.
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
@@ -692,13 +692,13 @@ function StackedDeckSection() {
                 step="1"
                 title="Choose" 
                 desc="Pick a base model from our curated library of high-quality assets."
-                img="/1 3d.png"
+                img="/workflow/1 3d.png"
                 isHovered={hoveredCard === "1"}
                 isAnyHovered={hoveredCard !== null}
                 onHoverChange={(isHovering: boolean) => setHoveredCard(isHovering ? "1" : null)}
               >
                   <Image 
-                     src="/pick your asset.jpg" 
+                     src="/workflow/pick your asset.jpg" 
                      alt="Pick a model" 
                      fill 
                      draggable={false}
@@ -716,14 +716,14 @@ function StackedDeckSection() {
                 step="2"
                 title="Customize" 
                 desc="Upload your images or textures. See it applied instantly in 3D."
-                img="/2 3d.png"
+                img="/workflow/2 3d.png"
                 isHovered={hoveredCard === "2"}
                 isAnyHovered={hoveredCard !== null}
                 onHoverChange={(isHovering: boolean) => setHoveredCard(isHovering ? "2" : null)}
               >
                  <div className="absolute inset-0 w-full h-full">
                    <Image 
-                      src="/image_VLrJ0nd__1767391135933_raw.jpg" 
+                      src="/workflow/image_VLrJ0nd__1767391135933_raw.jpg" 
                       alt="Customize model" 
                       fill 
                       draggable={false}
@@ -742,13 +742,13 @@ function StackedDeckSection() {
                 step="3"
                 title="Export" 
                 desc="Get game-ready files. Download and upload directly to supported platforms."
-                img="/3 3d.png"
+                img="/workflow/3 3d.png"
                 isHovered={hoveredCard === "3"}
                 isAnyHovered={hoveredCard !== null}
                 onHoverChange={(isHovering: boolean) => setHoveredCard(isHovering ? "3" : null)}
               >
                  <Image 
-                    src="/f6dcb969-48ba-4c8f-b8a5-688b0559c71b.png" 
+                    src="/workflow/f6dcb969-48ba-4c8f-b8a5-688b0559c71b.png" 
                     alt="Export files" 
                     fill 
                     draggable={false}
@@ -836,13 +836,13 @@ function MobileFeatures() {
 }
 
 function FeatureCard({ step, title, desc, img, children, isHovered, isAnyHovered, onHoverChange }: any) {
-  const iconSrc = "/check%20mark.png"
+  const iconSrc = "/workflow/check%20mark.png"
   
   // Get image source from children to create color-matched background
   const getImageSrc = () => {
-    if (step === "1") return "/pick your asset.jpg"
-    if (step === "2") return "/image_VLrJ0nd__1767391135933_raw.jpg"
-    if (step === "3") return "/f6dcb969-48ba-4c8f-b8a5-688b0559c71b.png"
+    if (step === "1") return "/workflow/pick your asset.jpg"
+    if (step === "2") return "/workflow/image_VLrJ0nd__1767391135933_raw.jpg"
+    if (step === "3") return "/workflow/f6dcb969-48ba-4c8f-b8a5-688b0559c71b.png"
     return ""
   }
   

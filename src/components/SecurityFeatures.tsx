@@ -17,13 +17,13 @@ const features = [
     title: "Protected by Design",
     description: "Your data, under your control. Private and safe by default. Security is never an afterthought.",
     icon: Shield,
-    imagePath: "/protected.png",
+    imagePath: "/security/protected.png",
   },
   {
     title: "Support Next Door",
-    description: "Real help from the people building OOR3D. Talk directly to 3D specialists and the core team when you need it.",
+    description: "Real help from the people building OOR3D™. Talk directly to 3D specialists and the core team when you need it.",
     icon: Headphones,
-    imagePath: "/headset.png",
+    imagePath: "/security/headset.png",
     containerClass: "scale-125",
     hoverScaleClass: "group-hover:scale-[1.35]",
   },
@@ -31,13 +31,13 @@ const features = [
     title: "Universal Inventory",
     description: "Everything you create is saved automatically in one place. Organize, revisit, and reuse your products, textures, and exports anytime.",
     icon: Database,
-    imagePath: "/cloud.png",
+    imagePath: "/security/cloud.png",
   },
   {
     title: "Partner in Creation",
     description: "We handle the tech. You focus on creating. We help you create faster and go further. You decide what you make and how far you take it.",
     icon: Handshake,
-    imagePath: "/spartnership.png",
+    imagePath: "/security/spartnership.png",
   }
 ]
 

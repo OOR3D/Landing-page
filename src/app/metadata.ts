@@ -48,10 +48,10 @@ export const metadata: Metadata = {
     title: 'OUTOFREACH3D™ - Create Products for the Virtual World',
     description: 'OOR3D™ gives creators the power to design, customize and sell digital wearables for IMVU, Second Life, Sims 4, and more — without complicated 3D software.',
     url: 'https://outofreach3d.com',
-    siteName: 'OUTOFREACH3D',
+    siteName: 'OUTOFREACH3D™',
     images: [
       {
-        url: 'https://outofreach3d.com/preview-image.jpg',
+        url: 'https://assets.oor3d.com/img/card-actions/The%20universal%20virtual%20world%20creator%20workspace.png',
         width: 1200,
         height: 630,
         alt: 'OUTOFREACH3D™ - Create 3D Products for the virtual world'
@@ -64,14 +64,14 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'OUTOFREACH3D™ - Create Products for the Virtual World',
     description: 'Create virtual products for IMVU, Second Life, Sims 4, Roblox, Inzoi, GTA 6 and more. Design once, sell everywhere.',
-    images: ['https://outofreach3d.com/preview-image.jpg'],
+    images: ['https://assets.oor3d.com/img/card-actions/The%20universal%20virtual%20world%20creator%20workspace.png'],
   },
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
+    icon: '/icons/favicon.ico',
+    shortcut: '/icons/favicon.ico',
+    apple: '/icons/apple-touch-icon.png',
   },
-  manifest: '/site.webmanifest',
+  manifest: '/icons/site.webmanifest',
   robots: {
     index: true,
     follow: true,

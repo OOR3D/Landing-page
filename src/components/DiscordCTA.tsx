@@ -15,7 +15,7 @@ const DiscordCTA = () => {
     <div className="w-full max-w-4xl mx-auto px-8 py-12 text-center bg-[#0A0C13] rounded-[2rem] border border-white/10">
       <div className="relative mb-6">
         <Image
-          src="/images/discord-logo.svg"
+          src="https://assets.oor3d.com/svg/icons/branding/discord-3d-logo.svg"
           alt="Discord"
           width={80}
           height={60}

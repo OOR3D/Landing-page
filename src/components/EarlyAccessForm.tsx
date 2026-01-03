@@ -279,7 +279,7 @@ export default function EarlyAccessForm({ onSubmitSuccess }: { onSubmitSuccess?:
           transition={{ duration: 0.6, delay: 0.15 }}
         >
           <Label htmlFor="isInDiscordServer" className={labelClasses}>
-            Are you in the OOR3D Discord server? <span className="text-red-400">*</span>
+            Are you in the OOR3D™ Discord server? <span className="text-red-400">*</span>
           </Label>
           <Select onValueChange={(value) => handleSelectChange('isInDiscordServer', value)} value={formData.isInDiscordServer ? 'yes' : 'no'}>
             <SelectTrigger className={inputClasses}>
@@ -495,7 +495,7 @@ export default function EarlyAccessForm({ onSubmitSuccess }: { onSubmitSuccess?:
             value={formData.motivation}
             onChange={handleChange}
             className={`${inputClasses} min-h-[100px] resize-none`}
-            placeholder="Tell us why you're interested in OOR3D..."
+            placeholder="Tell us why you're interested in OOR3D™..."
             required
           />
           {errors.motivation && (

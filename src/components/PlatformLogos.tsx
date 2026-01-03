@@ -11,25 +11,25 @@ import {
 
 const platforms = [
   // Top Row
-  { name: "Zepeto", src: "/images/platforms/zepeto-logo.svg", width: 60, height: 60, top: 12, left: 50, url: "https://web.zepeto.me", mobile: { top: 5, left: 50 } },
-  { name: "IMVU", src: "/images/platforms/imvu-logo.webp", width: 60, height: 60, top: 18, left: 18, url: "https://imvu.com", mobile: { top: 12, left: 15 } },
-  { name: "Roblox", src: "/images/platforms/roblox-logo.svg", width: 60, height: 60, top: 18, left: 82, url: "https://www.roblox.com", mobile: { top: 12, left: 85 } },
+  { name: "Zepeto", src: "https://assets.oor3d.com/img/downloads/zepeto/zepeto-logo.svg", width: 60, height: 60, top: 12, left: 50, url: "https://web.zepeto.me", mobile: { top: 5, left: 50 } },
+  { name: "IMVU", src: "https://assets.oor3d.com/img/downloads/imvu/imvu.webp", width: 60, height: 60, top: 18, left: 18, url: "https://imvu.com", mobile: { top: 12, left: 15 } },
+  { name: "Roblox", src: "https://assets.oor3d.com/img/downloads/roblox/roblox-logo.svg", width: 60, height: 60, top: 18, left: 82, url: "https://www.roblox.com", mobile: { top: 12, left: 85 } },
   
   // Inner Mid Row
-  { name: "Second Life", src: "/images/platforms/second-life-logo.svg", width: 140, height: 40, top: 28, left: 32, url: "https://secondlife.com", mobile: { top: 22, left: 25 } },
-  { name: "Minecraft", src: "/images/platforms/minecraft-logo.svg", width: 120, height: 40, top: 32, left: 68, url: "https://www.minecraft.net", mobile: { top: 22, left: 75 } },
+  { name: "Second Life", src: "https://assets.oor3d.com/img/downloads/secondlife/secondlife.svg", width: 140, height: 40, top: 28, left: 32, url: "https://secondlife.com", mobile: { top: 22, left: 25 } },
+  { name: "Minecraft", src: "https://assets.oor3d.com/img/downloads/minecraft/minecraft.svg", width: 120, height: 40, top: 32, left: 68, url: "https://www.minecraft.net", mobile: { top: 22, left: 75 } },
   
   // Outer Mid Row
-  { name: "The Sims 4", src: "/images/platforms/sims4-logo.svg", width: 60, height: 60, top: 50, left: 12, url: "https://www.ea.com/games/the-sims/the-sims-4", mobile: { top: 75, left: 25 } },
-  { name: "VRChat", src: "/images/platforms/vrchat-logo.png", width: 60, height: 60, top: 50, left: 88, url: "https://vrchat.com", mobile: { top: 75, left: 75 } },
+  { name: "The Sims 4", src: "https://assets.oor3d.com/img/downloads/sims4/sims-4.svg", width: 60, height: 60, top: 50, left: 12, url: "https://www.ea.com/games/the-sims/the-sims-4", mobile: { top: 75, left: 25 } },
+  { name: "VRChat", src: "https://assets.oor3d.com/img/downloads/vrchat/vchat-logo.png", width: 60, height: 60, top: 50, left: 88, url: "https://vrchat.com", mobile: { top: 75, left: 75 } },
   
   // Low Row
-  { name: "Inzoi", src: "/images/platforms/inzoi-logo.svg", width: 80, height: 40, top: 72, left: 15, url: "https://playinzoi.com", mobile: { top: 82, left: 15 } },
-  { name: "FiveM", src: "/images/platforms/fivem-logo.svg", width: 50, height: 50, top: 72, left: 85, url: "https://fivem.net", mobile: { top: 82, left: 85 } },
+  { name: "Inzoi", src: "https://assets.oor3d.com/img/downloads/inzoi/inzoi.svg", width: 80, height: 40, top: 72, left: 15, url: "https://playinzoi.com", mobile: { top: 82, left: 15 } },
+  { name: "FiveM", src: "https://assets.oor3d.com/img/downloads/fivem/fivem.svg", width: 50, height: 50, top: 72, left: 85, url: "https://fivem.net", mobile: { top: 82, left: 85 } },
   
   // Bottom Row
-  { name: "Avakin Life", src: "/images/platforms/avakinlife-logo.png", width: 60, height: 60, top: 88, left: 35, url: "https://avakin.com", mobile: { top: 92, left: 35 } },
-  { name: "GTA 6", src: "/images/platforms/gta6-logo.png", width: 80, height: 60, top: 88, left: 65, url: "https://www.rockstargames.com/gta6", mobile: { top: 92, left: 65 } },
+  { name: "Avakin Life", src: "https://assets.oor3d.com/img/downloads/avakinlife/avakinlife.png", width: 60, height: 60, top: 88, left: 35, url: "https://avakin.com", mobile: { top: 92, left: 35 } },
+  { name: "GTA 6", src: "https://assets.oor3d.com/img/downloads/gta6/gta6-logo.png", width: 80, height: 60, top: 88, left: 65, url: "https://www.rockstargames.com/gta6", mobile: { top: 92, left: 65 } },
 ];
 
 // Calculate responsive horizontal position based on screen width

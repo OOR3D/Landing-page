@@ -23,7 +23,7 @@ const PrelaunchMission = () => {
             className="max-w-4xl mx-auto space-y-6 text-lg md:text-xl text-gray-300"
           >
             <p>
-              We're in the building phase of OOR3D. 
+              We're in the building phase of OOR3D™. 
               A platform designed to make creating effortless, and to give creators powerful new systems to push their ideas further.
             </p>
             <p>

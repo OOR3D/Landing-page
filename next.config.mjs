@@ -13,6 +13,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'user-images.trustpilot.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'assets.oor3d.com',
+      },
     ],
   },
 }

@@ -231,7 +231,7 @@ export default function FeaturesBento() {
             Everything you need to create
           </h2>
           <p className="text-xl text-white/60 max-w-2xl mx-auto">
-            Powerful tools built directly into your browser. No expensive hardware required.
+            A complete creation system for virtual worlds.
           </p>
         </div>
 
@@ -239,8 +239,8 @@ export default function FeaturesBento() {
           {/* Browser Based - Large */}
           <BentoCard
             title="Browser-based"
-            description="Get direct access to OOR3D from your browser. No installs required."
-            imageSrc="/browser.png"
+            description="Get direct access to OOR3D™ from your browser. No installs required."
+            imageSrc="/features/browser.png"
             className="md:col-span-2"
             delay={0.1}
             bgColor="bg-[#1e1b4b]" // Deep Indigo
@@ -254,7 +254,7 @@ export default function FeaturesBento() {
           <BentoCard
             title="Fast Exports"
             description="Get the right file for your target game in seconds."
-            imageSrc="/rocket.png"
+            imageSrc="/features/rocket.png"
             className="z-20"
             delay={0.2}
             bgColor="bg-[#4c1d95]" // Rich Purple
@@ -262,6 +262,7 @@ export default function FeaturesBento() {
             enableTravelAnimation={true}
             sectionRef={sectionRef}
             enableBlurOverlay={true}
+            imageAboveBlur={true}
             imageClassName="scale-[1.8] drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]" // Base scale, travel animation handles position
           />
 
@@ -269,7 +270,7 @@ export default function FeaturesBento() {
           <BentoCard
             title="Asset Management"
             description="Store, organize, and manage all your products, textures, and files in one secure place."
-            imageSrc="/folder-1.png"
+            imageSrc="/features/folder-1.png"
             delay={0.3}
             bgColor="bg-[#064e3b]" // Dark Emerald
             enableBlurOverlay={true}
@@ -281,7 +282,7 @@ export default function FeaturesBento() {
           <BentoCard
             title="Curated Product Library"
             description="Start with professional-grade base models. Access a growing library of 3D assets ready for your unique touch."
-            imageSrc="/MULTIPLE PRODUCTS NEW.png"
+            imageSrc="/features/MULTIPLE PRODUCTS NEW.png"
             className="md:col-span-2 z-20"
             delay={0.4}
             bgColor="bg-[#7f1d1d]" // Deep Red

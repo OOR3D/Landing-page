@@ -106,7 +106,7 @@ export function Footer() {
           <div className="flex flex-col items-center justify-center pt-10 border-t border-white/5 text-center">
               <Link href="/" draggable={false} className="mb-6 hover:opacity-80 transition-opacity relative w-[100px] h-[30px]">
                   <Image 
-                      src="/OOR-LOGO.svg" 
+                      src="https://assets.oor3d.com/logo/OOR-allwhite.svg" 
                       alt="OOR3D Logo" 
                       fill
                       draggable={false}

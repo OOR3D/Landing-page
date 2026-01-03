@@ -46,7 +46,7 @@ export default function Header() {
                   className="relative w-[100px] h-[30px] hover:scale-110 transition-transform duration-200 cursor-pointer"
                 >
                   <Image
-                    src="/OOR-LOGO.svg"
+                    src="https://assets.oor3d.com/logo/OOR-allwhite.svg"
                     alt="OOR3D Logo"
                     fill
                     draggable={false}
