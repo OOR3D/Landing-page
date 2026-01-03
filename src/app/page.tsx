@@ -800,15 +800,13 @@ function StackedDeckSection() {
   // Opacity for entry (Text)
   const opacity = useTransform(scrollYProgress, [0, 0.1], [0, 1])
 
-  // Card 1 Entry Animation (From bottom)
-  const entryOpacity = useTransform(scrollYProgress, [0.05, 0.2], [0, 1])
-  const entryY = useTransform(scrollYProgress, [0.05, 0.2], [100, 0])
+  // Card 1 Entry Animation (From bottom) - Start visible
+  const entryOpacity = useTransform(scrollYProgress, [0, 0.05], [1, 1])
+  const entryY = useTransform(scrollYProgress, [0, 0.05], [0, 0])
   
-  // Opacity for Card 2 and 3 to hide them until scroll starts
-  // Card 2 fades in as Card 1 moves
-  const opacity2 = useTransform(scrollYProgress, [0.2, 0.3], [0, 1])
-  // Card 3 fades in slightly later
-  const opacity3 = useTransform(scrollYProgress, [0.5, 0.6], [0, 1])
+  // All cards visible by default
+  const opacity2 = useTransform(scrollYProgress, [0, 0.1], [1, 1])
+  const opacity3 = useTransform(scrollYProgress, [0, 0.1], [1, 1])
 
   return (
     <section ref={containerRef} className="px-6 relative z-10 min-h-[300vh] hidden md:block overflow-visible">
