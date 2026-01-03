@@ -766,80 +766,63 @@ function Badge({ children, variant = 'default' }: { children: React.ReactNode, v
   )
 }
 
-// New Stacked Deck Component
+// New Stacked Deck Component - Hybrid: visible by default + scroll animations
 function StackedDeckSection() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [hoveredCard, setHoveredCard] = useState<string | null>(null)
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "end start"]
+    offset: ["start center", "end center"]
   })
 
-  // Increased scroll range for sequential animation
-  // Sequence:
-  // 0.0 - 0.2: Start locked
-  // 0.2 - 0.5: Card 1 moves Left
-  // 0.5 - 0.8: Card 3 moves Right
+  // Scroll-based card movement (deck spreading effect)
+  // Card 1 moves Left as you scroll
+  const x1 = useTransform(scrollYProgress, [0.1, 0.5], ["0%", "-80%"]) 
+  const r1 = useTransform(scrollYProgress, [0.1, 0.5], [0, -8])
   
-  // Card 1 (Left) - Top of stack
-  const x1 = useTransform(scrollYProgress, [0.2, 0.5], ["0%", "-110%"]) 
-  const r1 = useTransform(scrollYProgress, [0.2, 0.5], [0, -5]) // Rotate slightly as it moves
-  const s1 = useTransform(scrollYProgress, [0.2, 0.5], [1, 1])
+  // Card 3 moves Right as you scroll  
+  const x3 = useTransform(scrollYProgress, [0.1, 0.5], ["0%", "80%"])
+  const r3 = useTransform(scrollYProgress, [0.1, 0.5], [0, 8])
 
-  // Card 2 (Center) - Middle of stack
-  // Stays in center, maybe subtle scale up
-  const r2 = useTransform(scrollYProgress, [0, 1], [0, 0])
-  const s2 = useTransform(scrollYProgress, [0.2, 0.8], [0.95, 1])
-  
-  // Card 3 (Right) - Bottom of stack
-  const x3 = useTransform(scrollYProgress, [0.5, 0.8], ["0%", "110%"])
-  const r3 = useTransform(scrollYProgress, [0.5, 0.8], [0, 5])
-  const s3 = useTransform(scrollYProgress, [0.5, 0.8], [0.9, 1])
-
-  // Opacity for entry (Text)
-  const opacity = useTransform(scrollYProgress, [0, 0.1], [0, 1])
-
-  // Card 1 Entry Animation - visible from start, animates up
-  const entryOpacity = useTransform(scrollYProgress, [0, 0.1], [0.8, 1])
-  const entryY = useTransform(scrollYProgress, [0, 0.15], [50, 0])
-  
-  // Cards fade in as you scroll
-  const opacity2 = useTransform(scrollYProgress, [0, 0.15], [0.6, 1])
-  const opacity3 = useTransform(scrollYProgress, [0, 0.2], [0.4, 1])
+  // Card 2 stays center, subtle scale
+  const s2 = useTransform(scrollYProgress, [0.1, 0.5], [0.95, 1.02])
 
   return (
-    <section ref={containerRef} className="px-6 py-24 relative z-10 hidden md:block overflow-visible">
-      <div className="flex flex-col justify-center overflow-visible">
-        <div className="text-center mb-16">
-          <h2 className={`text-5xl md:text-7xl font-bold mb-6 ${montserrat.className}`}>
-            <AnimatedText 
-              text="How It Works" 
-              delay={0.1}
-              wordDelay={0.15}
-            />
-          </h2>
-          <p className="text-2xl text-white/60">
-            <AnimatedText 
-              text="From concept to creation in three simple steps." 
-              delay={0.4}
-              wordDelay={0.1}
-            />
-          </p>
+    <section ref={containerRef} className="px-6 relative z-10 min-h-[200vh] hidden md:block overflow-visible">
+      <div className="sticky top-20 h-[80vh] flex flex-col justify-center overflow-visible">
+        <div className="text-center mb-12">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className={`text-5xl md:text-7xl font-bold mb-6 ${montserrat.className}`}
+          >
+            How It Works
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-2xl text-white/60"
+          >
+            From concept to creation in three simple steps.
+          </motion.p>
         </div>
 
-        {/* Cards container */}
-        <div className="relative h-[500px] w-full max-w-[1400px] mx-auto mt-16 overflow-visible">
-          <div className="flex items-center justify-between h-full w-full overflow-visible gap-6 px-4">
+        {/* Cards container - stacked in center, spread on scroll */}
+        <div className="relative h-[450px] w-full max-w-[1400px] mx-auto overflow-visible">
+          <div className="flex items-center justify-center h-full w-full overflow-visible">
             
-            {/* Step 1: Pick - Moves Left */}
+            {/* Step 1: Pick - Moves Left on scroll */}
             <motion.div 
-              initial={{ opacity: 0, x: -100 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              style={{ zIndex: hoveredCard === "1" ? 50 : 3 }}
-              className="w-[32%] h-full overflow-visible"
+              transition={{ duration: 0.5, delay: 0.1 }}
+              style={{ x: x1, rotate: r1, zIndex: hoveredCard === "1" ? 50 : 3 }}
+              className="absolute w-[320px] h-[420px] overflow-visible"
             >
               <FeatureCard 
                 step="1"
@@ -860,14 +843,14 @@ function StackedDeckSection() {
               </FeatureCard>
             </motion.div>
 
-            {/* Step 2: Customize - Center */}
+            {/* Step 2: Customize - Center (stays, scales up) */}
             <motion.div 
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              style={{ zIndex: hoveredCard === "2" ? 50 : 2 }}
-              className="w-[32%] h-full overflow-visible"
+              transition={{ duration: 0.5, delay: 0.2 }}
+              style={{ scale: s2, zIndex: hoveredCard === "2" ? 50 : 2 }}
+              className="absolute w-[320px] h-[420px] overflow-visible"
             >
               <FeatureCard 
                 step="2"
@@ -890,14 +873,14 @@ function StackedDeckSection() {
               </FeatureCard>
             </motion.div>
 
-            {/* Step 3: Export - Moves Right */}
+            {/* Step 3: Export - Moves Right on scroll */}
             <motion.div 
-              initial={{ opacity: 0, x: 100 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              style={{ zIndex: hoveredCard === "3" ? 50 : 1 }}
-              className="w-[32%] h-full overflow-visible"
+              transition={{ duration: 0.5, delay: 0.3 }}
+              style={{ x: x3, rotate: r3, zIndex: hoveredCard === "3" ? 50 : 1 }}
+              className="absolute w-[320px] h-[420px] overflow-visible"
             >
               <FeatureCard 
                 step="3"
