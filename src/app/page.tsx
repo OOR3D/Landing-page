@@ -295,17 +295,17 @@ export default function NewLandingPage() {
 
         {/* 3D Asset Floating Elements (Decorations) */}
         <FloatingAsset 
-          src="/assets/texture.png" // Paintbrush sphere
+          src="https://assets.oor3d.com/img/assets/texture.png" // Paintbrush sphere
           className="absolute top-1/4 left-[5%] w-32 h-32 lg:w-48 lg:h-48 hidden md:block"
           delay={0}
         />
         <FloatingAsset 
-          src="/assets/download.png" // Box arrow
+          src="https://assets.oor3d.com/img/assets/download.png" // Box arrow
           className="absolute bottom-1/4 right-[5%] w-40 h-40 lg:w-56 lg:h-56 hidden md:block"
           delay={2}
         />
         <FloatingAsset 
-          src="/assets/t shirt.png" // T-shirt
+          src="https://assets.oor3d.com/img/assets/t%20shirt.png" // T-shirt
           className="absolute top-1/3 right-[15%] w-24 h-24 lg:w-36 lg:h-36 hidden lg:block"
           delay={1.5}
           targetBlur={4}
@@ -345,18 +345,18 @@ export default function NewLandingPage() {
               {[...Array(4)].map((_, i) => (
                 <div key={i} className="flex items-center gap-16 shrink-0 pr-16">
                   {[
-                    { src: "/Trusted By/stripe.svg", alt: "Stripe" },
-                    { src: "/Trusted By/nvidia.svg", alt: "NVIDIA" },
-                    { src: "/Trusted By/meta.svg", alt: "Meta" },
-                    { src: "/Trusted By/unity.svg", alt: "Unity" },
-                    { src: "/Trusted By/epicgames.svg", alt: "Epic Games" },
-                    { src: "/Trusted By/blender.svg", alt: "Blender" },
-                    { src: "/Trusted By/sega.svg", alt: "SEGA" },
-                    { src: "/Trusted By/amd.svg", alt: "AMD" },
-                    { src: "/Trusted By/msi.svg", alt: "MSI" },
-                    { src: "/Trusted By/autodeskmaya.svg", alt: "Autodesk Maya" },
-                    { src: "/Trusted By/logitech.svg", alt: "Logitech" },
-                    { src: "/Trusted By/steam.svg", alt: "Steam" }
+                    { src: "https://assets.oor3d.com/img/Trusted%20By/stripe.svg", alt: "Stripe" },
+                    { src: "https://assets.oor3d.com/img/Trusted%20By/nvidia.svg", alt: "NVIDIA" },
+                    { src: "https://assets.oor3d.com/img/Trusted%20By/meta.svg", alt: "Meta" },
+                    { src: "https://assets.oor3d.com/img/Trusted%20By/unity.svg", alt: "Unity" },
+                    { src: "https://assets.oor3d.com/img/Trusted%20By/epicgames.svg", alt: "Epic Games" },
+                    { src: "https://assets.oor3d.com/img/Trusted%20By/blender.svg", alt: "Blender" },
+                    { src: "https://assets.oor3d.com/img/Trusted%20By/sega.svg", alt: "SEGA" },
+                    { src: "https://assets.oor3d.com/img/Trusted%20By/amd.svg", alt: "AMD" },
+                    { src: "https://assets.oor3d.com/img/Trusted%20By/msi.svg", alt: "MSI" },
+                    { src: "https://assets.oor3d.com/img/Trusted%20By/autodeskmaya.svg", alt: "Autodesk Maya" },
+                    { src: "https://assets.oor3d.com/img/Trusted%20By/logitech.svg", alt: "Logitech" },
+                    { src: "https://assets.oor3d.com/img/Trusted%20By/steam.svg", alt: "Steam" }
                   ].map((logo, index) => (
                     <div 
                       key={`${i}-${index}`}
@@ -848,13 +848,13 @@ function StackedDeckSection() {
                 step="1"
                 title="Choose" 
                 desc="Pick a base model from our curated library of high-quality assets."
-                img="/workflow/1 3d.png"
+                img="https://assets.oor3d.com/img/workflow/1%203d.png"
                 isHovered={hoveredCard === "1"}
                 isAnyHovered={hoveredCard !== null}
                 onHoverChange={(isHovering: boolean) => setHoveredCard(isHovering ? "1" : null)}
               >
                   <Image 
-                     src="/workflow/pick your asset.jpg" 
+                     src="https://assets.oor3d.com/img/workflow/pick%20your%20asset.jpg" 
                      alt="Pick a model" 
                      fill 
                      draggable={false}
@@ -872,14 +872,14 @@ function StackedDeckSection() {
                 step="2"
                 title="Customize" 
                 desc="Upload your images or textures. See it applied instantly in 3D."
-                img="/workflow/2 3d.png"
+                img="https://assets.oor3d.com/img/workflow/2%203d.png"
                 isHovered={hoveredCard === "2"}
                 isAnyHovered={hoveredCard !== null}
                 onHoverChange={(isHovering: boolean) => setHoveredCard(isHovering ? "2" : null)}
               >
                  <div className="absolute inset-0 w-full h-full">
                    <Image 
-                      src="/workflow/image_VLrJ0nd__1767391135933_raw.jpg" 
+                      src="https://assets.oor3d.com/img/workflow/image_VLrJ0nd__1767391135933_raw.jpg" 
                       alt="Customize model" 
                       fill 
                       draggable={false}
@@ -898,13 +898,13 @@ function StackedDeckSection() {
                 step="3"
                 title="Export" 
                 desc="Get game-ready files. Download and upload directly to supported platforms."
-                img="/workflow/3 3d.png"
+                img="https://assets.oor3d.com/img/workflow/3%203d.png"
                 isHovered={hoveredCard === "3"}
                 isAnyHovered={hoveredCard !== null}
                 onHoverChange={(isHovering: boolean) => setHoveredCard(isHovering ? "3" : null)}
               >
                  <Image 
-                    src="/workflow/f6dcb969-48ba-4c8f-b8a5-688b0559c71b.png" 
+                    src="https://assets.oor3d.com/img/workflow/f6dcb969-48ba-4c8f-b8a5-688b0559c71b.png" 
                     alt="Export files" 
                     fill 
                     draggable={false}
@@ -948,13 +948,13 @@ function MobileFeatures() {
                step="1" 
                title="Choose" 
                desc="Pick a base model from our curated library." 
-               img="/workflow/1 3d.png"
+               img="https://assets.oor3d.com/img/workflow/1%203d.png"
                isHovered={hoveredCard === "1"}
                isAnyHovered={hoveredCard !== null}
                onHoverChange={(isHovering: boolean) => setHoveredCard(isHovering ? "1" : null)}
              >
                 <Image 
-                  src="/workflow/pick your asset.jpg" 
+                  src="https://assets.oor3d.com/img/workflow/pick%20your%20asset.jpg" 
                   alt="Pick a model" 
                   fill 
                   draggable={false}
@@ -965,14 +965,14 @@ function MobileFeatures() {
                step="2" 
                title="Customize" 
                desc="Upload your images or textures." 
-               img="/workflow/2 3d.png"
+               img="https://assets.oor3d.com/img/workflow/2%203d.png"
                isHovered={hoveredCard === "2"}
                isAnyHovered={hoveredCard !== null}
                onHoverChange={(isHovering: boolean) => setHoveredCard(isHovering ? "2" : null)}
              >
                 <div className="absolute inset-0 w-full h-full">
                   <Image 
-                    src="/workflow/image_VLrJ0nd__1767391135933_raw.jpg" 
+                    src="https://assets.oor3d.com/img/workflow/image_VLrJ0nd__1767391135933_raw.jpg" 
                     alt="Customize model" 
                     fill 
                     draggable={false}
@@ -984,13 +984,13 @@ function MobileFeatures() {
                step="3" 
                title="Export" 
                desc="Get game-ready files." 
-               img="/workflow/3 3d.png"
+               img="https://assets.oor3d.com/img/workflow/3%203d.png"
                isHovered={hoveredCard === "3"}
                isAnyHovered={hoveredCard !== null}
                onHoverChange={(isHovering: boolean) => setHoveredCard(isHovering ? "3" : null)}
              >
                 <Image 
-                  src="/workflow/f6dcb969-48ba-4c8f-b8a5-688b0559c71b.png" 
+                  src="https://assets.oor3d.com/img/workflow/f6dcb969-48ba-4c8f-b8a5-688b0559c71b.png" 
                   alt="Export files" 
                   fill 
                   draggable={false}
@@ -1004,13 +1004,13 @@ function MobileFeatures() {
 }
 
 function FeatureCard({ step, title, desc, img, children, isHovered, isAnyHovered, onHoverChange }: any) {
-  const iconSrc = "/workflow/check%20mark.png"
+  const iconSrc = "https://assets.oor3d.com/img/workflow/check%20mark.png"
   
   // Get image source from children to create color-matched background
   const getImageSrc = () => {
-    if (step === "1") return "/workflow/pick your asset.jpg"
-    if (step === "2") return "/workflow/image_VLrJ0nd__1767391135933_raw.jpg"
-    if (step === "3") return "/workflow/f6dcb969-48ba-4c8f-b8a5-688b0559c71b.png"
+    if (step === "1") return "https://assets.oor3d.com/img/workflow/pick%20your%20asset.jpg"
+    if (step === "2") return "https://assets.oor3d.com/img/workflow/image_VLrJ0nd__1767391135933_raw.jpg"
+    if (step === "3") return "https://assets.oor3d.com/img/workflow/f6dcb969-48ba-4c8f-b8a5-688b0559c71b.png"
     return ""
   }
   

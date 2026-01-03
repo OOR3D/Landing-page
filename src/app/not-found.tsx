@@ -215,21 +215,21 @@ export default function NotFound() {
 
         {/* Floating 3D Assets */}
         <FloatingAsset 
-          src="/assets/texture.png"
+          src="https://assets.oor3d.com/img/assets/texture.png"
           className="absolute top-1/4 left-[5%] w-32 h-32 lg:w-48 lg:h-48 hidden md:block"
           delay={0}
           targetOpacity={0.6}
           targetBlur={2}
         />
         <FloatingAsset 
-          src="/assets/download.png"
+          src="https://assets.oor3d.com/img/assets/download.png"
           className="absolute bottom-1/4 right-[5%] w-40 h-40 lg:w-56 lg:h-56 hidden md:block"
           delay={2}
           targetOpacity={0.6}
           targetBlur={2}
         />
         <FloatingAsset 
-          src="/assets/t shirt.png"
+          src="https://assets.oor3d.com/img/assets/t%20shirt.png"
           className="absolute top-1/3 right-[15%] w-24 h-24 lg:w-36 lg:h-36 hidden lg:block"
           delay={1.5}
           targetBlur={4}
