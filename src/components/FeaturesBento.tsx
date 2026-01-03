@@ -57,22 +57,23 @@ function BentoCard({ title, description, icon, imageSrc, className, delay = 0, b
   })
 
   // Always call all hooks unconditionally (React rules of hooks)
-  // Travel animation values - rocket moves from left to right and up
-  const travelXDesktop = useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], [-200, -50, 0, 0, 100])
-  const travelXMobile = useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], [-100, -25, 0, 0, 50])
+  // Travel animation values - rocket moves WAY to the right and down a bit
+  const travelXDesktop = useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], [100, 280, 380, 380, 500])
+  const travelXMobile = useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], [40, 110, 150, 150, 200])
   
-  const travelYDesktop = useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], [150, 40, 0, 0, -80])
-  const travelYMobile = useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], [80, 20, 0, 0, -40])
+  const travelYDesktop = useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], [150, 80, 50, 50, 20])
+  const travelYMobile = useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], [80, 40, 25, 25, 10])
   
-  const travelRotateDesktop = useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], [-25, -5, 8, 8, 25])
-  const travelRotateMobile = useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], [-15, -3, 5, 5, 15])
+  // Rotation: angled down more to the right (less steep, around -15 to -25 degrees)
+  const travelRotateDesktop = useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], [-10, -15, -20, -20, -25])
+  const travelRotateMobile = useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], [-8, -12, -15, -15, -20])
   
-  const travelScaleDesktop = useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], [1.2, 1.2, 1.2, 1.2, 1.2])
-  const travelScaleMobile = useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], [1.0, 1.0, 1.0, 1.0, 1.0])
+  const travelScaleDesktop = useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], [1.5, 1.5, 1.5, 1.5, 1.5])
+  const travelScaleMobile = useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], [1.2, 1.2, 1.2, 1.2, 1.2])
 
-  // Upward animation values - image comes up from bottom
-  const upwardYDesktop = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [250, 80, 80, 50])
-  const upwardYMobile = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [150, 50, 50, 30])
+  // Upward animation values - image comes up from bottom (negative = higher)
+  const upwardYDesktop = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [-130, -320, -320, -380])
+  const upwardYMobile = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [-60, -150, -150, -180])
   
   const upwardScaleDesktop = useTransform(scrollYProgress, [0, 1], [1.0, 1.1])
   const upwardScaleMobile = useTransform(scrollYProgress, [0, 1], [1.0, 1.05])
@@ -276,7 +277,7 @@ export default function FeaturesBento() {
             sectionRef={sectionRef}
             enableBlurOverlay={true}
             imageAboveBlur={true}
-            imageClassName="!w-[80%] md:!w-[100%] !h-[80%] md:!h-[100%] drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]" // Base size, travel animation handles position/scale
+            imageClassName="!w-[100%] md:!w-[140%] !h-[100%] md:!h-[140%] drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]" // Bigger size, positioned right
           />
 
           {/* Universal Inventory */}
