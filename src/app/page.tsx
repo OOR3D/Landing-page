@@ -809,10 +809,9 @@ function StackedDeckSection() {
   const opacity3 = useTransform(scrollYProgress, [0, 0.2], [0.4, 1])
 
   return (
-    <section ref={containerRef} className="px-6 relative z-10 min-h-[300vh] hidden md:block overflow-visible">
-      <div className="sticky top-0 h-screen flex flex-col justify-center overflow-visible">
-        {/* Adjusted top position to clear header */}
-        <div className="text-center mb-24 absolute top-32 left-0 right-0 z-20">
+    <section ref={containerRef} className="px-6 py-24 relative z-10 hidden md:block overflow-visible">
+      <div className="flex flex-col justify-center overflow-visible">
+        <div className="text-center mb-16">
           <h2 className={`text-5xl md:text-7xl font-bold mb-6 ${montserrat.className}`}>
             <AnimatedText 
               text="How It Works" 
@@ -829,14 +828,18 @@ function StackedDeckSection() {
           </p>
         </div>
 
-        {/* Increased size for focus - Reduced by ~15% */}
-        <div className="relative h-[55vh] w-full max-w-[75vw] 2xl:max-w-[1500px] mx-auto mt-64 overflow-visible">
-          <div className="flex items-center justify-center h-full w-full overflow-visible">
+        {/* Cards container */}
+        <div className="relative h-[500px] w-full max-w-[1400px] mx-auto mt-16 overflow-visible">
+          <div className="flex items-center justify-between h-full w-full overflow-visible gap-6 px-4">
             
             {/* Step 1: Pick - Moves Left */}
             <motion.div 
-              style={{ x: x1, y: entryY, rotate: r1, scale: s1, opacity: entryOpacity, zIndex: hoveredCard === "1" ? 50 : 3, transformOrigin: "top center" }}
-              className="absolute w-[32%] h-full overflow-visible"
+              initial={{ opacity: 0, x: -100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              style={{ zIndex: hoveredCard === "1" ? 50 : 3 }}
+              className="w-[32%] h-full overflow-visible"
             >
               <FeatureCard 
                 step="1"
@@ -859,8 +862,12 @@ function StackedDeckSection() {
 
             {/* Step 2: Customize - Center */}
             <motion.div 
-              style={{ rotate: r2, scale: s2, opacity: opacity2, zIndex: hoveredCard === "2" ? 50 : 2, transformOrigin: "top center" }}
-              className="absolute w-[32%] h-full overflow-visible"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              style={{ zIndex: hoveredCard === "2" ? 50 : 2 }}
+              className="w-[32%] h-full overflow-visible"
             >
               <FeatureCard 
                 step="2"
@@ -885,8 +892,12 @@ function StackedDeckSection() {
 
             {/* Step 3: Export - Moves Right */}
             <motion.div 
-              style={{ x: x3, rotate: r3, scale: s3, opacity: opacity3, zIndex: hoveredCard === "3" ? 50 : 1, transformOrigin: "top center" }}
-              className="absolute w-[32%] h-full overflow-visible"
+              initial={{ opacity: 0, x: 100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              style={{ zIndex: hoveredCard === "3" ? 50 : 1 }}
+              className="w-[32%] h-full overflow-visible"
             >
               <FeatureCard 
                 step="3"
