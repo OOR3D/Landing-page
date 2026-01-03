@@ -28,10 +28,13 @@ interface BentoCardProps {
   enablePulseAnimation?: boolean
   enableRotateAnimation?: boolean
   constrainBottom?: boolean
-  sectionRef?: React.RefObject<HTMLElement>
+  sectionRef?: React.RefObject<HTMLElement | null>
+  enableBlurOverlay?: boolean
+  enableUpwardAnimation?: boolean
+  imageAboveBlur?: boolean
 }
 
-function BentoCard({ title, description, icon, imageSrc, className, delay = 0, bgColor, imageClassName, allowOverflow = false, enableTravelAnimation = false, enableFloatAnimation = false, enablePulseAnimation = false, enableRotateAnimation = false, constrainBottom = false, sectionRef }: BentoCardProps) {
+function BentoCard({ title, description, icon, imageSrc, className, delay = 0, bgColor, imageClassName, allowOverflow = false, enableTravelAnimation = false, enableFloatAnimation = false, enablePulseAnimation = false, enableRotateAnimation = false, constrainBottom = false, sectionRef, enableBlurOverlay = false, enableUpwardAnimation = false, imageAboveBlur = false }: BentoCardProps) {
   const cardRef = useRef<HTMLDivElement>(null)
   
   // Scroll-based animation for rocket travel
@@ -56,6 +59,15 @@ function BentoCard({ title, description, icon, imageSrc, className, delay = 0, b
   const travelScale = enableTravelAnimation
     ? useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], [1.8, 1.8, 1.8, 1.8, 1.8])
     : useMotionValue(1.8)
+
+  // Upward animation values - image comes up from bottom
+  const upwardY = enableUpwardAnimation
+    ? useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [930, 680, 680, 630])
+    : useMotionValue(0)
+    
+  const upwardScale = enableUpwardAnimation
+    ? useTransform(scrollYProgress, [0, 1], [1.1, 1.2])
+    : useMotionValue(1)
 
   return (
     <motion.div
@@ -82,7 +94,8 @@ function BentoCard({ title, description, icon, imageSrc, className, delay = 0, b
       {/* Image Layer - Massive & Breaking Frame */}
       <div 
         className={cn(
-          "absolute inset-0 flex z-10 pointer-events-none",
+          "absolute inset-0 flex pointer-events-none",
+          imageAboveBlur ? "z-[16]" : "z-10",
           constrainBottom ? "items-end justify-center" : "items-center justify-center",
           imageClassName ? "" : ""
         )}
@@ -90,8 +103,21 @@ function BentoCard({ title, description, icon, imageSrc, className, delay = 0, b
       >
          {imageSrc ? (
            <motion.div 
-             className={cn("relative", enableTravelAnimation ? "" : imageClassName)}
-             initial={enableTravelAnimation ? { x: -600, y: 400, rotate: -40, scale: 1.8 } : undefined}
+             className={cn("relative", enableTravelAnimation || enableUpwardAnimation ? "" : imageClassName)}
+             initial={
+               enableTravelAnimation 
+                 ? { x: -600, y: 400, rotate: -40, scale: 1.8, filter: "blur(20px)", opacity: 0 } 
+                 : enableUpwardAnimation 
+                 ? { y: 930, scale: 1.1, filter: "blur(20px)", opacity: 0 } 
+                 : { filter: "blur(20px)", opacity: 0, scale: 0.8 }
+             }
+             whileInView={
+               enableTravelAnimation || enableUpwardAnimation 
+                 ? { filter: "blur(0px)", opacity: 1 }
+                 : { filter: "blur(0px)", opacity: 1, scale: 1 }
+             }
+             viewport={{ once: true, margin: "-100px" }}
+             transition={{ duration: 0.8, ease: "easeOut" }}
              animate={
                enableFloatAnimation 
                  ? { 
@@ -127,6 +153,9 @@ function BentoCard({ title, description, icon, imageSrc, className, delay = 0, b
                y: travelY,
                rotate: travelRotate,
                scale: travelScale,
+             } : enableUpwardAnimation ? {
+               y: upwardY,
+               scale: upwardScale,
              } : {}}
            >
              <Image 
@@ -160,6 +189,17 @@ function BentoCard({ title, description, icon, imageSrc, className, delay = 0, b
             </motion.div>
          )}
       </div>
+
+      {/* Blur overlay at bottom for text focus */}
+      {enableBlurOverlay && (
+        <div 
+          className="absolute inset-x-0 bottom-0 h-48 backdrop-blur-lg pointer-events-none z-[15] rounded-b-[40px]"
+          style={{
+            maskImage: 'linear-gradient(to top, black 40%, transparent 100%)',
+            WebkitMaskImage: 'linear-gradient(to top, black 40%, transparent 100%)'
+          }}
+        />
+      )}
 
       {/* Content Layer */}
       <div className="relative z-20 mt-auto m-8">
@@ -195,7 +235,8 @@ export default function FeaturesBento() {
             className="md:col-span-2"
             delay={0.1}
             bgColor="bg-[#1e1b4b]" // Deep Indigo
-            imageClassName="!w-[100%] !h-[100%] -translate-y-16 translate-x-4 drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]" // Full width
+            enableBlurOverlay={true}
+            imageClassName="!w-[100%] !h-[100%] -translate-y-22 translate-x-4 drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]" // Full width
           />
 
           {/* Quick Export */}
@@ -203,11 +244,13 @@ export default function FeaturesBento() {
             title="Fast Exports"
             description="Get the right file for your target game in seconds."
             imageSrc="/rocket.png"
+            className="z-20"
             delay={0.2}
             bgColor="bg-[#4c1d95]" // Rich Purple
             allowOverflow={true}
             enableTravelAnimation={true}
             sectionRef={sectionRef}
+            enableBlurOverlay={true}
             imageClassName="scale-[1.8] drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]" // Base scale, travel animation handles position
           />
 
@@ -218,20 +261,23 @@ export default function FeaturesBento() {
             imageSrc="/folder-1.png"
             delay={0.3}
             bgColor="bg-[#064e3b]" // Dark Emerald
-            imageClassName="!w-[100%] !h-[100%] translate-y-12 drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]" // Centered, positioned lower
+            enableBlurOverlay={true}
+            imageClassName="!w-[100%] !h-[100%] translate-y-16 drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]" // Centered, positioned lower
           />
 
           {/* Variety of Products - Large */}
           <BentoCard
             title="Curated Product Library"
             description="Start with professional-grade base models. Access a growing library of 3D assets ready for your unique touch."
-            imageSrc="/MULTIPLE PRODUCTS.png"
-            className="md:col-span-2"
+            imageSrc="/MULTIPLE PRODUCTS NEW.png"
+            className="md:col-span-2 z-20"
             delay={0.4}
             bgColor="bg-[#7f1d1d]" // Deep Red
             allowOverflow={true}
             constrainBottom={true}
-            imageClassName="!w-[120%] !h-[120%] -translate-y-32 drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+            enableBlurOverlay={true}
+            enableUpwardAnimation={true}
+            imageClassName="!w-[120%] !h-[120%] drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
           />
         </div>
       </div>

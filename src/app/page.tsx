@@ -601,6 +601,8 @@ function Badge({ children, variant = 'default' }: { children: React.ReactNode, v
 // New Stacked Deck Component
 function StackedDeckSection() {
   const containerRef = useRef<HTMLDivElement>(null)
+  const [hoveredCard, setHoveredCard] = useState<string | null>(null)
+  
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"]
@@ -650,19 +652,22 @@ function StackedDeckSection() {
         </motion.div>
 
         {/* Increased size for focus - Reduced by ~15% */}
-        <div className="relative h-[55vh] w-full max-w-[75vw] 2xl:max-w-[1500px] mx-auto mt-64">
-          <div className="flex items-center justify-center h-full w-full">
+        <div className="relative h-[55vh] w-full max-w-[75vw] 2xl:max-w-[1500px] mx-auto mt-64 overflow-visible">
+          <div className="flex items-center justify-center h-full w-full overflow-visible">
             
             {/* Step 1: Pick - Moves Left */}
             <motion.div 
-              style={{ x: x1, y: entryY, rotate: r1, scale: s1, opacity: entryOpacity, zIndex: 3, transformOrigin: "top center" }}
-              className="absolute w-[32%] h-full"
+              style={{ x: x1, y: entryY, rotate: r1, scale: s1, opacity: entryOpacity, zIndex: hoveredCard === "1" ? 50 : 3, transformOrigin: "top center" }}
+              className="absolute w-[32%] h-full overflow-visible"
             >
               <FeatureCard 
                 step="1"
                 title="Pick" 
-                desc="Choose a base model from our curated library of high-quality assets."
+                desc="Pick a base model from our curated library of high-quality assets."
                 img="/1 3d.png"
+                isHovered={hoveredCard === "1"}
+                isAnyHovered={hoveredCard !== null}
+                onHoverChange={(isHovering: boolean) => setHoveredCard(isHovering ? "1" : null)}
               >
                   <Image 
                      src="/pick your asset.jpg" 
@@ -675,14 +680,17 @@ function StackedDeckSection() {
 
             {/* Step 2: Customize - Center */}
             <motion.div 
-              style={{ rotate: r2, scale: s2, opacity: opacity2, zIndex: 2, transformOrigin: "top center" }}
-              className="absolute w-[32%] h-full"
+              style={{ rotate: r2, scale: s2, opacity: opacity2, zIndex: hoveredCard === "2" ? 50 : 2, transformOrigin: "top center" }}
+              className="absolute w-[32%] h-full overflow-visible"
             >
               <FeatureCard 
                 step="2"
                 title="Customize" 
                 desc="Upload your images or textures. See it applied instantly in 3D."
                 img="/2 3d.png"
+                isHovered={hoveredCard === "2"}
+                isAnyHovered={hoveredCard !== null}
+                onHoverChange={(isHovering: boolean) => setHoveredCard(isHovering ? "2" : null)}
               >
                  <div className="absolute inset-0 w-full h-full">
                    <Image 
@@ -697,14 +705,17 @@ function StackedDeckSection() {
 
             {/* Step 3: Export - Moves Right */}
             <motion.div 
-              style={{ x: x3, rotate: r3, scale: s3, opacity: opacity3, zIndex: 1, transformOrigin: "top center" }}
-              className="absolute w-[32%] h-full"
+              style={{ x: x3, rotate: r3, scale: s3, opacity: opacity3, zIndex: hoveredCard === "3" ? 50 : 1, transformOrigin: "top center" }}
+              className="absolute w-[32%] h-full overflow-visible"
             >
               <FeatureCard 
                 step="3"
                 title="Export" 
                 desc="Get game-ready files. Download and upload directly to supported platforms."
                 img="/3 3d.png"
+                isHovered={hoveredCard === "3"}
+                isAnyHovered={hoveredCard !== null}
+                onHoverChange={(isHovering: boolean) => setHoveredCard(isHovering ? "3" : null)}
               >
                  <Image 
                     src="/f6dcb969-48ba-4c8f-b8a5-688b0559c71b.png" 
@@ -723,6 +734,8 @@ function StackedDeckSection() {
 
 // Mobile Version (simpler, vertical stack)
 function MobileFeatures() {
+  const [hoveredCard, setHoveredCard] = useState<string | null>(null)
+  
   return (
     <section className="px-6 py-24 relative z-10 md:hidden">
        <div className="max-w-[1600px] mx-auto">
@@ -732,7 +745,15 @@ function MobileFeatures() {
           </div>
           
           <div className="flex flex-col gap-6">
-             <FeatureCard step="1" title="Pick" desc="Choose a base model from our curated library." img="/1 3d.png">
+             <FeatureCard 
+               step="1" 
+               title="Choose" 
+               desc="Pick a base model from our curated library." 
+               img="/1 3d.png"
+               isHovered={hoveredCard === "1"}
+               isAnyHovered={hoveredCard !== null}
+               onHoverChange={(isHovering: boolean) => setHoveredCard(isHovering ? "1" : null)}
+             >
                 <Image 
                   src="/pick your asset.jpg" 
                   alt="Pick a model" 
@@ -740,7 +761,15 @@ function MobileFeatures() {
                   className="object-cover object-bottom"
                 />
              </FeatureCard>
-             <FeatureCard step="2" title="Customize" desc="Upload your images or textures." img="/2 3d.png">
+             <FeatureCard 
+               step="2" 
+               title="Customize" 
+               desc="Upload your images or textures." 
+               img="/2 3d.png"
+               isHovered={hoveredCard === "2"}
+               isAnyHovered={hoveredCard !== null}
+               onHoverChange={(isHovering: boolean) => setHoveredCard(isHovering ? "2" : null)}
+             >
                 <div className="absolute inset-0 w-full h-full">
                   <Image 
                     src="/image_VLrJ0nd__1767391135933_raw.jpg" 
@@ -750,7 +779,15 @@ function MobileFeatures() {
                   />
                 </div>
              </FeatureCard>
-             <FeatureCard step="3" title="Export" desc="Get game-ready files." img="/3 3d.png">
+             <FeatureCard 
+               step="3" 
+               title="Export" 
+               desc="Get game-ready files." 
+               img="/3 3d.png"
+               isHovered={hoveredCard === "3"}
+               isAnyHovered={hoveredCard !== null}
+               onHoverChange={(isHovering: boolean) => setHoveredCard(isHovering ? "3" : null)}
+             >
                 <Image 
                   src="/f6dcb969-48ba-4c8f-b8a5-688b0559c71b.png" 
                   alt="Export files" 
@@ -764,7 +801,7 @@ function MobileFeatures() {
   )
 }
 
-function FeatureCard({ step, title, desc, img, children }: any) {
+function FeatureCard({ step, title, desc, img, children, isHovered, isAnyHovered, onHoverChange }: any) {
   const iconSrc = "/check%20mark.png"
   
   // Get image source from children to create color-matched background
@@ -776,10 +813,15 @@ function FeatureCard({ step, title, desc, img, children }: any) {
   }
   
   const imageSrc = getImageSrc()
+  
+  // Determine if this card should be greyed out
+  const shouldGreyOut = isAnyHovered && !isHovered
 
   return (
     <div 
-      className="h-full group relative border border-white/10 rounded-[32px] hover:border-[#FE0101]/50 transition-all duration-500 hover:scale-[1.02] flex flex-col overflow-visible bg-[#150a2e]"
+      className={`h-full group relative border border-white/10 rounded-[32px] hover:border-[#FE0101]/50 transition-all duration-500 ease-in-out hover:scale-105 flex flex-col overflow-visible bg-[#150a2e] drop-shadow-[0_10px_30px_rgba(0,0,0,0.4)] hover:drop-shadow-[0_15px_40px_rgba(0,0,0,0.5)] ${shouldGreyOut ? 'grayscale' : 'grayscale-0'}`}
+      onMouseEnter={() => onHoverChange?.(true)}
+      onMouseLeave={() => onHoverChange?.(false)}
     >
       {/* Dynamic Background Color Layer (Applied to the whole card) */}
       <div className="absolute inset-0 z-0 overflow-hidden rounded-[32px]">

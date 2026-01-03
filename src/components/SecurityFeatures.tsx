@@ -75,7 +75,7 @@ export default function SecurityFeatures() {
                 {/* Hover Glow removed */}
                 
                 <div
-                  className="relative w-full h-full drop-shadow-2xl"
+                  className="relative w-full h-full"
                 >
                   <Image 
                     src={feature.imagePath} 
@@ -89,7 +89,7 @@ export default function SecurityFeatures() {
                 </div>
               </div>
 
-              <div className="flex-1 pt-4 text-center md:text-left max-w-xl">
+              <div className="flex-1 pt-4 text-center md:text-left max-w-xl relative z-10">
                 <motion.h3 
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
