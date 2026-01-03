@@ -87,8 +87,9 @@ export function Footer() {
                   <ul className="flex flex-col gap-3">
                     {column.links.map((link) => (
                       <li key={link.name}>
-                        <Link 
+                        <Link
                           href={link.href}
+                          draggable={false}
                           className="text-sm text-gray-400 hover:text-white transition-colors duration-200 flex items-center gap-2"
                           target={link.href.startsWith('http') ? "_blank" : undefined}
                           rel={link.href.startsWith('http') ? "noopener noreferrer" : undefined}
@@ -103,11 +104,12 @@ export function Footer() {
           </div>
 
           <div className="flex flex-col items-center justify-center pt-10 border-t border-white/5 text-center">
-              <Link href="/" className="mb-6 hover:opacity-80 transition-opacity relative w-[100px] h-[30px]">
+              <Link href="/" draggable={false} className="mb-6 hover:opacity-80 transition-opacity relative w-[100px] h-[30px]">
                   <Image 
                       src="/OOR-LOGO.svg" 
                       alt="OOR3D Logo" 
                       fill
+                      draggable={false}
                       className="object-contain"
                   />
               </Link>
@@ -121,8 +123,8 @@ export function Footer() {
               </p>
               
               <div className="flex gap-6 mt-4 text-xs text-gray-600">
-                  <Link href="https://app.outofreach3d.com/help/policy/privacy-policy" className="hover:text-gray-400 transition-colors">Privacy Policy</Link>
-                  <Link href="https://app.outofreach3d.com/help/policy/terms-of-service" className="hover:text-gray-400 transition-colors">Terms of Service</Link>
+                  <Link href="https://app.outofreach3d.com/help/policy/privacy-policy" draggable={false} className="hover:text-gray-400 transition-colors">Privacy Policy</Link>
+                  <Link href="https://app.outofreach3d.com/help/policy/terms-of-service" draggable={false} className="hover:text-gray-400 transition-colors">Terms of Service</Link>
               </div>
           </div>
         </div>

@@ -87,7 +87,7 @@ export default function NewLandingPage() {
           }}
         >
           <Link href="/" className="mr-6 opacity-90 hover:opacity-100 transition-opacity">
-            <Image src="/OOR-LOGO.svg" alt="OOR3D" width={40} height={12} className="brightness-0 invert" />
+            <Image src="/OOR-LOGO.svg" alt="OOR3D" width={40} height={12} draggable={false} className="brightness-0 invert" />
           </Link>
           
           <div className="hidden md:flex items-center gap-1 mr-2">
@@ -96,7 +96,7 @@ export default function NewLandingPage() {
             <NavLink href="https://auth.outofreach3d.com/login">Login</NavLink>
           </div>
           
-          <Link href="https://auth.outofreach3d.com/signup">
+          <Link href="https://auth.outofreach3d.com/signup" draggable={false}>
             <Button variant="red" size="sm" className="rounded-full">
               Get Started
             </Button>
@@ -216,7 +216,7 @@ export default function NewLandingPage() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <Link href="https://auth.outofreach3d.com/signup">
+            <Link href="https://auth.outofreach3d.com/signup" draggable={false}>
               <Button variant="red" size="default" className="rounded-full px-6 w-auto">
                 <Sparkles className="w-4 h-4 mr-2" /> Start Creating
               </Button>
@@ -297,6 +297,7 @@ export default function NewLandingPage() {
                         src={logo.src}
                         alt={logo.alt}
                         fill
+                        draggable={false}
                         className="object-contain brightness-0 invert"
                       />
                     </div>
@@ -378,10 +379,13 @@ export default function NewLandingPage() {
       <section className="relative w-full py-24">
         <PlatformLogos>
           <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-6 ${montserrat.className} px-2`}>
-            Built to support the platforms you create for
+            Built for the platforms you create for
           </h2>
           <p className="text-lg sm:text-xl text-white/60 mb-2 max-w-5xl mx-auto px-4">
-            <span className="text-white/80 font-medium">IMVU</span> is supported today. Expansion to additional platforms is already in motion.
+            <span className="text-white/80 font-medium">IMVU</span> is supported today.
+          </p>
+          <p className="text-lg sm:text-xl text-white/60 mb-2 max-w-5xl mx-auto px-4">
+            We're actively expanding to the platforms creators care about next.
           </p>
           <p className="text-lg sm:text-xl text-white/80 font-medium mb-8 max-w-5xl mx-auto px-4">
             Second Life, The Sims 4, Roblox, VRChat, Zepeto, Inzoi, FiveM, Avakin Life, Minecraft, and GTA 6.
@@ -499,6 +503,7 @@ export default function NewLandingPage() {
                   src="/images/discord-logo.svg" 
                   alt="Discord" 
                   fill 
+                  draggable={false}
                   className="object-contain"
                 />
               </motion.div>
@@ -512,10 +517,11 @@ export default function NewLandingPage() {
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <Link 
+                <Link
                   href="https://discord.gg/oor3d"
                   target="_blank"
                   rel="noopener noreferrer"
+                  draggable={false}
                 >
                   <Button 
                     size="default" 
@@ -551,8 +557,9 @@ export default function NewLandingPage() {
 
 function NavLink({ href, children }: { href: string, children: React.ReactNode }) {
   return (
-    <Link 
-      href={href} 
+    <Link
+      href={href}
+      draggable={false}
       className="px-4 py-2 text-sm font-medium text-white/60 hover:text-white transition-colors hover:bg-white/5 rounded-full"
     >
       {children}
@@ -662,7 +669,7 @@ function StackedDeckSection() {
             >
               <FeatureCard 
                 step="1"
-                title="Pick" 
+                title="Choose" 
                 desc="Pick a base model from our curated library of high-quality assets."
                 img="/1 3d.png"
                 isHovered={hoveredCard === "1"}
@@ -673,6 +680,7 @@ function StackedDeckSection() {
                      src="/pick your asset.jpg" 
                      alt="Pick a model" 
                      fill 
+                     draggable={false}
                      className="object-cover object-bottom transition-all duration-500"
                    />
               </FeatureCard>
@@ -697,6 +705,7 @@ function StackedDeckSection() {
                       src="/image_VLrJ0nd__1767391135933_raw.jpg" 
                       alt="Customize model" 
                       fill 
+                      draggable={false}
                       className="object-cover object-center transition-all duration-500 scale-[1.2]"
                     />
                  </div>
@@ -721,6 +730,7 @@ function StackedDeckSection() {
                     src="/f6dcb969-48ba-4c8f-b8a5-688b0559c71b.png" 
                     alt="Export files" 
                     fill 
+                    draggable={false}
                     className="object-cover object-center transition-all duration-500"
                   />
               </FeatureCard>
@@ -758,6 +768,7 @@ function MobileFeatures() {
                   src="/pick your asset.jpg" 
                   alt="Pick a model" 
                   fill 
+                  draggable={false}
                   className="object-cover object-bottom"
                 />
              </FeatureCard>
@@ -775,6 +786,7 @@ function MobileFeatures() {
                     src="/image_VLrJ0nd__1767391135933_raw.jpg" 
                     alt="Customize model" 
                     fill 
+                    draggable={false}
                     className="object-cover object-center scale-[1.2]"
                   />
                 </div>
@@ -792,6 +804,7 @@ function MobileFeatures() {
                   src="/f6dcb969-48ba-4c8f-b8a5-688b0559c71b.png" 
                   alt="Export files" 
                   fill 
+                  draggable={false}
                   className="object-cover object-center"
                 />
              </FeatureCard>
@@ -829,6 +842,7 @@ function FeatureCard({ step, title, desc, img, children, isHovered, isAnyHovered
           src={imageSrc}
           alt=""
           fill
+          draggable={false}
           className="object-cover"
           style={{ 
             filter: 'blur(80px) saturate(1.5) brightness(0.6)',
@@ -843,12 +857,12 @@ function FeatureCard({ step, title, desc, img, children, isHovered, isAnyHovered
         <div className="flex justify-between items-start w-full mb-4 sm:mb-6">
            {/* Step Number Image (Top Left) */}
            <div className="absolute -top-12 -left-12 sm:-top-16 sm:-left-16 w-32 h-32 sm:w-40 sm:h-40 pointer-events-none group-hover:scale-110 group-hover:drop-shadow-[0_0_25px_rgba(254,1,1,0.3)] transition-all duration-500">
-              <Image src={img} alt={`Step ${step}`} fill className="object-contain" />
+              <Image src={img} alt={`Step ${step}`} fill draggable={false} className="object-contain" />
            </div>
            
            {/* Arrow Icon (Top Right) */}
            <div className="absolute top-2 right-2 sm:top-0 sm:right-2 opacity-90 group-hover:opacity-100 transition-opacity w-12 h-12 sm:w-16 sm:h-16">
-              <Image src={iconSrc} alt="Completed" fill className="object-contain" />
+              <Image src={iconSrc} alt="Completed" fill draggable={false} className="object-contain" />
            </div>
         </div>
         
@@ -923,6 +937,7 @@ function FloatingAsset({
           src={src} 
           alt="3D Asset" 
           fill 
+          draggable={false}
           className="object-contain drop-shadow-2xl"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />

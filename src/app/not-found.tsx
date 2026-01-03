@@ -84,6 +84,7 @@ function FloatingAsset({
           src={src} 
           alt="3D Asset" 
           fill 
+          draggable={false}
           className="object-contain drop-shadow-2xl"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
@@ -121,7 +122,7 @@ export default function NotFound() {
           }}
         >
           <Link href="/" className="mr-6 opacity-90 hover:opacity-100 transition-opacity">
-            <Image src="/OOR-LOGO.svg" alt="OOR3D" width={40} height={12} className="brightness-0 invert" />
+            <Image src="/OOR-LOGO.svg" alt="OOR3D" width={40} height={12} draggable={false} className="brightness-0 invert" />
           </Link>
           
           <div className="hidden md:flex items-center gap-1 mr-2">

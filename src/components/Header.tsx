@@ -49,6 +49,7 @@ export default function Header() {
                     src="/OOR-LOGO.svg"
                     alt="OOR3D Logo"
                     fill
+                    draggable={false}
                     className="object-contain"
                     priority
                     sizes="100px"

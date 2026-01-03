@@ -195,9 +195,10 @@ export const PlatformLogos = ({ children }: { children?: React.ReactNode }) => {
               >
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Link 
+                    <Link
                       href={platform.url}
                       target="_blank"
+                      draggable={false}
                       className="group relative flex items-center justify-center w-full h-full"
                     >
                       <div className="absolute inset-0 bg-[#251D3E]/40 backdrop-blur-md border border-white/10 rounded-[28px] shadow-lg group-hover:bg-[#251D3E]/60 group-hover:border-white/20 group-hover:scale-110 transition-all duration-300" />
@@ -207,6 +208,7 @@ export const PlatformLogos = ({ children }: { children?: React.ReactNode }) => {
                               src={platform.src}
                               alt={platform.name}
                               fill
+                              draggable={false}
                               className="object-contain drop-shadow-lg"
                               sizes={`${platform.width}px`}
                           />

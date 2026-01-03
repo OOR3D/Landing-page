@@ -19,6 +19,7 @@ const DiscordCTA = () => {
           alt="Discord"
           width={80}
           height={60}
+          draggable={false}
           className="mx-auto"
         />
       </div>

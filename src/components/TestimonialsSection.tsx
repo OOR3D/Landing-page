@@ -288,6 +288,7 @@ export default function TestimonialsSection() {
                                 alt={testimonial.name}
                                 width={48}
                                 height={48}
+                                draggable={false}
                                 className="w-full h-full object-cover"
                                 unoptimized
                               />

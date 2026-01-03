@@ -83,6 +83,9 @@ function BentoCard({ title, description, icon, imageSrc, className, delay = 0, b
         className
       )}
     >
+      {/* Premium Border Overlay */}
+      <div className="absolute inset-0 rounded-[40px] border border-white/40 mix-blend-overlay pointer-events-none z-[5]" />
+
       {/* Lighting Effects - Constrained to box */}
       <div className="absolute inset-0 overflow-hidden rounded-[40px] pointer-events-none z-0">
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-50 z-20" />
@@ -163,6 +166,7 @@ function BentoCard({ title, description, icon, imageSrc, className, delay = 0, b
                alt={title} 
                width={2000}
                height={2000}
+               draggable={false}
                className="object-contain drop-shadow-2xl transition-transform duration-700"
                priority
              />

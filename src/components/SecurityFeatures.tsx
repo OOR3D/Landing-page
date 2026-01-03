@@ -14,28 +14,28 @@ const montserrat = Montserrat({
 
 const features = [
   {
-    title: "Secure Asset Protection",
-    description: "Your designs are your IP. We store all assets in isolated, encrypted environments to ensure your creative work remains exclusively yours.",
+    title: "Protected by Design",
+    description: "Your data, under your control. Private and safe by default. Security is never an afterthought.",
     icon: Shield,
     imagePath: "/protected.png",
   },
   {
     title: "Support Next Door",
-    description: "Direct access to 3D specialists and our core team ready to help you optimize your workflow and solve technical challenges fast.",
+    description: "Real help from the people building OOR3D. Talk directly to 3D specialists and the core team when you need it.",
     icon: Headphones,
     imagePath: "/headset.png",
     containerClass: "scale-125",
     hoverScaleClass: "group-hover:scale-[1.35]",
   },
   {
-    title: "Infinite Cloud Inventory",
-    description: "Never lose a file again. Your entire catalog of products, textures, and exports is backed up and accessible 24/7/365.",
+    title: "Universal Inventory",
+    description: "Everything you create is saved automatically in one place. Organize, revisit, and reuse your products, textures, and exports anytime.",
     icon: Database,
     imagePath: "/cloud.png",
   },
   {
     title: "Partner in Creation",
-    description: "Every tool you need to build a successful virtual brand, right at your fingertips. We build the engine, you shape the virtual world.",
+    description: "We handle the tech. You focus on creating. We help you create faster and go further. You decide what you make and how far you take it.",
     icon: Handshake,
     imagePath: "/spartnership.png",
   }
@@ -81,6 +81,7 @@ export default function SecurityFeatures() {
                     src={feature.imagePath} 
                     alt={feature.title}
                     fill
+                    draggable={false}
                     className={cn("object-contain", 
                       // @ts-ignore
                       feature.imageClass
