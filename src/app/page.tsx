@@ -253,46 +253,6 @@ export default function NewLandingPage() {
               Beta v0.1
             </span>
           </motion.div>
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1 }}
-            className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,120,50,0.1),transparent_70%)] z-0"
-          />
-
-          <div className="container mx-auto px-4 z-10 text-center py-12">
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.6 }}
-              className="mb-4"
-            >
-              <span className="inline-block px-4 py-1.5 bg-gradient-to-r from-red-500/10 to-orange-500/10 rounded-full text-sm font-semibold text-orange-400 border border-orange-500/20 backdrop-blur-xl">
-                PRELAUNCH
-              </span>
-            </motion.div>
-            
-            <motion.h1
-              initial={{ opacity: 0, y: -50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -50 }}
-              transition={{ duration: 0.8 }}
-              className={`text-5xl md:text-7xl font-extrabold mb-8 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-white to-orange-400 ${montserrat.className} pb-2`}
-            >
-              The workspace for creators of the virtual world
-            </motion.h1>
-            
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 20 }}
-              transition={{ duration: 0.8 }}
-              className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed"
-            >
-              Create and customize virtual items for IMVU, Second Life, Sims 4, and more.<br />
-              No complicated software, no prior experience needed. All powered by OOR3D™.
-            </motion.h2>
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -813,7 +773,7 @@ function StackedDeckSection() {
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start start", "end end"]
+    offset: ["start end", "end start"]
   })
 
   // Increased scroll range for sequential animation
@@ -840,47 +800,46 @@ function StackedDeckSection() {
   // Opacity for entry (Text)
   const opacity = useTransform(scrollYProgress, [0, 0.1], [0, 1])
 
-  // Card 1 Entry Animation (From bottom)
-  const entryOpacity = useTransform(scrollYProgress, [0.05, 0.2], [0, 1])
-  const entryY = useTransform(scrollYProgress, [0.05, 0.2], [100, 0])
+  // Card 1 Entry Animation - visible from start, animates up
+  const entryOpacity = useTransform(scrollYProgress, [0, 0.1], [0.8, 1])
+  const entryY = useTransform(scrollYProgress, [0, 0.15], [50, 0])
   
-  // Opacity for Card 2 and 3 to hide them until scroll starts
-  // Card 2 fades in as Card 1 moves
-  const opacity2 = useTransform(scrollYProgress, [0.2, 0.3], [0, 1])
-  // Card 3 fades in slightly later
-  const opacity3 = useTransform(scrollYProgress, [0.5, 0.6], [0, 1])
+  // Cards fade in as you scroll
+  const opacity2 = useTransform(scrollYProgress, [0, 0.15], [0.6, 1])
+  const opacity3 = useTransform(scrollYProgress, [0, 0.2], [0.4, 1])
 
   return (
-    <section ref={containerRef} className="px-6 relative z-10 min-h-[300vh] hidden md:block overflow-visible">
-      <div className="sticky top-0 h-screen flex flex-col justify-center overflow-visible">
-        {/* Adjusted top position to clear header */}
-        <div className="text-center mb-24 absolute top-32 left-0 right-0 z-20">
+    <section ref={containerRef} className="px-6 py-24 relative z-10 hidden md:block overflow-visible">
+      <div className="flex flex-col justify-center overflow-visible">
+        <div className="text-center mb-16">
           <h2 className={`text-5xl md:text-7xl font-bold mb-6 ${montserrat.className}`}>
-            <ScrollAnimatedText 
+            <AnimatedText 
               text="How It Works" 
               delay={0.1}
               wordDelay={0.15}
-              scrollProgress={scrollYProgress}
             />
           </h2>
           <p className="text-2xl text-white/60">
-            <ScrollAnimatedText 
+            <AnimatedText 
               text="From concept to creation in three simple steps." 
               delay={0.4}
               wordDelay={0.1}
-              scrollProgress={scrollYProgress}
             />
           </p>
         </div>
 
-        {/* Increased size for focus - Reduced by ~15% */}
-        <div className="relative h-[55vh] w-full max-w-[75vw] 2xl:max-w-[1500px] mx-auto mt-64 overflow-visible">
-          <div className="flex items-center justify-center h-full w-full overflow-visible">
+        {/* Cards container */}
+        <div className="relative h-[500px] w-full max-w-[1400px] mx-auto mt-16 overflow-visible">
+          <div className="flex items-center justify-between h-full w-full overflow-visible gap-6 px-4">
             
             {/* Step 1: Pick - Moves Left */}
             <motion.div 
-              style={{ x: x1, y: entryY, rotate: r1, scale: s1, opacity: entryOpacity, zIndex: hoveredCard === "1" ? 50 : 3, transformOrigin: "top center" }}
-              className="absolute w-[32%] h-full overflow-visible"
+              initial={{ opacity: 0, x: -100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              style={{ zIndex: hoveredCard === "1" ? 50 : 3 }}
+              className="w-[32%] h-full overflow-visible"
             >
               <FeatureCard 
                 step="1"
@@ -903,8 +862,12 @@ function StackedDeckSection() {
 
             {/* Step 2: Customize - Center */}
             <motion.div 
-              style={{ rotate: r2, scale: s2, opacity: opacity2, zIndex: hoveredCard === "2" ? 50 : 2, transformOrigin: "top center" }}
-              className="absolute w-[32%] h-full overflow-visible"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              style={{ zIndex: hoveredCard === "2" ? 50 : 2 }}
+              className="w-[32%] h-full overflow-visible"
             >
               <FeatureCard 
                 step="2"
@@ -929,8 +892,12 @@ function StackedDeckSection() {
 
             {/* Step 3: Export - Moves Right */}
             <motion.div 
-              style={{ x: x3, rotate: r3, scale: s3, opacity: opacity3, zIndex: hoveredCard === "3" ? 50 : 1, transformOrigin: "top center" }}
-              className="absolute w-[32%] h-full overflow-visible"
+              initial={{ opacity: 0, x: 100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              style={{ zIndex: hoveredCard === "3" ? 50 : 1 }}
+              className="w-[32%] h-full overflow-visible"
             >
               <FeatureCard 
                 step="3"

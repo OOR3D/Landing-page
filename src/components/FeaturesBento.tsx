@@ -56,33 +56,35 @@ function BentoCard({ title, description, icon, imageSrc, className, delay = 0, b
     offset: ["start end", "end start"]
   })
 
-  // Travel animation values - rocket moves from left to right and up
-  // Responsive values for mobile
-  const travelX = enableTravelAnimation 
-    ? useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], isMobile ? [-300, -75, 24, 24, 150] : [-600, -150, 48, 48, 300])
-    : useMotionValue(0)
+  // Always call all hooks unconditionally (React rules of hooks)
+  // Travel animation values - rocket moves WAY to the right and down a bit
+  const travelXDesktop = useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], [100, 280, 380, 380, 500])
+  const travelXMobile = useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], [40, 110, 150, 150, 200])
   
-  const travelY = enableTravelAnimation
-    ? useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], isMobile ? [200, 50, -24, -24, -100] : [400, 100, -48, -48, -200])
-    : useMotionValue(0)
+  const travelYDesktop = useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], [150, 80, 50, 50, 20])
+  const travelYMobile = useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], [80, 40, 25, 25, 10])
   
-  const travelRotate = enableTravelAnimation
-    ? useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], isMobile ? [-20, -2.5, 6, 6, 20] : [-40, -5, 12, 12, 40])
-    : useMotionValue(0)
+  // Rotation: angled down more to the right (less steep, around -15 to -25 degrees)
+  const travelRotateDesktop = useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], [-10, -15, -20, -20, -25])
+  const travelRotateMobile = useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], [-8, -12, -15, -15, -20])
   
-  const travelScale = enableTravelAnimation
-    ? useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], isMobile ? [1.2, 1.2, 1.2, 1.2, 1.2] : [1.8, 1.8, 1.8, 1.8, 1.8])
-    : useMotionValue(isMobile ? 1.2 : 1.8)
+  const travelScaleDesktop = useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], [1.5, 1.5, 1.5, 1.5, 1.5])
+  const travelScaleMobile = useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], [1.2, 1.2, 1.2, 1.2, 1.2])
 
-  // Upward animation values - image comes up from bottom
-  // Responsive values for mobile (smaller movement)
-  const upwardY = enableUpwardAnimation
-    ? useTransform(scrollYProgress, [0, 0.3, 0.6, 1], isMobile ? [400, 300, 300, 280] : [930, 680, 680, 630])
-    : useMotionValue(0)
-    
-  const upwardScale = enableUpwardAnimation
-    ? useTransform(scrollYProgress, [0, 1], isMobile ? [1.0, 1.05] : [1.1, 1.2])
-    : useMotionValue(1)
+  // Upward animation values - image comes up from bottom (negative = higher)
+  const upwardYDesktop = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [-130, -320, -320, -380])
+  const upwardYMobile = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [-60, -150, -150, -180])
+  
+  const upwardScaleDesktop = useTransform(scrollYProgress, [0, 1], [1.0, 1.1])
+  const upwardScaleMobile = useTransform(scrollYProgress, [0, 1], [1.0, 1.05])
+
+  // Select the right values based on screen size
+  const travelX = isMobile ? travelXMobile : travelXDesktop
+  const travelY = isMobile ? travelYMobile : travelYDesktop
+  const travelRotate = isMobile ? travelRotateMobile : travelRotateDesktop
+  const travelScale = isMobile ? travelScaleMobile : travelScaleDesktop
+  const upwardY = isMobile ? upwardYMobile : upwardYDesktop
+  const upwardScale = isMobile ? upwardScaleMobile : upwardScaleDesktop
 
   return (
     <motion.div
@@ -121,16 +123,14 @@ function BentoCard({ title, description, icon, imageSrc, className, delay = 0, b
       >
          {imageSrc ? (
            <motion.div 
-             className={cn("relative", enableTravelAnimation || enableUpwardAnimation ? "" : imageClassName)}
+             className={cn("relative", imageClassName)}
              initial={
-               enableTravelAnimation 
-                 ? { x: isMobile ? -300 : -600, y: isMobile ? 200 : 400, rotate: isMobile ? -20 : -40, scale: isMobile ? 1.2 : 1.8, filter: "blur(20px)", opacity: 0 } 
-                 : enableUpwardAnimation 
-                 ? { y: isMobile ? 400 : 930, scale: isMobile ? 1.0 : 1.1, filter: "blur(20px)", opacity: 0 } 
+               enableTravelAnimation || enableUpwardAnimation
+                 ? { filter: "blur(20px)", opacity: 0 }
                  : { filter: "blur(20px)", opacity: 0, scale: 0.8 }
              }
              whileInView={
-               enableTravelAnimation || enableUpwardAnimation 
+               enableTravelAnimation || enableUpwardAnimation
                  ? { filter: "blur(0px)", opacity: 1 }
                  : { filter: "blur(0px)", opacity: 1, scale: 1 }
              }
@@ -277,7 +277,7 @@ export default function FeaturesBento() {
             sectionRef={sectionRef}
             enableBlurOverlay={true}
             imageAboveBlur={true}
-            imageClassName="scale-[1.8] drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]" // Base scale, travel animation handles position
+            imageClassName="!w-[100%] md:!w-[140%] !h-[100%] md:!h-[140%] drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]" // Bigger size, positioned right
           />
 
           {/* Universal Inventory */}
