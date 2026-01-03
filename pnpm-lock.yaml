@@ -108,8 +108,8 @@ importers:
         specifier: 1.0.4
         version: 1.0.4(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       convex:
-        specifier: ^1.17.2
-        version: 1.28.0(react@19.2.0)
+        specifier: ^1.31.2
+        version: 1.31.2(react@19.2.0)
       date-fns:
         specifier: 4.1.0
         version: 4.1.0
@@ -1371,8 +1371,8 @@ packages:
     resolution: {integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==}
     engines: {node: '>= 6'}
 
-  convex@1.28.0:
-    resolution: {integrity: sha512-40FgeJ/LxP9TxnkDDztU/A5gcGTdq1klcTT5mM0Ak+kSlQiDktMpjNX1TfkWLxXaE3lI4qvawKH95v2RiYgFxA==}
+  convex@1.31.2:
+    resolution: {integrity: sha512-RFuJOwlL2bM5X63egvBI5ZZZH6wESREpAbHsLjODxzDeJuewTLKrEnbvHV/NWp1uJYpgEFJziuGHmZ0tnAmmJg==}
     engines: {node: '>=18.0.0', npm: '>=7.0.0'}
     hasBin: true
     peerDependencies:
@@ -3189,7 +3189,7 @@ snapshots:
 
   commander@4.1.1: {}
 
-  convex@1.28.0(react@19.2.0):
+  convex@1.31.2(react@19.2.0):
     dependencies:
       esbuild: 0.25.4
       prettier: 3.6.2
