@@ -816,19 +816,17 @@ function StackedDeckSection() {
         {/* Adjusted top position to clear header */}
         <div className="text-center mb-24 absolute top-32 left-0 right-0 z-20">
           <h2 className={`text-5xl md:text-7xl font-bold mb-6 ${montserrat.className}`}>
-            <ScrollAnimatedText 
+            <AnimatedText 
               text="How It Works" 
               delay={0.1}
               wordDelay={0.15}
-              scrollProgress={scrollYProgress}
             />
           </h2>
           <p className="text-2xl text-white/60">
-            <ScrollAnimatedText 
+            <AnimatedText 
               text="From concept to creation in three simple steps." 
               delay={0.4}
               wordDelay={0.1}
-              scrollProgress={scrollYProgress}
             />
           </p>
         </div>
