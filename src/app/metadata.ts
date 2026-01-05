@@ -72,7 +72,7 @@ export const metadata: Metadata = {
       { url: '/icons/favicon.ico', sizes: 'any' },
     ],
     shortcut: '/icons/favicon.ico',
-    apple: '/icons/apple-touch-icon.png',
+    apple: 'https://assets.oor3d.com/logo/OOR-discord.png',
   },
   manifest: '/icons/site.webmanifest',
   robots: {
