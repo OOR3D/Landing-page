@@ -125,7 +125,7 @@ export default function NewLandingPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen md:min-h-[90vh] flex flex-col items-center justify-center pt-24 pb-12 md:pt-32 md:pb-20 px-6 overflow-hidden">
+      <section className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-12 md:pt-32 md:pb-20 px-6 overflow-hidden">
          {/* Curved Background */}
         <div 
           className="absolute inset-0 z-0 rounded-b-[60px] md:rounded-b-[100px] overflow-hidden border-b border-white/5"
