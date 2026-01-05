@@ -432,6 +432,30 @@ export default function NewLandingPage() {
         </PlatformLogos>
       </section>
 
+      {/* Creators Over Platforms - Manifesto */}
+      <section className="px-6 py-24 relative z-10">
+        <div className="max-w-5xl mx-auto text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className={`text-4xl md:text-6xl lg:text-7xl font-bold mb-6 ${montserrat.className}`}
+          >
+            Creators Over Platforms
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+            className="text-xl md:text-2xl text-white/60 max-w-3xl mx-auto leading-relaxed"
+          >
+            You come first - because platforms are just empty canvases without you.
+          </motion.p>
+        </div>
+      </section>
+
       {/* Security & Support Features */}
       <SecurityFeatures />
 
@@ -481,8 +505,8 @@ export default function NewLandingPage() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h2 className={`text-5xl md:text-6xl lg:text-7xl font-bold mb-6 ${montserrat.className} text-white leading-tight`}>
-              The Engine Behind Superpowered Creators
+            <h2 className={`text-5xl md:text-6xl lg:text-7xl font-bold mb-4 ${montserrat.className} text-white leading-tight`}>
+              Giving Superpowers to Creators
             </h2>
             
             <motion.p
@@ -490,16 +514,26 @@ export default function NewLandingPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.1 }}
+              className="text-xl md:text-2xl text-white/80 mb-6 max-w-2xl mx-auto font-medium"
+            >
+              And you decide which ones we build next.
+            </motion.p>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
               className="text-lg md:text-xl text-white/60 mb-12 max-w-2xl mx-auto leading-relaxed"
             >
-              OUTOFREACH3D™ brings your tools, products, and workflow into a single system for IMVU, Second Life, Sims 4, and more, so you can create faster and stay steps ahead.
+              The features you see? Creators asked for them. The features coming next? That's up to you. That's how OOR3D™ works.
             </motion.p>
             
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
               className="flex flex-col sm:flex-row items-center justify-center gap-4"
             >
               <Link href="https://auth.outofreach3d.com/signup">
@@ -507,9 +541,9 @@ export default function NewLandingPage() {
                   Start creating
                 </Button>
               </Link>
-              <Link href="https://app.outofreach3d.com/upgrades">
+              <Link href="https://discord.gg/oor3d" target="_blank" rel="noopener noreferrer">
                 <Button variant="outline" size="lg" className="rounded-full px-8 w-full sm:w-auto border-white/20 hover:border-white/40">
-                  See our plans
+                  Share your ideas
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
