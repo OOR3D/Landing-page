@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Star, Quote, Heart } from 'lucide-react'
 import Image from 'next/image'
 import {
   Carousel,
@@ -220,11 +220,21 @@ export default function TestimonialsSection() {
             <div className="flex items-center gap-2 px-3 py-1.5 bg-white/5 rounded-lg border border-white/10 hover:border-white/20 transition-all group-hover:bg-white/10">
               {/* Trustpilot stars */}
               <div className="flex items-center gap-0.5">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-3 h-3" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M6 0L7.5 4.5L12 4.5L8.5 7.5L10 12L6 9L2 12L3.5 7.5L0 4.5L4.5 4.5L6 0Z" fill="#00B67A"/>
-                  </svg>
-                ))}
+                {[...Array(5)].map((_, i) => {
+                  const fill = Math.min(Math.max(4.5 - i, 0), 1) * 100;
+                  return (
+                    <div key={i} className="relative w-3 h-3">
+                      <svg className="absolute inset-0 w-3 h-3 text-white/20" viewBox="0 0 12 12" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 0L7.5 4.5L12 4.5L8.5 7.5L10 12L6 9L2 12L3.5 7.5L0 4.5L4.5 4.5L6 0Z"/>
+                      </svg>
+                      <div className="absolute inset-0 overflow-hidden" style={{ width: `${fill}%` }}>
+                        <svg className="w-3 h-3" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M6 0L7.5 4.5L12 4.5L8.5 7.5L10 12L6 9L2 12L3.5 7.5L0 4.5L4.5 4.5L6 0Z" fill="#00B67A"/>
+                        </svg>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
               <span className="text-xs font-semibold text-white">Trustpilot</span>
               <span className="text-xs text-white/60">4.4/5</span>
@@ -233,9 +243,9 @@ export default function TestimonialsSection() {
         </div>
 
         <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
             {/* Left side - Carousel with testimonials */}
-            <div className="relative w-full">
+            <div className="relative w-full flex flex-col justify-center">
               <Carousel
                 setApi={setApi}
                 opts={{
@@ -244,7 +254,7 @@ export default function TestimonialsSection() {
                 }}
                 className="w-full"
               >
-              <CarouselContent className="-ml-0">
+              <CarouselContent className="-ml-0 items-center">
                 {testimonials.map((testimonial, index) => (
                   <CarouselItem key={index} className="pl-0">
                     <motion.div
@@ -326,31 +336,82 @@ export default function TestimonialsSection() {
             </div>
 
             {/* Right side - Fixed Branding */}
-            <div className="flex flex-col items-center lg:items-end justify-center py-8 lg:py-0">
+            <div className="flex flex-col items-center lg:items-end justify-center h-full py-8 lg:py-0">
               <div className="relative">
                 {/* Background decorative element */}
                 <div className="absolute -inset-8 bg-gradient-to-br from-[#FF4AE7]/5 to-[#FE0101]/5 rounded-[32px] blur-2xl" />
                 
-                <div className="relative space-y-3 md:space-y-4 lg:space-y-5">
+                {/* Mobile: Horizontal layout */}
+                <div className="relative flex md:hidden items-center gap-2 justify-center">
+                  <div className="relative w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0">
+                    <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <defs>
+                        <linearGradient id="heartGradientMobile" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stopColor="#FF4AE7" />
+                          <stop offset="100%" stopColor="#FE0101" />
+                        </linearGradient>
+                      </defs>
+                      <path 
+                        d="M19.5 12.572L12 20.072L4.5 12.572C2.56701 10.639 2.56701 7.50501 4.5 5.57201C6.43299 3.63901 9.567 3.63901 11.5 5.57201L12 6.07201L12.5 5.57201C14.433 3.63901 17.567 3.63901 19.5 5.57201C21.433 7.50501 21.433 10.639 19.5 12.572Z" 
+                        fill="url(#heartGradientMobile)" 
+                        stroke="url(#heartGradientMobile)" 
+                        strokeWidth="2" 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                      />
+                    </svg>
+                  </div>
+                  <h3 className={`text-3xl sm:text-4xl font-bold text-white ${montserrat.className} leading-tight`}>
+                    Loved
+                  </h3>
+                  <h3 className={`text-3xl sm:text-4xl font-bold text-white/90 ${montserrat.className} leading-tight`}>
+                    by
+                  </h3>
+                  <h3 className={`text-3xl sm:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#FF4AE7] to-[#FE0101] ${montserrat.className} leading-tight`}>
+                    Creators
+                  </h3>
+                </div>
+
+                {/* Desktop: Vertical stacked layout */}
+                <div className="relative hidden md:flex md:flex-col md:space-y-4 lg:space-y-5">
                   {/* "Loved" text with accent */}
-                  <div className="flex items-end gap-3 justify-end">
-                    <h3 className={`text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white ${montserrat.className} leading-tight`}>
+                  <div className="flex items-center gap-4 justify-end">
+                    <div className="relative w-10 h-10 lg:w-14 lg:h-14">
+                      <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                          <linearGradient id="heartGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stopColor="#FF4AE7" />
+                            <stop offset="100%" stopColor="#FE0101" />
+                          </linearGradient>
+                        </defs>
+                        <path 
+                          d="M19.5 12.572L12 20.072L4.5 12.572C2.56701 10.639 2.56701 7.50501 4.5 5.57201C6.43299 3.63901 9.567 3.63901 11.5 5.57201L12 6.07201L12.5 5.57201C14.433 3.63901 17.567 3.63901 19.5 5.57201C21.433 7.50501 21.433 10.639 19.5 12.572Z" 
+                          fill="url(#heartGradient)" 
+                          stroke="url(#heartGradient)" 
+                          strokeWidth="2" 
+                          strokeLinecap="round" 
+                          strokeLinejoin="round" 
+                        />
+                      </svg>
+                    </div>
+                    <h3 className={`text-5xl lg:text-6xl xl:text-7xl font-bold text-white ${montserrat.className} leading-tight`}>
                       Loved
                     </h3>
-                    <div className="w-1 h-12 md:h-16 lg:h-20 bg-gradient-to-b from-[#FF4AE7] to-[#FE0101] rounded-full" />
                   </div>
                   
-                  {/* "By" text */}
-                  <h3 className={`text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white/90 ${montserrat.className} leading-tight text-right`}>
-                    By
-                  </h3>
-                  
-                  {/* "Creators" text with underline accent */}
-                  <div className="relative">
-                    <h3 className={`text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#FF4AE7] to-[#FE0101] ${montserrat.className} leading-tight text-right`}>
-                      Creators
+                  {/* "By Creators" text */}
+                  <div className="flex items-center justify-end gap-3 lg:gap-4">
+                    <h3 className={`text-5xl lg:text-6xl xl:text-7xl font-bold text-white/90 ${montserrat.className} leading-tight text-right`}>
+                      By
                     </h3>
-                    <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-[#FF4AE7] to-[#FE0101] rounded-full opacity-50" />
+                    
+                    {/* "Creators" text with underline accent */}
+                    <div className="relative">
+                      <h3 className={`text-5xl lg:text-6xl xl:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#FF4AE7] to-[#FE0101] ${montserrat.className} leading-tight text-right`}>
+                        Creators
+                      </h3>
+                      <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-[#FF4AE7] to-[#FE0101] rounded-full opacity-50" />
+                    </div>
                   </div>
                 </div>
               </div>

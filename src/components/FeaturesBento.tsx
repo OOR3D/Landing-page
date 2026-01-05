@@ -50,6 +50,9 @@ function BentoCard({ title, description, icon, imageSrc, className, delay = 0, b
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
   
+  // Disable scroll-based animations on mobile for better performance
+  const shouldUseScrollAnimation = !isMobile && (enableTravelAnimation || enableUpwardAnimation)
+  
   // Scroll-based animation for rocket travel
   const { scrollYProgress } = useScroll({
     target: cardRef,
@@ -94,22 +97,23 @@ function BentoCard({ title, description, icon, imageSrc, className, delay = 0, b
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
       className={cn(
-        "group relative rounded-[40px] flex flex-col justify-between h-full min-h-[400px] md:min-h-[450px] transition-transform duration-500 hover:scale-[1.02] shadow-2xl",
+        "group relative rounded-[40px] flex flex-col justify-between h-full min-h-[400px] md:min-h-[450px] transition-transform duration-500 hover:scale-[1.02]",
         allowOverflow ? "overflow-visible" : "overflow-hidden",
-        bgColor,
         className
       )}
     >
-      {/* Premium Border Overlay */}
-      <div className="absolute inset-0 rounded-[40px] border border-white/40 mix-blend-overlay pointer-events-none z-[5]" />
+      {/* Background & Effects Container - Strictly Clipped */}
+      <div className={cn("absolute inset-0 rounded-[40px] overflow-hidden shadow-2xl", bgColor)}>
+        {/* Premium Border Overlay */}
+        <div className="absolute inset-0 rounded-[40px] border border-white/40 mix-blend-overlay pointer-events-none z-[5]" />
 
-      {/* Lighting Effects - Constrained to box */}
-      <div className="absolute inset-0 overflow-hidden rounded-[40px] pointer-events-none z-0">
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-50 z-20" />
-        <div className="absolute -top-20 -left-20 w-64 h-64 bg-white/10 rounded-full blur-[80px] pointer-events-none z-0" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/20 to-transparent pointer-events-none z-0" />
+        {/* Lighting Effects - Constrained to box */}
+        <div className="absolute inset-0 overflow-hidden rounded-[40px] pointer-events-none z-0">
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-50 z-20" />
+          <div className="absolute -top-20 -left-20 w-64 h-64 bg-white/10 rounded-full blur-[80px] pointer-events-none z-0" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/20 to-transparent pointer-events-none z-0" />
+        </div>
       </div>
-
       
       {/* Image Layer - Massive & Breaking Frame */}
       <div 
@@ -166,12 +170,12 @@ function BentoCard({ title, description, icon, imageSrc, className, delay = 0, b
                    }
                  : undefined
              }
-             style={enableTravelAnimation ? {
+             style={(enableTravelAnimation && shouldUseScrollAnimation) ? {
                x: travelX,
                y: travelY,
                rotate: travelRotate,
                scale: travelScale,
-             } : enableUpwardAnimation ? {
+             } : (enableUpwardAnimation && shouldUseScrollAnimation) ? {
                y: upwardY,
                scale: upwardScale,
              } : {

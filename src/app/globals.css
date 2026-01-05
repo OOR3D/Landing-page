@@ -135,6 +135,11 @@ main, div, section {
   .text-balance {
     text-wrap: balance;
   }
+  
+  .mask-gradient-x {
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
 }
 
 @layer base {
@@ -311,4 +316,94 @@ main, div, section {
 ::selection {
   background-color: rgba(255, 20, 147, 0.6);
   color: white;
+}
+
+/* ========================================
+   PERFORMANCE OPTIMIZATIONS FOR SMOOTH SCROLLING
+   ======================================== */
+
+/* Enable GPU acceleration for animated elements */
+.gpu-accelerated,
+[style*="transform"],
+[class*="animate-"],
+.motion-safe {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Optimize scroll performance */
+html {
+  scroll-behavior: auto; /* Disable smooth scroll for better performance */
+}
+
+/* Reduce blur effects on mobile for better performance */
+@media (max-width: 768px) {
+  .blur-\[180px\] {
+    filter: blur(60px) !important;
+  }
+  
+  .blur-\[120px\] {
+    filter: blur(40px) !important;
+  }
+  
+  .blur-\[100px\] {
+    filter: blur(35px) !important;
+  }
+  
+  .blur-\[80px\] {
+    filter: blur(25px) !important;
+  }
+  
+  .blur-\[60px\] {
+    filter: blur(20px) !important;
+  }
+  
+  /* Reduce backdrop blur intensity on mobile */
+  .backdrop-blur-xl {
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+  }
+  
+  .backdrop-blur-lg {
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+  }
+  
+  /* Disable heavy decorative animations on mobile */
+  .animate-pulse-slow {
+    animation: none !important;
+  }
+}
+
+/* Use will-change sparingly on elements that animate frequently */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+/* Optimize motion elements */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Contain paint for better rendering performance */
+section {
+  contain: layout style;
+}
+
+/* Optimize fixed elements */
+.fixed {
+  transform: translateZ(0);
+  will-change: transform;
 }
