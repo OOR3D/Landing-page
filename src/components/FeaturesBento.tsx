@@ -98,10 +98,12 @@ function BentoCard({ title, description, icon, imageSrc, className, delay = 0, b
       transition={{ duration: 0.5, delay }}
       className={cn(
         "group relative flex flex-col justify-between h-full min-h-[400px] md:min-h-[450px] transition-transform duration-500 hover:scale-[1.02]",
-        // We REMOVED the rounded-[40px] and overflow classes from here to decouple them.
-        // The parent is just a wrapper now.
+        // Only apply rounded corners and overflow-hidden to the PARENT when we don't need overflow.
+        // This provides a double-barrier for Safari on non-overflowing cards.
+        allowOverflow ? "" : "rounded-[40px] overflow-hidden",
         className
       )}
+      style={allowOverflow ? undefined : { transform: 'translateZ(0)' }} // Extra Safari fix on parent when clipping
     >
       {/* Background & Effects Container - ALWAYS Strictly Clipped */}
       <div 
