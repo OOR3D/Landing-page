@@ -45,6 +45,19 @@ export default function SecurityFeatures() {
   return (
     <section className="px-6 py-24 relative z-10">
       <div className="max-w-[1400px] mx-auto">
+        {/* Section Title */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h2 className={`text-4xl md:text-5xl lg:text-6xl font-bold ${montserrat.className}`}>
+            <span className="mr-3">🫵</span>You Come First
+          </h2>
+        </motion.div>
+
         <div className="grid grid-cols-1 md:grid-cols-2">
           {features.map((feature, index) => (
             <motion.div
