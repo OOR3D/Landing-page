@@ -53,6 +53,7 @@ import SecurityFeatures from '@/components/SecurityFeatures'
 import PlatformLogos from '@/components/PlatformLogos'
 import { Footer } from '@/components/Footer'
 import LoadingScreen from '@/components/LoadingScreen'
+import Header from '@/components/Header'
 
 export default function NewLandingPage() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null)
@@ -120,40 +121,11 @@ export default function NewLandingPage() {
            style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} 
       />
 
-      {/* Floating Nav */}
-      <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-fit px-4">
-        <motion.div 
-          initial={{ y: -20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="flex items-center gap-1 pl-6 pr-2 py-2 rounded-full shadow-2xl shadow-black/20"
-          style={{ 
-            backgroundColor: 'rgba(8, 2, 26, 0.6)',
-            backdropFilter: 'blur(16px)',
-            border: `1px solid ${colors.borderHighlight}`,
-            boxShadow: '0 0 0 1px rgba(0,0,0,0.2), 0 8px 40px rgba(0,0,0,0.4)'
-          }}
-        >
-          <Link href="/" className="mr-6 opacity-90 hover:opacity-100 transition-opacity">
-            <img src="https://assets.oor3d.com/logo/OOR-allwhite.svg" alt="OOR3D" width={40} height={12} draggable={false} className="brightness-0 invert" />
-          </Link>
-          
-          <div className="hidden md:flex items-center gap-1 mr-2">
-            <NavLink href="https://app.outofreach3d.com/upgrades">Pricing</NavLink>
-            <NavLink href="https://app.outofreach3d.com/help/faq/general">FAQ</NavLink>
-            <NavLink href="https://auth.outofreach3d.com/login">Login</NavLink>
-          </div>
-          
-          <Link href="https://auth.outofreach3d.com/signup" draggable={false}>
-            <Button variant="red" size="sm" className="rounded-full">
-              Get Started
-            </Button>
-          </Link>
-        </motion.div>
-      </nav>
+      {/* Header Navigation */}
+      <Header />
 
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex flex-col items-center justify-center pt-32 pb-20 px-6 overflow-hidden">
+      <section className="relative min-h-[auto] md:min-h-[90vh] flex flex-col items-center justify-center pt-24 pb-12 md:pt-32 md:pb-20 px-6 overflow-hidden">
          {/* Curved Background */}
         <div 
           className="absolute inset-0 z-0 rounded-b-[60px] md:rounded-b-[100px] overflow-hidden border-b border-white/5"
@@ -194,8 +166,8 @@ export default function NewLandingPage() {
                maskImage: 'linear-gradient(to bottom, transparent calc(100% - 120px), black 100%)',
              }}
            >
-             {/* Background Glow */}
-             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#FF4AE7] rounded-full blur-[180px] opacity-[0.08] pointer-events-none" />
+             {/* Background Glow - GPU accelerated */}
+             <div className="absolute top-1/2 left-1/2 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-[#FF4AE7] rounded-full blur-[80px] md:blur-[180px] opacity-[0.08] pointer-events-none" style={{ transform: 'translate(-50%, -50%) translateZ(0)' }} />
              
              {/* Glow Layer (Blurry) */}
              <div 
@@ -229,8 +201,8 @@ export default function NewLandingPage() {
              />
            </motion.div>
 
-           {/* Animated Glow Behind Hero */}
-           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#FF4AE7] rounded-full blur-[180px] opacity-[0.08] pointer-events-none animate-pulse-slow" />
+           {/* Animated Glow Behind Hero - GPU accelerated */}
+           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-[#FF4AE7] rounded-full blur-[80px] md:blur-[180px] opacity-[0.08] pointer-events-none" style={{ transform: 'translate(-50%, -50%) translateZ(0)' }} />
         </div>
 
         <div className="max-w-7xl mx-auto text-center relative z-10">
@@ -238,15 +210,15 @@ export default function NewLandingPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-8"
+            className="mb-4 md:mb-8"
           >
             <span 
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase"
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase backdrop-blur-xl overflow-hidden"
               style={{ 
-                backgroundColor: 'rgba(254, 1, 1, 0.1)',
-                border: '1px solid rgba(254, 1, 1, 0.2)',
+                backgroundColor: 'rgba(254, 1, 1, 0.15)',
+                border: '1px solid rgba(254, 1, 1, 0.3)',
                 color: '#FF4D4D',
-                boxShadow: '0 0 20px rgba(254, 1, 1, 0.1)'
+                boxShadow: '0 0 20px rgba(254, 1, 1, 0.2)'
               }}
             >
               <span className="w-1.5 h-1.5 rounded-full bg-[#FE0101] animate-pulse" />
@@ -258,9 +230,9 @@ export default function NewLandingPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className={`text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 ${montserrat.className}`}
+            className={`text-4xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-4 md:mb-8 ${montserrat.className}`}
           >
-            <span className="block text-white mb-2 drop-shadow-2xl">The Workspace for</span>
+            <span className="block text-white mb-1 md:mb-2 drop-shadow-2xl">The Workspace for</span>
             <span 
               className="bg-clip-text text-transparent bg-gradient-to-r from-[#FF8CEA] via-[#FE0101] to-[#FF8CEA] bg-[length:200%_auto] animate-gradient"
             >
@@ -272,11 +244,10 @@ export default function NewLandingPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl md:text-2xl text-white/60 max-w-2xl mx-auto mb-10 leading-relaxed font-light"
+            className="text-base md:text-2xl text-white/60 max-w-2xl mx-auto mb-6 md:mb-10 leading-relaxed font-light"
           >
             Design, customize, and export game-ready assets directly from your browser.
-            <br />
-            <span className="text-white/40 text-base md:text-lg block mt-2">No 3D experience required.</span>
+            <span className="text-white/40 text-sm md:text-lg block mt-1 md:mt-2">No 3D experience required.</span>
           </motion.p>
 
           <motion.div
@@ -296,17 +267,17 @@ export default function NewLandingPage() {
         {/* 3D Asset Floating Elements (Decorations) */}
         <FloatingAsset 
           src="https://assets.oor3d.com/img/assets/texture.png" // Paintbrush sphere
-          className="absolute top-1/4 left-[5%] w-32 h-32 lg:w-48 lg:h-48 hidden md:block"
+          className="absolute top-[15%] md:top-1/4 -left-4 md:left-[5%] w-20 h-20 md:w-32 md:h-32 lg:w-48 lg:h-48 opacity-60 md:opacity-100"
           delay={0}
         />
         <FloatingAsset 
           src="https://assets.oor3d.com/img/assets/download.png" // Box arrow
-          className="absolute bottom-1/4 right-[5%] w-40 h-40 lg:w-56 lg:h-56 hidden md:block"
+          className="absolute bottom-[10%] md:bottom-1/4 -right-4 md:right-[5%] w-24 h-24 md:w-40 md:h-40 lg:w-56 lg:h-56 opacity-60 md:opacity-100"
           delay={2}
         />
         <FloatingAsset 
           src="https://assets.oor3d.com/img/assets/t%20shirt.png" // T-shirt
-          className="absolute top-1/3 right-[15%] w-24 h-24 lg:w-36 lg:h-36 hidden lg:block"
+          className="absolute top-[40%] md:top-1/3 right-0 md:right-[15%] w-16 h-16 md:w-24 md:h-24 lg:w-36 lg:h-36 opacity-40 md:opacity-100"
           delay={1.5}
           targetBlur={4}
           targetOpacity={0.6}
@@ -320,7 +291,7 @@ export default function NewLandingPage() {
             className="text-center mb-10"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
+            viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <p className="text-sm font-medium text-white/50 uppercase tracking-widest mb-2">
@@ -334,7 +305,7 @@ export default function NewLandingPage() {
             className="relative flex overflow-hidden mask-gradient-x"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
+            viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           >
             <motion.div 
@@ -343,7 +314,7 @@ export default function NewLandingPage() {
               transition={{ duration: 20, ease: "linear", repeat: Infinity }}
             >
               {[...Array(4)].map((_, i) => (
-                <div key={i} className="flex items-center gap-16 shrink-0 pr-16">
+                <div key={i} className="flex items-center gap-8 md:gap-16 shrink-0 pr-8 md:pr-16">
                   {[
                     { src: "https://assets.oor3d.com/img/Trusted%20By/stripe.svg", alt: "Stripe" },
                     { src: "https://assets.oor3d.com/img/Trusted%20By/nvidia.svg", alt: "NVIDIA" },
@@ -360,7 +331,7 @@ export default function NewLandingPage() {
                   ].map((logo, index) => (
                     <div 
                       key={`${i}-${index}`}
-                      className="relative w-24 h-8 opacity-30 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+                      className="relative w-28 h-10 sm:w-32 sm:h-12 shrink-0 opacity-60 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
                     >
                       <img
                         src={logo.src}
@@ -446,16 +417,16 @@ export default function NewLandingPage() {
       {/* Platforms Section - Dedicated */}
       <section className="relative w-full py-24">
         <PlatformLogos>
-          <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-6 ${montserrat.className} px-2`}>
+          <h2 className={`text-2xl sm:text-4xl md:text-5xl font-bold mb-6 ${montserrat.className} px-4`}>
             Built for the platforms you create for
           </h2>
-          <p className="text-lg sm:text-xl text-white/60 mb-2 max-w-5xl mx-auto px-4">
+          <p className="text-sm sm:text-xl text-white/60 mb-2 max-w-5xl mx-auto px-4">
             <span className="text-white/80 font-medium">IMVU</span> is supported today.
           </p>
-          <p className="text-lg sm:text-xl text-white/60 mb-2 max-w-5xl mx-auto px-4">
+          <p className="text-sm sm:text-xl text-white/60 mb-2 max-w-5xl mx-auto px-4">
             We're actively expanding to the platforms creators care about next.
           </p>
-          <p className="text-lg sm:text-xl text-white/80 font-medium mb-8 max-w-5xl mx-auto px-4">
+          <p className="text-sm sm:text-xl text-white/80 font-medium mb-8 max-w-5xl mx-auto px-4">
             Second Life, The Sims 4, Roblox, VRChat, Zepeto, Inzoi, FiveM, Avakin Life, Minecraft, and GTA 6.
           </p>
         </PlatformLogos>
@@ -498,9 +469,9 @@ export default function NewLandingPage() {
 
       {/* The Engine Section */}
       <section className="px-6 py-32 relative overflow-hidden">
-        {/* Decorative background elements */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#FF4AE7]/10 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-[#FE0101]/10 rounded-full blur-[100px] pointer-events-none" />
+        {/* Decorative background elements - GPU accelerated with reduced blur on mobile */}
+        <div className="absolute top-1/2 left-1/2 w-[400px] md:w-[800px] h-[400px] md:h-[800px] bg-[#FF4AE7]/10 rounded-full blur-[60px] md:blur-[120px] pointer-events-none" style={{ transform: 'translate(-50%, -50%) translateZ(0)' }} />
+        <div className="absolute bottom-1/4 right-1/4 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-[#FE0101]/10 rounded-full blur-[50px] md:blur-[100px] pointer-events-none" style={{ transform: 'translateZ(0)' }} />
         
         <div className="max-w-6xl mx-auto relative z-10">
           <motion.div
@@ -552,8 +523,8 @@ export default function NewLandingPage() {
 
       {/* Community Section */}
       <section className="px-6 py-24 relative overflow-hidden">
-        {/* Decorative background elements */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#5865F2]/10 rounded-full blur-[120px] pointer-events-none" />
+        {/* Decorative background elements - GPU accelerated */}
+        <div className="absolute top-1/2 left-1/2 w-[400px] md:w-[800px] h-[400px] md:h-[800px] bg-[#5865F2]/10 rounded-full blur-[60px] md:blur-[120px] pointer-events-none" style={{ transform: 'translate(-50%, -50%) translateZ(0)' }} />
         
         <div className="max-w-5xl mx-auto relative z-10">
           <BentoCard className="p-8 md:p-16 text-center relative overflow-hidden border-[#5865F2]/30 group">
@@ -580,7 +551,7 @@ export default function NewLandingPage() {
               </h2>
               
               <p className="text-xl text-white/60 mb-10 max-w-xl mx-auto leading-relaxed">
-                Connect with Hundreds of creators. Share your designs, get instant feedback, and shape the future of OOR3D™.
+                Connect with hundreds of creators. Share your designs, get instant feedback, and shape the future of OOR3D™.
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
@@ -716,18 +687,6 @@ function ScrollAnimatedText({
   )
 }
 
-function NavLink({ href, children }: { href: string, children: React.ReactNode }) {
-  return (
-    <Link
-      href={href}
-      draggable={false}
-      className="px-4 py-2 text-sm font-medium text-white/60 hover:text-white transition-colors hover:bg-white/5 rounded-full"
-    >
-      {children}
-    </Link>
-  )
-}
-
 function BentoCard({ children, className = '' }: { children: React.ReactNode, className?: string }) {
   return (
     <div 
@@ -809,7 +768,7 @@ function StackedDeckSection() {
   const opacity3 = useTransform(scrollYProgress, [0, 0.2], [0.4, 1])
 
   return (
-    <section ref={containerRef} className="px-6 py-24 relative z-10 hidden md:block overflow-visible">
+    <section ref={containerRef} className="px-6 py-24 relative z-10 hidden lg:block overflow-visible">
       <div className="flex flex-col justify-center overflow-visible">
         <div className="text-center mb-16">
           <h2 className={`text-5xl md:text-7xl font-bold mb-6 ${montserrat.className}`}>
@@ -929,9 +888,9 @@ function MobileFeatures() {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null)
   
   return (
-    <section className="px-4 sm:px-6 py-24 relative z-10 md:hidden overflow-visible">
+    <section className="px-4 sm:px-6 py-16 relative z-10 lg:hidden overflow-visible">
        <div className="max-w-[1600px] mx-auto overflow-visible">
-          <div className="text-center mb-24 px-2">
+          <div className="text-center mb-12 px-2">
             <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${montserrat.className}`}>
               <AnimatedText 
                 text="How It Works" 
@@ -948,67 +907,72 @@ function MobileFeatures() {
             </p>
           </div>
           
-          <div className="flex flex-col gap-6">
-             <FeatureCard 
-               step="1" 
-               title="Choose" 
-               desc="Pick a base model from our curated library." 
-               img="https://assets.oor3d.com/img/workflow/1%203d.png"
-               isHovered={hoveredCard === "1"}
-               isAnyHovered={hoveredCard !== null}
-               onHoverChange={(isHovering: boolean) => setHoveredCard(isHovering ? "1" : null)}
-             >
-                <Image 
-                  src="https://assets.oor3d.com/img/workflow/pick%20your%20asset.jpg" 
-                  alt="Pick a model" 
-                  fill 
-                  draggable={false}
-                  className="object-cover object-bottom"
-                />
-             </FeatureCard>
-             <FeatureCard 
-               step="2" 
-               title="Customize" 
-               desc="Upload your images or textures." 
-               img="https://assets.oor3d.com/img/workflow/2%203d.png"
-               isHovered={hoveredCard === "2"}
-               isAnyHovered={hoveredCard !== null}
-               onHoverChange={(isHovering: boolean) => setHoveredCard(isHovering ? "2" : null)}
-             >
-                <div className="absolute inset-0 w-full h-full">
+          <div className="flex flex-col gap-8">
+               <FeatureCard 
+                 className="min-h-[420px]"
+                 step="1" 
+                 title="Choose" 
+                 desc="Pick a base model from our curated library." 
+                 img="https://assets.oor3d.com/img/workflow/1%203d.png"
+                 isHovered={hoveredCard === "1"}
+                 isAnyHovered={hoveredCard !== null}
+                 onHoverChange={(isHovering: boolean) => setHoveredCard(isHovering ? "1" : null)}
+               >
                   <Image 
-                    src="https://assets.oor3d.com/img/workflow/image_VLrJ0nd__1767391135933_raw.jpg" 
-                    alt="Customize model" 
+                    src="https://assets.oor3d.com/img/workflow/pick%20your%20asset.jpg" 
+                    alt="Pick a model" 
                     fill 
                     draggable={false}
-                    className="object-cover object-center scale-[1.2]"
+                    className="object-cover object-bottom"
                   />
-                </div>
-             </FeatureCard>
-             <FeatureCard 
-               step="3" 
-               title="Export" 
-               desc="Get game-ready files." 
-               img="https://assets.oor3d.com/img/workflow/3%203d.png"
-               isHovered={hoveredCard === "3"}
-               isAnyHovered={hoveredCard !== null}
-               onHoverChange={(isHovering: boolean) => setHoveredCard(isHovering ? "3" : null)}
-             >
-                <Image 
-                  src="https://assets.oor3d.com/img/workflow/f6dcb969-48ba-4c8f-b8a5-688b0559c71b.png" 
-                  alt="Export files" 
-                  fill 
-                  draggable={false}
-                  className="object-cover object-center"
-                />
-             </FeatureCard>
+               </FeatureCard>
+
+               <FeatureCard 
+                 className="min-h-[420px]"
+                 step="2" 
+                 title="Customize" 
+                 desc="Upload your images or textures." 
+                 img="https://assets.oor3d.com/img/workflow/2%203d.png"
+                 isHovered={hoveredCard === "2"}
+                 isAnyHovered={hoveredCard !== null}
+                 onHoverChange={(isHovering: boolean) => setHoveredCard(isHovering ? "2" : null)}
+               >
+                  <div className="absolute inset-0 w-full h-full">
+                    <Image 
+                      src="https://assets.oor3d.com/img/workflow/image_VLrJ0nd__1767391135933_raw.jpg" 
+                      alt="Customize model" 
+                      fill 
+                      draggable={false}
+                      className="object-cover object-center scale-[1.2]"
+                    />
+                  </div>
+               </FeatureCard>
+
+               <FeatureCard 
+                 className="min-h-[420px]"
+                 step="3" 
+                 title="Export" 
+                 desc="Get game-ready files." 
+                 img="https://assets.oor3d.com/img/workflow/3%203d.png"
+                 isHovered={hoveredCard === "3"}
+                 isAnyHovered={hoveredCard !== null}
+                 onHoverChange={(isHovering: boolean) => setHoveredCard(isHovering ? "3" : null)}
+               >
+                  <Image 
+                    src="https://assets.oor3d.com/img/workflow/f6dcb969-48ba-4c8f-b8a5-688b0559c71b.png" 
+                    alt="Export files" 
+                    fill 
+                    draggable={false}
+                    className="object-cover object-center"
+                  />
+               </FeatureCard>
           </div>
        </div>
     </section>
   )
 }
 
-function FeatureCard({ step, title, desc, img, children, isHovered, isAnyHovered, onHoverChange }: any) {
+function FeatureCard({ step, title, desc, img, children, isHovered, isAnyHovered, onHoverChange, className }: any) {
   const iconSrc = "https://assets.oor3d.com/img/workflow/check%20mark.png"
   
   // Get image source from children to create color-matched background
@@ -1026,7 +990,7 @@ function FeatureCard({ step, title, desc, img, children, isHovered, isAnyHovered
 
   return (
     <div
-      className={`h-full group relative border border-white/10 rounded-[32px] hover:border-[#FE0101]/50 transition-all duration-500 ease-in-out hover:scale-105 flex flex-col overflow-visible bg-[#150a2e] drop-shadow-[0_10px_30px_rgba(0,0,0,0.4)] hover:drop-shadow-[0_15px_40px_rgba(0,0,0,0.5)] ${shouldGreyOut ? 'grayscale opacity-80' : 'grayscale-0'}`}
+      className={`group relative border border-white/10 rounded-[32px] hover:border-[#FE0101]/50 transition-all duration-500 ease-in-out hover:scale-105 flex flex-col overflow-visible bg-[#150a2e] drop-shadow-[0_10px_30px_rgba(0,0,0,0.4)] hover:drop-shadow-[0_15px_40px_rgba(0,0,0,0.5)] ${shouldGreyOut ? 'grayscale opacity-80' : 'grayscale-0'} ${className || 'h-full'}`}
       onMouseEnter={() => onHoverChange?.(true)}
       onMouseLeave={() => onHoverChange?.(false)}
       style={{ overflow: 'visible' }}
@@ -1047,8 +1011,8 @@ function FeatureCard({ step, title, desc, img, children, isHovered, isAnyHovered
         />
       </div>
 
-      {/* Top Section: Header & Text - Takes up ~35% */}
-      <div className="relative z-10 px-6 sm:px-8 pt-6 sm:pt-8 pb-4 flex flex-col shrink-0 h-[35%]">
+      {/* Top Section: Header & Text - Flexible Height */}
+      <div className="relative z-10 px-6 sm:px-8 pt-6 sm:pt-8 pb-4 flex flex-col shrink-0">
         <div className="flex justify-between items-start w-full mb-4 sm:mb-6">
            {/* Step Number Image (Top Left) - Made responsive */}
            <div className="absolute -top-8 -left-8 sm:-top-12 sm:-left-12 md:-top-16 md:-left-16 w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 pointer-events-none group-hover:scale-110 group-hover:drop-shadow-[0_0_25px_rgba(254,1,1,0.3)] transition-all duration-500 z-20">
@@ -1062,26 +1026,34 @@ function FeatureCard({ step, title, desc, img, children, isHovered, isAnyHovered
         </div>
         
         <div className="mt-auto mb-6 relative z-10 pb-2">
-          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 text-white transition-all duration-300">{title}</h3>
-          <p className="text-white/60 leading-tight text-sm sm:text-base md:text-lg line-clamp-3 transition-all duration-300">{desc}</p>
+          <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-2xl xl:text-3xl font-bold mb-2 text-white transition-all duration-300">{title}</h3>
+          <p className="text-white/60 leading-tight text-sm sm:text-base md:text-lg lg:text-sm xl:text-base transition-all duration-300">{desc}</p>
         </div>
       </div>
 
-      {/* Bottom Section: Image with Convex Arch - Takes up ~65% */}
-      <div className="relative h-[65%] w-full z-10">
-         {/* The Convex Container */}
+      {/* Bottom Section: Image with Styled Straight Cut */}
+      <div className="relative flex-1 w-full z-10 min-h-[250px]">
+         {/* Bold Separator Design */}
+         <div className="absolute top-0 inset-x-0 h-px z-20">
+            {/* Main line */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+            {/* Glow effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#FE0101]/50 to-transparent blur-[2px]" />
+            {/* Center accent */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-[1.5px] bg-gradient-to-r from-transparent via-[#FE0101] to-transparent rounded-full" />
+         </div>
+
+         {/* The Image Container */}
          <div 
-           className="absolute inset-0 w-full h-full overflow-hidden border-t border-white/10 bg-transparent"
+           className="absolute inset-0 w-full h-full overflow-hidden bg-transparent"
            style={{
-             borderTopLeftRadius: '50% 10%',  // Creates the convex arch
-             borderTopRightRadius: '50% 10%', // Creates the convex arch
-             borderBottomLeftRadius: '32px',  // Match card border radius
-             borderBottomRightRadius: '32px', // Match card border radius
+             borderBottomLeftRadius: '32px',
+             borderBottomRightRadius: '32px',
            }}
          > 
             {children}
             
-            {/* Inner shadow for depth - Reduced opacity for clarity */}
+            {/* Inner shadow for depth */}
             <div className="absolute inset-0 shadow-[inset_0_10px_40px_rgba(0,0,0,0.2)] pointer-events-none rounded-[inherit]" />
          </div>
       </div>

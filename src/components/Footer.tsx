@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
+import { usePathname, useRouter } from "next/navigation"
 import { Globe, Youtube, Instagram, Twitter } from "lucide-react"
 
 function XIcon() {
@@ -68,6 +69,30 @@ const footerLinks = [
 ]
 
 export function Footer() {
+  const pathname = usePathname()
+  const router = useRouter()
+
+  const scrollToTop = () => {
+    // If not on home page, navigate first
+    if (pathname !== '/') {
+      router.push('/')
+      return
+    }
+
+    // Attempt to scroll multiple targets
+    window.scrollTo({ top: 0, behavior: 'instant' })
+    document.body.scrollTo({ top: 0, behavior: 'instant' })
+    document.documentElement.scrollTo({ top: 0, behavior: 'instant' })
+    
+    // Also try finding a scrolling container if main scroll doesn't work
+    const scrollableDivs = document.querySelectorAll('div, main, section')
+    scrollableDivs.forEach(div => {
+      if (div.scrollTop > 0) {
+        div.scrollTop = 0
+      }
+    })
+  }
+
   return (
     <footer className="w-full relative py-12 px-4 md:px-6">
       <div className="max-w-[1400px] mx-auto bg-[#0D0429]/90 backdrop-blur-xl border border-white/10 rounded-[32px] overflow-hidden relative">
@@ -103,7 +128,11 @@ export function Footer() {
           </div>
 
           <div className="flex flex-col items-center justify-center pt-10 border-t border-white/5 text-center">
-              <Link href="/" draggable={false} className="mb-6 hover:opacity-80 transition-opacity flex items-center justify-center">
+              <button 
+                  onClick={scrollToTop} 
+                  className="mb-6 hover:opacity-80 transition-opacity flex items-center justify-center bg-transparent border-none p-0 cursor-pointer"
+                  type="button"
+              >
                   <img 
                       src="https://assets.oor3d.com/logo/OOR-allwhite.svg" 
                       alt="OOR3D Logo" 
@@ -112,7 +141,7 @@ export function Footer() {
                       draggable={false}
                       className="object-contain"
                   />
-              </Link>
+              </button>
               
               <p className="text-gray-500 text-sm max-w-md mb-8">
                   We build the engine. You shape the virtual world.

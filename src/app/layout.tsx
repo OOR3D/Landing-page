@@ -40,6 +40,26 @@ export default function RootLayout({
             `,
           }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'SoftwareApplication',
+              name: 'OUTOFREACH3D',
+              applicationCategory: 'DesignApplication',
+              operatingSystem: 'Web',
+              description: 'Create 3D items for IMVU, Second Life, Sims 4, Roblox, Inzoi, GTA 6 and more.',
+              image: 'https://assets.oor3d.com/img/card-actions/The%20universal%20virtual%20world%20creator%20workspace.png',
+              author: {
+                '@type': 'Organization',
+                name: 'OUTOFREACH3D',
+                url: 'https://outofreach3d.com',
+                logo: 'https://assets.oor3d.com/img/card-actions/The%20universal%20virtual%20world%20creator%20workspace.png'
+              }
+            }),
+          }}
+        />
       </head>
       <body className={inter.className}>
         <Particles />
