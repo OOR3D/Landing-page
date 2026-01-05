@@ -220,12 +220,17 @@ function BentoCard({ title, description, icon, imageSrc, className, delay = 0, b
       {/* Blur overlay at bottom for text focus */}
       {enableBlurOverlay && (
         <div 
-          className="absolute inset-x-0 bottom-0 h-48 backdrop-blur-lg pointer-events-none z-[15] rounded-b-[40px]"
-          style={{
-            maskImage: 'linear-gradient(to top, black 40%, transparent 100%)',
-            WebkitMaskImage: 'linear-gradient(to top, black 40%, transparent 100%)'
-          }}
-        />
+          className="absolute inset-x-0 bottom-0 h-48 pointer-events-none z-[15] rounded-b-[40px] overflow-hidden"
+          style={{ transform: 'translateZ(0)' }} // Fix for Safari bleeding
+        >
+          <div 
+            className="absolute inset-0 backdrop-blur-lg"
+            style={{
+              maskImage: 'linear-gradient(to top, black 40%, transparent 100%)',
+              WebkitMaskImage: 'linear-gradient(to top, black 40%, transparent 100%)'
+            }}
+          />
+        </div>
       )}
 
       {/* Content Layer */}
