@@ -111,7 +111,12 @@ function BentoCard({ title, description, icon, imageSrc, className, delay = 0, b
           "absolute inset-0 rounded-[40px] overflow-hidden shadow-2xl z-0", 
           bgColor
         )}
-        style={{ transform: 'translateZ(0)' }} // Force GPU layer for strict Safari clipping
+        style={{ 
+          transform: 'translateZ(0)',
+          // Unbreakable Safari clip fix - forces strict rounded corner clipping for blur effects
+          WebkitMaskImage: 'linear-gradient(white, white)',
+          maskImage: 'linear-gradient(white, white)',
+        }}
       >
         {/* Premium Border Overlay */}
         <div className="absolute inset-0 rounded-[40px] border border-white/40 mix-blend-overlay pointer-events-none z-[5]" />
