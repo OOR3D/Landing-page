@@ -97,15 +97,19 @@ function BentoCard({ title, description, icon, imageSrc, className, delay = 0, b
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
       className={cn(
-        "group relative rounded-[40px] flex flex-col justify-between h-full min-h-[400px] md:min-h-[450px] transition-transform duration-500 hover:scale-[1.02]",
-        allowOverflow ? "overflow-visible" : "overflow-hidden",
+        "group relative flex flex-col justify-between h-full min-h-[400px] md:min-h-[450px] transition-transform duration-500 hover:scale-[1.02]",
+        // We REMOVED the rounded-[40px] and overflow classes from here to decouple them.
+        // The parent is just a wrapper now.
         className
       )}
     >
-      {/* Background & Effects Container - Strictly Clipped */}
+      {/* Background & Effects Container - ALWAYS Strictly Clipped */}
       <div 
-        className={cn("absolute inset-0 rounded-[40px] overflow-hidden shadow-2xl", bgColor)}
-        style={{ transform: 'translateZ(0)' }} // Fix for Safari bleeding (top-left white blob)
+        className={cn(
+          "absolute inset-0 rounded-[40px] overflow-hidden shadow-2xl z-0", 
+          bgColor
+        )}
+        style={{ transform: 'translateZ(0)' }} // Force GPU layer for strict Safari clipping
       >
         {/* Premium Border Overlay */}
         <div className="absolute inset-0 rounded-[40px] border border-white/40 mix-blend-overlay pointer-events-none z-[5]" />
@@ -220,11 +224,14 @@ function BentoCard({ title, description, icon, imageSrc, className, delay = 0, b
          )}
       </div>
 
-      {/* Blur overlay at bottom for text focus */}
+      {/* Blur overlay at bottom for text focus - Now inside the strictly clipped background area logic if needed, 
+          but usually we want this INSIDE the clipped container or strictly clipped itself.
+          Given the new structure, we can keep it absolute but ensure it respects the rounded corners. 
+      */}
       {enableBlurOverlay && (
         <div 
           className="absolute inset-x-0 bottom-0 h-48 pointer-events-none z-[15] rounded-b-[40px] overflow-hidden"
-          style={{ transform: 'translateZ(0)' }} // Fix for Safari bleeding
+          style={{ transform: 'translateZ(0)' }} 
         >
           <div 
             className="absolute inset-0 backdrop-blur-lg"
@@ -236,8 +243,8 @@ function BentoCard({ title, description, icon, imageSrc, className, delay = 0, b
         </div>
       )}
 
-      {/* Content Layer */}
-      <div className="relative z-20 mt-auto m-8">
+      {/* Content Layer - Positioned relatively to be on top */}
+      <div className="relative z-20 mt-auto m-8 pointer-events-none">
         <h3 className={`text-2xl md:text-3xl font-bold text-white mb-3 drop-shadow-md ${montserrat.className}`}>{title}</h3>
         <p className="text-white/90 text-sm md:text-base leading-relaxed font-medium drop-shadow-sm">{description}</p>
       </div>
