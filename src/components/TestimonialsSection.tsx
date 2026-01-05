@@ -73,7 +73,7 @@ const testimonials: Testimonial[] = [
     location: "US",
     text: "Xenobiii(hismuvaa) amazing service ! Thank you for taking the time out of your day to make my designs come true ! I appreciate it❤️‍🩹",
     role: "Creator",
-    imageUrl: "https://user-images.trustpilot.com/68b8516227764a1c0157c3b2/73x73.png"
+    imageUrl: "https://userimages01-akm.imvu.com/userdata/61/10/60/47/userpics/Snap_6RcmrRV9nl1621744994.jpg"
   },
   {
     name: "Sia",
