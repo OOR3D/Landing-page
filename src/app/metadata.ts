@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'OUTOFREACH3D™ – Create, Customize, and Sell products on IMVU, Second Life, Sims 4, Roblox, Inzoi, GTA 6 and more',
-  description: 'Create 3D items for IMVU, Second Life, Sims 4, Roblox, Inzoi, GTA 6 and more. Create once, wear & sell everywhere.',
+  title: 'Create Clothes & Products for IMVU, Sims 4 & More - OUTOFREACH3D™',
+  description: 'The all-in-one workspace to create, customize, and sell 3D products for IMVU, Second Life, Sims 4, Roblox, Inzoi, GTA 6, and more.',
   keywords: [
     'virtual product creation',
     '3D design for games',

@@ -492,7 +492,7 @@ export default function NewLandingPage() {
               transition={{ duration: 0.8, delay: 0.1 }}
               className="text-lg md:text-xl text-white/60 mb-12 max-w-2xl mx-auto leading-relaxed"
             >
-              OUTOFREACH3D™ brings your tools, products, and workflow into a single system, so you can create faster and stay steps ahead.
+              OUTOFREACH3D™ brings your tools, products, and workflow into a single system for IMVU, Second Life, Sims 4, and more, so you can create faster and stay steps ahead.
             </motion.p>
             
             <motion.div
