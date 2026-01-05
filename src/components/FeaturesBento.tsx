@@ -103,7 +103,10 @@ function BentoCard({ title, description, icon, imageSrc, className, delay = 0, b
       )}
     >
       {/* Background & Effects Container - Strictly Clipped */}
-      <div className={cn("absolute inset-0 rounded-[40px] overflow-hidden shadow-2xl", bgColor)}>
+      <div 
+        className={cn("absolute inset-0 rounded-[40px] overflow-hidden shadow-2xl", bgColor)}
+        style={{ transform: 'translateZ(0)' }} // Fix for Safari bleeding (top-left white blob)
+      >
         {/* Premium Border Overlay */}
         <div className="absolute inset-0 rounded-[40px] border border-white/40 mix-blend-overlay pointer-events-none z-[5]" />
 
