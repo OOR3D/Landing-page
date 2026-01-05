@@ -45,7 +45,18 @@ export default function SecurityFeatures() {
   return (
     <section className="px-6 py-16 relative z-10">
       <div className="max-w-[1400px] mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2">
+        <div className="relative grid grid-cols-1 md:grid-cols-2">
+          {/* Vertical divider line - centered, with gaps at top and bottom */}
+          <div 
+            className="hidden md:block absolute left-1/2 top-[15%] bottom-[15%] w-px bg-white/10 -translate-x-1/2"
+            aria-hidden="true"
+          />
+          {/* Horizontal divider line - centered, with gaps at left and right */}
+          <div 
+            className="hidden md:block absolute top-1/2 left-[10%] right-[10%] h-px bg-white/10 -translate-y-1/2"
+            aria-hidden="true"
+          />
+          
           {features.map((feature, index) => (
             <motion.div
               key={index}
@@ -54,19 +65,14 @@ export default function SecurityFeatures() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className={cn(
-                "group relative flex flex-col md:flex-row items-center md:items-start gap-6 p-8 md:p-16",
-                // Mobile borders (all except last have bottom border)
-                index !== features.length - 1 && "border-b border-white/10 md:border-b-0",
-                // Desktop borders
-                // Right border for odd items (1st and 3rd, which are index 0 and 2)
-                index % 2 === 0 && "md:border-r border-white/10",
-                // Bottom border for the first row (index 0 and 1)
-                index < 2 && "md:border-b border-white/10"
+                "group relative flex flex-col md:flex-row items-center md:items-start gap-6 p-8 md:p-12 lg:p-16",
+                // Mobile borders only (all except last have bottom border)
+                index !== features.length - 1 && "border-b border-white/10 md:border-b-0"
               )}
             >
               {/* Icon Container - No Box */}
               <div className={cn(
-                "relative shrink-0 w-40 h-40 md:w-56 md:h-56 flex items-center justify-center transition-transform duration-500 ease-out",
+                "relative shrink-0 w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 flex items-center justify-center transition-transform duration-500 ease-out",
                 // @ts-ignore
                 feature.containerClass,
                 // @ts-ignore
@@ -90,13 +96,13 @@ export default function SecurityFeatures() {
                 </div>
               </div>
 
-              <div className="flex-1 pt-4 text-center md:text-left max-w-xl relative z-10">
+              <div className="flex-1 pt-4 text-center md:text-left max-w-md lg:max-w-xl relative z-10">
                 <motion.h3 
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
-                  className={`text-2xl md:text-3xl font-bold mb-4 text-white ${montserrat.className}`}
+                  className={`text-xl sm:text-2xl md:text-2xl lg:text-3xl font-bold mb-3 md:mb-4 text-white ${montserrat.className}`}
                 >
                   {feature.title}
                 </motion.h3>
