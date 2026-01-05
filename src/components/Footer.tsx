@@ -115,8 +115,8 @@ export function Footer() {
                           href={link.href}
                           draggable={false}
                           className="text-sm text-gray-400 hover:text-white transition-colors duration-200 flex items-center gap-2"
-                          target={link.href.startsWith('http') ? "_blank" : undefined}
-                          rel={link.href.startsWith('http') ? "noopener noreferrer" : undefined}
+                          target={link.href.includes('discord.gg') ? "_blank" : undefined}
+                          rel={link.href.includes('discord.gg') ? "noopener noreferrer" : undefined}
                         >
                           {link.name}
                         </Link>
