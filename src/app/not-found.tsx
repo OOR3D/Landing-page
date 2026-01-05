@@ -108,7 +108,7 @@ export default function NotFound() {
       />
 
       {/* Floating Nav */}
-      <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-fit px-4">
+      <nav className="fixed top-6 inset-x-0 z-50 flex justify-center px-4">
         <motion.div 
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
